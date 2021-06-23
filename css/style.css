@@ -246,8 +246,18 @@ h4{
     font-size: 14px;
 }
 /*---------> categories <---------*/
+.categories::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #160a22, transparent);
+    z-index: 1000;   
+}
 .categories{
     margin: 70px 0;
+    overflow: hidden;
 }
 .col-3{
     flex-basis: 30%;
@@ -475,7 +485,7 @@ ul{
     }
     .copyright{
         text-align: center;
-        font-size: 2vw;
+        font-size: 20px;
     }
 }
 @media only screen and (max-width: 815px){

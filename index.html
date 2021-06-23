@@ -33,9 +33,9 @@
                 <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
             </div>
             <section id="fade">
-                <img src="images/Background.jpg">
+                <img src="images/Background.jpg" id="background">
                 <h2 id="text">It's all about the fun.</h2>
-                <a href="#sec1" id="btn">Explore</a>
+                <a onclick="onExploreClick()" id="btn">Explore</a>
             </section>
         </div>
     </div>
@@ -203,12 +203,28 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a>.</p>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a></p>
         </div>
     </div>
 
      <!--- JavaScript --->
     <script>
+        // <-- Parallex -->
+        let text = document.getElementById("text");
+        let btn = document.getElementById("btn");
+
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            text.style.marginTop = value * -0.60 + 'px';
+            btn.style.marginTop = value * -0.45 + 'px';
+        })
+
+        // <-- Croll -->
+        function onExploreClick() {
+            document.getElementById('sec1').scrollIntoView();
+        }
+
+        // <-- Menu -->
         var MenuItems = document.getElementById("menuItems");
 
         MenuItems.style.maxHeight = "0px";
@@ -221,6 +237,7 @@
             }
         }
 
+        // <-- Categories -->
         var slides = document.getElementsByClassName("category");
         var slidesA = document.getElementsByClassName("cat");
         var slidesText = document.getElementsByClassName("cat-text");
