@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://db.onlinewebfonts.com/c/ea250342ec4016561ba9e791c2f39c11?family=Posterama');
+@font-face {
+    font-family: 'posterama';
+    src: url('Fonts/Posterama/@font-face/Posterama2001W04-Regular.woff2') format('woff2'),
+        url('Fonts/Posterama/@font-face/Posterama2001W04-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+.font_credit{
+    display: none;
 }
 html {
     scroll-behavior: smooth;
@@ -96,7 +106,7 @@ section{
     -moz-user-select: none;    
     -ms-user-select: none;      
     user-select: none;
-    font-family: 'Posterama', 'sans-sherif';
+    font-family: 'posterama';
 }
 nav{
     flex: 1;
@@ -286,7 +296,7 @@ h4{
     text-align: center;
     transition: .5s ease;
     opacity: 0;
-    font-family: 'posterama', 'sans-sherif';
+    font-family: 'posterama';
 }
 .cat-text:after {    
     background: none repeat scroll 0 0 transparent;
