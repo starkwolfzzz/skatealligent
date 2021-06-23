@@ -108,6 +108,22 @@ section{
     user-select: none;
     font-family: 'posterama';
 }
+.navbar:hover .logo::after { 
+    width: 100%; 
+    left: 0; 
+}
+.navbar .logo:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
 nav{
     flex: 1;
     text-align: right;
