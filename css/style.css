@@ -108,9 +108,30 @@ section{
     user-select: none;
     font-family: 'posterama';
 }
-.navbar:hover .logo::after { 
-    width: 100%; 
-    left: 0; 
+.navbar2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+}
+.navbar2 .logo{
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    font-family: 'posterama';
 }
 .navbar .logo:after {    
     background: none repeat scroll 0 0 transparent;
@@ -123,6 +144,10 @@ section{
     background: #fff;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
+}
+.navbar:hover .logo::after { 
+    width: 100%; 
+    left: 0; 
 }
 nav{
     flex: 1;
@@ -465,6 +490,55 @@ ul{
     color: #8a8a8a;
 }
 
+
+
+/*---------> shop <---------*/
+
+.row-2{
+    justify-content: space-between;
+    margin: 100px auto 50px;
+}
+select{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 5px;
+}
+select:focus{
+    outline: none;
+}
+.page-btn{
+    margin: 0 auto 80px;
+    margin-left: 700px;
+}
+.page-btn span{
+    display: inline-block;
+    border: 1px solid black;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.page-btn span:hover{
+    background: black;
+    color: white;
+}
+.page-btn a{
+    color: white;
+    text-decoration: none;
+}
+#page-btn-active{
+    background: black;
+    color: white;
+}
+#invisible{
+    display: none;
+}
+#visible{
+    display: inline-block;
+}
 /*---------> mobile <---------*/
 
 @media only screen and (max-width: 995px){

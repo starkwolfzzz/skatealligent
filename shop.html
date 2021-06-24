@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skate Alligent - Shop</title>
+    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+</head>   
+<body>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <meta name="color-scheme" content="dark">
+    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
+    <div class="header">
+        <div class="container">
+            <div class="navbar2" style="background-color: #160522; position: inherit;">
+                <div class="logo">
+                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop.html?pg=1" class="Active">Shop</a></li>
+                        <li><a href="/account.html">Account</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/about.html">About</a></li>
+                    </ul>
+                </nav>
+                <a href="" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8)"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--- Products --->
+    <div class="small-container" id="sec2">
+        <div class="row row-2">
+            <h2>All Products</h2>
+            <select id="sortingSelect" onchange="setCookie('sorting', value)" name="Sort By:">
+                <option>Default Sorting</option>
+                <option>Name: (A to Z)</option>
+                <option>Name: (Z to A)</option>
+                <option>Price: (Low to High)</option>
+                <option>Price: (High to Low)</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+
+        <div class="page-btn">
+            <span onclick="nextPage(-1)" class="arrow-btn" id="invisible">&#8592;</span>
+            <a href="/shop.html?pg=1"><span class="page-btns" id="page-btn-active">1</span></a>
+            <a href="/shop.html?pg=2"><span class="page-btns" id="page-btn">2</span></a>
+            <a href="/shop.html?pg=3"><span class="page-btns" id="page-btn">3</span></a>
+            <a href="/shop.html?pg=4"><span class="page-btns" id="page-btn">4</span></a>
+            <span onclick="nextPage(1)" class="arrow-btn" id="visible">&#8594;</span>
+        </div>
+    </div>
+
+    <!--- Footer --->
+    <div class="footer" id="sec4">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <img src="images/Logo.png" alt="">
+                </div>
+                <div class="footer-col-2">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="" style="color: #8a8a8a;">Coupons</a></li>
+                        <li><a href="" style="color: #8a8a8a;">Blog Post</a></li>
+                        <li><a href="" style="color: #8a8a8a;">Return Policy</a></li>
+                        <li><a href="" style="color: #8a8a8a;">Join Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="" style="color: #8a8a8a;">Facebook</a></li>
+                        <li><a href="" style="color: #8a8a8a;">Instagram</a></li>
+                        <li><a href="" style="color: #8a8a8a;">Twitter</a></li>
+                        <li><a href="" style="color: #8a8a8a;">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a></p>
+        </div>
+    </div>
+
+     <!--- JavaScript --->
+    <script>
+        // <-- Page Number -->
+        let buttons = document.getElementsByClassName('page-btns');
+        let arrowButtons = document.getElementsByClassName('arrow-btn');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const pageNO = urlParams.get('pg');
+        for(i = 0; i < buttons.length; i++){
+            if(i == pageNO - 1){
+                buttons[i].id = 'page-btn-active';
+            } else {
+                buttons[i].id = 'page-btns';
+            }
+        }
+
+        if(pageNO == 1){
+            arrowButtons[0].id = "invisible";
+            arrowButtons[1].id = "visible";
+        } 
+        if(pageNO > 1){
+            arrowButtons[0].id = "visible";
+            arrowButtons[1].id = "visible";
+        }
+        if(pageNO == 4){
+            arrowButtons[0].id = "visible";
+            arrowButtons[1].id = "invisible";
+        }
+
+        function nextPage(n){
+            if(n == 1){
+                var nextpage = parseInt(pageNO) + 1;
+                if(nextpage > buttons.length)
+                {
+                    nextpage = 1;
+                }
+                location.replace("/shop.html?pg=" + nextpage);
+            } else {
+                var lastpage = parseInt(pageNO) - 1;
+                if(lastpage < 1)
+                {
+                    lastpage = 4;
+                }
+                location.replace("/shop.html?pg=" + lastpage);
+            }
+        }
+
+        // <-- Sorting -->
+        let dropdown = document.getElementById("sortingSelect");
+        if(getCookie("sorting") != null){
+            dropdown.value = getCookie("sorting");
+        }
+        
+        // <-- Number of Products -->
+        
+        // <-- Cookies -->
+        function setCookie(key, value) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+    </script>
+</body>
+</html>

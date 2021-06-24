@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="dark">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skate Alligent</title>
+    <title>{Product Name}</title>
     <link rel="icon" type="image/png" href="images/Icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
@@ -16,14 +16,14 @@
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar">
+            <div class="navbar2" style="background-color: #160522; position: inherit;">
                 <div class="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
                 <nav>
                     <ul id="menuItems">
-                        <li><a href="/" class="Active">Home</a></li>
-                        <li><a href="/shop.html?pg=1">Shop</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop.html?pg=1" class="Active">Shop</a></li>
                         <li><a href="/account.html">Account</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                         <li><a href="/about.html">About</a></li>
@@ -32,56 +32,34 @@
                 <a href="" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8)"></i></a>
                 <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
             </div>
-            <section id="fade">
-                <img src="images/Background.jpg" id="background">
-                <h2 id="text">It's all about the fun.</h2>
-                <a onclick="onExploreClick()" id="btn">Explore</a>
-            </section>
         </div>
     </div>
 
-    <!--- Featured Categories --->
-    <div class="categories" id="sec1">
-        <div class="image-container">
-            <h2 class="title">Categories</h2>
-            <div class="row">
-                <!-- Image -->
-                <div class="col-3">
-                    <a href="" class="cat">
-                        <img src="images/Skateboard.png" class="category">
-                        <div class="overlay"></div>
-                        <div class="cat-text">Skateboards</div>
-                    </a>
-                </div>
-                <div class="col-3">
-                    <a href="" class="cat">
-                        <img src="images/Iceskate.png" class="category">
-                        <div class="overlay"></div>
-                        <div class="cat-text">Ice Skaters</div>
-                    </a>
-                </div>
-                <div class="col-3">
-                    <a href="" class="cat">
-                        <img src="images/Rollerskate.png" class="category">
-                        <div class="overlay"></div>
-                        <div class="cat-text">Roller Skaters</div>
-                    </a>
-                </div>
+    <!--- Product --->
+    <div class="small-container">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/Skateboard.png" width="50%">
             </div>
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-              <!-- Image text -->
-            <div class="caption-container">
-                <p id="caption"></p>
+            <div class="col-2">
+                <p>Home / Skateboard</p>
+                <h1>Red Santacruz Skateboard with x bearings</h1>
+                <h4>EGP 5000.00</h4>
+                <select>
+                    <option>Select Size</option>
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                </select>
+                <input type="number" value="1">
+                <a href="" class="btn">Add to Cart</a>
+                <h3>Description</h3>
+                <p></p>
             </div>
         </div>
     </div>
 
-    <!--- Featured Products --->
     <div class="small-container" id="sec2">
-        <h2 class="title">Featured Products</h2>
         <div class="row">
             <div class="col-4">
                 <img src="images/Skateboard.png">
@@ -98,80 +76,10 @@
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
-        </div>
-        <h2 class="title">Latest Products</h2>
-        <div class="row">
-            <div class="col-4">
-                <img src="images/Skateboard.png">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Iceskate.png">
-                <h4>Ice Skaters</h4>
-                <p>EGP 99.99</p>
-            </div>
             <div class="col-4">
                 <img src="images/Rollerskate.png">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <img src="images/Skateboard.png">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Iceskate.png">
-                <h4>Ice Skaters</h4>
-                <p>EGP 99.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Rollerskate.png">
-                <h4>Roller Skaters</h4>
-                <p>EGP 449.99</p>
-            </div>
-        </div>
-    </div>
-
-    <!--
-    <div class="offer">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-2">
-                    <img src="images/Skateboard.png" class="offer-img">
-                </div>
-                <div class="col-2">
-                    <p>Exculicalya stupid on sus</p>
-                    <h1 style="color: black;">Smart Band 4</h1>
-                    <small>susususususussusususuusususususususususususususususususususususususususussuususussu</small>
-                    <a href="" class="btn">Buy Now </a>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
-    <!--- Brands --->
-    <div class="brands">
-        <div class="small-container" id="sec3">
-            <div class="row">
-                <div class="col-5">
-                    <a href="https://santacruzskateboards.com" target="_blank" rel="noopener noreferrer"><img src="images/santacruz_logo.png"></a>
-                </div>
-                <div class="col-5">
-                    <a href="https://www.yocaher.com" target="_blank" rel="noopener noreferrer"><img src="images/yocaher_logo.png"></a>
-                </div>
-                <div class="col-5">
-                    <a href="https://www.pennyskateboards.com" target="_blank" rel="noopener noreferrer"><img src="images/penny_logo.png"></a>
-                </div>
-                <div class="col-5">
-                    <a href="https://www.enuffskateboards.com" target="_blank" rel="noopener noreferrer"><img src="images/enuff_logo.png"></a>
-                </div>
-                <div class="col-5">
-                    <a href="https://www.sector9.com" target="_blank" rel="noopener noreferrer"><img src="images/sector9_logo.png"></a>
-                </div>
             </div>
         </div>
     </div>
@@ -219,7 +127,7 @@
             btn.style.marginTop = value * -0.45 + 'px';
         })
 
-        // <-- Explore -->
+        // <-- Croll -->
         function onExploreClick() {
             document.getElementById('sec1').scrollIntoView();
         }
