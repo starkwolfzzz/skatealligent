@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="color-scheme" content="dark">
@@ -9,75 +10,133 @@
     <link rel="icon" type="image/png" href="images/Icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
-</head>   
+</head>
+
 <body>
-    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by
+        CC BY 3.0</div>
     <meta name="color-scheme" content="dark">
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar2" style="background-color: #160522; position: inherit;">
+            <div class="navbar2" style="background-color: #160a22; position: inherit;">
                 <div class="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
                 <nav>
                     <ul id="menuItems">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/shop.html?pg=1" class="Active">Shop</a></li>
+                        <li><a href="/shop.html?pg=1">Shop</a></li>
                         <li><a href="/account.html">Account</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8)"></i></a>
-                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
+                <a href="" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
             </div>
         </div>
     </div>
 
     <!--- Product --->
-    <div class="small-container">
+    <div class="small-container product">
         <div class="row">
             <div class="col-2">
-                <img src="images/Skateboard.png" width="50%">
+                <img src="images/Skateboard.png" id="prod-img" width="100%">
+                <a class="prev-prod" onclick="Slides(-1)">&#10094;</a>
+                <a class="next-prod" onclick="Slides(1)">&#10095;</a>
+
+                <div class="small-img-row">
+                    <div class="small-img-col">
+                        <img src="images/Skateboard.png" class="smol-img" id="active-img" onclick="changeImg(0)">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/Iceskate.png" class="smol-img" onclick="changeImg(1)">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/Rollerskate.png" class="smol-img" onclick="changeImg(2)">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="images/Skateboard.png" class="smol-img" onclick="changeImg(3)">
+                    </div>
+                </div>
             </div>
             <div class="col-2">
-                <p>Home / Skateboard</p>
-                <h1>Red Santacruz Skateboard with x bearings</h1>
+                <p><a href="/shop.html?pg=1">Shop</a> / <a href="/shop.html?pg=1&cat={category}">{category}</a></p>
+                <h1>Santacruz Skateboard with x bearings</h1>
                 <h4>EGP 5000.00</h4>
-                <select>
-                    <option>Select Size</option>
-                    <option>Small</option>
-                    <option>Medium</option>
-                    <option>Large</option>
-                </select>
-                <input type="number" value="1">
+                &#8203;
+                <h3>Size: </h3>
+                <div class="prod-btn">
+                    <span class="prod-btns" id="prod-btn-active" onclick="changeSize(0)">XS</span>
+                    <span class="prod-btns" id="prod-btn" onclick="changeSize(1)">S</span>
+                    <span class="prod-btns" id="prod-btn" onclick="changeSize(2)">M</span>
+                    <span class="prod-btns" id="prod-btn" onclick="changeSize(3)">L</span>
+                    <span class="prod-btns" id="prod-btn" onclick="changeSize(4)">XL</span>
+                </div>
+                &#8203;
+                <h3>Color: </h3>
+                <div class="color-btn">
+                    <span class="color-btns red" id="color-btn-active" onclick="changeColor(0)">R</span>
+                    <span class="color-btns cyan blackk" id="color-btn" onclick="changeColor(1)">B</span>
+                    <span class="color-btns green" id="color-btn" onclick="changeColor(2)">G</span>
+                    <span class="color-btns white blackk" id="color-btn" onclick="changeColor(3)">W</span>
+                    <span class="color-btns black" id="color-btn" onclick="changeColor(4)">B</span>
+                </div>
+                &#8203;
+                <h3>Quantity: </h3>
+                <input type="number" value="1" min="1" max="100" id="inputQuan" onfocusout="inputValueCheck()">
                 <a href="" class="btn">Add to Cart</a>
-                <h3>Description</h3>
-                <p></p>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <h4>Description</h4>
+                <p>Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin condimentum. Proin sagittis turpis semper purus. Phasellus ut consectetur mauris nec. Donec vel ligula eu erat.<br>
+                    Sed dui lectus, varius eget. Nam sed magna urna scelerisque. Praesent eget eleifend libero tincidunt. Duis volutpat, dolor nec scelerisque. Phasellus in nisi diam nisi.<br>
+                    Donec mattis erat ac lorem. Vestibulum auctor augue ut enim. Curabitur ornare eleifend lectus, eget. Maecenas sodales, dui nec condimentum. Nam purus sapien, elementum nec.
+                </p>
+            </div>
+            <div class="col-1-">
+                <h4>Specifications</h4>
+                <p>&#8226; Category : <a>Skateboards</a></p>
+                <p>&#8226; Targeted Group : <a>Unisex</a></p>
+                <p>&#8226; Recommended Age : <a>12 Years & Up</a></p>
+                <p>&#8226; Brand : <a>Santa Cruz</a></p>
+                <p>&#8226; Type : <a>Complete</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Products -->
+    <div class="small-container">
+        <div class="row row-2-">
+            <h2>Related Products</h2>
+            <p onclick="switchPg('shop.html?pg=1&cat={category}')">View More</p>
         </div>
     </div>
 
     <div class="small-container" id="sec2">
         <div class="row">
             <div class="col-4">
-                <img src="images/Skateboard.png">
+                <img src="images/Skateboard.png" onclick="prodPg()">
                 <h4>Skateboard</h4>
                 <p>EGP 49.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Iceskate.png">
+                <img src="images/Iceskate.png" onclick="prodPg()">
                 <h4>Ice Skaters</h4>
                 <p>EGP 99.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
@@ -111,85 +170,145 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a></p>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link"
+                    href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a>
+            </p>
         </div>
     </div>
 
-     <!--- JavaScript --->
+    <!--- JavaScript --->
     <script>
-        // <-- Parallex -->
-        let text = document.getElementById("text");
-        let btn = document.getElementById("btn");
-
-        window.addEventListener('scroll', function(){
-            let value = window.scrollY;
-            text.style.marginTop = value * -0.60 + 'px';
-            btn.style.marginTop = value * -0.45 + 'px';
-        })
-
-        // <-- Croll -->
-        function onExploreClick() {
-            document.getElementById('sec1').scrollIntoView();
-        }
-
         // <-- Menu -->
         var MenuItems = document.getElementById("menuItems");
 
         MenuItems.style.maxHeight = "0px";
 
-        function menuToggle(){
-            if(MenuItems.style.maxHeight == "0px"){
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
                 MenuItems.style.maxHeight = "200px";
             } else {
                 MenuItems.style.maxHeight = "0px";
             }
         }
 
-        // <-- Categories -->
-        var slides = document.getElementsByClassName("category");
-        var slidesA = document.getElementsByClassName("cat");
-        var slidesText = document.getElementsByClassName("cat-text");
-        var Slides = [1, 2, 3, 4, 5];
-        var activeSlides = [1, 2, 3];
+        // <-- Products -->
+        let img = document.getElementById("prod-img");
+        let smolImg = document.getElementsByClassName("smol-img");
 
-        var images = ["images/Skateboard.png", "images/Iceskate.png", "images/Rollerskate.png", "images/Iceskate.png", "images/Skateboard.png"];
-        var links = ["/skateboards", "/iceskaters", "/rollerskaters", "/iceskaters", "/skateboards"];
-        var captions = ["Skateboards", "Ice Skaters", "Roller Skaters", "Ice Skaters", "Skateboards"];
-        showSlides();
-
-        // Next/previous controls
-        function plusSlides(n) {
-            if(n == 1){
-                var i = 0;
-                for(i = 0; i < activeSlides.length; i++){
-                    var newSlide = activeSlides[i] + n;
-                    if(newSlide > Slides.length){
-                        activeSlides[i] = newSlide - Slides.length;
+        function changeImg(n) {
+            if (smolImg[n].id != "active-img") {
+                for (i = 0; i < smolImg.length; i++) {
+                    if (i == n) {
+                        img.src = smolImg[n].src;
+                        smolImg[n].id = "active-img";
                     } else {
-                        activeSlides[i] = newSlide;
+                        smolImg[i].id = "";
                     }
                 }
-            } else if(n == -1){
-                activeSlides.forEach(slide => {
-                    var newSlide = slide + n;
-                    if(newSlide < 1){
-                        activeSlides[activeSlides.indexOf(slide)] = newSlide + Slides.length;
-                    } else {
-                        activeSlides[activeSlides.indexOf(slide)] = newSlide;
-                    }
-                });
             }
-            showSlides();
         }
 
-        function showSlides(){
-            var i = 0;
-            for(i = 0; i < slides.length; i++){
-                slides[i].src = images[activeSlides[i]-1];
-                slidesA[i].href = links[activeSlides[i]-1];
-                slidesText[i].innerHTML = captions[activeSlides[i]-1];
+        // <-- Next and Prev -->
+        function Slides(n) {
+            if (n == 1) {
+                for (i = 0; i < smolImg.length; i++) {
+                    if (smolImg[i].id == "active-img") {
+                        if (parseInt(i + 2) <= smolImg.length) {
+                            var newNum = parseInt(i + 1);
+                            img.src = smolImg[newNum].src;
+                            smolImg[newNum].id = "active-img";
+                            for (i = 0; i < smolImg.length; i++) {
+                                if (i != newNum) {
+                                    smolImg[i].id = "";
+                                }
+                            }
+                            break;
+                        } else {
+                            img.src = smolImg[0].src;
+                            smolImg[0].id = "active-img";
+                            smolImg[i].id = "";
+                            break;
+                        }
+                    }
+                }
+            } else if (n == -1) {
+                for (i = 0; i < smolImg.length; i++) {
+                    if (smolImg[i].id == "active-img") {
+                        if (parseInt(i - 1) >= 0) {
+                            var newNum = parseInt(i - 1);
+                            img.src = smolImg[newNum].src;
+                            smolImg[newNum].id = "active-img";
+                            for (i = 0; i < smolImg.length; i++) {
+                                if (i != newNum) {
+                                    smolImg[i].id = "";
+                                }
+                            }
+                            break;
+                        } else {
+                            img.src = smolImg[parseInt(smolImg.length - 1)].src;
+                            smolImg[parseInt(smolImg.length) - 1].id = "active-img";
+                            smolImg[i].id = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // <-- Products Href -->
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            location.href = pg;
+        }
+
+        // <-- Change Size -->
+        let sizeBtns = document.getElementsByClassName("prod-btns");
+        function changeSize(n) {
+            for (i = 0; i < sizeBtns.length; i++) {
+                if (i == n) {
+                    sizeBtns[i].id = "prod-btn-active";
+                } else {
+                    sizeBtns[i].id = "prod-btn";
+                }
+            }
+        }
+
+        // <-- Change Size -->
+        let colorBtns = document.getElementsByClassName("color-btns");
+        colorBtns[0].id = "color-btn-active";
+        colorBtns[0].style.background = colorBtns[0].classList[1];
+
+        function changeColor(n) {
+            for (i = 0; i < colorBtns.length; i++) {
+                if (i == n) {
+                    colorBtns[i].id = "color-btn-active";
+                    if (colorBtns[i].classList[2] != null) {
+                        colorBtns[i].style.background = colorBtns[i].classList[1];
+                        colorBtns[i].style.color = "black";
+                    } else {
+                        colorBtns[i].style.background = colorBtns[i].classList[1];
+                    }
+                } else {
+                    colorBtns[i].id = "color-btn";
+                    colorBtns[i].style = "";
+                }
+            }
+        }
+
+        // <-- Input Value -->
+        let input = document.getElementById("inputQuan");
+        function inputValueCheck() {
+            if (input.value > 100) {
+                input.value = '100';
+            } else if (input.value < 1) { 
+                input.value = '1'; 
             }
         }
     </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="color-scheme" content="dark">
@@ -9,14 +10,16 @@
     <link rel="icon" type="image/png" href="images/Icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
-</head>   
+</head>
+
 <body>
-    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by
+        CC BY 3.0</div>
     <meta name="color-scheme" content="dark">
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar2" style="background-color: #160522; position: inherit;">
+            <div class="navbar2" style="background-color: #160a22; position: inherit;">
                 <div class="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
@@ -29,8 +32,10 @@
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8)"></i></a>
-                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
+                <a href="" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
             </div>
         </div>
     </div>
@@ -39,7 +44,7 @@
     <div class="small-container" id="sec2">
         <div class="row row-2">
             <h2>All Products</h2>
-            <select id="sortingSelect" onchange="setCookie('sorting', value)" name="Sort By:">
+            <select id="sortingSelect" onchange="multiFunction('sorting', value)" name="Sort By:">
                 <option>Default Sorting</option>
                 <option>Name: (A to Z)</option>
                 <option>Name: (Z to A)</option>
@@ -50,88 +55,88 @@
 
         <div class="row">
             <div class="col-4">
-                <img src="images/Skateboard.png">
+                <img src="images/Skateboard.png" onclick="prodPg()">
                 <h4>Skateboard</h4>
                 <p>EGP 49.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Iceskate.png">
+                <img src="images/Iceskate.png" onclick="prodPg()">
                 <h4>Ice Skaters</h4>
                 <p>EGP 99.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
-                <img src="images/Skateboard.png">
+                <img src="images/Skateboard.png" onclick="prodPg()">
                 <h4>Skateboard</h4>
                 <p>EGP 49.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Iceskate.png">
+                <img src="images/Iceskate.png" onclick="prodPg()">
                 <h4>Ice Skaters</h4>
                 <p>EGP 99.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
-                <img src="images/Skateboard.png">
+                <img src="images/Skateboard.png" onclick="prodPg()">
                 <h4>Skateboard</h4>
                 <p>EGP 49.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Iceskate.png">
+                <img src="images/Iceskate.png" onclick="prodPg()">
                 <h4>Ice Skaters</h4>
                 <p>EGP 99.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
-                <img src="images/Skateboard.png">
+                <img src="images/Skateboard.png" onclick="prodPg()">
                 <h4>Skateboard</h4>
                 <p>EGP 49.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Iceskate.png">
+                <img src="images/Iceskate.png" onclick="prodPg()">
                 <h4>Ice Skaters</h4>
                 <p>EGP 99.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
             <div class="col-4">
-                <img src="images/Rollerskate.png">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
                 <h4>Roller Skaters</h4>
                 <p>EGP 449.99</p>
             </div>
@@ -174,65 +179,90 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a></p>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link"
+                    href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a>
+            </p>
         </div>
     </div>
 
-     <!--- JavaScript --->
+    <!--- JavaScript --->
     <script>
+        // <-- Menu -->
+        var MenuItems = document.getElementById("menuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
         // <-- Page Number -->
         let buttons = document.getElementsByClassName('page-btns');
         let arrowButtons = document.getElementsByClassName('arrow-btn');
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const pageNO = urlParams.get('pg');
-        for(i = 0; i < buttons.length; i++){
-            if(i == pageNO - 1){
+        for (i = 0; i < buttons.length; i++) {
+            if (i == pageNO - 1) {
                 buttons[i].id = 'page-btn-active';
             } else {
                 buttons[i].id = 'page-btns';
             }
         }
 
-        if(pageNO == 1){
+        if (pageNO == 1) {
             arrowButtons[0].id = "invisible";
             arrowButtons[1].id = "visible";
-        } 
-        if(pageNO > 1){
+        }
+        if (pageNO > 1) {
             arrowButtons[0].id = "visible";
             arrowButtons[1].id = "visible";
         }
-        if(pageNO == 4){
+        if (pageNO == 4) {
             arrowButtons[0].id = "visible";
             arrowButtons[1].id = "invisible";
         }
 
-        function nextPage(n){
-            if(n == 1){
+        function nextPage(n) {
+            if (n == 1) {
                 var nextpage = parseInt(pageNO) + 1;
-                if(nextpage > buttons.length)
-                {
+                if (nextpage > buttons.length) {
                     nextpage = 1;
                 }
-                location.replace("/shop.html?pg=" + nextpage);
+                location.href = "/shop.html?pg=" + nextpage;
             } else {
                 var lastpage = parseInt(pageNO) - 1;
-                if(lastpage < 1)
-                {
+                if (lastpage < 1) {
                     lastpage = 4;
                 }
-                location.replace("/shop.html?pg=" + lastpage);
+                location.href = "/shop.html?pg=" + lastpage;
             }
         }
 
         // <-- Sorting -->
         let dropdown = document.getElementById("sortingSelect");
-        if(getCookie("sorting") != null){
+        if (getCookie("sorting") != null) {
             dropdown.value = getCookie("sorting");
         }
-        
-        // <-- Number of Products -->
-        
+
+        function multiFunction(key, value){
+            setCookie(key, value);
+            setFocus();
+        }
+
+        function setFocus(){
+            dropdown.blur();
+        }
+
+        // <-- Products Href -->
+        function prodPg(){
+            location.href = "/product.html?id=" + "id";
+        }
+
         // <-- Cookies -->
         function setCookie(key, value) {
             var expires = new Date();
@@ -246,4 +276,5 @@
         }
     </script>
 </body>
+
 </html>
