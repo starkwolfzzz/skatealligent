@@ -19,8 +19,8 @@
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar2" style="background-color: #160a22; position: inherit;">
-                <div class="logo">
+            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
+                <div class="logo-noline" id="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
                 <nav>
@@ -206,6 +206,10 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const pageNO = urlParams.get('pg');
+        if (pageNO == null || parseInt(pageNO) > buttons.length || isNaN(pageNO) || parseInt(pageNO) < 0) {
+            location.replace("/shop.html?pg=1");
+        }
+
         for (i = 0; i < buttons.length; i++) {
             if (i == pageNO - 1) {
                 buttons[i].id = 'page-btn-active';
@@ -249,17 +253,17 @@
             dropdown.value = getCookie("sorting");
         }
 
-        function multiFunction(key, value){
+        function multiFunction(key, value) {
             setCookie(key, value);
             setFocus();
         }
 
-        function setFocus(){
+        function setFocus() {
             dropdown.blur();
         }
 
         // <-- Products Href -->
-        function prodPg(){
+        function prodPg() {
             location.href = "/product.html?id=" + "id";
         }
 
@@ -274,6 +278,35 @@
             var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
             return keyValue ? keyValue[2] : null;
         }
+
+        /*// <-- Header Show -->
+        let header = document.getElementById("headerr");
+        let logo = document.getElementById("logo");
+        var lastScroll = document.documentElement.scrollTop;
+        window.onscroll = function () {
+            doScroll();
+        }
+
+        function doScroll() {
+            if (document.documentElement.scrollTop > lastScroll) {
+                header.style.position = "absolute";
+                header.style.opacity = "0%";
+                lastScroll = document.documentElement.scrollTop;
+                logo.className = "logo-noline";
+            } else {
+                if (lastScroll > 1070) {
+                    header.style.position = "fixed";
+                    header.style.opacity = "100%";
+                    lastScroll = document.documentElement.scrollTop;
+                    logo.className = "logo-line";
+                } else {
+                    header.style.position = "fixed";
+                    logo.className = "logo-noline";
+                    header.style.opacity = "100%";
+                    lastScroll = document.documentElement.scrollTop;
+                }
+            }
+        }*/
     </script>
 </body>
 

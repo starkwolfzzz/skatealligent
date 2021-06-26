@@ -19,8 +19,8 @@
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar">
-                <div class="logo">
+            <div class="navbar" id="headerr">
+                <div class="logo-noline" id="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
                 <nav>
@@ -313,6 +313,39 @@
         // <-- Products Href -->
         function prodPg() {
             location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Header Show -->
+        document.documentElement.scrollTop = 0;
+        let header = document.getElementById("headerr");
+        let logo = document.getElementById("logo");
+        var lastScroll = document.documentElement.scrollTop;
+        window.onscroll = function () {
+            doScroll();
+        }
+
+        function doScroll() {
+            if (document.documentElement.scrollTop > lastScroll) {
+                header.style.position = "absolute";
+                header.style.background = "transparent";
+                header.style.opacity = "0%";
+                lastScroll = document.documentElement.scrollTop;
+                logo.className = "logo-noline";
+            } else {
+                if (lastScroll > 1070) {
+                    header.style.position = "fixed";
+                    header.style.background = "#160a22";
+                    header.style.opacity = "100%";
+                    lastScroll = document.documentElement.scrollTop;
+                    logo.className = "logo-line";
+                } else {
+                    header.style.position = "fixed";
+                    header.style.background = "transparent";
+                    logo.className = "logo-noline";
+                    header.style.opacity = "100%";
+                    lastScroll = document.documentElement.scrollTop;
+                }
+            }
         }
     </script>
 </body>

@@ -19,8 +19,8 @@
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar2" style="background-color: #160a22; position: inherit;">
-                <div class="logo">
+            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
+                <div class="logo-noline" id="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
                 <nav>
@@ -88,15 +88,19 @@
                 &#8203;
                 <h3>Quantity: </h3>
                 <input type="number" value="1" min="1" max="100" id="inputQuan" onfocusout="inputValueCheck()">
-                <a href="" class="btn">Add to Cart</a>
+                &#8203;
+                <h3 class="btn-h3" style="color: limegreen;">In Stock</h3> <a href="" class="btn">Add to Cart</a>
             </div>
         </div>
         <div class="row">
             <div class="col-1">
                 <h4>Description</h4>
-                <p>Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin condimentum. Proin sagittis turpis semper purus. Phasellus ut consectetur mauris nec. Donec vel ligula eu erat.<br>
-                    Sed dui lectus, varius eget. Nam sed magna urna scelerisque. Praesent eget eleifend libero tincidunt. Duis volutpat, dolor nec scelerisque. Phasellus in nisi diam nisi.<br>
-                    Donec mattis erat ac lorem. Vestibulum auctor augue ut enim. Curabitur ornare eleifend lectus, eget. Maecenas sodales, dui nec condimentum. Nam purus sapien, elementum nec.
+                <p>Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin condimentum. Proin sagittis turpis
+                    semper purus. Phasellus ut consectetur mauris nec. Donec vel ligula eu erat.<br>
+                    Sed dui lectus, varius eget. Nam sed magna urna scelerisque. Praesent eget eleifend libero
+                    tincidunt. Duis volutpat, dolor nec scelerisque. Phasellus in nisi diam nisi.<br>
+                    Donec mattis erat ac lorem. Vestibulum auctor augue ut enim. Curabitur ornare eleifend lectus, eget.
+                    Maecenas sodales, dui nec condimentum. Nam purus sapien, elementum nec.
                 </p>
             </div>
             <div class="col-1-">
@@ -304,10 +308,38 @@
         function inputValueCheck() {
             if (input.value > 100) {
                 input.value = '100';
-            } else if (input.value < 1) { 
-                input.value = '1'; 
+            } else if (input.value < 1) {
+                input.value = '1';
             }
         }
+
+        /*// <-- Header Show -->
+        let header = document.getElementById("headerr");
+        let logo = document.getElementById("logo");
+        var lastScroll = document.documentElement.scrollTop;
+        window.onscroll = function () {
+            doScroll();
+        }
+
+        function doScroll() {
+            if (document.documentElement.scrollTop > lastScroll) {
+                header.style.position = "absolute";
+                lastScroll = document.documentElement.scrollTop;
+                logo.className = "logo-noline";
+            } else {
+                if (lastScroll > 1070) {
+                    header.style.position = "fixed";
+                    header.style.opacity = "100%";
+                    lastScroll = document.documentElement.scrollTop;
+                    logo.className = "logo-line";
+                } else {
+                    header.style.position = "fixed";
+                    logo.className = "logo-noline";
+                    header.style.opacity = "100%";
+                    lastScroll = document.documentElement.scrollTop;
+                }
+            }
+        }*/
     </script>
 </body>
 

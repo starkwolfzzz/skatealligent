@@ -22,6 +22,9 @@ body{
     background: #160a22;
     font-family: 'Poppins', sans-serif;
 }
+#headerr{
+    transition: 0.5s ease;
+}
 section{
     position: relative;
     overflow: hidden;
@@ -93,6 +96,7 @@ section{
     justify-content: space-between;
     align-items: center;
     z-index: 10000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 .navbar .logo{
     color: white;
@@ -118,8 +122,9 @@ section{
     justify-content: space-between;
     align-items: center;
     z-index: 10000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
-.navbar2 .logo{
+.navbar .logo-line{
     color: white;
     font-weight: 700;
     text-decoration: none;
@@ -133,7 +138,49 @@ section{
     user-select: none;
     font-family: 'posterama';
 }
-.navbar .logo:after {    
+.navbar .logo-noline{
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    font-family: 'posterama';
+}
+.navbar2 .logo-noline{
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    font-family: 'posterama';
+}
+.navbar2 .logo-line{
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    font-family: 'posterama';
+}
+.navbar .logo-noline:after {    
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -145,7 +192,19 @@ section{
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }
-.navbar:hover .logo::after { 
+.navbar .logo-line:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 4px;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    left: 0;
+    width: 100%;
+}
+.navbar:hover .logo-noline::after { 
     width: 100%; 
     left: 0; 
 }
@@ -580,13 +639,6 @@ select:focus{
     margin-top: 20px;
     margin-left: 20px;
 }
-.product .btn{
-    margin-left: 20px;
-    transition: 0.25s ease;
-}
-.product .btn:hover{
-    opacity: 70%;
-}
 .product input{
     position: absolute;
     width: 58px;
@@ -685,7 +737,7 @@ select:focus{
     position: absolute;
     margin: 0 auto 80px;
     margin-left: 100px;
-    transform: translateY(-33px) translateX(-40px) scale(0.9);
+    transform: translateY(-33px) translateX(-53px) scale(0.9);
 }
 .prod-btn span{
     display: inline-block;
@@ -818,6 +870,17 @@ select:focus{
 }
 .row-2- p{
     cursor: pointer;
+}
+.product .btn-h3{
+    margin-top: 35px;
+}
+.product .btn{
+    transform: translateY(-65px) translateX(85px);
+    margin-left: 20px;
+    transition: 0.25s ease;
+}
+.product .btn:hover{
+    opacity: 70%;
 }
 /*---------> mobile <---------*/
 
