@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skate Alligent - Cart</title>
+    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <meta name="color-scheme" content="dark">
+    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
+    <div class="header">
+        <div class="container">
+            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
+                <div class="logo-noline" id="logo">
+                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop.html?pg=1">Shop</a></li>
+                        <li><a href="/account.html">Account</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/about.html">About</a></li>
+                    </ul>
+                </nav>
+                <a href="/cart.html" class="button" id="Active"><i class="fas fa-shopping-cart" aria-hidden="true"
+                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--- Cart --->
+    <div class="small-container cart-pg">
+        <div class="row" id="hidden-empty" style="display: none;">
+            <a style="margin: 200px; margin-top: 120px; margin-bottom: -180px; font-weight: bolder; font-size: 30px;">YOUR CART IS EMPTY</a>
+            <a href="shop.html?pg=1" class="cart-btn" style=" margin: 200px; cursor: pointer; border: 1px solid white; background-color: white; color: black; padding: 13px; width: 15%;">Add More Items</a>
+        </div>
+        <table class="cart-table">
+            <tr>
+                <th style="border-right: none;">Product</th>
+                <th style="border-right: none; border-left: none;">Quantity</th>
+                <th style="border-left: none;">Subtotal</th>
+            </tr>
+            <tr class="item-cell">
+                <td>
+                    <div class="cart-info">
+                        <img src="images/Skateboard.png">
+                        <div>
+                            <p>Santacruz Skateboard with x bearings</p>
+                            <small>EGP 5000</small>
+                            <br>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <input type="number" value="1" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(0)"> &nbsp;
+                    <a class="remove-btns" id="link" onclick="removeItem(0, 'btn')">Remove</a>
+                </td>
+                <td>EGP 5000</td>
+            </tr>
+            <tr class="item-cell">
+                <td>
+                    <div class="cart-info">
+                        <img src="images/Iceskate.png">
+                        <div>
+                            <p>Santacruz Ice Skaters‎‎</p>
+                            <small>EGP 5999</small>
+                            <br>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <input type="number" value="1" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(1)"> &nbsp;
+                    <a class="remove-btns" id="link" onclick="removeItem(1, 'btn')">Remove</a>
+                </td>
+                <td>EGP 5999</td>
+            </tr>
+            <tr class="item-cell">
+                <td>
+                    <div class="cart-info">
+                        <img src="images/Rollerskate.png">
+                        <div>
+                            <p>Santacruz Roller Skaters</p>
+                            <small>EGP 4999</small>
+                            <br>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <input type="number" value="1" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(2)"> &nbsp;
+                    <a class="remove-btns" id="link" onclick="removeItem(2, 'btn')">Remove</a>
+                </td>
+                <td>EGP 4999</td>
+            </tr>
+        </table>
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>EGP 15,998</td>
+                </tr>
+                <tr>
+                    <td>Discount</td>
+                    <td>EGP -0.00</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>EGP 15,998</td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="cart-btn" style="background-color: rgba(15,86,132,1); border: 1px solid rgba(15,86,132,1);" onclick="switchPg('/shop.html?pg=1')">&#8592; Continue Shopping</td>
+                    <td class="cart-btn" style="background-color: rgba(42, 184, 88, 1); border: 1px solid rgba(42, 184, 88, 1);" onclick="switchPg('/checkout.html')">Checkout &#8594;</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!--- Footer --->
+    <div class="footer" id="sec4">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <img src="images/Logo.png" alt="">
+                </div>
+                <div class="footer-col-2">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Coupons</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Blog Post</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Return Policy</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Join Affiliate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+
+    <!--- JavaScript --->
+    <script>
+        // <-- Menu -->
+        var MenuItems = document.getElementById("menuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // <-- Products Href -->
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            location.href = pg;
+        }
+
+        // <-- Input Value -->
+        function inputValueCheck(n) {
+            let input = document.getElementsByClassName("inputQuan");
+
+            if (input[n].value == 0) {
+                removeItem(n, "input");
+
+                let inputs = document.getElementsByClassName("inputQuan");
+                for (i = 0; i < inputs.length; i++) {
+                    inputs[i].setAttribute("onChange", 'inputValueCheck(' + i + ')');
+                }
+            }
+
+            if (input[n].value > 100) {
+                input[n].value = '100';
+            } else if (input[n].value < 1) {
+                input[n].value = '1';
+            }
+
+            changePrices(input[n].value, n);
+        }
+
+        // <-- Remove Item -->
+        function removeItem(n, type) {
+            let parents = document.getElementsByClassName("item-cell");
+
+            parents[n].remove();
+
+            let btn = document.getElementsByClassName("remove-btns");
+            if (type == 'btn') {
+                for (i = 0; i < parents.length; i++) {
+                    btn[i].setAttribute("onClick", 'removeItem(' + i + ', "btn")');
+                }
+            }
+
+            checkIfEmpty()
+        }
+
+        // <-- Prices and stuff -->
+        let parent = document.getElementsByClassName("item-cell");
+
+        function changePrices(n, n2) {
+            var x = parseInt(parseInt(parent[n2].children[0].children[0].children[1].children[1].textContent.substring('EGP '.length)) * n);
+            if (x.toString().length <= 2) {
+                parent[n2].children[2].textContent = "EGP " + parseInt(x) + ".00";
+            } else if (x.toString().length > 2) {
+                parent[n2].children[2].textContent = "EGP " + parseInt(x);
+            }
+        }
+
+        // <-- Check If Empty -->
+        checkIfEmpty();
+
+        function checkIfEmpty() {
+            let parents = document.getElementsByClassName("item-cell");
+            if (parents.length == 0) {
+                let totals = document.getElementsByClassName("total-price");
+                let table = document.getElementsByClassName("cart-table");
+                totals[0].remove();
+                table[0].remove();
+
+                let row = document.getElementById("hidden-empty");
+                row.style.display = "flex";
+            }
+        }
+    </script>
+</body>
+
+</html>

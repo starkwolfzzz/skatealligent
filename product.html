@@ -32,8 +32,8 @@
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
-                        style="transform: scale(0.8)"></i></a>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
+                    style="transform: scale(0.8); transition: 0.5s ease"></i></a>
                 <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
                         style="transform: scale(0.8)"></i></a>
             </div>
@@ -64,7 +64,8 @@
                 </div>
             </div>
             <div class="col-2">
-                <p><a href="/shop.html?pg=1">Shop</a> / <a href="/shop.html?pg=1&cat={category}">{category}</a></p>
+                <p><a href="/shop.html?pg=1" id="link">Shop</a> / <a href="/shop.html?pg=1&cat={category}"
+                        id="link">{category}</a></p>
                 <h1>Santacruz Skateboard with x bearings</h1>
                 <h4>EGP 5000.00</h4>
                 &#8203;
@@ -89,7 +90,7 @@
                 <h3>Quantity: </h3>
                 <input type="number" value="1" min="1" max="100" id="inputQuan" onfocusout="inputValueCheck()">
                 &#8203;
-                <h3 class="btn-h3" style="color: limegreen;">In Stock</h3> <a href="" class="btn">Add to Cart</a>
+                <h3 class="btn-h3" style="color: limegreen;" id="Stock">In Stock</h3> <a class="btn" id="AddCart">Add to Cart</a>
             </div>
         </div>
         <div class="row">
@@ -118,7 +119,7 @@
     <div class="small-container">
         <div class="row row-2-">
             <h2>Related Products</h2>
-            <p onclick="switchPg('shop.html?pg=1&cat={category}')">View More</p>
+            <p onclick="switchPg('shop.html?pg=1&cat={category}')" id="link">View More</p>
         </div>
     </div>
 
@@ -157,19 +158,19 @@
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li><a href="" style="color: #8a8a8a;">Coupons</a></li>
-                        <li><a href="" style="color: #8a8a8a;">Blog Post</a></li>
-                        <li><a href="" style="color: #8a8a8a;">Return Policy</a></li>
-                        <li><a href="" style="color: #8a8a8a;">Join Affiliate</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Coupons</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Blog Post</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Return Policy</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Join Affiliate</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-3">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li><a href="" style="color: #8a8a8a;">Facebook</a></li>
-                        <li><a href="" style="color: #8a8a8a;">Instagram</a></li>
-                        <li><a href="" style="color: #8a8a8a;">Twitter</a></li>
-                        <li><a href="" style="color: #8a8a8a;">Youtube</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
                     </ul>
                 </div>
             </div>
@@ -310,6 +311,28 @@
                 input.value = '100';
             } else if (input.value < 1) {
                 input.value = '1';
+            }
+        }
+
+        // <-- Check Stock -->
+        let text = document.getElementById("Stock");
+        let cart = document.getElementById("AddCart");
+        var stock = true;
+
+        checkStock();
+        function checkStock(){
+            if(stock){
+                text.textContent = "IN STOCK";
+                text.style.color = "limegreen";
+                cart.style.transform = "translateY(-65px) translateX(95px)";
+                cart.style.cursor = "pointer";
+                cart.style.opacity = "";
+            } else{
+                text.textContent = "OUT OF STOCK";
+                text.style.color = "red";
+                cart.style.transform = "translateY(-65px) translateX(145px)";
+                cart.style.cursor = "default";
+                cart.style.opacity = "70%";
             }
         }
 
