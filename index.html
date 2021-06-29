@@ -13,8 +13,7 @@
 </head>
 
 <body>
-    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by
-        CC BY 3.0</div>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
     <meta name="color-scheme" content="dark">
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
@@ -178,24 +177,35 @@
         <div class="small-container" id="sec3">
             <div class="row">
                 <div class="col-5">
-                    <a href="https://santacruzskateboards.com" target="_blank" rel="noopener noreferrer"><img
-                            src="images/santacruz_logo.png"></a>
+                    <a href="https://santacruzskateboards.com" target="_blank" rel="noopener noreferrer"><img src="images/santacruz_logo.png"></a>
                 </div>
                 <div class="col-5">
-                    <a href="https://www.yocaher.com" target="_blank" rel="noopener noreferrer"><img
-                            src="images/yocaher_logo.png"></a>
+                    <a href="https://www.yocaher.com" target="_blank" rel="noopener noreferrer"><img src="images/yocaher_logo.png"></a>
                 </div>
                 <div class="col-5">
-                    <a href="https://www.pennyskateboards.com" target="_blank" rel="noopener noreferrer"><img
-                            src="images/penny_logo.png"></a>
+                    <a href="https://www.pennyskateboards.com" target="_blank" rel="noopener noreferrer"><img src="images/penny_logo.png"></a>
                 </div>
                 <div class="col-5">
-                    <a href="https://www.enuffskateboards.com" target="_blank" rel="noopener noreferrer"><img
-                            src="images/enuff_logo.png"></a>
+                    <a href="https://www.enuffskateboards.com" target="_blank" rel="noopener noreferrer"><img src="images/enuff_logo.png"></a>
                 </div>
                 <div class="col-5">
-                    <a href="https://www.sector9.com" target="_blank" rel="noopener noreferrer"><img
-                            src="images/sector9_logo.png"></a>
+                    <a href="https://www.sector9.com" target="_blank" rel="noopener noreferrer"><img src="images/sector9_logo.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--- Cookie Notice --->
+    <div class="cookies">
+        <div class="container">
+            <div class="row">
+                <div class="col-2" style="text-align: right;">
+                    <p>We use cookies to enhance your experience with our website.</p>
+                    <p>By continuing to use the site, you agree to the use of cookies.</p>
+                </div>
+                <div class="col-2" style="text-align: left;">
+                    <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
+                    <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
                 </div>
             </div>
         </div>
@@ -211,10 +221,10 @@
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Coupons</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Blog Post</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Return Policy</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Join Affiliate</a></li>
+                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
+                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
+                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-3">
@@ -228,8 +238,7 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link"
-                    href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
             </p>
         </div>
     </div>
@@ -240,7 +249,7 @@
         let text = document.getElementById("text");
         let btn = document.getElementById("btn");
 
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             let value = window.scrollY;
             text.style.marginTop = value * -0.60 + 'px';
             btn.style.marginTop = value * -0.45 + 'px';
@@ -320,32 +329,77 @@
         let header = document.getElementById("headerr");
         let logo = document.getElementById("logo");
         var lastScroll = document.documentElement.scrollTop;
-        window.onscroll = function () {
+        window.onscroll = function() {
             doScroll();
         }
 
         function doScroll() {
+
             if (document.documentElement.scrollTop > lastScroll) {
-                header.style.position = "absolute";
+                // header.style.transform = "translateY(" + parseInt(document.documentElement.scrollTop - 10) + "px)";
+                header.style.transition = "0.5s ease";
+                header.style.top = parseInt(document.documentElement.scrollTop - 150) + "px";
                 header.style.background = "transparent";
-                header.style.opacity = "0%";
                 lastScroll = document.documentElement.scrollTop;
                 logo.className = "logo-noline";
             } else {
                 if (lastScroll > 1070) {
-                    header.style.position = "fixed";
+                    //header.style.transform = "translateY(" + parseInt(document.documentElement.scrollTop + 0) + "px)";
+                    header.style.transition = "0.5s ease";
+                    if (header.style.top == parseInt(lastScroll + 0) + "px") {
+                        header.style.transition = "0s";
+                    }
+                    header.style.top = parseInt(document.documentElement.scrollTop + 0) + "px";
                     header.style.background = "#160a22";
-                    header.style.opacity = "100%";
                     lastScroll = document.documentElement.scrollTop;
                     logo.className = "logo-line";
                 } else {
-                    header.style.position = "fixed";
+                    //header.style.transform = "translateY(" + parseInt(document.documentElement.scrollTop + 0) + "px)";
+                    header.style.transition = "0.5s ease";
+                    if (header.style.top == parseInt(lastScroll + 0) + "px") {
+                        header.style.transition = "0s";
+                    }
+                    header.style.top = parseInt(document.documentElement.scrollTop + 0) + "px";
                     header.style.background = "transparent";
                     logo.className = "logo-noline";
-                    header.style.opacity = "100%";
                     lastScroll = document.documentElement.scrollTop;
                 }
             }
+        }
+
+        // <-- Cookie Consent -->
+        let cSection = document.getElementsByClassName("cookies");
+        let cCont = cSection[0].children[0];
+        checkCookies();
+
+        function checkCookies() {
+            if (getCookie("CookieConsent") == null) {
+                cFunc("show");
+            }
+        }
+
+        function acceptCookies() {
+            cFunc("hide");
+            setCookie("CookieConsent", "true");
+        }
+
+        function cFunc(n) {
+            if (n == "show") {
+                cCont.style.top = "860px";
+            } else if (n == "hide") {
+                cCont.style.top = "940px";
+            }
+        }
+
+        function setCookie(key, value) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
         }
     </script>
 </body>

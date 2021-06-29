@@ -54,9 +54,9 @@
             <tr class="item-cell">
                 <td>
                     <div class="cart-info">
-                        <img src="images/Skateboard.png">
+                        <img src="images/Skateboard.png" style="cursor: pointer;" onclick="switchPg('/product.html?id=id')">
                         <div>
-                            <p>Santacruz Skateboard with x bearings</p>
+                            <p style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" id="link">Santacruz Skateboard with x bearings</p>
                             <small>EGP 5000</small>
                             <br>
                         </div>
@@ -71,9 +71,9 @@
             <tr class="item-cell">
                 <td>
                     <div class="cart-info">
-                        <img src="images/Iceskate.png">
+                        <img style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" src="images/Iceskate.png">
                         <div>
-                            <p>Santacruz Ice Skaters‎‎</p>
+                            <p style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" id="link">Santacruz Ice Skaters‎‎</p>
                             <small>EGP 5999</small>
                             <br>
                         </div>
@@ -88,9 +88,9 @@
             <tr class="item-cell">
                 <td>
                     <div class="cart-info">
-                        <img src="images/Rollerskate.png">
+                        <img style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" src="images/Rollerskate.png">
                         <div>
-                            <p>Santacruz Roller Skaters</p>
+                            <p style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" id="link">Santacruz Roller Skaters</p>
                             <small>EGP 4999</small>
                             <br>
                         </div>
@@ -111,7 +111,7 @@
                 </tr>
                 <tr>
                     <td>Discount</td>
-                    <td>EGP -0.00</td>
+                    <td>EGP 0.00</td>
                 </tr>
                 <tr>
                     <td>Total</td>
@@ -128,6 +128,23 @@
         </div>
     </div>
 
+    <!--- Cookie Notice --->
+    <div class="cookies">
+        <div class="container">
+            <div class="row">
+                <div class="col-2" style="text-align: right;">
+                    <p>We use cookies to enhance your experience with our website.</p>
+                    <p>By continuing to use the site, you agree to the use of cookies.</p>
+                </div>
+                <div class="col-2" style="text-align: left;">
+                    <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
+                    <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!--- Footer --->
     <div class="footer" id="sec4">
         <div class="container">
@@ -138,10 +155,10 @@
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Coupons</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Blog Post</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Return Policy</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Join Affiliate</a></li>
+                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
+                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
+                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-3">
@@ -155,7 +172,7 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
             </p>
         </div>
     </div>
@@ -219,8 +236,8 @@
                     btn[i].setAttribute("onClick", 'removeItem(' + i + ', "btn")');
                 }
             }
-
             checkIfEmpty()
+            updateTotals();
         }
 
         // <-- Prices and stuff -->
@@ -233,6 +250,7 @@
             } else if (x.toString().length > 2) {
                 parent[n2].children[2].textContent = "EGP " + parseInt(x);
             }
+            updateTotals();
         }
 
         // <-- Check If Empty -->
@@ -249,6 +267,65 @@
                 let row = document.getElementById("hidden-empty");
                 row.style.display = "flex";
             }
+        }
+
+        // <-- Totals -->
+        let parentt = document.getElementsByClassName("total-price");
+        let Subtotall = parentt[0].children[0].children[0].children[0].children[1];
+        let discountt = parentt[0].children[0].children[0].children[1].children[1];
+        let Totall = parentt[0].children[0].children[0].children[2].children[1];
+        updateTotals();
+
+        function updateTotals() {
+            let cons = document.getElementsByClassName("item-cell");
+            var numbers = [];
+            var subtotal = 0;
+
+            for (i = 0; i < cons.length; i++) {
+                numbers.push(cons[i].children[2].textContent.substr("EGP ".length));
+            }
+
+            for (i = 0; i < numbers.length; i++) {
+                subtotal += parseInt(numbers[i]);
+            }
+
+            Subtotall.textContent = "EGP " + subtotal;
+            Totall.textContent = "EGP " + parseInt(subtotal - parseInt(discountt.textContent.substr("EGP ".length)));
+        }
+
+        // <-- Cookie Consent -->
+        let cSection = document.getElementsByClassName("cookies");
+        let cCont = cSection[0].children[0];
+        checkCookies();
+
+        function checkCookies() {
+            if (getCookie("CookieConsent") == null) {
+                cFunc("show");
+            }
+        }
+
+        function acceptCookies() {
+            cFunc("hide");
+            setCookie("CookieConsent", "true");
+        }
+
+        function cFunc(n) {
+            if (n == "show") {
+                cCont.style.top = "860px";
+            } else if (n == "hide") {
+                cCont.style.top = "940px";
+            }
+        }
+
+        function setCookie(key, value) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
         }
     </script>
 </body>

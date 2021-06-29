@@ -13,8 +13,7 @@
 </head>
 
 <body>
-    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by
-        CC BY 3.0</div>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
     <meta name="color-scheme" content="dark">
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
@@ -152,6 +151,23 @@
         </div>
     </div>
 
+    <!--- Cookie Notice --->
+    <div class="cookies">
+        <div class="container">
+            <div class="row">
+                <div class="col-2" style="text-align: right;">
+                    <p>We use cookies to enhance your experience with our website.</p>
+                    <p>By continuing to use the site, you agree to the use of cookies.</p>
+                </div>
+                <div class="col-2" style="text-align: left;">
+                    <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
+                    <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!--- Footer --->
     <div class="footer" id="sec4">
         <div class="container">
@@ -162,10 +178,10 @@
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Coupons</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Blog Post</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Return Policy</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Join Affiliate</a></li>
+                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
+                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
+                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-3">
@@ -179,8 +195,7 @@
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link"
-                    href="Terms of use">Terms of use </a> | <a class="link" href="Privacy Policy"> Privacy Policy</a>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
             </p>
         </div>
     </div>
@@ -267,10 +282,33 @@
             location.href = "/product.html?id=" + "id";
         }
 
-        // <-- Cookies -->
+        // <-- Cookie Consent -->
+        let cSection = document.getElementsByClassName("cookies");
+        let cCont = cSection[0].children[0];
+        checkCookies();
+
+        function checkCookies() {
+            if (getCookie("CookieConsent") == null) {
+                cFunc("show");
+            }
+        }
+
+        function acceptCookies() {
+            cFunc("hide");
+            setCookie("CookieConsent", "true");
+        }
+
+        function cFunc(n) {
+            if (n == "show") {
+                cCont.style.top = "860px";
+            } else if (n == "hide") {
+                cCont.style.top = "940px";
+            }
+        }
+
         function setCookie(key, value) {
             var expires = new Date();
-            expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
             document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
         }
 

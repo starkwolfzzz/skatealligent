@@ -26,10 +26,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-#headerr {
-    transition: 0.5s ease;
-}
-
 section {
     position: relative;
     overflow: hidden;
@@ -616,8 +612,17 @@ small {
     text-align: center;
 }
 
-ul {
+.footer-col-2 ul,
+.footer-col-3 ul {
     list-style-type: none;
+}
+
+ul {
+    padding: 5px 40px;
+}
+
+#menuItems {
+    padding: 0px 0px;
 }
 
 .footer hr {
@@ -785,6 +790,16 @@ select:focus {
 }
 
 .product input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#noArrows::-webkit-outer-spin-button,
+#noArrows::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#noArrows[type=number] {
     -moz-appearance: textfield;
 }
 
@@ -1080,6 +1095,14 @@ td img {
     width: 80px;
     height: 80px;
     margin-right: 10px;
+    object-fit: cover;
+    transform: scale(1);
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+td img:hover {
+    transform: scale(1.1);
 }
 
 td:last-child {
@@ -1145,6 +1168,157 @@ td .inputQuan[type=number] {
     cursor: pointer;
 }
 
+
+/*---------> account <---------*/
+
+#container {
+    position: absolute;
+}
+
+.form-container {
+    background: #160a22;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.form-container span {
+    color: white;
+    font-weight: bold;
+    padding: 0 10px;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+
+.form-btn {
+    display: inline-block;
+}
+
+form {
+    max-width: 300px;
+    padding: 0 20px;
+    position: absolute;
+    top: 130px;
+    transition: transform 0.5s;
+}
+
+form input {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid white;
+    color: black;
+    background-color: white;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form .btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+    color: #160a22;
+    background-color: white;
+}
+
+form .btn:focus {
+    outline: none;
+}
+
+#resetForm {
+    left: -300px;
+    top: -300px;
+}
+
+#PasswordForm {
+    left: 0px;
+    top: -300px;
+}
+
+#LoginForm {
+    left: -300px;
+}
+
+#RegForm {
+    left: 0px;
+}
+
+form a {
+    font-size: 12px;
+}
+
+#indicator {
+    width: 100px;
+    border: none;
+    background: white;
+    height: 3px;
+    margin-top: 8px;
+    transform: translateX(100px);
+    transition: transform 0.5s;
+}
+
+.ErrorL,
+.Error,
+.ErrorP,
+#ErrorR {
+    position: absolute;
+    width: 260px;
+    height: 43px;
+    color: red;
+    transform: translateY(-40px);
+    font-size: 12px;
+    text-align: center;
+    opacity: 0;
+    border: 1px solid red;
+    margin-right: 20px;
+    transition: 0.15s;
+}
+
+
+/*---------> cookies <---------*/
+
+.cookies {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.cookies .container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: black;
+    opacity: 75%;
+    padding-top: 5px;
+    margin-bottom: -50px;
+    vertical-align: middle;
+    text-align: center;
+    top: 940px;
+    transition: 0.5s ease;
+}
+
+.cookie-btn{
+    padding: 10px;
+    margin-right: 15px;
+    margin-left: 50px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+.cookie-btn:last-child{
+    margin-left: 0px;
+}
 
 /*---------> mobile <---------*/
 

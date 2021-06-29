@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found</title>
+    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+</head>
+
+<body style="background-color: black;">
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <meta name="color-scheme" content="dark">
+    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
+    <div class="header">
+        <div class="container">
+            <div class="navbar2" id="headerr">
+                <div class="logo-noline" id="logo">
+                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop.html?pg=1">Shop</a></li>
+                        <li><a href="/account.html">Account</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/about.html">About</a></li>
+                    </ul>
+                </nav>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
+                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
+            </div>
+            <section id="fade" style="background-color: black;">
+                <img src="images/404.png" id="background" style="filter: invert(99%) sepia(21%) saturate(0%) hue-rotate(235deg) brightness(112%) contrast(100%); z-index: 1000;">
+                <h2 id="text" style="transform: translateY(-180px);">Page was not found</h2>
+                <h2 id="text" style="font-size: 35px;">404 fell and broke his skateboard</h2>
+                <a href="/index.html" style=" z-index: 1001; transform: translateY(-30px);" id="btn">Go Home</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!--- JavaScript --->
+    <script>
+        // <-- Menu -->
+        var MenuItems = document.getElementById("menuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // <-- Products Href -->
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            location.href = pg;
+        }
+
+        // <-- Switch between login and reg and pass-->
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var ResetForm = document.getElementById("resetForm");
+        var PasswordForm = document.getElementById("PasswordForm");
+        var Indicator = document.getElementById("indicator");
+        switchBetween("Login");
+
+        function switchBetween(type) {
+            if (type == "Register") {
+                RegForm.style.transform = "translateY(0px) translateX(0px)";
+                LoginForm.style.transform = "translateY(0px) translateX(0px)";
+                ResetForm.style.transform = "translateY(0px) translateX(0px)";
+                PasswordForm.style.transform = "translateY(0px) translateX(0px)";
+                Indicator.style.transform = "translateX(100px)";
+                resetLog();
+                resetEmail();
+                resetPass();
+            } else if (type == "Login") {
+                RegForm.style.transform = "translateY(0px) translateX(300px)";
+                LoginForm.style.transform = "translateY(0px) translateX(300px)";
+                ResetForm.style.transform = "translateY(0px) translateX(300px)";
+                PasswordForm.style.transform = "translateY(0px) translateX(300px)";
+                Indicator.style.transform = "translateX(0px)";
+                resetReg();
+                resetEmail();
+                resetPass();
+            } else if (type == "Email") {
+                RegForm.style.transform = "translateY(420px) translateX(300px)";
+                LoginForm.style.transform = "translateY(420px) translateX(300px)";
+                ResetForm.style.transform = "translateY(420px) translateX(300px)";
+                PasswordForm.style.transform = "translateY(390px) translateX(300px)";
+                resetLog();
+            } else if (type == "Pass") {
+                RegForm.style.transform = "translateY(420px) translateX(0px)";
+                LoginForm.style.transform = "translateY(420px) translateX(0px)";
+                ResetForm.style.transform = "translateY(420px) translateX(0px)";
+                PasswordForm.style.transform = "translateY(390px) translateX(0px)";
+                resetEmail();
+            }
+        }
+
+        // <-- Login -->
+        function checkLogin() {
+            LoginError(0);
+            return false;
+        }
+
+        function LoginError(code) {
+            let loginError = document.getElementsByClassName("ErrorL");
+
+            if (code == 0) {
+                loginError[0].style.opacity = "100%";
+                loginError[1].style.opacity = "0";
+            } else if (code == 1) {
+                loginError[0].style.opacity = "0";
+                loginError[1].style.opacity = "100%";
+            } else if (code == "reset") {
+                loginError[0].style.opacity = "0";
+                loginError[1].style.opacity = "0";
+            }
+        }
+
+        function resetLog() {
+            let loginError = document.getElementsByClassName("ErrorL");
+            let loginUsername = document.getElementById("loginUsername");
+            let loginPassword = document.getElementById("loginPassword");
+
+            loginError[0].style.opacity = "0";
+            loginError[1].style.opacity = "0";
+            loginUsername.value = "";
+            loginPassword.value = "";
+        }
+
+        // <-- Register -->
+        function checkRegister() {
+            RegError(0);
+            return false;
+        }
+
+        function RegError(code) {
+            let regText = document.getElementsByClassName("Error");
+
+            if (code == 0) {
+                regText[0].style.opacity = "100%";
+                regText[1].style.opacity = "0";
+            } else if (code == 1) {
+                regText[0].style.opacity = "0";
+                regText[1].style.opacity = "100%";
+            } else if (code == "reset") {
+                regText[0].style.opacity = "0";
+                regText[1].style.opacity = "0";
+            }
+        }
+
+        function resetReg() {
+            let regText = document.getElementsByClassName("Error");
+            let regUsername = document.getElementById("regUsername");
+            let regPassword = document.getElementById("regPassword");
+            let regEmail = document.getElementById("regEmail");
+
+            regText[0].style.opacity = "0";
+            regText[1].style.opacity = "0";
+            regUsername.value = "";
+            regPassword.value = "";
+            regEmail.value = "";
+        }
+
+        // <-- Password Email -->
+        function sendEmail() {
+            //EmailError();
+            switchBetween("Pass");
+            return false;
+        }
+
+        function EmailError() {
+            let emailError = document.getElementById("ErrorR");
+            emailError.style.opacity = "100%";
+        }
+
+        function resetEmail() {
+            let emailError = document.getElementById("ErrorR");
+            let emailEmail = document.getElementById("emailEmail");
+
+            emailError.style.opacity = "0";
+            emailEmail.value = "";
+        }
+
+        // <-- Password -->
+        function resetPassword() {
+            let passInputs = document.getElementsByClassName("passwordField");
+
+            if (passInputs[0].value == passInputs[1].value) PassError(0);
+            else PassError(1);
+
+            return false;
+        }
+
+        function PassError(code) {
+            let passError = document.getElementsByClassName("ErrorP");
+
+            if (code == 0) {
+                passError[0].style.opacity = "100%";
+                passError[1].style.opacity = "0";
+                PasswordForm.style.transform = "translateY(410px) translateX(0px)";
+            } else if (code == 1) {
+                passError[0].style.opacity = "0";
+                passError[1].style.opacity = "100%";
+                PasswordForm.style.transform = "translateY(410px) translateX(0px)";
+            } else if (code == "reset") {
+                passError[0].style.opacity = "0";
+                passError[1].style.opacity = "0";
+                PasswordForm.style.transform = "translateY(390px) translateX(0px)";
+            }
+        }
+
+        function resendEmail() {
+            let codeInput = document.getElementById("noArrows");
+
+            PassError("reset");
+            codeInput.value = "";
+        }
+
+        function resetPass() {
+            let passError = document.getElementsByClassName("ErrorP");
+            let codeInput = document.getElementById("noArrows");
+            let passInputs = document.getElementsByClassName("passwordField");
+
+            passError[0].style.opacity = "0";
+            passError[1].style.opacity = "0";
+            passInputs[0].value = "";
+            passInputs[1].value = "";
+            codeInput.value = "";
+        }
+
+        // <-- Cookie Consent -->
+        let cSection = document.getElementsByClassName("cookies");
+        let cCont = cSection[0].children[0];
+        checkCookies();
+
+        function checkCookies() {
+            if (getCookie("CookieConsent") == null) {
+                cFunc("show");
+            }
+        }
+
+        function acceptCookies() {
+            cFunc("hide");
+            setCookie("CookieConsent", "true");
+        }
+
+        function cFunc(n) {
+            if (n == "show") {
+                cCont.style.top = "860px";
+            } else if (n == "hide") {
+                cCont.style.top = "940px";
+            }
+        }
+
+        function setCookie(key, value) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+    </script>
+</body>
+
+</html>
