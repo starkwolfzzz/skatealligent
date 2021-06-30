@@ -279,14 +279,15 @@
         var links = ["null", "null"];
         var captions = ["Completes", "Decks", "Wheels", "Trucks", "Hardware", "Bearings", "Griptape", "Risers", "Bushings", "Others"];
         imgsLinks();
+        showSlides();
 
         function imgsLinks(){
             for(i = 0; i < captions.length; i++){
                 images[i] = "images/" + captions[i] + ".png";
                 links[i] = "/shop.html?pg=1&cat="  + captions[i];
+                slides[0].src = images[i];
             }
         }
-        showSlides();
 
         // Next/previous controls
         function plusSlides(n) {
