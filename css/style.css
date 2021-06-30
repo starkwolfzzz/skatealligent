@@ -577,6 +577,7 @@ small {
     color: #8a8a8a;
     font-size: 14px;
     padding: 60px 0 20px;
+    box-shadow: 0 50vh 0 50vh #000;
 }
 
 .footer p {
@@ -1320,6 +1321,89 @@ form a {
     margin-left: 0px;
 }
 
+/*---------> contact <---------*/
+
+.elemnt{
+    background-color: transparent;
+    transition: 0.5s ease;
+    padding-top: 10px;
+    padding-right: 100px;
+    padding-left: 15px;
+    height: 95px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.elemnt:hover{
+    background-color: rgba(15, 86, 132, 0.2);
+}
+
+.elemnt #element-icon{
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    width: 63px;
+    height: 63px;
+    margin-right: 20px;
+}
+
+.elemnt #element-icon i{
+    transform: translateX(16px) translateY(10px) scale(3);
+}
+
+.elemnt h3{
+    transform: translateX(80px) translateY(-60px);
+}
+
+.elemnt #elmA{
+    transform: translateX(80px) translateY(-60px);
+}
+
+#show{
+    position: absolute;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin-right: 750px;
+    margin-left: 750px;
+    border-radius: 50px;
+    vertical-align: middle;
+    top: 50px;
+    width: 325px;
+    height: 50px;
+    opacity: 100%;
+    transition: 0.5s ease;
+}
+
+#hide{
+    position: absolute;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin-right: 750px;
+    margin-left: 750px;
+    border-radius: 50px;
+    vertical-align: middle;
+    top: 37px;
+    width: 325px;
+    height: 50px;
+    opacity: 0%;
+    transition: 0.5s ease;
+}
+
+.notif a{
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+.notif i{
+    font-size: 35px;
+    transform: translateY(7px) translateX(10px);
+    font-weight: bolder;
+}
 /*---------> mobile <---------*/
 
 @media only screen and (max-width: 995px) {

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skate Alligent - Contact Us</title>
+    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <meta name="color-scheme" content="dark">
+    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
+    <div class="header">
+        <div class="container">
+            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
+                <div class="logo-noline" id="logo">
+                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop.html?pg=1">Shop</a></li>
+                        <li><a href="/account.html">Account</a></li>
+                        <li><a href="/contact.html" id="Active">Contact</a></li>
+                        <li><a href="/about.html">About</a></li>
+                    </ul>
+                </nav>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
+                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
+            </div>
+            <section id="fade" style="height: 80vh;">
+                <h2 id="text" style="font-size: 75px; transform: translateY(-220px);">Contact Us</h2>
+                <div class="container">
+                    <div class="row">
+                        <a class="elemnt" style=" color: white;" onclick="copyToClipboard('contact@skatealligent.com', 'email')">
+                            <div id="element-icon"><i class="far fa-envelope" style="transform: translateX(13px) translateY(10px) scale(3);"></i></div>
+                            <h3>Email</h3>
+                            <p id="elmA">contact@skatealligent.com</p>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a class="elemnt" style="padding-right: 183px; color: white;" onclick="copyToClipboard('01552174468', 'number')">
+                            <div id="element-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h3>Phone Number</h3>
+                            <p id="elmA">01552174468</p>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a class="elemnt" style="padding-right: 214px; color: white;" onclick="switchPg('https://www.instagram.com/skatealligent/?hl=en')" target="_blank">
+                            <div id="element-icon"><i class="fab fa-instagram" style="transform: translateX(15px) translateY(10px) scale(3);"></i></i>
+                            </div>
+                            <h3>Instagram</h3>
+                            <p id="elmA">Skate Alligent</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <div class="notif" id="hide">
+                <i class="fas fa-exclamation"></i>
+                <a id="notifText">E-mail copied to clipboard</a>
+            </div>
+        </div>
+    </div>
+
+    <!--- Footer --->
+    <div class="footer" id="sec4">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <img src="images/Logo.png" alt="">
+                </div>
+                <div class="footer-col-2">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
+                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
+                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+
+    <!--- JavaScript --->
+    <script>
+        // <-- Menu -->
+        var MenuItems = document.getElementById("menuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // <-- Products Href -->
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            window.open(pg, '_blank');
+        }
+
+        // <-- Copy to Clipboard -->
+        function copyToClipboard(text, type) {
+            if (window.clipboardData && window.clipboardData.setData) {
+                // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+                return window.clipboardData.setData("Text", text);
+
+            } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                var textarea = document.createElement("textarea");
+                textarea.textContent = text;
+                textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+                } catch (ex) {
+                    console.warn("Copy to clipboard failed.", ex);
+                    return false;
+                } finally {
+                    document.body.removeChild(textarea);
+                    notification(type);
+                }
+            }
+        }
+
+        function notification(type) {
+            let notif = document.getElementsByClassName("notif")[0];
+            let textN = document.getElementById("notifText");
+
+            if (type == "email") {
+                textN.style.fontSize = "20px";
+                textN.textContent = "E-mail copied to clipboard";
+                notif.id = "show";
+                setTimeout(function() {
+                    notif.id = "hide";
+                }, 5000);
+            } else {
+                textN.style.fontSize = "18px";
+                textN.textContent = "Number copied to clipboard";
+                notif.id = "show";
+                setTimeout(function() {
+                    notif.id = "hide";
+                }, 2500);
+            }
+        }
+    </script>
+</body>
+
+</html>
