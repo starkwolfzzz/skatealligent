@@ -49,33 +49,33 @@
                             <form id="resetForm" onsubmit="return sendEmail()">
                                 <div id="ErrorR"><a>⚠ Email is not valid, please use an existing email or register a new account.</a></div>
                                 <a>Please enter your email address so we can send you an email with your reset code.</a>
-                                <input type="email" placeholder="Email" required id="emailEmail">
+                                <input class="accountInput" type="email" placeholder="Email" required id="emailEmail">
                                 <button type="submit" class="btn">Send Email</button>
                             </form>
                             <form id="PasswordForm" onsubmit="return resetPassword()">
                                 <div class="ErrorP"><a>⚠ Entered Code is invalid, please check your email and try again.</a></div>
                                 <div class="ErrorP"><a>⚠ Entered Passwords are not Matching, please try again.</a></div>
                                 <a>We have sent you an email, please enter the reset code written in that email.</a>
-                                <input type="number" placeholder="Code" required id="noArrows">
-                                <input type="password" placeholder="New Password" required minlength="8" class="passwordField">
-                                <input type="password" placeholder="Repeat New Password" required minlength="8" class="passwordField">
+                                <input class="accountInput" type="number" placeholder="Code" required id="noArrows">
+                                <input class="accountInput" type="password" placeholder="New Password" required minlength="8" class="passwordField">
+                                <input class="accountInput" type="password" placeholder="Repeat New Password" required minlength="8" class="passwordField">
                                 <button type="submit" class="btn">Reset Password</button>
                                 <a id="link" style="color: white; cursor: pointer;" onclick="resendEmail()">Resend Email</a>
                             </form>
                             <form id="LoginForm" onsubmit="return checkLogin()">
                                 <div class="ErrorL"><a>⚠ Username or Password submitted is incorrect.</a></div>
                                 <div class="ErrorL"><a>⚠ An unknown error has occurred, please try again.</a></div>
-                                <input type="text" placeholder="Username" required id="loginUsername">
-                                <input type="password" placeholder="Password" required id="loginPassword">
+                                <input class="accountInput" type="text" placeholder="Username" required id="loginUsername">
+                                <input class="accountInput" type="password" placeholder="Password" required id="loginPassword">
                                 <button type="submit" class="btn">Login</button>
                                 <a id="link" style="color: white; cursor: pointer;" onclick="switchBetween('Email')">Forgot Password?</a>
                             </form>
                             <form id="RegForm" onsubmit="return checkRegister()">
                                 <div class="Error"><a class="reg-err">⚠ Email is already in use.<br>Please use another Email Address.</a></div>
                                 <div class="Error"><a class="reg-err">⚠ Username is already in use.<br>Please use another Username.</a></div>
-                                <input type="text" placeholder="Username" required id="regUsername">
-                                <input type="email" placeholder="Email" required id="regEmail">
-                                <input type="password" placeholder="Password" minlength="8" required id="regPassword">
+                                <input class="accountInput" type="text" placeholder="Username" required id="regUsername">
+                                <input class="accountInput" type="email" placeholder="Email" required id="regEmail">
+                                <input class="accountInput" type="password" placeholder="Password" minlength="8" required id="regPassword">
                                 <button type="submit" class="btn">Register</button>
                             </form>
                         </div>

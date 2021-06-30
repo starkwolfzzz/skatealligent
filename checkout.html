@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skate Alligent - Cart</title>
+    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <meta name="color-scheme" content="dark">
+    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
+    <div class="header">
+        <div class="container">
+            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
+                <div class="logo-noline" id="logo">
+                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop.html?pg=1">Shop</a></li>
+                        <li><a href="/account.html">Account</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/about.html">About</a></li>
+                    </ul>
+                </nav>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
+                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--- Cart --->
+    <div class="small-container cart-pg">
+        <div class="row" id="hidden-empty" style="display: none;">
+            <a style="margin: 200px; margin-top: 120px; margin-bottom: -180px; font-weight: bolder; font-size: 30px;">YOUR CART IS EMPTY</a>
+            <a href="shop.html?pg=1" class="cart-btn" style=" margin: 200px; cursor: pointer; border: 1px solid white; background-color: white; color: black; padding: 13px; width: 15%;">Add More Items</a>
+        </div>
+        <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col-2" style="margin-bottom: -10px;">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Shipping Method</a></h3>
+                <i class="fas fa-truck"></i>
+                <i class="far fa-dot-circle" style="transform: scale(0.75) translateX(3px);"></i>
+                <a>Flat Shipping Rate - 0.00 EGP</a>
+            </div>
+            <div class="col-2" style="margin-bottom: -10px;">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Payment Method</a></h3>
+                <i class="far fa-money-bill-alt"></i>
+                <i class="far fa-dot-circle" style="transform: scale(0.75) translateX(3px);"></i>
+                <a>Cash on Delivery</a>
+            </div>
+        </div>
+        <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Shopping Cart</a></h3>
+                <table class="cart-table">
+                    <tr>
+                        <th style="border-right: none;">Product</th>
+                        <th style="border-right: none; border-left: none;">Quantity</th>
+                        <th style="border-left: none;">Subtotal</th>
+                    </tr>
+                    <tr class="item-cell">
+                        <td>
+                            <div class="cart-info">
+                                <img src="images/Skateboard.png" style="cursor: pointer;" onclick="switchPg('/product.html?id=id')">
+                                <div>
+                                    <p style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" id="link">Santacruz Skateboard with x bearings</p>
+                                    <small>EGP 5000</small>
+                                    <br>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" value="1" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(0)"> &nbsp;
+                            <a class="remove-btns" id="link" onclick="removeItem(0, 'btn')">Remove</a>
+                        </td>
+                        <td>EGP 5000</td>
+                    </tr>
+                    <tr class="item-cell">
+                        <td>
+                            <div class="cart-info">
+                                <img style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" src="images/Iceskate.png">
+                                <div>
+                                    <p style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" id="link">Santacruz Ice Skaters‎‎</p>
+                                    <small>EGP 5999</small>
+                                    <br>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" value="1" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(1)"> &nbsp;
+                            <a class="remove-btns" id="link" onclick="removeItem(1, 'btn')">Remove</a>
+                        </td>
+                        <td>EGP 5999</td>
+                    </tr>
+                    <tr class="item-cell">
+                        <td>
+                            <div class="cart-info">
+                                <img style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" src="images/Rollerskate.png">
+                                <div>
+                                    <p style="cursor: pointer;" onclick="switchPg('/product.html?id=id')" id="link">Santacruz Roller Skaters</p>
+                                    <small>EGP 4999</small>
+                                    <br>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="number" value="1" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(2)"> &nbsp;
+                            <a class="remove-btns" id="link" onclick="removeItem(2, 'btn')">Remove</a>
+                        </td>
+                        <td>EGP 4999</td>
+                    </tr>
+                </table>
+                <div class="total-price" style="background-color: black;">
+                    <table style="background-color: black; border-top: 0px solid white;">
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>EGP 15,998</td>
+                        </tr>
+                        <tr>
+                            <td>Discount</td>
+                            <td>EGP 0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>EGP 15,998</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col" id="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Delivery Address</a></h3>
+                <form class="CheckoutForm" id="form1" onsubmit="submitForm2(); return false">
+                    <div class="addressInputs"><label for="Apartment">Apartment Number*</label><input class="innput" id="Apartment" name="Apartment" type="text" placeholder="Apartment Number" required oninvalid="this.setCustomValidity('Please enter the number of your apartment, or house')" oninput="this.setCustomValidity('')" title="number of apartment or house"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Building">Building Number*</label><input class="innput" id="Building" name="Building" type="text" placeholder="Building Number" required oninvalid="this.setCustomValidity('Please enter the number of your building')" oninput="this.setCustomValidity('')" title="Number of your building"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Street">Street*</label><input class="innput" id="Street" name="Street" type="text" placeholder="Street" required oninvalid="this.setCustomValidity('Please enter the street where you live')" oninput="this.setCustomValidity('')" title="Street where you live"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="City">City*</label><input class="innput" id="City" name="City" type="text" placeholder="City" required oninvalid="this.setCustomValidity('Please enter the city of your residence')" oninput="this.setCustomValidity('')" title="City of your residence"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Region">Region/State*</label><input class="innput" id="Region" name="Region" type="text" placeholder="Region/State" required oninvalid="this.setCustomValidity('Please enter the region or state of your residence')" oninput="this.setCustomValidity('')" title="Region or state of your residence"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Country">Country*</label><input class="innput" id="Country" name="Country" type="text" placeholder="Country" required oninvalid="this.setCustomValidity('Please enter the country of your residence')" oninput="this.setCustomValidity('')" title="Country of your residence"></div>
+                    <div class="addressInputs" style="margin-top: -30px; margin-bottom: -40px;"><label for="noArrows">Postal Code*</label><input class="innput" id="noArrows" name="Postal" type="number" placeholder="Postal Code" requiredoninvalid="this.setCustomValidity('Please enter a valid postal code')" oninput="this.setCustomValidity('')" title="Your postal code, search it up"></div>
+                    <input class="submit" type="submit" style="display: none;">
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col" id="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Confirm your order</a></h3>
+                <form class="CheckoutForm" id="form2" onsubmit="checkout(); return false">
+                    <textarea placeholder="Add Comments About Your Order" title="Add any extra things you want to let us know about your order"></textarea>
+                    <div class="checkbox"><label for="checkbox1"><input type="checkbox" name="checkbox1" id="checkbox1" required oninvalid="this.setCustomValidity('Please agree to the privacy policy to proceed')" oninput="this.setCustomValidity('')" title="Checking this confirms your acceptance to our privacy policy"> I have read and agreed to the <a href="/privacy-policy.html">Privacy Policy</a>.</label></div>
+                    <div class="checkbox"><label for="checkbox2"><input type="checkbox" name="checkbox2" id="checkbox2" required oninvalid="this.setCustomValidity('Please agree to the terms of service to proceed')" oninput="this.setCustomValidity('')" title="Checking this confirms your acceptance to our terms of service"> I have read and agreed to the <a href="/terms-of-use.html">Terms of Service</a>.</label></div>
+                    <p class="carty-btn" onclick="submitForm1()"><a>Confirm Order &#8594;</a></p>
+                    <input class="submit" type="submit" style="display: none;">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--- Cookie Notice --->
+    <div class="cookies">
+        <div class="container">
+            <div class="row">
+                <div class="col-2" style="text-align: right;">
+                    <p>We use cookies to enhance your experience with our website.</p>
+                    <p>By continuing to use the site, you agree to the use of cookies.</p>
+                </div>
+                <div class="col-2" style="text-align: left;">
+                    <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
+                    <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--- Footer --->
+    <div class="footer" id="sec4">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <img src="images/Logo.png" alt="">
+                </div>
+                <div class="footer-col-2">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
+                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
+                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+
+    <!--- JavaScript --->
+    <script>
+        // <-- Menu -->
+        var MenuItems = document.getElementById("menuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // <-- Products Href -->
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            location.href = pg;
+        }
+
+        // <-- Input Value -->
+        function inputValueCheck(n) {
+            let input = document.getElementsByClassName("inputQuan");
+
+            if (input[n].value == 0) {
+                removeItem(n, "input");
+
+                let inputs = document.getElementsByClassName("inputQuan");
+                for (i = 0; i < inputs.length; i++) {
+                    inputs[i].setAttribute("onChange", 'inputValueCheck(' + i + ')');
+                }
+            }
+
+            if (input[n].value > 100) {
+                input[n].value = '100';
+            } else if (input[n].value < 1) {
+                input[n].value = '1';
+            }
+
+            changePrices(input[n].value, n);
+        }
+
+        // <-- Remove Item -->
+        function removeItem(n, type) {
+            let parents = document.getElementsByClassName("item-cell");
+
+            parents[n].remove();
+
+            let btn = document.getElementsByClassName("remove-btns");
+            if (type == 'btn') {
+                for (i = 0; i < parents.length; i++) {
+                    btn[i].setAttribute("onClick", 'removeItem(' + i + ', "btn")');
+                }
+            }
+            checkIfEmpty()
+            updateTotals();
+        }
+
+        // <-- Prices and stuff -->
+        let parent = document.getElementsByClassName("item-cell");
+
+        function changePrices(n, n2) {
+            var x = parseInt(parseInt(parent[n2].children[0].children[0].children[1].children[1].textContent.substring('EGP '.length)) * n);
+            if (x.toString().length <= 2) {
+                parent[n2].children[2].textContent = "EGP " + parseInt(x) + ".00";
+            } else if (x.toString().length > 2) {
+                parent[n2].children[2].textContent = "EGP " + parseInt(x);
+            }
+            updateTotals();
+        }
+
+        // <-- Check If Empty -->
+        checkIfEmpty();
+
+        function checkIfEmpty() {
+            let parents = document.getElementsByClassName("item-cell");
+            if (parents.length == 0) {
+                let row = document.getElementById("hidden-empty");
+                row.style.display = "flex";
+                let cont = document.getElementsByClassName("small-container");
+
+                cont[0].children[1].remove();
+                cont[0].children[1].remove();
+                cont[0].children[1].remove();
+                cont[0].children[1].remove();
+            }
+        }
+
+        // <-- Totals -->
+        let parentt = document.getElementsByClassName("total-price");
+        let Subtotall = parentt[0].children[0].children[0].children[0].children[1];
+        let discountt = parentt[0].children[0].children[0].children[1].children[1];
+        let Totall = parentt[0].children[0].children[0].children[2].children[1];
+        updateTotals();
+
+        function updateTotals() {
+            let cons = document.getElementsByClassName("item-cell");
+            var numbers = [];
+            var subtotal = 0;
+
+            for (i = 0; i < cons.length; i++) {
+                numbers.push(cons[i].children[2].textContent.substr("EGP ".length));
+            }
+
+            for (i = 0; i < numbers.length; i++) {
+                subtotal += parseInt(numbers[i]);
+            }
+
+            Subtotall.textContent = "EGP " + subtotal;
+            Totall.textContent = "EGP " + parseInt(subtotal - parseInt(discountt.textContent.substr("EGP ".length)));
+        }
+
+        // <-- Cookie Consent -->
+        let cSection = document.getElementsByClassName("cookies");
+        let cCont = cSection[0].children[0];
+        checkCookies();
+
+        function checkCookies() {
+            if (getCookie("CookieConsent") == null) {
+                cFunc("show");
+            }
+        }
+
+        function acceptCookies() {
+            cFunc("hide");
+            setCookie("CookieConsent", "true");
+        }
+
+        function cFunc(n) {
+            if (n == "show") {
+                cCont.style.top = "860px";
+            } else if (n == "hide") {
+                cCont.style.top = "940px";
+            }
+        }
+
+        function setCookie(key, value) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+
+        // <-- Submit Form -->
+        let form1 = document.getElementById("form1");
+        let form2 = document.getElementById("form2");
+        let btns = document.getElementsByClassName("submit")
+
+        function submitForm1() {
+            btns[0].click();
+        }
+
+        function submitForm2() {
+            btns[1].click();
+        }
+
+        // <-- Checkout -->
+        function checkout(){
+            alert("Checking out...");
+        }
+    </script>
+</body>
+
+</html>

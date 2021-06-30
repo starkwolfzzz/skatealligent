@@ -1209,7 +1209,7 @@ form {
     transition: transform 0.5s;
 }
 
-form input {
+form .accountInput {
     width: 100%;
     height: 30px;
     margin: 10px 0;
@@ -1219,7 +1219,7 @@ form input {
     background-color: white;
 }
 
-form input:focus {
+form .accountInput:focus {
     outline: none;
 }
 
@@ -1310,20 +1310,22 @@ form a {
     transition: 0.5s ease;
 }
 
-.cookie-btn{
+.cookie-btn {
     padding: 10px;
     margin-right: 15px;
     margin-left: 50px;
     border: 1px solid white;
     cursor: pointer;
 }
-.cookie-btn:last-child{
+
+.cookie-btn:last-child {
     margin-left: 0px;
 }
 
+
 /*---------> contact <---------*/
 
-.elemnt{
+.elemnt {
     background-color: transparent;
     transition: 0.5s ease;
     padding-top: 10px;
@@ -1334,11 +1336,11 @@ form a {
     cursor: pointer;
 }
 
-.elemnt:hover{
+.elemnt:hover {
     background-color: rgba(15, 86, 132, 0.2);
 }
 
-.elemnt #element-icon{
+.elemnt #element-icon {
     padding: 10px;
     background-color: white;
     color: black;
@@ -1348,19 +1350,19 @@ form a {
     margin-right: 20px;
 }
 
-.elemnt #element-icon i{
+.elemnt #element-icon i {
     transform: translateX(16px) translateY(10px) scale(3);
 }
 
-.elemnt h3{
+.elemnt h3 {
     transform: translateX(80px) translateY(-60px);
 }
 
-.elemnt #elmA{
+.elemnt #elmA {
     transform: translateX(80px) translateY(-60px);
 }
 
-#show{
+#show {
     position: absolute;
     background-color: white;
     color: black;
@@ -1376,7 +1378,7 @@ form a {
     transition: 0.5s ease;
 }
 
-#hide{
+#hide {
     position: absolute;
     background-color: white;
     color: black;
@@ -1392,18 +1394,103 @@ form a {
     transition: 0.5s ease;
 }
 
-.notif a{
+.notif a {
     margin-left: 20px;
     font-size: 18px;
     font-weight: bold;
     margin-right: 7px;
 }
 
-.notif i{
+.notif i {
     font-size: 35px;
     transform: translateY(7px) translateX(10px);
     font-weight: bolder;
 }
+
+
+/*---------> checkout <---------*/
+
+.CheckoutForm {
+    padding: 0 20px;
+    transform: translateX(-21px);
+    position: inherit;
+    top: 130px;
+    transition: transform 0.5s;
+}
+
+.CheckoutForm textarea {
+    width: 1110px;
+    height: 100px;
+    vertical-align: top;
+    padding: 10px 10px;
+    border: 0px;
+    color: white;
+    background-color: black;
+    resize: none;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+}
+
+.CheckoutForm textarea:focus {
+    outline: none;
+    border: 1px solid lightblue;
+}
+
+.checkbox {
+    width: 1100px;
+}
+
+.checkbox a {
+    color: lightblue;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.CheckoutForm label {
+    font-size: 15px;
+}
+
+.carty-btn {
+    margin-top: 15px;
+    background-color: rgba(42, 184, 88, 1);
+    color: white;
+    text-align: center;
+    vertical-align: center;
+    font-size: 15px;
+    width: 1100px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 100%;
+    transition: 0.15s ease;
+}
+
+.carty-btn:hover {
+    opacity: 70%;
+}
+
+.carty-btn a {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.CheckoutForm .innput {
+    transform: translateX(200px) translateY(-35px);
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: none;
+    color: white;
+    background-color: black;
+}
+
+.CheckoutForm .innput:focus {
+    outline: none;
+    border: 1px solid lightblue;
+}
+
 /*---------> mobile <---------*/
 
 @media only screen and (max-width: 995px) {
