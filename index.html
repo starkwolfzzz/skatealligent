@@ -54,7 +54,7 @@
                     <a href="" class="cat">
                         <img src="images/Skateboard.png" class="category">
                         <div class="overlay"></div>
-                        <div class="cat-text">Skateboards</div>
+                        <div class="cat-text">Skateboard</div>
                     </a>
                 </div>
                 <div class="col-3">
@@ -75,11 +75,6 @@
             <!-- Next and previous buttons -->
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            <!-- Image text -->
-            <div class="caption-container">
-                <p id="caption"></p>
-            </div>
         </div>
     </div>
 
@@ -108,7 +103,7 @@
                 <p>EGP 49.99</p>
             </div>
         </div>
-        <h2 class="title">Latest Products</h2>
+        <h2 class="title">New Arrivals</h2>
         <div class="row">
             <div class="col-4">
                 <img src="images/Skateboard.png" onclick="prodPg()">
@@ -277,12 +272,20 @@
         var slides = document.getElementsByClassName("category");
         var slidesA = document.getElementsByClassName("cat");
         var slidesText = document.getElementsByClassName("cat-text");
-        var Slides = [1, 2, 3, 4, 5];
+        var Slides = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         var activeSlides = [1, 2, 3];
 
-        var images = ["images/Skateboard.png", "images/Iceskate.png", "images/Rollerskate.png", "images/Iceskate.png", "images/Skateboard.png"];
-        var links = ["/skateboards", "/iceskaters", "/rollerskaters", "/iceskaters", "/skateboards"];
-        var captions = ["Skateboards", "Ice Skaters", "Roller Skaters", "Ice Skaters", "Skateboards"];
+        var images = ["null","null"];
+        var links = ["null", "null"];
+        var captions = ["Completes", "Decks", "Wheels", "Trucks", "Hardware", "Bearings", "Griptape", "Risers", "Bushings", "Other"];
+        imgsLinks();
+
+        function imgsLinks(){
+            for(i = 0; i < captions.length; i++){
+                images[i] = "images/" + captions[i] + ".png";
+                links[i] = "/shop.html?pg=1&cat="  + captions[i];
+            }
+        }
         showSlides();
 
         // Next/previous controls
