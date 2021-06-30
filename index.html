@@ -317,6 +317,7 @@
         function showSlides() {
             var i = 0;
             for (i = 0; i < slides.length; i++) {
+                slides[i].src = "";
                 slides[i].src = images[activeSlides[i] - 1];
                 slidesA[i].href = links[activeSlides[i] - 1];
                 slidesText[i].innerHTML = captions[activeSlides[i] - 1];
