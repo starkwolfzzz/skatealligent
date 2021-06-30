@@ -75,6 +75,7 @@
                                 <div class="Error"><a class="reg-err">⚠ Username is already in use.<br>Please use another Username.</a></div>
                                 <input class="accountInput" type="text" placeholder="Username" required id="regUsername">
                                 <input class="accountInput" type="email" placeholder="Email" required id="regEmail">
+                                <input class="accountInput" type="tel" placeholder="Phone Number" minlength="11" maxlength="11" required id="regNumber">
                                 <input class="accountInput" type="password" placeholder="Password" minlength="8" required id="regPassword">
                                 <button type="submit" class="btn">Register</button>
                             </form>
@@ -137,7 +138,7 @@
 
         function switchBetween(type) {
             if (type == "Register") {
-                RegForm.style.transform = "translateY(0px) translateX(0px)";
+                RegForm.style.transform = "translateY(-30px) translateX(0px)";
                 LoginForm.style.transform = "translateY(0px) translateX(0px)";
                 ResetForm.style.transform = "translateY(0px) translateX(0px)";
                 PasswordForm.style.transform = "translateY(0px) translateX(0px)";
@@ -146,7 +147,7 @@
                 resetEmail();
                 resetPass();
             } else if (type == "Login") {
-                RegForm.style.transform = "translateY(0px) translateX(300px)";
+                RegForm.style.transform = "translateY(-30px) translateX(300px)";
                 LoginForm.style.transform = "translateY(0px) translateX(300px)";
                 ResetForm.style.transform = "translateY(0px) translateX(300px)";
                 PasswordForm.style.transform = "translateY(0px) translateX(300px)";
@@ -155,13 +156,13 @@
                 resetEmail();
                 resetPass();
             } else if (type == "Email") {
-                RegForm.style.transform = "translateY(420px) translateX(300px)";
+                RegForm.style.transform = "translateY(390px) translateX(300px)";
                 LoginForm.style.transform = "translateY(420px) translateX(300px)";
                 ResetForm.style.transform = "translateY(420px) translateX(300px)";
                 PasswordForm.style.transform = "translateY(390px) translateX(300px)";
                 resetLog();
             } else if (type == "Pass") {
-                RegForm.style.transform = "translateY(420px) translateX(0px)";
+                RegForm.style.transform = "translateY(390px) translateX(0px)";
                 LoginForm.style.transform = "translateY(420px) translateX(0px)";
                 ResetForm.style.transform = "translateY(420px) translateX(0px)";
                 PasswordForm.style.transform = "translateY(390px) translateX(0px)";
@@ -211,12 +212,15 @@
             let regText = document.getElementsByClassName("Error");
 
             if (code == 0) {
+                RegForm.style.transform = "translateY(0px) translateX(0px)";
                 regText[0].style.opacity = "100%";
                 regText[1].style.opacity = "0";
             } else if (code == 1) {
+                RegForm.style.transform = "translateY(0px) translateX(0px)";
                 regText[0].style.opacity = "0";
                 regText[1].style.opacity = "100%";
             } else if (code == "reset") {
+                RegForm.style.transform = "translateY(-30px) translateX(0px)";
                 regText[0].style.opacity = "0";
                 regText[1].style.opacity = "0";
             }
@@ -227,12 +231,14 @@
             let regUsername = document.getElementById("regUsername");
             let regPassword = document.getElementById("regPassword");
             let regEmail = document.getElementById("regEmail");
+            let regNumber = document.getElementById("regNumber");
 
             regText[0].style.opacity = "0";
             regText[1].style.opacity = "0";
             regUsername.value = "";
             regPassword.value = "";
             regEmail.value = "";
+            regNumber.value = "";
         }
 
         // <-- Password Email -->
