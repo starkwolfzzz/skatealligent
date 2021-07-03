@@ -18,7 +18,7 @@
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar" id="headerr">
+            <div class="navbar" id="headerr" style="transition: 0.25s ease;">
                 <div class="logo-noline" id="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
@@ -342,29 +342,22 @@
 
             if (document.documentElement.scrollTop > lastScroll) {
                 // header.style.transform = "translateY(" + parseInt(document.documentElement.scrollTop - 10) + "px)";
-                header.style.transition = "0.5s ease";
-                header.style.top = parseInt(document.documentElement.scrollTop - 150) + "px";
+                header.style.top = "-90px";
                 header.style.background = "transparent";
                 lastScroll = document.documentElement.scrollTop;
                 logo.className = "logo-noline";
             } else {
                 if (lastScroll > 1070) {
                     //header.style.transform = "translateY(" + parseInt(document.documentElement.scrollTop + 0) + "px)";
-                    header.style.transition = "0.5s ease";
-                    if (header.style.top == parseInt(lastScroll + 0) + "px") {
-                        header.style.transition = "0s";
-                    }
-                    header.style.top = parseInt(document.documentElement.scrollTop + 0) + "px";
+                    header.style.position = "fixed";
+                    header.style.top = "0px";
                     header.style.background = "#160a22";
                     lastScroll = document.documentElement.scrollTop;
                     logo.className = "logo-line";
                 } else {
                     //header.style.transform = "translateY(" + parseInt(document.documentElement.scrollTop + 0) + "px)";
-                    header.style.transition = "0.5s ease";
-                    if (header.style.top == parseInt(lastScroll + 0) + "px") {
-                        header.style.transition = "0s";
-                    }
-                    header.style.top = parseInt(document.documentElement.scrollTop + 0) + "px";
+                    header.style.position = "fixed";
+                    header.style.top = "0px";
                     header.style.background = "transparent";
                     logo.className = "logo-noline";
                     lastScroll = document.documentElement.scrollTop;
