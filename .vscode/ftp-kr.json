@@ -1,5 +1,5 @@
 {
-    "host": "skatealligent.tk",
+    "host": "f33-preview.awardspace.net",
     "username": "3879700_skate",
     "password": "SWm1234fergany",
     "remotePath": "",
@@ -7,7 +7,7 @@
     "port": 0,
     "fileNameEncoding": "utf8",
     "autoUpload": true,
-    "autoDelete": false,
+    "autoDelete": true,
     "autoDownload": false,
     "ignore": [
         ".git",

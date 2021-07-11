@@ -13,6 +13,40 @@
     box-sizing: border-box;
 }
 
+
+/*---------> scrollbar <---------*/
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/*---------> index <---------*/
+
 .font_credit {
     display: none;
 }
@@ -90,6 +124,7 @@ section {
     font-size: 1.5em;
     z-index: 9;
     cursor: pointer;
+    transition: 0.15s;
 }
 
 .navbar {
@@ -315,6 +350,13 @@ a {
     padding: 8px 30px;
     margin: 30px 0px;
     border-radius: 30px;
+    opacity: 100%;
+    transition: 0.15s;
+}
+
+.btn:hover,
+#btn:hover {
+    opacity: 90%;
 }
 
 .small-container {
@@ -655,16 +697,60 @@ ul {
 /*---------> shop <---------*/
 
 .row-2 {
-    justify-content: center;
     margin: 100px auto 50px;
+    margin-bottom: 30px;
 }
 
 .row-2 h2 {
-    margin-right: 725px;
+    justify-content: left;
+    margin-right: 310px;
+}
+
+.row-2 #sortingSelect {
+    justify-content: right;
+    margin-left: 360px;
 }
 
 .row-2 p {
     cursor: pointer;
+}
+
+.row-2 .search-container {
+    justify-content: center;
+    float: right;
+}
+
+.row-2 input[type=text] {
+    margin-top: 65.5px;
+    margin-left: -323px;
+    padding: 6px;
+    padding-right: 45px;
+    font-size: 17px;
+    width: 650px;
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.row-2 .search-con button {
+    position: absolute;
+    margin-top: -34px;
+    margin-left: 288px;
+    float: right;
+    padding: 6px 10px;
+    margin-right: 16px;
+    background: #343434;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.row-2 .search-con button:hover {
+    background: #424242;
+}
+
+.row-2 .search-con button:focus {
+    outline: none;
 }
 
 select {
@@ -795,12 +881,15 @@ select:focus {
 }
 
 #noArrows::-webkit-outer-spin-button,
-#noArrows::-webkit-inner-spin-button {
+#noArrows2::-webkit-outer-spin-button,
+#noArrows::-webkit-inner-spin-button,
+#noArrows2::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-#noArrows[type=number] {
+#noArrows[type=number],
+#noArrows2[type=number] {
     -moz-appearance: textfield;
 }
 
@@ -914,6 +1003,7 @@ select:focus {
     margin: 0 auto 80px;
     margin-left: 100px;
     transform: translateY(-33px) translateX(-40px) scale(0.9);
+    background: transparent;
 }
 
 .color-btn span {
@@ -924,61 +1014,7 @@ select:focus {
     text-align: center;
     line-height: 40px;
     cursor: pointer;
-}
-
-.red {
-    border: 1px solid red;
     transition: 0.2s ease;
-    color: red;
-}
-
-.red:hover {
-    background: red;
-    color: white;
-}
-
-.cyan {
-    border: 1px solid cyan;
-    transition: 0.2s ease;
-    color: cyan;
-}
-
-.cyan:hover {
-    background: cyan;
-    color: black;
-}
-
-.green {
-    border: 1px solid green;
-    transition: 0.2s ease;
-    color: green;
-}
-
-.green:hover {
-    background: green;
-    color: white;
-}
-
-.white {
-    border: 1px solid white;
-    transition: 0.2s ease;
-    color: white;
-}
-
-.white:hover {
-    background: white;
-    color: black;
-}
-
-.black {
-    border: 1px solid black;
-    color: white;
-    transition: 0.2s ease;
-}
-
-.black:hover {
-    background: black;
-    color: white;
 }
 
 #color-btn-active {
@@ -1285,6 +1321,180 @@ form a {
     transition: 0.15s;
 }
 
+#RegForm .toggleSeePass {
+    position: absolute;
+    color: black;
+    top: 116px;
+    left: 255px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+#RegForm .toggleSeePass i.fa-eye-slash {
+    display: none;
+}
+
+#RegForm .toggleSeePass.active i.fa-eye-slash {
+    display: block;
+}
+
+#RegForm .toggleSeePass.active i.fa-eye {
+    display: none;
+}
+
+#RegForm .toggleSeePass i.fa-eye {
+    display: block;
+}
+
+#RegForm .passStrength {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    margin-top: 0px;
+    text-align: center;
+    background: #f2f2f2;
+    border-radius: 10px;
+    cursor: default;
+    visibility: hidden;
+    transition: 0.5s;
+    opacity: 0%;
+    transform: translateY(-10px);
+}
+
+#RegForm .passStrength span:nth-child(1) {
+    position: relative;
+    font-size: 13px;
+    color: #111;
+    z-index: 2;
+    font-weight: 600;
+    top: -6px;
+    cursor: default;
+}
+
+#RegForm .passStrength span:nth-child(2) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    z-index: 1;
+    transition: all 100ms ease-in-out;
+    cursor: default;
+}
+
+#LoginForm .toggleSeePass2 {
+    position: absolute;
+    color: black;
+    top: 67px;
+    left: 255px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+#LoginForm .toggleSeePass2 i.fa-eye-slash {
+    display: none;
+}
+
+#LoginForm .toggleSeePass2.active i.fa-eye-slash {
+    display: block;
+}
+
+#LoginForm .toggleSeePass2.active i.fa-eye {
+    display: none;
+}
+
+#LoginForm .toggleSeePass2 i.fa-eye {
+    display: block;
+}
+
+#PasswordForm .toggleSeePass3 {
+    position: absolute;
+    color: black;
+    top: 92px;
+    left: 255px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+#PasswordForm .toggleSeePass4 {
+    position: absolute;
+    color: black;
+    top: 157px;
+    left: 255px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+#PasswordForm .toggleSeePass3 i.fa-eye-slash,
+#PasswordForm .toggleSeePass4 i.fa-eye-slash {
+    display: none;
+}
+
+#PasswordForm .toggleSeePass3.active i.fa-eye-slash,
+#PasswordForm .toggleSeePass4.active i.fa-eye-slash {
+    display: block;
+}
+
+#PasswordForm .toggleSeePass3.active i.fa-eye,
+#PasswordForm .toggleSeePass4.active i.fa-eye {
+    display: none;
+}
+
+#PasswordForm .toggleSeePass3 i.fa-eye,
+#PasswordForm .toggleSeePass4 i.fa-eye {
+    display: block;
+}
+
+#PasswordForm .passStrength2 {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    margin-top: 0px;
+    text-align: center;
+    background: #f2f2f2;
+    border-radius: 10px;
+    cursor: default;
+    visibility: hidden;
+    transition: 0.5s;
+    opacity: 0%;
+    transform: translateY(-10px);
+}
+
+#PasswordForm .passStrength2 span:nth-child(1) {
+    position: relative;
+    font-size: 13px;
+    color: #111;
+    z-index: 2;
+    font-weight: 600;
+    top: -6px;
+    cursor: default;
+}
+
+#PasswordForm .passStrength2 span:nth-child(2) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    z-index: 1;
+    transition: all 100ms ease-in-out;
+    cursor: default;
+}
+
 
 /*---------> cookies <---------*/
 
@@ -1306,7 +1516,7 @@ form a {
     margin-bottom: -50px;
     vertical-align: middle;
     text-align: center;
-    top: 940px;
+    top: 10000px;
     transition: 0.5s ease;
 }
 
@@ -1363,12 +1573,13 @@ form a {
 }
 
 #show {
+    box-shadow: 0 0 20px 0px #160a22;
     position: absolute;
     background-color: white;
     color: black;
     text-align: center;
     margin-right: 750px;
-    margin-left: 750px;
+    margin-left: 775px;
     border-radius: 50px;
     vertical-align: middle;
     top: 50px;
@@ -1384,7 +1595,7 @@ form a {
     color: black;
     text-align: center;
     margin-right: 750px;
-    margin-left: 750px;
+    margin-left: 775px;
     border-radius: 50px;
     vertical-align: middle;
     top: 37px;
@@ -1489,6 +1700,539 @@ form a {
 .CheckoutForm .innput:focus {
     outline: none;
     border: 1px solid lightblue;
+}
+
+
+/*---------> Filters <---------*/
+
+.filters-cont {
+    position: absolute;
+    border: 1px solid white;
+    width: 375px;
+    height: 1360px;
+    margin-left: 24px;
+    margin-top: 173px;
+}
+
+.filters-cont h1 {
+    text-align: left;
+    border-bottom: 5px solid white;
+    padding-top: 25px;
+    margin-bottom: 25px;
+    width: 110px;
+}
+
+.filters-cont .clearBtn {
+    background-color: white;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 17px;
+    margin-left: 100px;
+    cursor: pointer;
+}
+
+.filters-cont .row:first-child {
+    border-top: 0px solid white;
+    padding-bottom: 0px;
+    display: flex;
+}
+
+.filters-cont .row {
+    border-top: 1px solid white;
+    padding-bottom: 250px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.filters-cont .row:last-child {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding-bottom: 0px;
+}
+
+.filters-cont .row .top-row {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: left;
+    font-size: 20px;
+    padding-left: 10px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.filters-cont .row .top-row a {
+    position: absolute;
+    text-align: right;
+    font-size: 20px;
+    padding-left: 330px;
+    transform: translateY(-32px);
+}
+
+.filters-cont .row .bottom-row {
+    position: absolute;
+    height: 240px;
+    width: 373px;
+    overflow: auto;
+    padding-left: 15px;
+    padding-top: 13px;
+}
+
+.filters-cont .row .bottom-row .checkbox-cat {
+    padding-top: 13px;
+    transition: 0.15s;
+}
+
+.filters-cont .row .bottom-row .checkbox-cat input {
+    transform: scale(1.5);
+    display: none;
+}
+
+.filters-cont .row .bottom-row .checkbox-cat .fakeCheck {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    transition: 0.15s;
+}
+
+.checkbox-cat:hover {
+    cursor: pointer;
+}
+
+.checkbox-cat:hover .fakeCheck {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.checkbox-cat:hover .fakeCheck a {
+    display: inline;
+    opacity: 50%;
+}
+
+.checkbox-cat:hover label {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.fakeCheck a {
+    position: absolute;
+    font-size: 25px;
+    margin-top: -12px;
+    margin-left: 1.5px;
+    transition: 0.15s;
+}
+
+.fakeCheck .notChecked {
+    display: none;
+}
+
+.fakeCheck .Checked {
+    display: inline;
+}
+
+.filters-cont .row .bottom-row .checkbox-cat label {
+    position: absolute;
+    margin-top: -23px;
+    margin-left: 30px;
+    font-size: 17px;
+    transition: 0.15s;
+}
+
+
+/*---------> account <---------*/
+
+.btn-cont {
+    width: 100%;
+}
+
+.btn-cont .btncont {
+    padding-top: 15px;
+    width: 100%;
+    text-align: center;
+    color: rgb(79, 185, 255);
+}
+
+.btn-cont .btncont a:hover {
+    color: rgb(136, 207, 255);
+}
+
+.btn-cont .btnrow {
+    border: 1px solid rgb(255, 255, 255, .25);
+    color: rgb(255, 255, 255, .25);
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    font-family: "Posterama";
+    cursor: pointer;
+    transition: 0.25s ease;
+    background: rgb(17, 17, 17);
+}
+
+.btn-cont .btnrow:hover {
+    border-left: 5px solid rgb(0, 153, 255);
+    color: white;
+    font-size: 19px;
+}
+
+.btn-cont #btnAct {
+    border-left: 5px solid rgb(0, 153, 255);
+    color: white;
+    font-size: 19px;
+    cursor: default;
+}
+
+.btn-cont .btnrow i {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+
+.btn-cont #btnAct i {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+
+.info-cont {
+    background: rgb(17, 17, 17);
+    border: 1px solid rgb(255, 255, 255, .25);
+    width: 100%;
+    padding-left: 50px;
+}
+
+.info-cont p {
+    color: rgb(180, 180, 180);
+    padding-top: 15px;
+    font-size: 13px;
+}
+
+.info-cont h2 {
+    padding-top: 25px;
+}
+
+.info-cont .row .col-2 .inputPencil {
+    height: 45px;
+    width: 75%;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: 1px solid rgb(255, 255, 255, .25);
+}
+
+.info-cont .row .col-2 .inputPencil:focus {
+    outline: none;
+    border: 1px solid rgb(57, 176, 255);
+}
+
+.info-cont .row .col-2 i {
+    padding: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background: rgb(0, 153, 255);
+    cursor: pointer;
+}
+
+.info-cont .row .col-2 i:hover {
+    background: rgb(23, 161, 253);
+}
+
+.info-cont .row .col-2 .inputNoPencil {
+    height: 45px;
+    width: 92%;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: 1px solid rgb(255, 255, 255, .25);
+}
+
+.info-cont .row .col-2 .inputNoPencil:focus {
+    outline: none;
+    border: 1px solid rgb(57, 176, 255);
+}
+
+.info-cont .row .col-2 .adrBtn {
+    padding: 15px;
+    background: grey;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.25s;
+    border-radius: 5px;
+}
+
+.info-cont .row .col-2 .adrBtn:hover {
+    background: rgb(83, 83, 83);
+}
+
+.info-cont .row .col-2 .adrBtn:last-child {
+    background: rgb(23, 161, 253);
+}
+
+.info-cont .row .col-2 .adrBtn:last-child:hover {
+    background: rgb(0, 132, 255);
+}
+
+.container .row .pg {
+    opacity: 0%;
+    display: none;
+    transform: translateY(100px);
+}
+
+.container .row .act {
+    display: inline;
+    animation: fade_in_show 0.5s;
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+@keyframes fade_in_show {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.table-cont table {
+    border-collapse: collapse;
+    width: 95%;
+}
+
+.table-cont table tr th {
+    /*border: none;*/
+}
+
+.form-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0%;
+    display: none;
+    vertical-align: middle;
+}
+
+.form-overlay .overlay-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 50%;
+    background-color: rgb(17, 17, 17);
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    opacity: 100%;
+    width: 75px;
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.ovlyact {
+    display: block;
+    animation: showovly 0.3s;
+    opacity: 1;
+}
+
+@keyframes showovly {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.window-overlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    transition: 0.25s ease;
+}
+
+.window-overlay .container-overlay{
+    cursor: default;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #202020;
+    width: 30%;
+    height: 470px;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: 1px solid rgb(255, 255, 255, .25);
+    transition: 0.25s ease;
+}
+
+.container-overlay h3{
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.container-overlay h3 i{
+    padding-top: 7px;
+    display: inline-block;
+    float: right;
+    cursor: pointer;
+}
+
+.container-overlay h4{
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.window-input {
+    height: 45px;
+    width: 80%;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: transparent;
+    border: 1px solid rgb(255, 255, 255, .25);
+}
+
+.window-input:focus {
+    outline: none;
+    border: 1px solid rgb(57, 176, 255);
+}
+
+.checkboxDiv {
+    width: 18px;
+    height: 18px;
+    border: 1px solid white;
+    transition: 0.15s;
+}
+
+.checkboxDiv:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.checkboxDiv:hover .notChecked {
+    opacity: 50%;
+}
+
+.checkboxDiv a {
+    position: absolute;
+    font-size: 22px;
+    margin-top: -11px;
+    margin-left: 1.5px;
+    transition: 0.15s;
+}
+
+.checkboxDiv .notChecked {
+    opacity: 0%;
+}
+
+.checkboxDiv .Checked {
+    opacity: 100%;
+}
+
+.window-btn {
+    padding: 15px;
+    background: grey;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.25s;
+    border-radius: 5px;
+    padding-right: 35px;
+    padding-left: 35px;
+}
+
+.window-btn:hover {
+    background: rgb(83, 83, 83);
+}
+
+.window-btn:last-child {
+    background: rgb(23, 161, 253);
+}
+.window-btn:last-child:hover {
+    background: rgb(0, 132, 255);
+}
+
+.window-hidden{
+    opacity: 0%;
+    visibility: hidden;
+}
+
+.window-shown{
+    visibility: visible;
+    opacity: 100%;
+}
+
+.changePassStrength {
+    position: relative;
+    width: 75%;
+    height: 15px;
+    margin-top: 0px;
+    margin-left: 8px;
+    text-align: center;
+    background: #f2f2f2;
+    border-radius: 10px;
+    cursor: default;
+    visibility: hidden;
+    transition: 0.5s;
+    opacity: 0%;
+    transform: translateY(-48px);
+    background: transparent;
+    border: 1px solid #757575;
+}
+
+.changePassStrength span:nth-child(1) {
+    position: relative;
+    font-size: 13px;
+    color: #444444;
+    z-index: 2;
+    font-weight: 600;
+    top: -6px;
+    cursor: default;
+}
+
+.changePassStrength span:nth-child(2) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0%;
+    height: 100%;
+    border-radius: 10px;
+    z-index: 1;
+    transition: all 100ms ease-in-out;
+    cursor: default;
 }
 
 /*---------> mobile <---------*/

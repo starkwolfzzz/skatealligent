@@ -1,3 +1,11 @@
+<?php
+require('php/functions.php');
+
+if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
+    header("location: http://skatealligent.tk/login.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,71 +26,344 @@
     <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
     <div class="header">
         <div class="container">
-            <div class="navbar2" id="headerr">
+            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
                 <div class="logo-noline" id="logo">
                     <a style="color: white;" class="logo" href="/">Skate Alligent</a>
                 </div>
                 <nav>
                     <ul id="menuItems">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/shop.html?pg=1">Shop</a></li>
-                        <li><a href="/account.html" id="Active">Account</a></li>
+                        <li><a href="/shop.html?pg=1">shop</a></li>
+                        <li><a href="/account.html" class="Active">Account</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
-                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
-                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
-                        style="transform: scale(0.8)"></i></a>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
             </div>
-            <section id="fade">
-                <img src="images/Background.jpg" id="background">
-                <div class="container" id="container">
-                    <div class="row">
-                        <div class="form-container">
-                            <div class="form-btn">
-                                <span onclick="switchBetween('Login')">Login</span>
-                                <span onclick="switchBetween('Register')">Register</span>
-                                <hr id="indicator">
-                            </div>
-                            <form id="resetForm" onsubmit="return sendEmail()">
-                                <div id="ErrorR"><a>⚠ Email is not valid, please use an existing email or register a new account.</a></div>
-                                <a>Please enter your email address so we can send you an email with your reset code.</a>
-                                <input class="accountInput" type="email" placeholder="Email" required id="emailEmail">
-                                <button type="submit" class="btn">Send Email</button>
-                            </form>
-                            <form id="PasswordForm" onsubmit="return resetPassword()">
-                                <div class="ErrorP"><a>⚠ Entered Code is invalid, please check your email and try again.</a></div>
-                                <div class="ErrorP"><a>⚠ Entered Passwords are not Matching, please try again.</a></div>
-                                <a>We have sent you an email, please enter the reset code written in that email.</a>
-                                <input class="accountInput" type="number" placeholder="Code" required id="noArrows">
-                                <input class="accountInput" type="password" placeholder="New Password" required minlength="8" class="passwordField">
-                                <input class="accountInput" type="password" placeholder="Repeat New Password" required minlength="8" class="passwordField">
-                                <button type="submit" class="btn">Reset Password</button>
-                                <a id="link" style="color: white; cursor: pointer;" onclick="resendEmail()">Resend Email</a>
-                            </form>
-                            <form id="LoginForm" onsubmit="return checkLogin()">
-                                <div class="ErrorL"><a>⚠ Username or Password submitted is incorrect.</a></div>
-                                <div class="ErrorL"><a>⚠ An unknown error has occurred, please try again.</a></div>
-                                <input class="accountInput" type="text" placeholder="Username" required id="loginUsername">
-                                <input class="accountInput" type="password" placeholder="Password" required id="loginPassword">
-                                <button type="submit" class="btn">Login</button>
-                                <a id="link" style="color: white; cursor: pointer;" onclick="switchBetween('Email')">Forgot Password?</a>
-                            </form>
-                            <form id="RegForm" onsubmit="return checkRegister()">
-                                <div class="Error"><a class="reg-err">⚠ Email is already in use.<br>Please use another Email Address.</a></div>
-                                <div class="Error"><a class="reg-err">⚠ Username is already in use.<br>Please use another Username.</a></div>
-                                <input class="accountInput" type="text" placeholder="Username" required id="regUsername">
-                                <input class="accountInput" type="email" placeholder="Email" required id="regEmail">
-                                <input class="accountInput" type="tel" placeholder="Phone Number" minlength="11" maxlength="11" required id="regNumber">
-                                <input class="accountInput" type="password" placeholder="Password" minlength="8" required id="regPassword">
-                                <button type="submit" class="btn">Register</button>
-                            </form>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top: 35px;">
+        <div class="row">
+            <div class="col-2" style="flex-basis: 17%; margin-right: -600px; height: 1120px;">
+                <div class="btn-cont">
+                    <div class="btnrow SETTINGS" id="btnAct" onclick="changePg('settings', this)">
+                        <i class="fas fa-cogs"></i>
+                        <a class="accBtn">SETTINGS</a>
+                    </div>
+                    <div class="btnrow ORDERS" id="" onclick="changePg('orders', this)">
+                        <i class="fas fa-shopping-cart"></i>
+                        <a class="accBtn">ORDERS</a>
+                    </div>
+                    <div class="btnrow ADMIN" id="" onclick="changePg('admin', this)">
+                        <i class="fas fa-user-cog"></i>
+                        <a class="accBtn">ADMIN</a>
+                    </div>
+                    <div class="btnrow EDITOR" id="" onclick="changePg('editor', this)">
+                        <i class="fas fa-unlock-alt"></i>
+                        <a class="accBtn">EDITOR</a>
+                    </div>
+                    <div class="btncont">
+                        <a style="cursor: pointer; text-align: center;" onclick="setCookie('session', '', 0); location.reload();" id="link">sign out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 pg act" style="flex-basis: 50%;" id="settings">
+                <div class="info-cont">
+                    <h2>GENERAL SETTINGS</h2>
+                    <p>Manage your account settings like username, email, password, and etc...</p>
+
+                    <h2>ACCOUNT INFO</h2>
+                    <p style="font-weight: bold; color: white;">ID: <a style="font-weight: normal;">cfcd208495d565ef66e7dff9f98764da</a></p>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputPencil" type="text" name="username" placeholder="USERNAME">
+                            <i class="fas fa-pencil-alt" onclick="showWindow(0, 'show')"></i>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputPencil" type="text" name="email" placeholder="E-MAIL">
+                            <i class="fas fa-pencil-alt" onclick="showWindow(1, 'show')"></i>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputPencil" type="password" name="password" placeholder="PASSWORD">
+                            <i class="fas fa-pencil-alt" onclick="showWindow(2, 'show')"></i>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputPencil" type="number" name="phone" placeholder="PHONE NUMBER" id="noArrows">
+                            <i class="fas fa-pencil-alt" onclick="showWindow(3, 'show')"></i>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: -55px;">ADDRESS</h2>
+                    <p>Manage your delivery address like Street, Country, Postal Code, and etc...</p>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputNoPencil" type="text" name="apartment" placeholder="APARTMENT NUMBER">
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputNoPencil" type="text" name="building" placeholder="BUILDING NUMBER">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputNoPencil" type="text" name="street" placeholder="STREET">
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputNoPencil" type="text" name="city" placeholder="CITY">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputNoPencil" type="text" name="region" placeholder="REGION/STATE">
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputNoPencil" type="text" name="country" placeholder="COUNTRY">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputNoPencil" type="text" name="postal" placeholder="POSTAL CODE">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -15px;">
+                        <div class="col-2" style="flex-basis: 100%; text-align: left;">
+                            <a class="adrBtn" onclick="changeAddress()">DISCARD CHANGES</a>
+                            <a class="adrBtn" onclick="changeAddressAjax()">SAVE CHANGES</a>
+                        </div>
+                    </div>
+
+                    <h2>DELETE ACCOUNT</h2>
+                    <div class="row" style="margin-top: -15px;">
+                        <div class="col-2" style="flex-basis: 60%; text-align: left; margin-left: -20px;">
+                            <p>Click REQUEST ACCOUNT DELETION to start the process of permanently deleting your account including all personal information, and orders.</p>
+                            <p style="color: red;">If you request deletion of your account, a verification email will be sent to you with a link that deletes your account when opened.</p>
+                        </div>
+                        <div class="col-2" style="flex-basis: 40%; text-align: right; margin-left: -20px;">
+                            <a class="adrBtn" style="padding-left: 40px; padding-right: 40px;" onclick="deleteAccount()">REQUEST ACCOUNT DELETION</a>
                         </div>
                     </div>
                 </div>
-            </section>
+                <div class="form-overlay">
+                    <div class="overlay-bg"></div>
+                    <img src="images/loading.png" class="loading">
+                </div>
+            </div>
+            <div class="col-2 pg" style="flex-basis: 50%;" id="orders">
+                <div class="info-cont">
+                    <h2>ORDERS</h2>
+                    <p style="margin-bottom: 25px;">View your account orders and their status. <a href="/refund-policy.html" id="link">Read our refund policy</a></p>
+                    <div class="table-cont" style="margin-bottom: 25px;">
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Products</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </tr>
+
+                            <?php
+                            require('php/connection.php');
+
+                            $session = $_COOKIE['session'];
+
+                            $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+                            $query = mysqli_query($conn, $sql);
+                            $rows = mysqli_num_rows($query);
+
+                            if ($rows == 1) {
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    $sql2 = "SELECT * FROM orders WHERE userid = " . $row['id'] . " ORDER BY id Desc;";
+                                    $query2 = mysqli_query($conn, $sql2);
+                                    $rows2 = mysqli_num_rows($query2);
+
+                                    $it;
+                                    while ($row2 = mysqli_fetch_assoc($query2)) {
+                                        $it++;
+                                        $products;
+                                        $quantity;
+                                        $prodStr = "<td>";
+                                        $price = $row2['price'];
+
+                                        $prods = urldecode($row2['Products']);
+                                        $quantity = $row2['quantity'];
+
+                                        if(strpos($prods, ", ") != null){
+                                            $quantity = explode(", ", $quantity);
+                                            $products = explode(", ", $prods);
+                                            for($i = 0; $i < count($products); $i++){
+                                                $sql3 = "SELECT * FROM Products WHERE Name = '" . $products[$i] . "';";
+                                                $query3 = mysqli_query($conn, $sql3);
+                                                $rows3 = mysqli_num_rows($query3);
+                                                if($rows3 > 0){
+                                                    while($row3 = mysqli_fetch_assoc($query3)){
+                                                        if($i == count($products) - 1) $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='link'>" . $quantity[$i] . "x " . $products[$i] . "</a>";
+                                                        else $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='link'>" . $quantity[$i] . "x " . $products[$i] . "</a>, ";
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            $quantity = explode(", ", $quantity);
+                                            $products = $prods;
+                                                $sql3 = "SELECT * FROM Products WHERE Name = '" . $products . "';";
+                                                $query3 = mysqli_query($conn, $sql3);
+                                                $rows3 = mysqli_num_rows($query3);
+                                                if($rows3 > 0){
+                                                    while($row3 = mysqli_fetch_assoc($query3)){
+                                                        $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='link'>" . $quantity[$i] . "x " . $products . "</a>";
+                                                    }
+                                                }
+                                        }
+                                        $prodStr .= "</td>";
+
+                                        echo "<tr>";
+                                        echo "<td>" . $row2['id'] . "</td>";
+                                        echo "<td>" . substr($row2['date'], 0, strpos($row2['date'], " ")) . "</td>";
+                                        echo $prodStr;
+                                        echo "<td>EGP " . $price . "</td>";
+                                        echo "<td>" . $row2['status'] . "</td>";
+                                    }
+                                }
+                            }
+                            ?>
+                        </table>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 pg" style="flex-basis: 50%;" id="admin">
+                <div class="info-cont">
+                    <h2>ADMIN</h2>
+                    <p>Manage products and other similar things.</p>
+
+                    <h2 style="color: red;">PAGE IS UNDER CONSTRUCTION</h2>
+                    <h2 style="color: red;">CHECK AGAIN LATER.</h2>
+                    <br>
+                </div>
+            </div>
+            <div class="col-2 pg" style="flex-basis: 50%;" id="editor">
+                <div class="info-cont">
+                    <h2>EDITOR</h2>
+                    <p>Manage everything about the website.</p>
+
+                    <h2 style="color: red;">PAGE IS UNDER CONSTRUCTION</h2>
+                    <h2 style="color: red;">CHECK AGAIN LATER.</h2>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="window-overlay window-hidden">
+        <div class="container-overlay">
+            <h3><a style="border-bottom: 1px solid white;">CHANGE USERNAME</a><i class="fas fa-times" onclick="showWindow(0, 'hide')"></i></h3>
+            <h4 style=" padding-bottom: 20px;"><a style="font-weight: bold;">Please Note: </a><a>This username is used for us to refer to you and also for logging in.</a></h4>
+            <h4><a style="font-weight: bold;">Current Username: </a><a>Username</a></h4>
+            <div class="col-2" style="margin-left: -8px;">
+                <input class="window-input" type="text" name="newUsername" placeholder="NEW USERNAME">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <input class="window-input" type="text" name="repeatNewUsername" placeholder="REPEAT NEW USERNAME">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <div class="checkboxDiv" id="agreement" style="display: inline-block;" onclick="checkbox(this)"><a class="notChecked">&#9632;</a></div>
+                <a style="font-size: 17px; margin-left: 10px;">I Understand that changing my username will result in change of my login credits and how my account is accessed.</a>
+            </div>
+            <div class="col-2" style="flex-basis: 100%; text-align: left; margin-left: -8px; margin-top: -35px;">
+                <a class="window-btn" onclick="showWindow(0, 'hide')">CANCEL</a>
+                <a class="window-btn" onclick="changeNameAjax()">CONFIRM</a>
+            </div>
+        </div>
+        <div class="form-overlay">
+            <div class="overlay-bg"></div>
+            <img src="images/loading.png" class="loading">
+        </div>
+    </div>
+
+    <div class="window-overlay window-hidden">
+        <div class="container-overlay">
+            <h3><a style="border-bottom: 1px solid white;">CHANGE EMAIL</a><i class="fas fa-times" onclick="showWindow(1, 'hide')"></i></h3>
+            <h4 style=" padding-bottom: 20px;"><a style="font-weight: bold;">Please Note: </a><a>This email is used for contacting you and for resetting your password.</a></h4>
+            <h4><a style="font-weight: bold;">Current Email: </a><a>email</a></h4>
+            <div class="col-2" style="margin-left: -8px;">
+                <input class="window-input" type="text" name="newEmail" placeholder="NEW EMAIL">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <input class="window-input" type="text" name="repeatNewEmail" placeholder="REPEAT NEW EMAIL">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <div class="checkboxDiv" id="agreement" style="display: inline-block;" onclick="checkbox(this)"><a class="notChecked">&#9632;</a></div>
+                <a style="font-size: 17px; margin-left: 10px;">I Understand that changing my email will result in change of my login credits and how my account is accessed.<</a>
+            </div>
+            <div class="col-2" style="flex-basis: 100%; text-align: left; margin-left: -8px; margin-top: -35px;">
+                <a class="window-btn" onclick="showWindow(1, 'hide')">CANCEL</a>
+                <a class="window-btn" onclick="changeEmailAjax()">CONFIRM</a>
+            </div>
+        </div>
+        <div class="form-overlay">
+            <div class="overlay-bg"></div>
+            <img src="images/loading.png" class="loading">
+        </div>
+    </div>
+
+    <div class="window-overlay window-hidden">
+        <div class="container-overlay">
+            <h3><a style="border-bottom: 1px solid white;">CHANGE PASSWORD</a><i class="fas fa-times" onclick="showWindow(2, 'hide')"></i></h3>
+            <div class="col-2" style="margin-left: -8px;">
+                <input class="window-input" type="password" name="currPass" placeholder="CURRENT PASSWORD" minlength="8" required>
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <input class="window-input" type="password" name="newPass" id="newPass" placeholder="NEW PASSWORD" minlength="8" onfocus="focused()" onkeyup="keyUp(this)" required>
+            </div>
+            <div class="changePassStrength">
+                <span>Weak</span>
+                <span></span>
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <input class="window-input" type="password" name="repeatNewPass" placeholder="REPEAT NEW PASSWORD" minlength="8" required>
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <div class="checkboxDiv" id="agreement" style="display: inline-block;" onclick="checkbox(this)"><a class="notChecked">&#9632;</a></div>
+                <a style="font-size: 17px; margin-left: 10px;">I Understand that changing my password will result in change of my login credits and how my account is accessed.</a>
+            </div>
+            <div class="col-2" style="flex-basis: 100%; text-align: left; margin-left: -8px; margin-top: -35px;">
+                <a class="window-btn" onclick="showWindow(2, 'hide')">CANCEL</a>
+                <a class="window-btn" onclick="changePassAjax()">CONFIRM</a>
+            </div>
+        </div>
+        <div class="form-overlay">
+            <div class="overlay-bg"></div>
+            <img src="images/loading.png" class="loading">
+        </div>
+    </div>
+
+    <div class="window-overlay window-hidden">
+        <div class="container-overlay">
+            <h3><a style="border-bottom: 1px solid white;">CHANGE NUMBER</a><i class="fas fa-times" onclick="showWindow(3, 'hide')"></i></h3>
+            <h4 style=" padding-bottom: 20px;"><a style="font-weight: bold;">Please Note: </a><a>This phone number is used for confirmation of orders.</a></h4>
+            <h4><a style="font-weight: bold;">Current Number: </a><a>Number</a></h4>
+            <div class="col-2" style="margin-left: -8px;">
+                <input class="window-input" type="number" name="newNum" placeholder="NEW PHONE NUMBER 01x xxxx xxxx" maxlength="11" id="noArrows" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <input class="window-input" type="number" name="repeatNewNum" placeholder="REPEAT NEW PHONE NUMBER" maxlength="11" id="noArrows" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <div class="checkboxDiv" id="agreement" style="display: inline-block;" onclick="checkbox(this)"><a class="notChecked">&#9632;</a></div>
+                <a style="font-size: 17px; margin-left: 10px;">I Understand that this number will be recorded and I'm giving Skate Alligent permission to use it.</a>
+            </div>
+            <div class="col-2" style="flex-basis: 100%; text-align: left; margin-left: -8px; margin-top: -35px;">
+                <a class="window-btn" onclick="showWindow(3, 'hide')">CANCEL</a>
+                <a class="window-btn" onclick="changeNumberAjax()">CONFIRM</a>
+            </div>
+        </div>
+        <div class="form-overlay">
+            <div class="overlay-bg"></div>
+            <img src="images/loading.png" class="loading">
         </div>
     </div>
 
@@ -102,9 +383,466 @@
         </div>
     </div>
 
+    <!--- Footer --->
+    <div class="footer" id="sec4">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <img src="images/Logo.png" style="cursor: pointer;" onclick="switchPg('/index.html')">
+                </div>
+                <div class="footer-col-2">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
+                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
+                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
+                        <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="php" style="display: none;">
+        <?php
+        require('php/connection.php');
+
+        $session = $_COOKIE['session'];
+
+        $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+        $query = mysqli_query($conn, $sql);
+        $rows = mysqli_num_rows($query);
+
+        if ($rows == 1) {
+            while ($row = mysqli_fetch_assoc($query)) {
+                $sql2 = "SELECT * FROM addresses WHERE id = " . $row['id'] . ";";
+                $query2 = mysqli_query($conn, $sql2);
+                $rows2 = mysqli_num_rows($query2);
+
+                if ($rows2 == 1) {
+                    while ($row2 = mysqli_fetch_assoc($query2)) {
+                        echo "<a id='id'>" . $row['id'] . "</a>";
+                        echo "<a id='ID'>" . md5($row['id']) . "</a>";
+                        echo "<a id='username'>" . $row['username'] . "</a>";
+                        echo "<a id='email'>" . $row['email'] . "</a>";
+                        echo "<a id='password'>" . $row['password'] . "</a>";
+                        echo "<a id='salt'>" . $row['salt'] . "</a>";
+                        echo "<a id='status'>" . $row['status'] . "</a>";
+                        echo "<a id='pnumber'>" . $row['pnumber'] . "</a>";
+                        echo "<!-- Address -->";
+                        echo "<a id='adId'>" . $row2['id'] . "</a>";
+                        echo "<a id='apartment'>" . $row2['apartment'] . "</a>";
+                        echo "<a id='building'>" . $row2['building'] . "</a>";
+                        echo "<a id='street'>" . $row2['street'] . "</a>";
+                        echo "<a id='city'>" . $row2['city'] . "</a>";
+                        echo "<a id='region'>" . $row2['region'] . "</a>";
+                        echo "<a id='country'>" . $row2['country'] . "</a>";
+                        echo "<a id='postal'>" . $row2['postal'] . "</a>";
+                    }
+                }
+            }
+        }
+        ?>
+    </div>
 
     <!--- JavaScript --->
     <script>
+        // <-- Change Info -->
+        let id = document.getElementById("id");
+        let ID = document.getElementById("ID");
+        let username = document.getElementById("username");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let salt = document.getElementById("salt");
+        let status = document.getElementById("status");
+        let pnumber = document.getElementById("pnumber");
+
+        let adId = document.getElementById("adId");
+        let apartment = document.getElementById("apartment");
+        let building = document.getElementById("building");
+        let street = document.getElementById("street");
+        let city = document.getElementById("city");
+        let region = document.getElementById("region");
+        let country = document.getElementById("country");
+        let postal = document.getElementById("postal");
+
+        checkInfo();
+
+        function checkInfo() {
+            //change id
+            let idObj = document.getElementById("settings").children[0].children[3].children[0];
+            idObj.innerHTML = ID.innerHTML;
+
+            //change name
+            let nameObj = document.getElementsByName("username")[0];
+            nameObj.disabled = true;
+            nameObj.placeholder = username.innerHTML;
+
+            //change email
+            let emailObj = document.getElementsByName("email")[0];
+            emailObj.disabled = true;
+            emailObj.placeholder = email.innerHTML;
+
+            //change password
+            let passObj = document.getElementsByName("password")[0];
+            passObj.disabled = true;
+            var pass = "*";
+            for (i = 0; i < password.innerHTML.length - 1; i++) pass = pass + "*";
+            passObj.placeholder = pass;
+
+            //change phone number
+            let numObj = document.getElementsByName("phone")[0];
+            numObj.disabled = true;
+            numObj.placeholder = pnumber.innerHTML;
+            if (pnumber.innerHTML == "") numObj.placeholder = "PHONE NUMBER";
+
+            //change username window
+            let userWinObj = document.getElementsByClassName("window-overlay")[0].children[0].children[2].children[1];
+            userWinObj.innerHTML = username.innerHTML;
+
+            //change email window
+            let emailWinObj = document.getElementsByClassName("window-overlay")[1].children[0].children[2].children[1];
+            emailWinObj.innerHTML = email.innerHTML;
+
+            //change number window
+            let numberWinObj = document.getElementsByClassName("window-overlay")[3].children[0].children[2].children[1];
+            numberWinObj.innerHTML = pnumber.innerHTML;
+
+            //change admin and editor buttons
+            let admin = document.getElementsByClassName("btnrow")[2];
+            let editor = document.getElementsByClassName("btnrow")[3];
+            let adminObj = document.getElementsByClassName("pg")[2];
+            let editorObj = document.getElementsByClassName("pg")[3];
+
+            if (status.innerHTML == 1) {
+                editor.remove();
+                editorObj.remove();
+                changePg('settings', document.getElementsByClassName("SETTINGS")[0]);
+            } else if (status.innerHTML == 0) {
+                admin.remove();
+                adminObj.remove();
+                editor.remove();
+                editorObj.remove();
+            }
+            status.remove();
+
+            //change address
+            changeAddress();
+        }
+
+        // <-- Change Page -->
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const pageName = urlParams.get('pg');
+        changePg(pageName.toLowerCase(), document.getElementsByClassName(pageName.toUpperCase())[0]);
+
+        function changePg(pg, obj) {
+            let btns = document.getElementsByClassName("btnrow");
+            let pgs = document.getElementsByClassName("pg");
+            let col = document.getElementsByClassName("col-2")[0];
+
+            if(obj != undefined){
+                for (i = 0; i < btns.length; i++) {
+                if (btns[i] != obj) {
+                    btns[i].id = "";
+                    pgs[i].classList.remove("act");
+                } else {
+                    pgs[i].classList.add("act");
+                    col.style.height = pgs[i].offsetHeight + "px";
+                    obj.id = "btnAct";
+                }
+                }
+            } else {
+                obj = document.getElementsByClassName("SETTINGS")[0];
+                for (i = 0; i < btns.length; i++) {
+                if (btns[i] != obj) {
+                    btns[i].id = "";
+                    pgs[i].classList.remove("act");
+                } else {
+                    pgs[i].classList.add("act");
+                    col.style.height = pgs[i].offsetHeight + "px";
+                    obj.id = "btnAct";
+                }
+                }
+            }
+        }
+
+        //change address
+        function changeAddress() {
+            let apartmentObj = document.getElementsByClassName("inputNoPencil")[0];
+            let buildingObj = document.getElementsByClassName("inputNoPencil")[1];
+            let streetObj = document.getElementsByClassName("inputNoPencil")[2];
+            let cityObj = document.getElementsByClassName("inputNoPencil")[3];
+            let regionObj = document.getElementsByClassName("inputNoPencil")[4];
+            let countryObj = document.getElementsByClassName("inputNoPencil")[5];
+            let postalObj = document.getElementsByClassName("inputNoPencil")[6];
+
+            apartmentObj.value = apartment.innerHTML;
+            buildingObj.value = building.innerHTML;
+            streetObj.value = street.innerHTML;
+            cityObj.value = city.innerHTML;
+            regionObj.value = region.innerHTML;
+            countryObj.value = country.innerHTML;
+            postalObj.value = postal.innerHTML;
+        }
+
+        function changeAddressAjax() {
+            loading(true);
+            let apartmentObj = document.getElementsByClassName("inputNoPencil")[0];
+            let buildingObj = document.getElementsByClassName("inputNoPencil")[1];
+            let streetObj = document.getElementsByClassName("inputNoPencil")[2];
+            let cityObj = document.getElementsByClassName("inputNoPencil")[3];
+            let regionObj = document.getElementsByClassName("inputNoPencil")[4];
+            let countryObj = document.getElementsByClassName("inputNoPencil")[5];
+            let postalObj = document.getElementsByClassName("inputNoPencil")[6];
+
+            var form_data = new FormData();
+
+            form_data.append("adId", adId.innerHTML);
+            form_data.append("apartment", apartmentObj.value);
+            form_data.append("building", buildingObj.value);
+            form_data.append("street", streetObj.value);
+            form_data.append("city", cityObj.value);
+            form_data.append("region", regionObj.value);
+            form_data.append("country", countryObj.value);
+            form_data.append("postal", postalObj.value);
+
+            //document.getElementsByClassName('logSubmit')[0].disabled = true;
+
+            var ajax_request = new XMLHttpRequest();
+
+            ajax_request.open('POST', 'php/process_data.php');
+
+            ajax_request.send(form_data);
+
+            ajax_request.onreadystatechange = function() {
+                if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                    var response = ajax_request.responseText;
+
+                    loading(false);
+                    location.reload();
+                }
+            }
+        }
+
+        //change username
+        function changeNameAjax() {
+            loading(true, 1);
+            let nameObj = document.getElementsByName("newUsername")[0];
+            let rNameObj = document.getElementsByName("repeatNewUsername")[0];
+            let check = document.getElementsByClassName("checkboxDiv")[0].children[0];
+
+            if (nameObj.value == rNameObj.value && check.className == "Checked") {
+
+                var form_data = new FormData();
+
+                form_data.append("newUserId", id.innerHTML);
+                form_data.append("newUser", nameObj.value);
+
+                //document.getElementsByClassName('logSubmit')[0].disabled = true;
+
+                var ajax_request = new XMLHttpRequest();
+
+                ajax_request.open('POST', 'php/process_data.php');
+
+                ajax_request.send(form_data);
+
+                ajax_request.onreadystatechange = function() {
+                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                        var response = ajax_request.responseText;
+
+                        if (response == "change successful") {
+                            loading(false, 1);
+                            showWindow(0, 'hide')
+                            location.reload();
+                        } else if (response == "username already exists") {
+                            loading(false, 1);
+                        } else {
+                            loading(false, 1);
+                        }
+                    }
+                }
+            } else {
+                loading(false, 1);
+            }
+        }
+
+        //change email
+        function changeEmailAjax() {
+            loading(true, 2);
+            let nameObj = document.getElementsByName("newEmail")[0];
+            let rNameObj = document.getElementsByName("repeatNewEmail")[0];
+            let check = document.getElementsByClassName("checkboxDiv")[1].children[0];
+
+            if (nameObj.value == rNameObj.value && check.className == "Checked") {
+
+                var form_data = new FormData();
+
+                form_data.append("newEmailId", id.innerHTML);
+                form_data.append("newEmail", nameObj.value);
+
+                //document.getElementsByClassName('logSubmit')[0].disabled = true;
+
+                var ajax_request = new XMLHttpRequest();
+
+                ajax_request.open('POST', 'php/process_data.php');
+
+                ajax_request.send(form_data);
+
+                ajax_request.onreadystatechange = function() {
+                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                        var response = ajax_request.responseText;
+
+                        if (response == "change successful") {
+                            loading(false, 2);
+                            showWindow(0, 'hide')
+                            location.reload();
+                        } else if (response == "email already exists") {
+                            loading(false, 2);
+                        } else {
+                            loading(false, 2);
+                        }
+                    }
+                }
+            } else {
+                loading(false, 2);
+            }
+        }
+
+        //change pass
+        function changePassAjax() {
+            loading(true, 3);
+            let cnameObj = document.getElementsByName("currPass")[0];
+            let nameObj = document.getElementsByName("newPass")[0];
+            let rNameObj = document.getElementsByName("repeatNewPass")[0];
+            let check = document.getElementsByClassName("checkboxDiv")[2].children[0];
+
+            if (nameObj.value == rNameObj.value && cnameObj.value != nameObj.value && check.className == "Checked") {
+
+                var form_data = new FormData();
+
+                form_data.append("newPassId", id.innerHTML);
+                form_data.append("newPass", nameObj.value);
+                form_data.append("currPass", cnameObj.value);
+
+                //document.getElementsByClassName('logSubmit')[0].disabled = true;
+
+                var ajax_request = new XMLHttpRequest();
+
+                ajax_request.open('POST', 'php/process_data.php');
+
+                ajax_request.send(form_data);
+
+                ajax_request.onreadystatechange = function() {
+                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                        var response = ajax_request.responseText;
+
+                        if (response == "change successful") {
+                            loading(false, 3);
+                            showWindow(0, 'hide')
+                            location.reload();
+                        } else if (response == "current password is incorrect") {
+                            loading(false, 3);
+                        } else {
+                            loading(false, 3);
+                        }
+                    }
+                }
+            } else {
+                loading(false, 3);
+            }
+        }
+
+        //change number
+        function changeNumberAjax() {
+            loading(true, 4);
+            let nameObj = document.getElementsByName("newNum")[0];
+            let rNameObj = document.getElementsByName("repeatNewNum")[0];
+            let check = document.getElementsByClassName("checkboxDiv")[3].children[0];
+
+            if (nameObj.value == rNameObj.value && check.className == "Checked") {
+
+                var form_data = new FormData();
+
+                form_data.append("newNumId", id.innerHTML);
+                form_data.append("newNum", nameObj.value);
+
+                //document.getElementsByClassName('logSubmit')[0].disabled = true;
+
+                var ajax_request = new XMLHttpRequest();
+
+                ajax_request.open('POST', 'php/process_data.php');
+
+                ajax_request.send(form_data);
+
+                ajax_request.onreadystatechange = function() {
+                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                        var response = ajax_request.responseText;
+
+                        if (response == "change successful") {
+                            loading(false, 4);
+                            showWindow(0, 'hide')
+                            location.reload();
+                        } else if (response == "number already exists") {
+                            loading(false, 4);
+                        } else {
+                            loading(false, 4);
+                        }
+                    }
+                }
+            } else {
+                loading(false, 4);
+            }
+        }
+
+        // delete account
+        function deleteAccount() {
+            loading(true);
+            var form_data = new FormData();
+
+            form_data.append("deleteAccId", id.innerHTML);
+
+            //document.getElementsByClassName('logSubmit')[0].disabled = true;
+
+            var ajax_request = new XMLHttpRequest();
+
+            ajax_request.open('POST', 'php/process_data.php');
+
+            ajax_request.send(form_data);
+
+            ajax_request.onreadystatechange = function() {
+                if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                    var response = ajax_request.responseText;
+
+                    if (response == "deletion success") {
+                        setCookie('session', '', 0);
+                        loading(false);
+                        location.reload();
+                    } else {
+                        loading(false);
+                    }
+                }
+            }
+        }
+
         // <-- Menu -->
         var MenuItems = document.getElementById("menuItems");
 
@@ -128,186 +866,6 @@
             location.href = pg;
         }
 
-        // <-- Switch between login and reg and pass-->
-        var LoginForm = document.getElementById("LoginForm");
-        var RegForm = document.getElementById("RegForm");
-        var ResetForm = document.getElementById("resetForm");
-        var PasswordForm = document.getElementById("PasswordForm");
-        var Indicator = document.getElementById("indicator");
-        switchBetween("Login");
-
-        function switchBetween(type) {
-            if (type == "Register") {
-                RegForm.style.transform = "translateY(-30px) translateX(0px)";
-                LoginForm.style.transform = "translateY(0px) translateX(0px)";
-                ResetForm.style.transform = "translateY(0px) translateX(0px)";
-                PasswordForm.style.transform = "translateY(0px) translateX(0px)";
-                Indicator.style.transform = "translateX(100px)";
-                resetLog();
-                resetEmail();
-                resetPass();
-            } else if (type == "Login") {
-                RegForm.style.transform = "translateY(-30px) translateX(300px)";
-                LoginForm.style.transform = "translateY(0px) translateX(300px)";
-                ResetForm.style.transform = "translateY(0px) translateX(300px)";
-                PasswordForm.style.transform = "translateY(0px) translateX(300px)";
-                Indicator.style.transform = "translateX(0px)";
-                resetReg();
-                resetEmail();
-                resetPass();
-            } else if (type == "Email") {
-                RegForm.style.transform = "translateY(390px) translateX(300px)";
-                LoginForm.style.transform = "translateY(420px) translateX(300px)";
-                ResetForm.style.transform = "translateY(420px) translateX(300px)";
-                PasswordForm.style.transform = "translateY(390px) translateX(300px)";
-                resetLog();
-            } else if (type == "Pass") {
-                RegForm.style.transform = "translateY(390px) translateX(0px)";
-                LoginForm.style.transform = "translateY(420px) translateX(0px)";
-                ResetForm.style.transform = "translateY(420px) translateX(0px)";
-                PasswordForm.style.transform = "translateY(390px) translateX(0px)";
-                resetEmail();
-            }
-        }
-
-        // <-- Login -->
-        function checkLogin() {
-            LoginError(0);
-            return false;
-        }
-
-        function LoginError(code) {
-            let loginError = document.getElementsByClassName("ErrorL");
-
-            if (code == 0) {
-                loginError[0].style.opacity = "100%";
-                loginError[1].style.opacity = "0";
-            } else if (code == 1) {
-                loginError[0].style.opacity = "0";
-                loginError[1].style.opacity = "100%";
-            } else if (code == "reset") {
-                loginError[0].style.opacity = "0";
-                loginError[1].style.opacity = "0";
-            }
-        }
-
-        function resetLog() {
-            let loginError = document.getElementsByClassName("ErrorL");
-            let loginUsername = document.getElementById("loginUsername");
-            let loginPassword = document.getElementById("loginPassword");
-
-            loginError[0].style.opacity = "0";
-            loginError[1].style.opacity = "0";
-            loginUsername.value = "";
-            loginPassword.value = "";
-        }
-
-        // <-- Register -->
-        function checkRegister() {
-            RegError(0);
-            return false;
-        }
-
-        function RegError(code) {
-            let regText = document.getElementsByClassName("Error");
-
-            if (code == 0) {
-                RegForm.style.transform = "translateY(0px) translateX(0px)";
-                regText[0].style.opacity = "100%";
-                regText[1].style.opacity = "0";
-            } else if (code == 1) {
-                RegForm.style.transform = "translateY(0px) translateX(0px)";
-                regText[0].style.opacity = "0";
-                regText[1].style.opacity = "100%";
-            } else if (code == "reset") {
-                RegForm.style.transform = "translateY(-30px) translateX(0px)";
-                regText[0].style.opacity = "0";
-                regText[1].style.opacity = "0";
-            }
-        }
-
-        function resetReg() {
-            let regText = document.getElementsByClassName("Error");
-            let regUsername = document.getElementById("regUsername");
-            let regPassword = document.getElementById("regPassword");
-            let regEmail = document.getElementById("regEmail");
-            let regNumber = document.getElementById("regNumber");
-
-            regText[0].style.opacity = "0";
-            regText[1].style.opacity = "0";
-            regUsername.value = "";
-            regPassword.value = "";
-            regEmail.value = "";
-            regNumber.value = "";
-        }
-
-        // <-- Password Email -->
-        function sendEmail() {
-            //EmailError();
-            switchBetween("Pass");
-            return false;
-        }
-
-        function EmailError() {
-            let emailError = document.getElementById("ErrorR");
-            emailError.style.opacity = "100%";
-        }
-
-        function resetEmail() {
-            let emailError = document.getElementById("ErrorR");
-            let emailEmail = document.getElementById("emailEmail");
-
-            emailError.style.opacity = "0";
-            emailEmail.value = "";
-        }
-
-        // <-- Password -->
-        function resetPassword() {
-            let passInputs = document.getElementsByClassName("passwordField");
-
-            if (passInputs[0].value == passInputs[1].value) PassError(0);
-            else PassError(1);
-
-            return false;
-        }
-
-        function PassError(code) {
-            let passError = document.getElementsByClassName("ErrorP");
-
-            if (code == 0) {
-                passError[0].style.opacity = "100%";
-                passError[1].style.opacity = "0";
-                PasswordForm.style.transform = "translateY(410px) translateX(0px)";
-            } else if (code == 1) {
-                passError[0].style.opacity = "0";
-                passError[1].style.opacity = "100%";
-                PasswordForm.style.transform = "translateY(410px) translateX(0px)";
-            } else if (code == "reset") {
-                passError[0].style.opacity = "0";
-                passError[1].style.opacity = "0";
-                PasswordForm.style.transform = "translateY(390px) translateX(0px)";
-            }
-        }
-
-        function resendEmail() {
-            let codeInput = document.getElementById("noArrows");
-
-            PassError("reset");
-            codeInput.value = "";
-        }
-
-        function resetPass() {
-            let passError = document.getElementsByClassName("ErrorP");
-            let codeInput = document.getElementById("noArrows");
-            let passInputs = document.getElementsByClassName("passwordField");
-
-            passError[0].style.opacity = "0";
-            passError[1].style.opacity = "0";
-            passInputs[0].value = "";
-            passInputs[1].value = "";
-            codeInput.value = "";
-        }
-
         // <-- Cookie Consent -->
         let cSection = document.getElementsByClassName("cookies");
         let cCont = cSection[0].children[0];
@@ -316,6 +874,8 @@
         function checkCookies() {
             if (getCookie("CookieConsent") == null) {
                 cFunc("show");
+            } else {
+                cFunc("hide");
             }
         }
 
@@ -326,21 +886,142 @@
 
         function cFunc(n) {
             if (n == "show") {
-                cCont.style.top = "860px";
+                cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
             } else if (n == "hide") {
-                cCont.style.top = "940px";
+                cCont.style.top = window.innerHeight + "px";
             }
         }
 
-        function setCookie(key, value) {
+        function setCookie(key, value = 10000 * 365 * 24 * 60 * 60) {
             var expires = new Date();
-            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
+            expires.setTime(expires.getTime() + value);
             document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
         }
 
         function getCookie(key) {
             var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
             return keyValue ? keyValue[2] : null;
+        }
+
+        // <-- Windows -->
+        function showWindow(no, type) {
+            let windows = document.getElementsByClassName("window-overlay");
+            keyUp("reset");
+
+            if (type == "show") {
+                windows[no].classList.remove("window-hidden");
+                windows[no].classList.add("window-shown");
+                document.body.style.overflowY = 'hidden';
+                document.body.style.overflowX = 'hidden';
+            } else {
+                windows[no].classList.remove("window-shown");
+                windows[no].classList.add("window-hidden");
+                document.body.style.overflowY = '';
+                document.body.style.overflowX = '';
+            }
+        }
+
+        // <-- Get Password Strength -->            
+        function checkStrength(password) {
+            let s = 0;
+            if (password.length > 6) {
+                s++;
+            }
+
+            if (password.length > 10) {
+                s++;
+            }
+
+            if (/[A-Z]/.test(password)) {
+                s++;
+            }
+
+            if (/[0-9]/.test(password)) {
+                s++;
+            }
+
+            if (/[^A-Za-z0-9]/.test(password)) {
+                s++;
+            }
+
+            if (password.length == 0) {
+                s = -1;
+            }
+
+            return s;
+        }
+
+        function focused() {
+            document.querySelector(".changePassStrength").style.visibility = "visible";
+            document.querySelector(".changePassStrength").style.transform = "translateY(-48px)";
+            document.querySelector(".changePassStrength").style.opacity = "100%";
+        }
+
+        function keyUp(x) {
+            var password;
+
+            if (x == "reset") {
+                password = "";
+            } else {
+                password = x.value;
+            }
+
+            let strength = checkStrength(password);
+            let passwordStrengths = document.querySelectorAll(".changePassStrength span");
+            if (strength > -1) {
+                strength = Math.max(strength, 1);
+                passwordStrengths[1].style.width = strength * 20 + "%";
+            } else {
+                passwordStrengths[1].style.width = "0%";
+            }
+
+            if (strength == -1) {
+                passwordStrengths[0].innerText = "Weak";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#fff";
+            } else if (strength <= 2) {
+                passwordStrengths[0].innerText = "Weak";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#d13636";
+            } else if (strength > 2 && strength <= 4) {
+                passwordStrengths[0].innerText = "Medium";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#e6da44";
+            } else if (strength > 4) {
+                passwordStrengths[0].innerText = "Strong";
+                passwordStrengths[1].style.color = "#fff";
+                passwordStrengths[1].style.background = "#20a820";
+            }
+
+            if (x == "reset") {
+                document.querySelector(".changePassStrength").style.visibility = "hidden";
+                document.querySelector(".changePassStrength").style.transform = "translateY(-48px)";
+                document.querySelector(".changePassStrength").style.opacity = "0%";
+            } else {
+                let input = document.querySelector("#newPass");
+                if (checkStrength(password) <= 2) {
+                    input.setCustomValidity("Please choose a stronger password.");
+                } else {
+                    input.setCustomValidity("");
+                }
+            }
+        }
+
+        //checkboxes
+        function checkbox(x) {
+            let check = x.children[0];
+
+            if (check.className == "Checked") check.className = "notChecked";
+            else if (check.className == "notChecked") check.className = "Checked";
+        }
+
+        //loading
+        function loading(con, n = 0) {
+            if (con == true) {
+                document.getElementsByClassName("form-overlay")[n].classList.add("ovlyact");
+            } else {
+                document.getElementsByClassName("form-overlay")[n].classList.remove("ovlyact");
+            }
         }
     </script>
 </body>

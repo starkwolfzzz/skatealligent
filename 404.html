@@ -70,41 +70,6 @@
         function switchPg(pg) {
             location.href = pg;
         }
-
-        // <-- Cookie Consent -->
-        let cSection = document.getElementsByClassName("cookies");
-        let cCont = cSection[0].children[0];
-        checkCookies();
-
-        function checkCookies() {
-            if (getCookie("CookieConsent") == null) {
-                cFunc("show");
-            }
-        }
-
-        function acceptCookies() {
-            cFunc("hide");
-            setCookie("CookieConsent", "true");
-        }
-
-        function cFunc(n) {
-            if (n == "show") {
-                cCont.style.top = "860px";
-            } else if (n == "hide") {
-                cCont.style.top = "940px";
-            }
-        }
-
-        function setCookie(key, value) {
-            var expires = new Date();
-            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
-            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
-        }
-
-        function getCookie(key) {
-            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-            return keyValue ? keyValue[2] : null;
-        }
     </script>
 </body>
 

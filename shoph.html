@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="dark">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skate Alligent - shop</title>
+    <title>Skate Alligent - shoph</title>
     <link rel="icon" type="image/png" href="images/Icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
@@ -25,19 +25,21 @@
                 <nav>
                     <ul id="menuItems">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/shop.html?pg=1" class="Active">shop</a></li>
+                        <li><a href="/shoph.html?pg=1" class="Active">shoph</a></li>
                         <li><a href="/account.html">Account</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease"></i></a>
-                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
+                <a href="/cart.html" class="button"><i class="fas fa-shophping-cart" aria-hidden="true"
+                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
             </div>
         </div>
     </div>
 
-    <!-- Filters -->
+    <!--- Filters --->
     <div class="filters-cont" style="height: 960px; transition: 0.5s;">
         <div class="row">
             <h1>Filters</h1>
@@ -289,17 +291,11 @@
         </div>
     </div>
 
-    <!-- Products -->
-    <div class="small-container">
+       <!--- Products --->
+       <div class="small-container">
         <div class="row row-2">
             <h2>All Products</h2>
-            <div class="search-con">
-                <form onsubmit="return false;">
-                    <input type="text" id="Searchbar" placeholder="Search..." title="Enter a term to search through the products">
-                    <button type="submit" onclick="searchBar(this)"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <select id="sortingSelect" onchange="setSorting(value)" name="Sort By:">
+            <select id="sortingSelect" onchange="multiFunction('sorting', value)" name="Sort By:">
                 <option>Default Sorting</option>
                 <option>Name: (A to Z)</option>
                 <option>Name: (Z to A)</option>
@@ -308,306 +304,108 @@
             </select>
         </div>
 
-        <?php
-        require_once('php/connection.php');
-
-        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-        $url_components = parse_url($url);
-        parse_str($url_components['query'], $params);
-
-        $sql;
-        $fullStr;
-
-        if($params['q'] != null || $params['category'] != null || $params['brand'] != null || $params['size'] != null || $params['color'] != null || $params['price'] != null || $params['stock'] != null || $params['special'] != null || $params['sort'] != null){
-            
-            $fullStr = "WHERE ";
-
-            if($params['q'] != null){
-                $fullStr = $fullStr . "Name LIKE '%" . $params['q'] . "%' AND ";
-            }
-
-            if($params['category'] != null){
-                $categories = str_replace(' ', ", ", $params['category']);
-                
-                $categories = str_replace('caOthers', "Others", $categories);
-
-                if(strpos($categories, ',') != null){
-                    $list = explode(', ',$categories);
-    
-                    for ($i = 0; $i < sizeof($list); $i++) { 
-                        if($i < sizeof($list) - 1)
-                        {
-                            $fullStr = $fullStr . "Category = '" . $list[$i] . "' OR ";
-                        } else {
-                            $fullStr = $fullStr . "Category = '" . $list[$i] . "' AND ";
-                        }
-                    }
-                } else {
-                    $fullStr = $fullStr . "Category = '" . $categories . "' AND ";
-                }
-            }
-
-            if($params['brand'] != null){
-                $brands = str_replace(' ', ", ", $params['brand']);
-
-                $brands = str_replace('Santa, Cruz', "Santa Cruz", $brands);
-                $brands = str_replace('Sector, 9', "Sector 9", $brands);
-                $brands = str_replace('brOthers', "Others", $brands);
-
-                if(strpos($brands, ',') != null){
-                    $list = explode(', ',$brands);
-    
-                    for ($i = 0; $i < sizeof($list); $i++) { 
-                        if($i < sizeof($list) - 1)
-                        {
-                            $fullStr = $fullStr . "Brand = '" . $list[$i] . "' OR ";
-                        } else {
-                            $fullStr = $fullStr . "Brand = '" . $list[$i] . "' AND ";
-                        }
-                    }
-                } else {
-                    $fullStr = $fullStr . "Brand = '" . $brands . "' AND ";
-                }
-            }
-
-            if($params['size'] != null){
-                $sizes = str_replace(' ', ", ", $params['size']);
-                if(strpos($sizes, ',') != null){
-                    $list = explode(', ',$sizes);
-    
-                    for ($i = 0; $i < sizeof($list); $i++) { 
-                        if($i < sizeof($list) - 1)
-                        {
-                            $fullStr = $fullStr . "Sizes LIKE '%" . $list[$i] . "%' OR ";
-                        } else {
-                            $fullStr = $fullStr . "Sizes LIKE '%" . $list[$i] . "%' AND ";
-                        }
-                    }
-                } else {
-                    $fullStr = $fullStr . "Sizes LIKE '%" . $sizes . "%' AND ";
-                }
-            }
-
-            if($params['color'] != null){
-                $colors = str_replace(' ', ", ", $params['color']);
-
-                $colors = str_replace('coOthers', "Others", $colors);
-
-                if(strpos($colors, ',') != null){
-                    $list = explode(', ',$colors);
-    
-                    for ($i = 0; $i < sizeof($list); $i++) { 
-                        if($i < sizeof($list) - 1)
-                        {
-                            $fullStr = $fullStr . "Colors LIKE '%" . $list[$i] . "%' OR ";
-                        } else {
-                            $fullStr = $fullStr . "Colors LIKE '%" . $list[$i] . "%' AND ";
-                        }
-                    }
-                } else {
-                    $fullStr = $fullStr . "Colors LIKE '%" . $colors . "%' AND ";
-                }
-            }
-
-            if($params['price'] != null){
-                $prices = str_replace(' ', ", ", $params['price']);
-
-                $prices = str_replace('Under, EGP, 1000', "Under EGP 1000", $prices);
-                $prices = str_replace('EGP, 1000, to, EGP, 2000', "EGP 1000 to EGP 2000", $prices);
-                $prices = str_replace('EGP, 2000, to, EGP, 3000', "EGP 2000 to EGP 3000", $prices);
-                $prices = str_replace('EGP, 3000, to, EGP, 4000', "EGP 3000 to EGP 4000", $prices);
-                $prices = str_replace('EGP, 4000, to, EGP, 5000', "EGP 4000 to EGP 5000", $prices);
-                $prices = str_replace('Over, EGP, 5000', "Over EGP 5000", $prices);
-
-                if(strpos($prices, ',') != null){
-                    $list = explode(', ', $prices);
-    
-                    for ($i = 0; $i < sizeof($list); $i++) { 
-                        if($i < sizeof($list) - 1)
-                        {
-                            if($list[$i] == "Under EGP 1000") $fullStr = $fullStr . "Price < 1000 OR ";
-                            else if($list[$i] == "EGP 1000 to EGP 2000") $fullStr = $fullStr . "Price BETWEEN 1000 and 2000 OR ";
-                            else if($list[$i] == "EGP 2000 to EGP 3000") $fullStr = $fullStr . "Price BETWEEN 2000 and 3000 OR ";
-                            else if($list[$i] == "EGP 3000 to EGP 4000") $fullStr = $fullStr . "Price BETWEEN 3000 and 4000 OR ";
-                            else if($list[$i] == "EGP 4000 to EGP 5000") $fullStr = $fullStr . "Price BETWEEN 4000 and 5000 OR ";
-                            else if($list[$i] == "Over EGP 5000") $fullStr = $fullStr . "Price > 5000 AND ";
-                        } else {
-                            if($list[$i] == "Under EGP 1000") $fullStr = $fullStr . "Price < 1000 AND ";
-                            else if($list[$i] == "EGP 1000 to EGP 2000") $fullStr = $fullStr . "Price BETWEEN 1000 and 2000 AND ";
-                            else if($list[$i] == "EGP 2000 to EGP 3000") $fullStr = $fullStr . "Price BETWEEN 2000 and 3000 AND ";
-                            else if($list[$i] == "EGP 3000 to EGP 4000") $fullStr = $fullStr . "Price BETWEEN 3000 and 4000 AND ";
-                            else if($list[$i] == "EGP 4000 to EGP 5000") $fullStr = $fullStr . "Price BETWEEN 4000 and 5000 AND ";
-                            else if($list[$i] == "Over EGP 5000") $fullStr = $fullStr . "Price > 5000 AND ";
-                        }
-                    }
-                } else {
-                    if($prices == "Under EGP 1000") $fullStr = $fullStr . "Price < 1000 AND ";
-                    else if($prices == "EGP 1000 to EGP 2000") $fullStr = $fullStr . "Price BETWEEN 1000 and 2000 AND ";
-                    else if($prices == "EGP 2000 to EGP 3000") $fullStr = $fullStr . "Price BETWEEN 2000 and 3000 AND ";
-                    else if($prices == "EGP 3000 to EGP 4000") $fullStr = $fullStr . "Price BETWEEN 3000 and 4000 AND ";
-                    else if($prices == "EGP 4000 to EGP 5000") $fullStr = $fullStr . "Price BETWEEN 4000 and 5000 AND ";
-                    else if($prices == "Over EGP 5000") $fullStr = $fullStr . "Price > 5000 AND ";
-                }
-            }
-
-            if($params['stock'] != null){
-                $stocks = str_replace(' ', ", ", $params['stock']);
-                
-                $stocks = str_replace('In, Stock', "In Stock", $stocks);
-                $stocks = str_replace('Out, Of, Stock', "Out Of Stock", $stocks);
-
-                if(strpos($stocks, ',') != null){
-                    $list = explode(', ', $stocks);    
-                    for ($i = 0; $i < sizeof($list); $i++) { 
-                        if($i < sizeof($list) - 1)
-                        {
-                            if($list[$i] == "In Stock") $fullStr = $fullStr . "Stock > 0 OR ";
-                            else if($list[$i] == "Out Of Stock") $fullStr = $fullStr . "Stock = 0 OR ";
-                        } else {
-                            if($list[$i] == "In Stock") $fullStr = $fullStr . "Stock > 0 AND ";
-                            else if($list[$i] == "Out Of Stock") $fullStr = $fullStr . "Stock = 0 AND ";
-                        }
-                    }
-                } else {
-                    if($stocks == "In Stock") $fullStr = $fullStr . "Stock > 0 AND ";
-                    else if($stocks == "Out Of Stock") $fullStr = $fullStr . "Stock = 0 AND ";
-                }
-            }
-
-            $newArrive = 0;
-
-            if($params['special'] != null){
-                $special = str_replace(' ', ", ", $params['special']);
-                
-                $special = str_replace('New, Arrivals', "New Arrivals", $special);
-
-                if(strpos($special, ',') != null){
-                    $list = explode(', ', $special);    
-                    for ($i = 0; $i < sizeof($list); $i++) { 
-                        if($list[$i] == "Sale") $fullStr = $fullStr . "Sale > 0 AND ";
-                        else if($list[$i] == "New Arrivals") $newArrive = 1;
-                    }
-                } else {
-                    if($special == "Sale") $fullStr = $fullStr . "Sale > 0 AND ";
-                    else if($special == "New Arrivals") $newArrive = 1;
-                }
-            }
-
-            if(strrpos($fullStr, "D") + 2 == strlen($fullStr)) $fullStr = substr($fullStr, 0, strrpos($fullStr, "AND") - 1);
-
-            if($newArrive == 0)
-            {
-                if($params['sort'] != null){
-                    $vari = $params['sort'];
-
-                    if($vari == "Name: (A to Z)") $fullStr = $fullStr . " ORDER BY Name";
-                    else if($vari == "Name: (Z to A)") $fullStr = $fullStr . " ORDER BY Name DESC";
-                    else if($vari == "Price: (Low to High)") $fullStr = $fullStr . " ORDER BY Price";
-                    else if($vari == "Price: (High to Low)") $fullStr = $fullStr . " ORDER BY Price DESC";
-                }
-            } else if ($newArrive == 1){
-                $fullStr = $fullStr . " ORDER BY ID DESC";
-            }
-
-            if(strpos($fullStr, "W") != null || strpos($fullStr, "W") == 0) {
-                $fullStr = str_replace('WHERE  ', "", $fullStr);
-            }
-
-            echo '<div style="display: none;"> ' . $fullStr . ' </div>';
-
-        }
-
-        $sql = "SELECT * FROM Products " . $fullStr . ";";
-
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-        $num = 1;
-
-        $numOfRows = 0;
-
-        $addedDiv = 0;
-
-        $iteration = 0;
-
-        if ($params['pg'] == 1) {
-            $numOfRows = 0;
-        } else {
-            $numOfRows = intval($params['pg'] - 1) * 4;
-        }
-
-        $onmouseover = "onmouseover = 'changeImage(";
-        $pt2 = 'this, "change")';
-        $colon2 = "'";
-
-        $onmouseout = "onmouseout = 'changeImage(";
-        $pt22 = 'this, "default")';
-
-        if ($resultCheck > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                if ($iteration >= intval($numOfRows * 4)) {
-                        if (intval($num - 1) % 4 == 0 || $num == 1) {
-                            echo '<div class="row">';
-                            $addedDiv = 0;
-                        }
-                        echo '<div class="col-4" style="cursor: pointer;"><a href="/product.html?id=' . $row['ID'] . '">';
-                        echo "<img src='products/" . $row['ID'] . ".png'>";
-                        
-                        if($row['Sale'] != 0){
-                            echo '<img style="position: absolute; width: 50px; margin-left: -235px; margin-top: 2px;" src="images/sale.png">';
-                        }
-
-                        echo "<h4 style='font-weight: bold;'>" . $row['Name'] . "</h4>";
-
-                        if($row['Stock'] > 0){
-                            echo "<p style='color: limegreen;'>In Stock</p>";
-                        } else if ($row['Stock'] == 0) {
-                            echo "<p style='color: red;'>Out Of Stock</p>";
-                        }
-                        
-                        if($row['Sale'] != 0){
-                            echo "<a style='text-decoration: none; color: White;'>EGP " . intval(intval($row['Price']) - intval($row['Sale'])) . " </a> <a style='text-decoration: line-through; color: gray;'>EGP " . $row['Price'] . "</a>";
-                        } else {
-                            echo "<p style='text-decoration: none; color: White;'>EGP " . $row['Price'] . "</p>";
-                        }
-                        echo "</div>";
-
-                        $num += 1;
-                        if (intval($num - 1) % 4 == 0 || $num == 1) {
-                            echo "</a></div>";
-                            $addedDiv = 1;
-                            $numOfRows += 1;
-                        }
-
-                    $iteration++;
-
-                    if ($numOfRows == 4 * $params['pg']) {
-                        break;
-                    }
-                } else {
-                    $iteration++;
-                }
-            }
-            if($addedDiv == 0){
-                echo "</a></div>";
-            }
-        } else {
-            echo "<div class='row'>";
-                echo '<h2 style="margin-top: 100px; margin-bottom: 400px;">There are no products available with the current filters.</h2>';
-            echo "</div>";
-        }
-
-        echo '<div id="numberOfRows" style="display: none;">' . $resultCheck . '</div>';
-        ?>
-
-            <div class="page-btn" style="text-align: right;">
-                <span onclick="nextPage(-1)" class="arrow-btn" id="invisible">&#8592;</span>
-                <span onclick="nextPage(1)" class="arrow-btn" id="visible">&#8594;</span>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png" onclick="prodPg()">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
             </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png" onclick="prodPg()">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png" onclick="prodPg()">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png" onclick="prodPg()">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png" onclick="prodPg()">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png" onclick="prodPg()">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="images/Skateboard.png" onclick="prodPg()">
+                <h4>Skateboard</h4>
+                <p>EGP 49.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Iceskate.png" onclick="prodPg()">
+                <img style="position: absolute; width: 60px; margin-left: -235px; margin-top: 2px;" src="images/sale.png">
+                <h4>Ice Skaters</h4>
+                <p>EGP 99.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+            <div class="col-4">
+                <img src="images/Rollerskate.png" onclick="prodPg()">
+                <h4>Roller Skaters</h4>
+                <p>EGP 449.99</p>
+            </div>
+        </div>
+
+        <div class="page-btn">
+            <span onclick="nextPage(-1)" class="arrow-btn" id="invisible">&#8592;</span>
+            <a href="/shoph.html?pg=1"><span class="page-btns" id="page-btn-active">1</span></a>
+            <a href="/shoph.html?pg=2"><span class="page-btns" id="page-btn">2</span></a>
+            <a href="/shoph.html?pg=3"><span class="page-btns" id="page-btn">3</span></a>
+            <a href="/shoph.html?pg=4"><span class="page-btns" id="page-btn">4</span></a>
+            <span onclick="nextPage(1)" class="arrow-btn" id="visible">&#8594;</span>
+        </div>
     </div>
 
-    <!-- Cookie Notice -->
-    <div class="cookies">
+     <!--- Cookie Notice --->
+     <div class="cookies">
         <div class="container">
             <div class="row">
                 <div class="col-2" style="text-align: right;">
@@ -623,8 +421,8 @@
     </div>
 
 
-    <!-- Footer -->
-    <div class="footer" id="sec4" style="margin-top: 2300px; top: 0px; transition: 0.5s; position: absolute; margin-left: 470px; width: 930px;">
+    <!--- Footer --->
+    <div class="footer" id="sec4" style="margin-top: 2100px; top: 0px; transition: 0.5s; position: absolute; margin-left: 470px; width: 930px;">
         <div class="container">
             <div class="row">
                 <div class="footer-col-1">
@@ -634,7 +432,7 @@
                     <h3>Useful Links</h3>
                     <ul>
                         <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
-                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">shopping Cart</a></li>
+                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">shophping Cart</a></li>
                         <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
                         <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
                     </ul>
@@ -655,7 +453,7 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!--- JavaScript --->
     <script>
         // <-- Menu -->
         var MenuItems = document.getElementById("menuItems");
@@ -671,53 +469,20 @@
         }
 
         // <-- Page Number -->
-        let arrowButtons = document.getElementsByClassName('arrow-btn');
-        createPages();
         let buttons = document.getElementsByClassName('page-btns');
+        let arrowButtons = document.getElementsByClassName('arrow-btn');
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const pageNO = urlParams.get('pg');
-
-        function createPages() {
-            let parenttt = document.getElementsByClassName('page-btn')[0];
-            var noOfProdsObj = document.getElementById('numberOfRows');
-            var noOfProds = document.getElementById('numberOfRows').textContent;
-
-            var modulo = noOfProds % 16;
-            var vari = parseInt(noOfProds - modulo) / 16;
-            var number = vari;
-            if (modulo > 0) {
-                number = vari + 1;
-            }
-
-            if(vari == 0){
-                number = 1;
-            }
-
-            for (i = 0; i < number; i++) {
-                var aElem = document.createElement("A");
-                aElem.href = "/shop.html?pg=1";
-                parenttt.insertBefore(aElem, arrowButtons[1]);
-
-                var spanElem = document.createElement("SPAN");
-                spanElem.className = "page-btns";
-                spanElem.id = "page-btn";
-                spanElem.textContent = i + 1;
-                aElem.appendChild(spanElem);
-            }
-
-            noOfProdsObj.remove();
+        for(i = 0; i < buttons.length; i++){
+            buttons[i].parentElement.href = "shoph.html?pg=" + parseInt(i + 1) + urlParams.toString().replace("pg=" + pageNO, "");
         }
 
-        for (i = 0; i < buttons.length; i++) {
-            buttons[i].parentElement.href = "shop.html?pg=" + parseInt(i + 1) + urlParams.toString().replace("pg=" + pageNO, "");
-        }
-
-        if (pageNO == null || pageNO > buttons.length || isNaN(pageNO) || parseInt(pageNO) <= 0 || pageNO == "") {
+        if (pageNO == null || isNaN(pageNO) || parseInt(pageNO) <= 0 || pageNO == "") {
             if (urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length) != null && urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length) != "" && !urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length).includes("pg")) {
-                location.replace("/shop.html?pg=1" + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length));
+                location.replace("/shoph.html?pg=1" + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length));
             } else {
-                location.replace("/shop.html?pg=1");
+                location.replace("/shoph.html?pg=1");
             }
         }
 
@@ -742,11 +507,6 @@
             arrowButtons[1].id = "invisible";
         }
 
-        if (buttons.length == 1 || buttons.length == 0) {
-            arrowButtons[0].id = "invisible";
-            arrowButtons[1].id = "invisible";
-        }
-
         function nextPage(n) {
             if (n == 1) {
                 var nextpage = parseInt(pageNO) + 1;
@@ -754,9 +514,9 @@
                     nextpage = 1;
                 }
                 if (!urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length).includes("pg")) {
-                    location.href = "/shop.html?pg=" + nextpage + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length);
+                    location.href = "/shoph.html?pg=" + nextpage + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length);
                 } else {
-                    location.href = "/shop.html?pg=" + nextpage;
+                    location.href = "/shoph.html?pg=" + nextpage;
                 }
             } else {
                 var lastpage = parseInt(pageNO) - 1;
@@ -764,9 +524,9 @@
                     lastpage = 4;
                 }
                 if (!urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length).includes("pg")) {
-                    location.href = "/shop.html?pg=" + lastpage + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length);
+                    location.href = "/shoph.html?pg=" + lastpage + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length);
                 } else {
-                    location.href = "/shop.html?pg=" + lastpage;
+                    location.href = "/shoph.html?pg=" + lastpage;
                 }
             }
         }
@@ -798,59 +558,30 @@
         }
 
         function setSorting(value) {
-            if (value != "Default Sorting") {
-                if (urlParams.toString().includes("&sort=")) {
-                    var initial = urlParams.toString().substring(urlParams.toString().indexOf("&sort="), urlParams.toString().length);
+            if (urlParams.toString().includes("&sort=")) {
+                var initial = urlParams.toString().substring(urlParams.toString().indexOf("&sort="), urlParams.toString().length);
 
-                    if (nthIndexOf(initial, "&", 2) == undefined) {
-                        location.replace("shop.html?" + urlParams.toString().replace(initial, "").replace("pg=" + pageNO, "pg=1") + "&sort=" + value);
-                    } else {
-                        location.replace("shop.html?" + urlParams.toString().replace(initial, "").replace("pg=" + pageNO, "pg=1") + "&sort=" + value + urlParams.toString().substring(nthIndexOf(initial, "&", 2) + urlParams.toString().indexOf(initial), urlParams.toString().length));
-                    }
+                if (nthIndexOf(initial, "&", 2) == undefined) {
+                    location.replace("shoph.html?" + urlParams.toString().replace(initial, "").replace("pg=" + pageNO, "pg=1") + "&sort=" + value);
                 } else {
-                    if (urlParams.toString().includes("&q=")) {
-                        var initial = urlParams.toString().substring(urlParams.toString().indexOf("&q="), urlParams.toString().length);
-
-                        if (nthIndexOf(initial, "&", 2) == undefined) {
-                            location.replace("shop.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&sort=" + value);
-                        } else {
-                            location.replace("shop.html?" + urlParams.toString().substring(0, nthIndexOf(initial, "&", 2) + urlParams.toString().indexOf(initial)).replace("pg=" + pageNO, "pg=1") + "&sort=" + value + urlParams.toString().substring(nthIndexOf(initial, "&", 2) + urlParams.toString().indexOf(initial), urlParams.toString().length));
-                        }
-                    } else {
-                        var initial = urlParams.toString().substring(urlParams.toString().indexOf("pg="), urlParams.toString().length);
-
-                        if (nthIndexOf(initial, "&", 1) == undefined) {
-                            location.replace("shop.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&sort=" + value);
-                        } else {
-                            location.replace("shop.html?" + urlParams.toString().substring(0, nthIndexOf(initial, "&", 1) + urlParams.toString().indexOf(initial)).replace("pg=" + pageNO, "pg=1") + "&sort=" + value + urlParams.toString().substring(nthIndexOf(initial, "&", 1) + urlParams.toString().indexOf(initial), urlParams.toString().length));
-                        }
-                    }
+                    location.replace("shoph.html?" + urlParams.toString().replace(initial, "").replace("pg=" + pageNO, "pg=1") + "&sort=" + value + urlParams.toString().substring(nthIndexOf(initial, "&", 2) + urlParams.toString().indexOf(initial), urlParams.toString().length));
                 }
             } else {
-                if (urlParams.toString().includes("&sort=")) {
-                    var initial = urlParams.toString().substring(urlParams.toString().indexOf("&sort="), urlParams.toString().length);
+                if (urlParams.toString().includes("&q=")) {
+                    var initial = urlParams.toString().substring(urlParams.toString().indexOf("&q="), urlParams.toString().length);
+
                     if (nthIndexOf(initial, "&", 2) == undefined) {
-                        location.replace("shop.html?" + urlParams.toString().replace(initial, "").replace("pg=" + pageNO, "pg=1"));
+                        location.replace("shoph.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&sort=" + value);
                     } else {
-                        location.replace("shop.html?" + urlParams.toString().replace(initial, "").replace("pg=" + pageNO, "pg=1") + urlParams.toString().substring(nthIndexOf(initial, "&", 2) + urlParams.toString().indexOf(initial), urlParams.toString().length));
+                        location.replace("shoph.html?" + urlParams.toString().substring(0, nthIndexOf(initial, "&", 2)) + "&sort=" + value + urlParams.toString().substring(nthIndexOf(initial, "&", 2), urlParams.toString().length)).replace("pg=" + pageNO, "pg=1");
                     }
                 } else {
-                    if (urlParams.toString().includes("&q=")) {
-                        var initial = urlParams.toString().substring(urlParams.toString().indexOf("&q="), urlParams.toString().length);
+                    var initial = urlParams.toString().substring(urlParams.toString().indexOf("pg="), urlParams.toString().length);
 
-                        if (nthIndexOf(initial, "&", 2) == undefined) {
-                            location.replace("shop.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1"));
-                        } else {
-                            location.replace("shop.html?" + urlParams.toString().substring(0, nthIndexOf(initial, "&", 2) + urlParams.toString().indexOf(initial)).replace("pg=" + pageNO, "pg=1") + urlParams.toString().substring(nthIndexOf(initial, "&", 2) + urlParams.toString().indexOf(initial), urlParams.toString().length));
-                        }
+                    if (nthIndexOf(initial, "&", 1) == undefined) {
+                        location.replace("shoph.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&sort=" + value);
                     } else {
-                        var initial = urlParams.toString().substring(urlParams.toString().indexOf("pg="), urlParams.toString().length);
-
-                        if (nthIndexOf(initial, "&", 1) == undefined) {
-                            location.replace("shop.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1"));
-                        } else {
-                            location.replace("shop.html?" + urlParams.toString().substring(0, nthIndexOf(initial, "&", 1) + urlParams.toString().indexOf(initial)).replace("pg=" + pageNO, "pg=1") + urlParams.toString().substring(nthIndexOf(initial, "&", 1) + urlParams.toString().indexOf(initial), urlParams.toString().length));
-                        }
+                        location.replace("shoph.html?" + urlParams.toString().substring(0, nthIndexOf(initial, "&", 1)).replace("pg=" + pageNO, "pg=1") + "&sort=" + value + urlParams.toString().substring(nthIndexOf(initial, "&", 1), urlParams.toString().length));
                     }
                 }
             }
@@ -861,8 +592,8 @@
         }
 
         // <-- Products Href -->
-        function prodPg(id) {
-            location.href = "/product.html?id=" + id;
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
         }
 
         // <-- Cookie Consent -->
@@ -873,8 +604,6 @@
         function checkCookies() {
             if (getCookie("CookieConsent") == null) {
                 cFunc("show");
-            } else {
-                cFunc("hide");
             }
         }
 
@@ -885,9 +614,9 @@
 
         function cFunc(n) {
             if (n == "show") {
-                cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
+                cCont.style.top = "860px";
             } else if (n == "hide") {
-                cCont.style.top = window.innerHeight + "px";
+                cCont.style.top = "940px";
             }
         }
 
@@ -936,13 +665,17 @@
         checkForSearchValue();
 
         function checkForSearchValue() {
-            var q = urlParams.get('q');
+            if (urlParams.toString().includes("&q=")) {
+                var initial = urlParams.toString().substring(urlParams.toString().indexOf("&q="), urlParams.toString().length);
 
-            if (q != null) {
-                bar.value = q;
+                if (nthIndexOf(initial, "&", 2) == undefined) {
+                    bar.value = decodeURIComponent(initial.substring(initial.indexOf("q=") + 2, initial.length));
+                } else {
+                    bar.value = decodeURIComponent(initial.substring(initial.indexOf("q=") + 2, nthIndexOf(initial, "&", 2)));
+                }
 
                 if (bar.value == "") {
-                    location.replace("/shop.html?" + urlParams.toString().replace("&q=", ""));
+                    location.replace("/shoph.html?" + urlParams.toString().replace("&q=", ""));
                 }
             }
         }
@@ -952,15 +685,15 @@
 
             if (urlParams.get('q') == null) {
                 if (!urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length).includes("pg")) {
-                    window.location.replace("/shop.html?pg=1" + "&q=" + term + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length));
+                    window.location.replace("/shoph.html?pg=1" + "&q=" + term + urlParams.toString().substring(urlParams.toString().indexOf("&"), urlParams.toString().length));
                 } else {
-                    window.location.replace("/shop.html?pg=1" + "&q=" + term, "_blank");
+                    window.location.replace("/shoph.html?pg=1" + "&q=" + term, "_blank");
                 }
             } else {
                 if (!urlParams.toString().substring(nthIndexOf(urlParams.toString(), "&", 2), urlParams.toString().length).includes("pg")) {
-                    location.replace("/shop.html?pg=1" + "&q=" + term + urlParams.toString().substring(nthIndexOf(urlParams.toString(), "&", 2), urlParams.toString().length));
+                    location.replace("/shoph.html?pg=1" + "&q=" + term + urlParams.toString().substring(nthIndexOf(urlParams.toString(), "&", 2), urlParams.toString().length));
                 } else {
-                    location.replace("/shop.html?pg=1" + "&q=" + term);
+                    location.replace("/shoph.html?pg=1" + "&q=" + term);
                 }
             }
         }
@@ -980,9 +713,6 @@
         let footer = document.getElementsByClassName("footer")[0];
         var defaultVar = footer.style.marginTop;
         var subtractFactor = 1660;
-
-        footer.style.width = parseInt(parseInt(window.innerWidth) / 2) + "px";
-        footer.style.marginLeft = parseInt(parseInt(window.innerWidth) / 4) + "px";
 
         function minimizeFilter(object, value) {
             let filter = object.parentElement;
@@ -1019,27 +749,27 @@
             if (value == "Others") {
                 if (object.id == "") {
                     if (urlParams.toString().includes(type)) {
-                        location.replace("/shop.html?" + urlParams.toString().slice(0, urlParams.toString().indexOf(type + "=") + type.length + 1).replace("pg=" + pageNO, "pg=1") + type.substring(0, 2) + value + "+" + urlParams.toString().slice(urlParams.toString().indexOf("&" + type + "=") + type.length + 2, urlParams.toString().length));
+                        location.replace("/shoph.html?" + urlParams.toString().slice(0, urlParams.toString().indexOf(type + "=").replace("pg=" + pageNO, "pg=1") + type.length + 1) + type.substring(0, 2) + value + "+" + urlParams.toString().slice(urlParams.toString().indexOf("&" + type + "=") + type.length + 2, urlParams.toString().length));
                     } else {
-                        location.replace("/shop.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&" + type + "=" + type.substring(0, 2) + value);
+                        location.replace("/shoph.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&" + type + "=" + type.substring(0, 2) + value);
                     }
                 } else {
-                    if (urlParams.toString().includes(type + "=" + type.substring(0, 2) + value) && !urlParams.toString().includes(type + "=" + type.substring(0, 2) + value + "+")) {
+                    if (urlParams.toString().includes(type + "=" + type.substring(0, 2) + value)) {
                         var iable = urlParams.toString().replace("&" + type + "=" + type.substring(0, 2) + value, "");
-                        location.replace("/shop.html?" + iable.replace("pg=" + pageNO, "pg=1"));
+                        location.replace("/shoph.html?" + iable.replace("pg=" + pageNO, "pg=1"));
                     } else if (urlParams.toString().includes(type.substring(0, 2) + value + "+")) {
-                        location.replace("/shop.html?" + urlParams.toString().replace(type.substring(0, 2).replace("pg=" + pageNO, "pg=1") + value + "+", ""));
-                    } else if (urlParams.toString().includes("+" + type.substring(0, 2) + value)) {
-                        location.replace("/shop.html?" + urlParams.toString().replace("+" + type.substring(0, 2).replace("pg=" + pageNO, "pg=1") + value, ""));
+                        location.replace("/shoph.html?" + urlParams.toString().replace(type.substring(0, 2).replace("pg=" + pageNO, "pg=1") + value + "+", ""));
+                    } else if (urlParams.toString().includes(type.substring(0, 2) + value)) {
+                        location.replace("/shoph.html?" + urlParams.toString().replace(type.substring(0, 2).replace("pg=" + pageNO, "pg=1") + value, ""));
                     }
                     object.id = "";
                 }
             } else {
                 if (object.id == "") {
                     if (urlParams.toString().includes(type)) {
-                        location.replace("/shop.html?" + urlParams.toString().slice(0, urlParams.toString().indexOf(type + "=") + type.length + 1).replace("pg=" + pageNO, "pg=1") + value + "+" + urlParams.toString().slice(urlParams.toString().indexOf("&" + type + "=") + type.length + 2, urlParams.toString().length));
+                        location.replace("/shoph.html?" + urlParams.toString().slice(0, urlParams.toString().indexOf(type + "=") + type.length + 1).replace("pg=" + pageNO, "pg=1") + value + "+" + urlParams.toString().slice(urlParams.toString().indexOf("&" + type + "=") + type.length + 2, urlParams.toString().length));
                     } else {
-                        location.replace("/shop.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&" + type + "=" + value);
+                        location.replace("/shoph.html?" + urlParams.toString().replace("pg=" + pageNO, "pg=1") + "&" + type + "=" + value);
                     }
                 } else {
                     var newVal;
@@ -1048,13 +778,13 @@
                         newVal = value.replaceAll(" ", "+");
                     }
 
-                    if (decodeURIComponent(urlParams.toString()).includes(type + "=" + newVal) && !decodeURIComponent(urlParams.toString()).includes(type + "=" + newVal + "+")) {
-                        var iable = decodeURIComponent(urlParams.toString()).replace("&" + type + "=" + newVal, "");
-                        location.replace("/shop.html?" + iable.replace("pg=" + pageNO, "pg=1"));
+                    if (urlParams.toString().includes(type + "=" + newVal)) {
+                        var iable = urlParams.toString().replace("&" + type + "=" + newVal, "");
+                        location.replace("/shoph.html?" + iable.replace("pg=" + pageNO, "pg=1"));
                     } else if (urlParams.toString().includes(newVal + "+")) {
-                        location.replace("/shop.html?" + urlParams.toString().replace(newVal + "+", "").replace("pg=" + pageNO, "pg=1"));
-                    } else if (urlParams.toString().includes("+" + newVal)) {
-                        location.replace("/shop.html?" + urlParams.toString().replace("+" + newVal, "").replace("pg=" + pageNO, "pg=1"));
+                        location.replace("/shoph.html?" + urlParams.toString().replace(newVal + "+", "").replace("pg=" + pageNO, "pg=1"));
+                    } else if (urlParams.toString().includes(newVal)) {
+                        location.replace("/shoph.html?" + urlParams.toString().replace(newVal, "").replace("pg=" + pageNO, "pg=1"));
                     }
                     object.id = "";
                 }
@@ -1063,11 +793,11 @@
 
         function clearFilters() {
             if (urlParams.toString().includes("sort") && urlParams.toString().includes("q")) {
-                location.replace("/shop.html?" + urlParams.toString().substring(0, nthIndexOf(urlParams.toString(), "&", 3)).replace("pg=" + pageNO, "pg=1"));
+                location.replace("/shoph.html?" + urlParams.toString().substring(0, nthIndexOf(urlParams.toString(), "&", 3)).replace("pg=" + pageNO, "pg=1"));
             } else if (urlParams.toString().includes("q") || urlParams.toString().includes("sort")) {
-                location.replace("/shop.html?" + urlParams.toString().substring(0, nthIndexOf(urlParams.toString(), "&", 2)).replace("pg=" + pageNO, "pg=1"));
+                location.replace("/shoph.html?" + urlParams.toString().substring(0, nthIndexOf(urlParams.toString(), "&", 2)).replace("pg=" + pageNO, "pg=1"));
             } else {
-                location.replace("/shop.html?" + urlParams.toString().substring(0, urlParams.toString().indexOf("&")).replace("pg=" + pageNO, "pg=1"));
+                location.replace("/shoph.html?" + urlParams.toString().substring(0, urlParams.toString().indexOf("&")).replace("pg=" + pageNO, "pg=1"));
             }
         }
 
@@ -1080,56 +810,51 @@
                 var value = allObjs[i].children[1].textContent;
                 var type = allObjs[i].onclick.toString().substring(nthIndexOf(allObjs[i].onclick.toString(), "'", 1) + 1, nthIndexOf(allObjs[i].onclick.toString(), "'", 2))
 
-                var category = urlParams.get(type);
+                if (value == "Others") {
+                    if (urlParams.toString().includes(type.substring(0, 2) + value)) {
+                        allObjs[i].children[0].children[0].className = "Checked";
+                        allObjs[i].id = "enabledFilter";
+                    }
+                } else {
+                    if (urlParams.toString().includes(value)) {
+                        allObjs[i].children[0].children[0].className = "Checked";
+                        allObjs[i].id = "enabledFilter";
+                    }
 
-                if (category != null) {
-                    if (value == "Others") {
-                        if (category.includes(type.substring(0, 2) + value)) {
-                            allObjs[i].children[0].children[0].className = "Checked";
-                            allObjs[i].id = "enabledFilter";
-                        }
-                    } else {
-                        if (category.includes(value)) {
-                            allObjs[i].children[0].children[0].className = "Checked";
-                            allObjs[i].id = "enabledFilter";
-                        }
+                    if (urlParams.toString().includes(value.substr(0, value.length - 1) + '%22')) {
+                        allObjs[i].children[0].children[0].className = "Checked";
+                        allObjs[i].id = "enabledFilter";
+                    }
 
-                        if (category.includes(value.substr(0, value.length - 1) + '%22')) {
-                            allObjs[i].children[0].children[0].className = "Checked";
-                            allObjs[i].id = "enabledFilter";
-                        }
-
-                        if (category.includes(value.replaceAll(" ", "+"))) {
-                            allObjs[i].children[0].children[0].className = "Checked";
-                            allObjs[i].id = "enabledFilter";
-                        }
+                    if (urlParams.toString().includes(value.replaceAll(" ", "+"))) {
+                        allObjs[i].children[0].children[0].className = "Checked";
+                        allObjs[i].id = "enabledFilter";
                     }
                 }
             }
         }
 
         defaultFilterMinimize();
-
-        function defaultFilterMinimize() {
+        function defaultFilterMinimize(){
             let rows = document.getElementsByClassName("row");
             let parentt = document.getElementsByClassName("filters-cont")[0];
             var actualRows = [];
 
-            for (i = 0; i < rows.length; i++) {
-                if (rows[i].parentElement.className == "small-container") {
+            for(i = 0; i < rows.length; i++){
+                if(rows[i].parentElement.className == "small-container"){
                     actualRows.push(rows[i]);
                 }
             }
 
             var varvar = actualRows.length - 1;
-            if (varvar == 1) {
+            if(varvar == 1){
                 minimizeFilter(parentt.children[1].children[0], '250');
                 minimizeFilter(parentt.children[2].children[0], '250');
-            } else if (varvar == 2) {
+            } else if(varvar == 2){
                 minimizeFilter(parentt.children[2].children[0], '250');
-            } else if (varvar == 3) {
+            } else if(varvar == 3){
                 minimizeFilter(parentt.children[3].children[0], '250');
-            } else if (varvar == 4) {
+            } else if(varvar == 4){
                 minimizeFilter(parentt.children[3].children[0], '250');
                 minimizeFilter(parentt.children[4].children[0], '250');
             }

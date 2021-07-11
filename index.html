@@ -31,10 +31,8 @@
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
-                    style="transform: scale(0.8); transition: 0.5s ease"></i></a>
-                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
-                        style="transform: scale(0.8)"></i></a>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
             </div>
             <section id="fade">
                 <img src="images/Background.jpg" id="background">
@@ -51,22 +49,22 @@
             <div class="row">
                 <!-- Image -->
                 <div class="col-3">
-                    <a href="/shop.html?pg=1&cat=Completes" class="cat">
-                        <img src="images/Completes.png" class="category">
+                    <a class="cat">
+                        <img class="category">
                         <div class="overlay"></div>
                         <div class="cat-text">Completes</div>
                     </a>
                 </div>
                 <div class="col-3">
-                    <a href="/shop.html?pg=1&cat=Decks" class="cat">
-                        <img src="images/Decks.png" class="category">
+                    <a class="cat">
+                        <img class="category">
                         <div class="overlay"></div>
                         <div class="cat-text">Decks</div>
                     </a>
                 </div>
                 <div class="col-3">
-                    <a href="/shop.html?pg=1&cat=Wheels" class="cat">
-                        <img src="images/Wheels.png" class="category">
+                    <a class="cat">
+                        <img class="category">
                         <div class="overlay"></div>
                         <div class="cat-text">Wheels</div>
                     </a>
@@ -80,74 +78,92 @@
 
     <!--- Featured Products --->
     <div class="small-container" id="sec2">
-        <h2 class="title">Featured Products</h2>
-        <div class="row">
-            <div class="col-4">
-                <img src="images/Skateboard.png" onclick="prodPg()">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Iceskate.png" onclick="prodPg()">
-                <h4>Ice Skaters</h4>
-                <p>EGP 99.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Rollerskate.png" onclick="prodPg()">
-                <h4>Roller Skaters</h4>
-                <p>EGP 449.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Skateboard.png" onclick="prodPg()">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-        </div>
-        <h2 class="title">New Arrivals</h2>
-        <div class="row">
-            <div class="col-4">
-                <img src="images/Skateboard.png" onclick="prodPg()">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Iceskate.png" onclick="prodPg()">
-                <h4>Ice Skaters</h4>
-                <p>EGP 99.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Rollerskate.png" onclick="prodPg()">
-                <h4>Roller Skaters</h4>
-                <p>EGP 449.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Skateboard.png" onclick="prodPg()">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <img src="images/Skateboard.png" onclick="prodPg()">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Iceskate.png" onclick="prodPg()">
-                <h4>Ice Skaters</h4>
-                <p>EGP 99.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Rollerskate.png" onclick="prodPg()">
-                <h4>Roller Skaters</h4>
-                <p>EGP 449.99</p>
-            </div>
-            <div class="col-4">
-                <img src="images/Skateboard.png" onclick="prodPg()">
-                <h4>Skateboard</h4>
-                <p>EGP 49.99</p>
-            </div>
-        </div>
+        <h2 class="title"><a href="/shop.html?pg=1&special=Sale" style="color: white; cursor: pointer;" id="link">Featured Products</a></h2>
+        <?php
+        require_once('php/connection.php');
+
+        $sql = "SELECT * FROM Products ORDER BY Sale Desc, ID Desc;";
+
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+
+        $iteration = 0;
+
+        if ($resultCheck > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($iteration < 4 && $row['ID'] != $params['id']) {
+                    if($iteration == 0) echo "<div class='row'>";
+                    echo '<div class="col-4" style="cursor: pointer;"><a href="/product.html?id=' . $row['ID'] . '">';
+                    echo "<img src='products/" . $row['ID'] . ".png'>";
+
+                    if ($row['Sale'] != 0) {
+                        echo '<img style="position: absolute; width: 50px; margin-left: -235px; margin-top: 2px;" src="images/sale.png">';
+                    }
+
+                    echo "<h4 style='font-weight: bold;'>" . $row['Name'] . "</h4>";
+
+                    if ($row['Stock'] > 0) {
+                        echo "<p style='color: limegreen;'>In Stock</p>";
+                    } else if ($row['Stock'] == 0) {
+                        echo "<p style='color: red;'>Out Of Stock</p>";
+                    }
+
+                    if ($row['Sale'] != 0) {
+                        echo "<a style='text-decoration: none; color: White;'>EGP " . intval(intval($row['Price']) - intval($row['Sale'])) . " </a> <a style='text-decoration: line-through; color: gray;'>EGP " . $row['Price'] . "</a>";
+                    } else {
+                        echo "<p style='text-decoration: none; color: White;'>EGP " . $row['Price'] . "</p>";
+                    }
+                    echo "</div>";
+
+                    $iteration++;
+                    if($iteration == 4) echo "</div>";
+                }
+            }
+        }
+        ?>
+        <h2 class="title"><a href="/shop.html?pg=1&special=New+Arrivals" style="color: white; cursor: pointer;" id="link">New Arrivals</a></h2>
+        <?php
+        require_once('php/connection.php');
+
+        $sql = "SELECT * FROM Products ORDER BY ID Desc;";
+
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+
+        $iteration = 0;
+
+        if ($resultCheck > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($iteration < 8 && $row['ID'] != $params['id']) {
+                    if($iteration == 0 || $iteration == 4) echo "<div class='row'>";
+                    echo '<div class="col-4" style="cursor: pointer;"><a href="/product.html?id=' . $row['ID'] . '">';
+                    echo "<img src='products/" . $row['ID'] . ".png'>";
+
+                    if ($row['Sale'] != 0) {
+                        echo '<img style="position: absolute; width: 50px; margin-left: -235px; margin-top: 2px;" src="images/sale.png">';
+                    }
+
+                    echo "<h4 style='font-weight: bold;'>" . $row['Name'] . "</h4>";
+
+                    if ($row['Stock'] > 0) {
+                        echo "<p style='color: limegreen;'>In Stock</p>";
+                    } else if ($row['Stock'] == 0) {
+                        echo "<p style='color: red;'>Out Of Stock</p>";
+                    }
+
+                    if ($row['Sale'] != 0) {
+                        echo "<a style='text-decoration: none; color: White;'>EGP " . intval(intval($row['Price']) - intval($row['Sale'])) . " </a> <a style='text-decoration: line-through; color: gray;'>EGP " . $row['Price'] . "</a>";
+                    } else {
+                        echo "<p style='text-decoration: none; color: White;'>EGP " . $row['Price'] . "</p>";
+                    }
+                    echo "</div>";
+
+                    $iteration++;
+                    if($iteration == 4 || $iteration == 8) echo "</div>";
+                }
+            }
+        }
+        ?>
     </div>
 
 
@@ -211,7 +227,7 @@
         <div class="container">
             <div class="row">
                 <div class="footer-col-1">
-                    <img src="images/Logo.png" alt="">
+                    <img src="images/Logo.png" style="cursor: pointer;" onclick="switchPg('/index.html')">
                 </div>
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
@@ -275,16 +291,16 @@
         var Slides = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         var activeSlides = [1, 2, 3];
 
-        var images = ["null","null"];
+        var images = ["null", "null"];
         var links = ["null", "null"];
         var captions = ["Completes", "Decks", "Wheels", "Trucks", "Hardware", "Bearings", "Griptape", "Risers", "Bushings", "Others"];
         imgsLinks();
         showSlides();
 
-        function imgsLinks(){
-            for(i = 0; i < captions.length; i++){
+        function imgsLinks() {
+            for (i = 0; i < captions.length; i++) {
                 images[i] = "images/" + captions[i] + ".png";
-                links[i] = "/shop.html?pg=1&cat="  + captions[i];
+                links[i] = "/shop.html?pg=1&category=" + captions[i];
                 slides[0].src = images[i];
             }
         }
@@ -327,6 +343,11 @@
         // <-- Products Href -->
         function prodPg() {
             location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            location.href = pg;
         }
 
         // <-- Header Show -->
@@ -373,6 +394,8 @@
         function checkCookies() {
             if (getCookie("CookieConsent") == null) {
                 cFunc("show");
+            } else {
+                cFunc("hide");
             }
         }
 
@@ -383,9 +406,9 @@
 
         function cFunc(n) {
             if (n == "show") {
-                cCont.style.top = "860px";
+                cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
             } else if (n == "hide") {
-                cCont.style.top = "940px";
+                cCont.style.top = window.innerHeight + "px";
             }
         }
 

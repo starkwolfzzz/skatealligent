@@ -37,7 +37,7 @@
                         style="transform: scale(0.8)"></i></a>
             </div>
             <section id="fade" style="height: 80vh;">
-                <h2 id="text" style="font-size: 75px; transform: translateY(-220px);">Contact Us</h2>
+                <h2 id="text" style="font-size: 75px; transform: translateY(-275px);">Contact Us</h2>
                 <div class="container">
                     <div class="row">
                         <a class="elemnt" style=" color: white;" onclick="copyToClipboard('contact@skatealligent.com', 'email')">
@@ -47,10 +47,10 @@
                         </a>
                     </div>
                     <div class="row">
-                        <a class="elemnt" style="padding-right: 183px; color: white;" onclick="copyToClipboard('01552174468', 'number')">
+                        <a class="elemnt" style="padding-right: 183px; color: white;" onclick="copyToClipboard('01008835438', 'number')">
                             <div id="element-icon"><i class="fas fa-mobile-alt"></i></div>
                             <h3>Phone Number</h3>
-                            <p id="elmA">01552174468</p>
+                            <p id="elmA">01008835438</p>
                         </a>
                     </div>
                     <div class="row">
@@ -58,6 +58,14 @@
                             <div id="element-icon"><i class="fab fa-instagram" style="transform: translateX(15px) translateY(10px) scale(3);"></i></i>
                             </div>
                             <h3>Instagram</h3>
+                            <p id="elmA">Skate Alligent</p>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a class="elemnt" style="padding-right: 214px; color: white;" onclick="switchPg('https://www.facebook.com/alligentskateshop')" target="_blank">
+                            <div id="element-icon"><i class="fab fa-facebook-f" style="transform: translateX(15px) translateY(10px) scale(2.75);"></i></i>
+                            </div>
+                            <h3>Facebook</h3>
                             <p id="elmA">Skate Alligent</p>
                         </a>
                     </div>
@@ -76,7 +84,7 @@
         <div class="container">
             <div class="row">
                 <div class="footer-col-1">
-                    <img src="images/Logo.png" alt="">
+                     <img src="images/Logo.png" style="cursor: pointer;" onclick="switchPg2('/index.html')">
                 </div>
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
@@ -126,6 +134,11 @@
         // <-- Switch Page -->
         function switchPg(pg) {
             window.open(pg, '_blank');
+        }
+
+        // <-- Switch Page2 -->
+        function switchPg2(pg) {
+            location.href(pg);
         }
 
         // <-- Copy to Clipboard -->
