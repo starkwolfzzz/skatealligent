@@ -1,34 +1,108 @@
 <?php
 require('php/functions.php');
 
-if(isset($_COOKIE["session"]) && checkSession($_COOKIE["session"]) == "session is correct"){
+if (isset($_COOKIE["session"]) && checkSession($_COOKIE["session"]) == "session is correct") {
     header("location: http://skatealligent.tk/account.html");
 }
 ?>
 
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="color-scheme" content="dark">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skate Alligent - Account</title>
-        <link rel="icon" type="image/png" href="images/Icon.png">
-        <link rel="stylesheet" href="css/style.css">
-        <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="UTF-8">
 
-    <body>
-        <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
-        <meta name="color-scheme" content="dark">
-        <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skate Alligent - Account</title>
+    <link rel="icon" type="image/png" href="images/black_Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js%27);
+fbq('init', '950881942420079');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=950881942420079&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+</head>
+
+<body>
+    <div class="font_credit" style="display: none;">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+
+    <div id="Sidenav" class="sidenav">
+        <a class="closebtn" onclick="Nav()" style="cursor: pointer;">&times;</a>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&special=Sale">EID-SALES</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Sports">SPORTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-155')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -155px;">
+                <a href="/shop.html?pg=1&category=Sports&subcat=Longboards">Longboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Skateboards">Skateboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Pennyboards">Pennyboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Fingerboards">Fingerboards</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Protection">PROTECTION</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-85')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -85px;">
+                <a href="/shop.html?pg=1&category=Protection&subcat=Helmets">Helmets</a>
+                <a href="/shop.html?pg=1&category=Protection&subcat=Protective Pads">Protective Pads</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Components">COMPONENTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-295')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -295px;">
+                <a href="/shop.html?pg=1&category=Components&subcat=Skate Decks">Skate Decks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Longboard Wheels">Longboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Skateboard Wheels">Skateboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Trucks">Trucks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Risers">Risers</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Griptape">Griptape</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Hardware">Hardware</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Bushings">Bushings</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&category=Tools">TOOLS</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/account.html">ACCOUNT</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <div id="indexpage">
         <div class="header">
             <div class="container">
-                <div class="navbar2" id="headerr">
+                <div class="navbar4" id="headerr">
                     <div class="logo-noline" id="logo">
-                        <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                        <i class="fas fa-bars" style="cursor: pointer; transition: 0.5s ease; transform: translateY(-2px) translateX(5px); padding: 5px; color: white;" onclick="Nav()"></i><a class="logo" href="/" style="color: white;"> Skate Alligent</a>
                     </div>
                     <nav>
                         <ul id="menuItems">
@@ -39,7 +113,34 @@ if(isset($_COOKIE["session"]) && checkSession($_COOKIE["session"]) == "session i
                             <li><a href="/about.html">About</a></li>
                         </ul>
                     </nav>
-                    <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                    <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease">
+                        <?php
+                        
+                        if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
+                            $cart = $_COOKIE['cart'];
+
+                            if($cart != "" && $cart != null){
+                                echo '<div style="position: absolute; margin-top: -14px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 5px;"></div>';
+                            }
+                        } else {
+                            require('php/connection.php');
+
+                            $session = $_COOKIE['session'];
+
+                            $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+                            $query = mysqli_query($conn, $sql);
+                            $rows = mysqli_num_rows($query);
+
+                            if ($rows == 1) {
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    if($row['cart'] != ""){
+                                        echo '<div style="position: absolute; margin-top: -14px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 5px;"></div>';
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+                    </i></a>
                     <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
                 </div>
                 <section id="fade">
@@ -52,781 +153,832 @@ if(isset($_COOKIE["session"]) && checkSession($_COOKIE["session"]) == "session i
                                     <span onclick="switchBetween('Register')">Register</span>
                                     <hr id="indicator">
                                 </div>
-                                <form id="resetForm" onsubmit="return save_data_reset()">
+                                <form id="resetForm" onsubmit="return save_data_reset()" class="loginform">
                                     <div id="ErrorR" class="ErrorR"><a>⚠ Email is invalid, please use an existing email or register a new account.</a></div>
                                     <div id="ErrorR" class="ErrorR"><a>⚠ An unknown error has occurred, please try again later.</a></div>
-                                    <a>Please enter your email address so we can send you an email with your reset code.</a>
+                                    <a style="color: white;">Please enter your email address so we can send you an email with your reset code.</a>
                                     <input class="accountInput Reset" type="email" placeholder="Email" required id="emailEmail" name="emailEmail">
                                     <button type="submit" class="btn resetSubmit">Send Email</button>
                                     <a id="link" style="color: white; cursor: pointer;" onclick="switchBetween('Login')">Back to Login</a>
                                 </form>
-                                <form id="PasswordForm" onsubmit="return save_data_resetPass()">
+                                <form id="PasswordForm" onsubmit="return save_data_resetPass()" class="loginform">
                                     <div class="ErrorP"><a>⚠ Entered Code is invalid, please check your email and try again.</a></div>
                                     <div class="ErrorP"><a>⚠ Entered Passwords are not Matching, please try again.</a></div>
                                     <div class="ErrorP"><a>⚠ An unknown error has occurred, please try again later.</a></div>
-                                    <a>We have sent you an email with the code.</a>
+                                    <a style="color: white;">We have sent you an email with the code.</a>
                                     <input class="accountInput pass" type="text" placeholder="Code" required id="code" name="code" minlength="6" maxlength="6">
                                     <input class="accountInput passwordField pass" type="password" placeholder="New Password" required minlength="8" id="newPassword" name="newPassword" onfocus="focused2()" onkeyup="keyUp2(this)"">
-                                    <div class="passStrength2">
-                                        <span>Weak</span>
-                                        <span></span>
-                                    </div>
-                                    <input class="accountInput passwordField pass" type="password" placeholder="Repeat New Password" required minlength="8" id="repeatNewPassword" name="repeatNewPassword">
-                                    <button type="submit" class="btn passSubmit">Reset Password</button>
-                                    <a id="link" style="color: white; cursor: pointer;" onclick="save_data_reset()">Resend Email</a>
-                                    <div class="toggleSeePass3" onclick="clicked('res')">
-                                        <i class="fa fa-eye"></i>
-                                        <i class="fa fa-eye-slash"></i>
-                                    </div>
-                                    <div class="toggleSeePass4" onclick="clicked('res2')">
-                                        <i class="fa fa-eye"></i>
-                                        <i class="fa fa-eye-slash"></i>
-                                    </div>
-                                </form>
-                                <form id="LoginForm" onsubmit="return save_data_log()">
-                                    <div class="ErrorL"><a>⚠ Username or Password submitted is incorrect.</a></div>
-                                    <div class="ErrorL"><a>⚠ Your account has not been verified, please check your email.</a></div>
-                                    <div class="ErrorL"><a>⚠ An unknown error has occurred, please try again later.</a></div>
-                                    <input class="accountInput Log" type="text" placeholder="Username" required name="loginUsername" id="loginUsername">
-                                    <input class="accountInput Log" type="password" placeholder="Password" required name="loginPassword" id="loginPassword">
-                                    <div class="toggleSeePass2" onclick="clicked('login')">
-                                        <i class="fa fa-eye"></i>
-                                        <i class="fa fa-eye-slash"></i>
-                                    </div>
-                                    <button type="submit" class="btn logSubmit">Login</button>
-                                    <a id="link" style="color: white; cursor: pointer;" onclick="switchBetween('Email')">Forgot Password?</a>
-                                </form>
-                                <form id="RegForm" onsubmit="return save_data_reg()">
-                                    <div class="Error"><a class="reg-err">⚠ Email is already in use.<br>Please use another Email Address.</a></div>
-                                    <div class="Error"><a class="reg-err">⚠ Username is already in use.<br>Please use another Username.</a></div>
-                                    <div class="Error"><a class="reg-err">⚠ An unknown error has occurred,<br>please try again later.</a></div>
-                                    <input class="accountInput Reg" name="regUsername" type="text" placeholder="Username" required id="regUsername">
-                                    <input class="accountInput Reg" name="regEmail" type="email" placeholder="Email" required id="regEmail">
-                                    <input class="accountInput Reg" name="regPassword" style="padding-right: 30px;" type="password" placeholder="Password" minlength="8" required id="regPassword" onfocus="focused()" onkeyup="keyUp(this)">
-                                    <div class="toggleSeePass" onclick="clicked('reg')">
-                                        <i class="fa fa-eye"></i>
-                                        <i class="fa fa-eye-slash"></i>
-                                    </div>
-                                    <div class="passStrength">
-                                        <span>Weak</span>
-                                        <span></span>
-                                    </div>
-                                    <button type="submit" class="btn regSubmit">Register</button>
-                                </form>
+                                    <div class=" passStrength2">
+                                    <span>Weak</span>
+                                    <span></span>
                             </div>
-                            <div class="form-overlay">
-                                <div class="overlay-bg"></div>
-                                <img src="images/loading.png" class="loading">
+                            <input class="accountInput passwordField pass" type="password" placeholder="Repeat New Password" required minlength="8" id="repeatNewPassword" name="repeatNewPassword">
+                            <button type="submit" class="btn passSubmit">Reset Password</button>
+                            <a id="link" style="color: white; cursor: pointer;" onclick="save_data_reset()">Resend Email</a>
+                            <div class="toggleSeePass3" onclick="clicked('res')">
+                                <i class="fa fa-eye"></i>
+                                <i class="fa fa-eye-slash"></i>
                             </div>
+                            <div class="toggleSeePass4" onclick="clicked('res2')">
+                                <i class="fa fa-eye"></i>
+                                <i class="fa fa-eye-slash"></i>
+                            </div>
+                            </form>
+                            <form id="LoginForm" onsubmit="return save_data_log()" class="loginform">
+                                <div class="ErrorL"><a>⚠ Username or Password submitted is incorrect.</a></div>
+                                <div class="ErrorL"><a>⚠ Your account has not been verified, please check your email.</a></div>
+                                <div class="ErrorL"><a>⚠ An unknown error has occurred, please try again later.</a></div>
+                                <input class="accountInput Log" type="text" placeholder="Username" required name="loginUsername" id="loginUsername">
+                                <input class="accountInput Log" type="password" placeholder="Password" required name="loginPassword" id="loginPassword">
+                                <div class="toggleSeePass2" onclick="clicked('login')">
+                                    <i class="fa fa-eye"></i>
+                                    <i class="fa fa-eye-slash"></i>
+                                </div>
+                                <button type="submit" class="btn logSubmit">Login</button>
+                                <a id="link" style="color: white; cursor: pointer;" onclick="switchBetween('Email')">Forgot Password?</a>
+                            </form>
+                            <form id="RegForm" onsubmit="return save_data_reg()" class="loginform">
+                                <div class="Error"><a class="reg-err">⚠ Email is already in use.<br>Please use another Email Address.</a></div>
+                                <div class="Error"><a class="reg-err">⚠ Username is already in use.<br>Please use another Username.</a></div>
+                                <div class="Error"><a class="reg-err">⚠ An unknown error has occurred,<br>please try again later.</a></div>
+                                <input class="accountInput Reg" name="regUsername" type="text" placeholder="Username" required id="regUsername">
+                                <input class="accountInput Reg" name="regEmail" type="email" placeholder="Email" required id="regEmail">
+                                <input class="accountInput Reg" name="regPassword" style="padding-right: 30px;" type="password" placeholder="Password" minlength="8" required id="regPassword" onfocus="focused()" onkeyup="keyUp(this)">
+                                <div class="toggleSeePass" onclick="clicked('reg')">
+                                    <i class="fa fa-eye"></i>
+                                    <i class="fa fa-eye-slash"></i>
+                                </div>
+                                <div class="passStrength">
+                                    <span>Weak</span>
+                                    <span></span>
+                                </div>
+                                <button type="submit" class="btn regSubmit">Register</button>
+                            </form>
+                        </div>
+                        <div class="form-overlay">
+                            <div class="overlay-bg"></div>
+                            <img src="images/loading.png" class="loading">
                         </div>
                     </div>
-                </section>
             </div>
+            </section>
         </div>
+    </div>
 
-        <!--- Cookie Notice --->
-        <div class="cookies">
+    <!--- Cookie Notice --->
+        <div class="cookies" style="visibility: hidden">
             <div class="container">
                 <div class="row">
-                    <div class="col-2" style="text-align: right;">
+                    <div class="col-2" style="text-align: right; color: white; font-size: 1vw;">
                         <p>We use cookies to enhance your experience with our website.</p>
                         <p>By continuing to use the site, you agree to the use of cookies.</p>
                     </div>
-                    <div class="col-2" style="text-align: left;">
-                        <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
+                    <div class="col-2" style="text-align: left; font-size: 1vw;">
+                        <a class="cookie-btn" id="link" onclick="acceptCookies()" style="color: white;">Accept Cookies</a>
                         <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--- notif --->
-        <div class="notif" id="hide" style="color: white; background-color: #160a22;">
-            <i class="fas fa-exclamation"></i>
-            <a id="notifText" class="notifText" style="font-size: 15px;">An email was sent to you.</a>
-        </div>
+    <!--- notif --->
+    <div class="notif" id="hide" style="color: white; background-color: #160a22;">
+        <i class="fas fa-exclamation"></i>
+        <a id="notifText" class="notifText" style="font-size: 15px;">An email was sent to you.</a>
+    </div>
 
-        <!--- JavaScript --->
-        <script>
-            // <-- Menu -->
-            var MenuItems = document.getElementById("menuItems");
+    <!--- JavaScript --->
+    <script>
+        // <-- Menu -->
+        var MenuItems = document.getElementById("menuItems");
 
-            MenuItems.style.maxHeight = "0px";
+        MenuItems.style.maxHeight = "0px";
 
-            function menuToggle() {
-                if (MenuItems.style.maxHeight == "0px") {
-                    MenuItems.style.maxHeight = "200px";
-                } else {
-                    MenuItems.style.maxHeight = "0px";
-                }
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // <-- Products Href -->
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            location.href = pg;
+        }
+
+        // <-- Switch between login and reg and pass-->
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var ResetForm = document.getElementById("resetForm");
+        var PasswordForm = document.getElementById("PasswordForm");
+        var Indicator = document.getElementById("indicator");
+        switchBetween("Login");
+
+        function switchBetween(type) {
+            if (type == "Register") {
+                RegForm.style.transform = "translateY(-30px) translateX(0px)";
+                LoginForm.style.transform = "translateY(0px) translateX(0px)";
+                ResetForm.style.transform = "translateY(0px) translateX(0px)";
+                PasswordForm.style.transform = "translateY(0px) translateX(0px)";
+                Indicator.style.transform = "translateX(100px)";
+                clicked("login");
+                resetLog();
+                resetEmail();
+                resetPass();
+            } else if (type == "Login") {
+                RegForm.style.transform = "translateY(-30px) translateX(300px)";
+                LoginForm.style.transform = "translateY(0px) translateX(300px)";
+                ResetForm.style.transform = "translateY(0px) translateX(300px)";
+                PasswordForm.style.transform = "translateY(0px) translateX(300px)";
+                Indicator.style.transform = "translateX(0px)";
+                clicked("regreset");
+                keyUp("reset");
+                resetReg();
+                resetEmail();
+                resetPass();
+            } else if (type == "Email") {
+                RegForm.style.transform = "translateY(390px) translateX(300px)";
+                LoginForm.style.transform = "translateY(420px) translateX(300px)";
+                ResetForm.style.transform = "translateY(420px) translateX(300px)";
+                PasswordForm.style.transform = "translateY(390px) translateX(300px)";
+                clicked("login");
+                resetEmail();
+                resetLog();
+            } else if (type == "Pass") {
+                RegForm.style.transform = "translateY(390px) translateX(0px)";
+                LoginForm.style.transform = "translateY(420px) translateX(0px)";
+                ResetForm.style.transform = "translateY(420px) translateX(0px)";
+                PasswordForm.style.transform = "translateY(390px) translateX(0px)";
+                clicked("login");
+                resetPass();
+            }
+        }
+
+        // <-- Login -->
+        function save_data_log() {
+            loading(true);
+
+            var form_elms = document.getElementsByClassName("Log");
+
+            var form_data = new FormData();
+
+            for (i = 0; i < form_elms.length; i++) {
+                form_data.append(form_elms[i].name, form_elms[i].value);
             }
 
-            // <-- Products Href -->
-            function prodPg() {
-                location.href = "/product.html?id=" + "id";
+            if(getCookie("cart") != "" && getCookie("cart") != null){
+                form_data.append("localcart", getCookie("cart"));
+                form_data.append("localcartquan", getCookie("quan"));
             }
 
-            // <-- Switch Page -->
-            function switchPg(pg) {
-                location.href = pg;
-            }
+            document.getElementsByClassName('logSubmit')[0].disabled = true;
+            document.getElementsByClassName('logSubmit')[0].style.opacity = "75%";
 
-            // <-- Switch between login and reg and pass-->
-            var LoginForm = document.getElementById("LoginForm");
-            var RegForm = document.getElementById("RegForm");
-            var ResetForm = document.getElementById("resetForm");
-            var PasswordForm = document.getElementById("PasswordForm");
-            var Indicator = document.getElementById("indicator");
-            switchBetween("Login");
+            var ajax_request = new XMLHttpRequest();
 
-            function switchBetween(type) {
-                if (type == "Register") {
-                    RegForm.style.transform = "translateY(-30px) translateX(0px)";
-                    LoginForm.style.transform = "translateY(0px) translateX(0px)";
-                    ResetForm.style.transform = "translateY(0px) translateX(0px)";
-                    PasswordForm.style.transform = "translateY(0px) translateX(0px)";
-                    Indicator.style.transform = "translateX(100px)";
-                    clicked("login");
-                    resetLog();
-                    resetEmail();
-                    resetPass();
-                } else if (type == "Login") {
-                    RegForm.style.transform = "translateY(-30px) translateX(300px)";
-                    LoginForm.style.transform = "translateY(0px) translateX(300px)";
-                    ResetForm.style.transform = "translateY(0px) translateX(300px)";
-                    PasswordForm.style.transform = "translateY(0px) translateX(300px)";
-                    Indicator.style.transform = "translateX(0px)";
-                    clicked("regreset");
-                    keyUp("reset");
-                    resetReg();
-                    resetEmail();
-                    resetPass();
-                } else if (type == "Email") {
-                    RegForm.style.transform = "translateY(390px) translateX(300px)";
-                    LoginForm.style.transform = "translateY(420px) translateX(300px)";
-                    ResetForm.style.transform = "translateY(420px) translateX(300px)";
-                    PasswordForm.style.transform = "translateY(390px) translateX(300px)";
-                    clicked("login");
-                    resetEmail();
-                    resetLog();
-                } else if (type == "Pass") {
-                    RegForm.style.transform = "translateY(390px) translateX(0px)";
-                    LoginForm.style.transform = "translateY(420px) translateX(0px)";
-                    ResetForm.style.transform = "translateY(420px) translateX(0px)";
-                    PasswordForm.style.transform = "translateY(390px) translateX(0px)";
-                    clicked("login");
-                    resetPass();
-                }
-            }
+            ajax_request.open('POST', 'php/process_data.php');
 
-            // <-- Login -->
-            function save_data_log() {
-                loading(true);
+            ajax_request.send(form_data);
 
-                var form_elms = document.getElementsByClassName("Log");
+            ajax_request.onreadystatechange = function() {
+                if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+                    document.getElementsByClassName('logSubmit')[0].disabled = false;
+                    document.getElementsByClassName('logSubmit')[0].style.opacity = "100%";
 
-                var form_data = new FormData();
+                    var response = ajax_request.responseText;
 
-                for (i = 0; i < form_elms.length; i++) {
-                    form_data.append(form_elms[i].name, form_elms[i].value);
-                }
+                    if (response == "username is invalid") {
+                        LoginError(0);
+                    } else if (response == "password is invalid") {
+                        LoginError(0);
+                    } else if (response == "not verified") {
+                        LoginError(1);
+                    } else if (response == "login unsuccessful") {
+                        LoginError(2);
+                    } else if (response.includes("login successful")) {
+                        setCookie("session", response.substr(0, response.indexOf(",")), 1000 * 14 * 24 * 60 * 60);
+                        setCookie("cart", 0, 0);
+                        setCookie("quan", 0, 0);
+                        const queryString = window.location.search;
+                        const urlParams = new URLSearchParams(queryString);
+                        const redirect = urlParams.get('redirect');
 
-                document.getElementsByClassName('logSubmit')[0].disabled = true;
-
-                var ajax_request = new XMLHttpRequest();
-
-                ajax_request.open('POST', 'php/process_data.php');
-
-                ajax_request.send(form_data);
-
-                ajax_request.onreadystatechange = function() {
-                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
-                        document.getElementsByClassName('logSubmit')[0].disabled = false;
-
-                        var response = ajax_request.responseText;
-
-                        if (response == "username is invalid") {
-                            LoginError(0);
-                        } else if (response == "password is invalid") {
-                            LoginError(0);
-                        } else if (response == "not verified") {
-                            LoginError(1);
-                        } else if (response == "login unsuccessful") {
-                            LoginError(2);
-                        } else if (response.includes("login successful")) {
-                            setCookie("session", response.substr(0, response.indexOf(",")), 1000 * 14 * 24 * 60 * 60);
-                            const queryString = window.location.search;
-                            const urlParams = new URLSearchParams(queryString);
-                            const redirect = urlParams.get('redirect');
-
-                            if(redirect != null) location.replace(redirect);
-                            else location.replace("/account.html");
-                        }
-
-                        loading(false);
+                        if (redirect != null) location.replace(redirect);
+                        else location.replace("/account.html");
                     }
-                }
 
-                return false;
-            }
-
-            function LoginError(code) {
-                let loginError = document.getElementsByClassName("ErrorL");
-
-                if (code == 0) {
-                    loginError[0].style.opacity = "100%";
-                    loginError[1].style.opacity = "0%";
-                    loginError[2].style.opacity = "0%";
-                } else if (code == 1) {
-                    loginError[0].style.opacity = "0%";
-                    loginError[1].style.opacity = "100%";
-                    loginError[2].style.opacity = "0%";
-                } else if (code == 2) {
-                    loginError[0].style.opacity = "0%";
-                    loginError[1].style.opacity = "0%";
-                    loginError[2].style.opacity = "100%";
-                } else if (code == "reset") {
-                    loginError[0].style.opacity = "0%";
-                    loginError[1].style.opacity = "0%";
-                    loginError[2].style.opacity = "0%";
+                    loading(false);
                 }
             }
 
-            function resetLog() {
-                let loginError = document.getElementsByClassName("ErrorL");
-                let loginUsername = document.getElementById("loginUsername");
-                let loginPassword = document.getElementById("loginPassword");
+            return false;
+        }
 
-                loginError[0].style.opacity = "0";
-                loginError[1].style.opacity = "0";
-                loginUsername.value = "";
-                loginPassword.value = "";
+        function LoginError(code) {
+            let loginError = document.getElementsByClassName("ErrorL");
+
+            if (code == 0) {
+                loginError[0].style.opacity = "100%";
+                loginError[1].style.opacity = "0%";
+                loginError[2].style.opacity = "0%";
+            } else if (code == 1) {
+                loginError[0].style.opacity = "0%";
+                loginError[1].style.opacity = "100%";
+                loginError[2].style.opacity = "0%";
+            } else if (code == 2) {
+                loginError[0].style.opacity = "0%";
+                loginError[1].style.opacity = "0%";
+                loginError[2].style.opacity = "100%";
+            } else if (code == "reset") {
+                loginError[0].style.opacity = "0%";
+                loginError[1].style.opacity = "0%";
+                loginError[2].style.opacity = "0%";
+            }
+        }
+
+        function resetLog() {
+            let loginError = document.getElementsByClassName("ErrorL");
+            let loginUsername = document.getElementById("loginUsername");
+            let loginPassword = document.getElementById("loginPassword");
+
+            loginError[0].style.opacity = "0";
+            loginError[1].style.opacity = "0";
+            loginUsername.value = "";
+            loginPassword.value = "";
+        }
+
+        // <-- Register -->
+        function save_data_reg() {
+            loading(true);
+            var form_elms = document.getElementsByClassName("Reg");
+
+            var form_data = new FormData();
+
+            for (i = 0; i < form_elms.length; i++) {
+                form_data.append(form_elms[i].name, form_elms[i].value);
             }
 
-            // <-- Register -->
-            function save_data_reg() {
-                loading(true);
-                var form_elms = document.getElementsByClassName("Reg");
+            document.getElementsByClassName('regSubmit')[0].disabled = true;
 
-                var form_data = new FormData();
+            var ajax_request = new XMLHttpRequest();
 
-                for (i = 0; i < form_elms.length; i++) {
-                    form_data.append(form_elms[i].name, form_elms[i].value);
-                }
+            ajax_request.open('POST', 'php/process_data.php');
 
-                document.getElementsByClassName('regSubmit')[0].disabled = true;
+            ajax_request.send(form_data);
 
-                var ajax_request = new XMLHttpRequest();
+            ajax_request.onreadystatechange = function() {
+                if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+                    document.getElementsByClassName('regSubmit')[0].disabled = false;
 
-                ajax_request.open('POST', 'php/process_data.php');
+                    var response = ajax_request.responseText;
 
-                ajax_request.send(form_data);
-
-                ajax_request.onreadystatechange = function() {
-                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
-                        document.getElementsByClassName('regSubmit')[0].disabled = false;
-
-                        var response = ajax_request.responseText;
-
-                        if (response == "username is in use") {
-                            RegError(0);
-                        } else if (response == "email is in use") {
-                            RegError(1);
-                        } else if (response == "email wasn't sent" || response == 'registeration unsuccessful') {
-                            RegError(2);
-                        } else if (response == "registeration success") {
-                            notification("reg");
-                            switchBetween("Login");
-                        }
-                        loading(false);
+                    if (response == "username is in use") {
+                        RegError(0);
+                    } else if (response == "email is in use") {
+                        RegError(1);
+                    } else if (response == "email wasn't sent" || response == 'registeration unsuccessful') {
+                        RegError(2);
+                    } else if (response == "registeration success") {
+                        notification("reg");
+                        switchBetween("Login");
                     }
-                }
-
-                return false;
-            }
-
-            function RegError(code) {
-                let regText = document.getElementsByClassName("Error");
-                let regElms = document.getElementsByClassName("Reg");
-
-                if (code == 0) {
-                    regElms[1].style.border = "0px solid red";
-                    regElms[0].style.border = "1px solid red";
-                    regText[0].style.opacity = "0%";
-                    regText[1].style.opacity = "100%";
-                    regText[2].style.opacity = "0%";
-                } else if (code == 1) {
-                    regElms[1].style.border = "1px solid red";
-                    regElms[0].style.border = "0px solid red";
-                    regText[0].style.opacity = "100%";
-                    regText[1].style.opacity = "0%";
-                    regText[2].style.opacity = "0%";
-                } else if(code == 2) {
-                    regElms[1].style.border = "1px solid red";
-                    regElms[0].style.border = "1px solid red";
-                    regText[0].style.opacity = "0%";
-                    regText[1].style.opacity = "0%";
-                    regText[2].style.opacity = "100%";
-                } else if (code == "reset") {
-                    regElms[1].style.border = "0px solid red";
-                    regElms[0].style.border = "0px solid red";
-                    regText[0].style.opacity = "0%";
-                    regText[1].style.opacity = "0%";
-                    regText[2].style.opacity = "0%";
+                    loading(false);
                 }
             }
 
-            function resetReg() {
-                let regText = document.getElementsByClassName("Error");
-                let regUsername = document.getElementById("regUsername");
-                let regPassword = document.getElementById("regPassword");
-                let regEmail = document.getElementById("regEmail");
+            return false;
+        }
 
-                RegError("reset");
-                regText[0].style.opacity = "0";
-                regText[1].style.opacity = "0";
-                regUsername.value = "";
-                regPassword.value = "";
-                regEmail.value = "";    
+        function RegError(code) {
+            let regText = document.getElementsByClassName("Error");
+            let regElms = document.getElementsByClassName("Reg");
+
+            if (code == 0) {
+                regElms[1].style.border = "0px solid red";
+                regElms[0].style.border = "1px solid red";
+                regText[0].style.opacity = "0%";
+                regText[1].style.opacity = "100%";
+                regText[2].style.opacity = "0%";
+            } else if (code == 1) {
+                regElms[1].style.border = "1px solid red";
+                regElms[0].style.border = "0px solid red";
+                regText[0].style.opacity = "100%";
+                regText[1].style.opacity = "0%";
+                regText[2].style.opacity = "0%";
+            } else if (code == 2) {
+                regElms[1].style.border = "1px solid red";
+                regElms[0].style.border = "1px solid red";
+                regText[0].style.opacity = "0%";
+                regText[1].style.opacity = "0%";
+                regText[2].style.opacity = "100%";
+            } else if (code == "reset") {
+                regElms[1].style.border = "0px solid red";
+                regElms[0].style.border = "0px solid red";
+                regText[0].style.opacity = "0%";
+                regText[1].style.opacity = "0%";
+                regText[2].style.opacity = "0%";
+            }
+        }
+
+        function resetReg() {
+            let regText = document.getElementsByClassName("Error");
+            let regUsername = document.getElementById("regUsername");
+            let regPassword = document.getElementById("regPassword");
+            let regEmail = document.getElementById("regEmail");
+
+            RegError("reset");
+            regText[0].style.opacity = "0";
+            regText[1].style.opacity = "0";
+            regUsername.value = "";
+            regPassword.value = "";
+            regEmail.value = "";
+        }
+
+        // <-- Password Email -->
+        function save_data_reset() {
+            loading(true);
+            var form_elms = document.getElementsByClassName("Reset");
+
+            var form_data = new FormData();
+
+            for (i = 0; i < form_elms.length; i++) {
+                form_data.append(form_elms[i].name, form_elms[i].value);
             }
 
-            // <-- Password Email -->
-            function save_data_reset() {
-                loading(true);
-                var form_elms = document.getElementsByClassName("Reset");
+            document.getElementsByClassName('resetSubmit')[0].disabled = true;
 
-                var form_data = new FormData();
+            var ajax_request = new XMLHttpRequest();
 
-                for (i = 0; i < form_elms.length; i++) {
-                    form_data.append(form_elms[i].name, form_elms[i].value);
-                }
+            ajax_request.open('POST', 'php/process_data.php');
 
-                document.getElementsByClassName('resetSubmit')[0].disabled = true;
+            ajax_request.send(form_data);
 
-                var ajax_request = new XMLHttpRequest();
+            ajax_request.onreadystatechange = function() {
+                if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+                    document.getElementsByClassName('resetSubmit')[0].disabled = false;
 
-                ajax_request.open('POST', 'php/process_data.php');
+                    var response = ajax_request.responseText;
 
-                ajax_request.send(form_data);
-
-                ajax_request.onreadystatechange = function() {
-                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
-                        document.getElementsByClassName('resetSubmit')[0].disabled = false;
-
-                        var response = ajax_request.responseText;
-
-                        if (response == "email is invalid") {
-                            EmailError(1);
-                        } else if (response.includes("email wasn't sent") || response == 'reset unsuccessful') {
-                            EmailError(2);
-                        } else if (response.includes("reset successful")) {
-                            notification("res");
-                            switchBetween("Pass");
-                        }
-                        loading(false);
+                    if (response == "email is invalid") {
+                        EmailError(1);
+                    } else if (response.includes("email wasn't sent") || response == 'reset unsuccessful') {
+                        EmailError(2);
+                    } else if (response.includes("reset successful")) {
+                        notification("res");
+                        switchBetween("Pass");
                     }
-                }
-
-                return false;
-            }
-
-            function EmailError(code) {
-                let emailError = document.getElementsByClassName("ErrorR");
-
-                if(code == 1){
-                    emailError[0].style.opacity = "100%";
-                    emailError[1].style.opacity = "0%";
-                } else if(code == 2){
-                    emailError[0].style.opacity = "0%";
-                    emailError[1].style.opacity = "100%";
-                } else if (code == "reset"){
-                    emailError[0].style.opacity = "0%";
-                    emailError[1].style.opacity = "0%";
+                    loading(false);
                 }
             }
 
-            function resetEmail() {
-                let emailEmail = document.getElementById("emailEmail");
+            return false;
+        }
 
-                EmailError("reset");
-                emailEmail.value = "";
+        function EmailError(code) {
+            let emailError = document.getElementsByClassName("ErrorR");
+
+            if (code == 1) {
+                emailError[0].style.opacity = "100%";
+                emailError[1].style.opacity = "0%";
+            } else if (code == 2) {
+                emailError[0].style.opacity = "0%";
+                emailError[1].style.opacity = "100%";
+            } else if (code == "reset") {
+                emailError[0].style.opacity = "0%";
+                emailError[1].style.opacity = "0%";
+            }
+        }
+
+        function resetEmail() {
+            let emailEmail = document.getElementById("emailEmail");
+
+            EmailError("reset");
+            emailEmail.value = "";
+        }
+
+        // <-- Password -->
+        function save_data_resetPass() {
+            loading(true);
+            var form_elms = document.getElementsByClassName("pass");
+            var emailEmail = document.getElementById("emailEmail");
+
+            var form_data = new FormData();
+
+            for (i = 0; i < form_elms.length; i++) {
+                form_data.append(form_elms[i].name, form_elms[i].value);
             }
 
-            // <-- Password -->
-            function save_data_resetPass() {
-                loading(true);
-                var form_elms = document.getElementsByClassName("pass");
-                var emailEmail = document.getElementById("emailEmail");
+            form_data.append("passEmail", emailEmail.value);
 
-                var form_data = new FormData();
+            document.getElementsByClassName('passSubmit')[0].disabled = true;
 
-                for (i = 0; i < form_elms.length; i++) {
-                    form_data.append(form_elms[i].name, form_elms[i].value);
-                }
+            var ajax_request = new XMLHttpRequest();
 
-                form_data.append("passEmail", emailEmail.value);
+            ajax_request.open('POST', 'php/process_data.php');
 
-                document.getElementsByClassName('passSubmit')[0].disabled = true;
+            ajax_request.send(form_data);
 
-                var ajax_request = new XMLHttpRequest();
+            ajax_request.onreadystatechange = function() {
+                if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+                    document.getElementsByClassName('passSubmit')[0].disabled = false;
 
-                ajax_request.open('POST', 'php/process_data.php');
+                    var response = ajax_request.responseText;
 
-                ajax_request.send(form_data);
-
-                ajax_request.onreadystatechange = function() {
-                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
-                        document.getElementsByClassName('passSubmit')[0].disabled = false;
-
-                        var response = ajax_request.responseText;
-
-                        if (response == "code is invalid") {
-                            PassError(0);
-                        } else if (response == "passwords don't match") {
-                            PassError(1);
-                        }  else if (response == "password change unsuccessful") {
-                            PassError(2);
-                        } else if (response.includes("password change successful")) {
-                            notification("resPass");
-                            switchBetween("Login");
-                        }
-                        loading(false);
+                    if (response == "code is invalid") {
+                        PassError(0);
+                    } else if (response == "passwords don't match") {
+                        PassError(1);
+                    } else if (response == "password change unsuccessful") {
+                        PassError(2);
+                    } else if (response.includes("password change successful")) {
+                        notification("resPass");
+                        switchBetween("Login");
                     }
-                }
-
-                return false;
-            }
-
-            function PassError(code) {
-                let passError = document.getElementsByClassName("ErrorP");
-
-                if (code == 0) {
-                    passError[0].style.opacity = "100%";
-                    passError[1].style.opacity = "0";
-                    passError[2].style.opacity = "0";
-                    PasswordForm.style.transform = "translateY(410px) translateX(0px)";
-                } else if (code == 1) {
-                    passError[0].style.opacity = "0";
-                    passError[1].style.opacity = "100%";
-                    passError[2].style.opacity = "0";
-                    PasswordForm.style.transform = "translateY(410px) translateX(0px)";
-                } else if (code == 2) {
-                    passError[0].style.opacity = "0";
-                    passError[1].style.opacity = "0%";
-                    passError[2].style.opacity = "100";
-                    PasswordForm.style.transform = "translateY(410px) translateX(0px)";
-                } else if (code == "reset") {
-                    passError[0].style.opacity = "0";
-                    passError[1].style.opacity = "0";
-                    passError[2].style.opacity = "0";
-                    PasswordForm.style.transform = "translateY(390px) translateX(0px)";
+                    loading(false);
                 }
             }
 
-            function resendEmail() {
-                let codeInput = document.getElementById("code");
+            return false;
+        }
 
-                PassError("reset");
-                codeInput.value = "";
-            }
+        function PassError(code) {
+            let passError = document.getElementsByClassName("ErrorP");
 
-            function resetPass() {
-                let passError = document.getElementsByClassName("ErrorP");
-                let codeInput = document.getElementById("code");
-                let passInputs = document.getElementsByClassName("passwordField");
-
-                passError[0].style.opacity = "0%";
+            if (code == 0) {
+                passError[0].style.opacity = "100%";
+                passError[1].style.opacity = "0";
+                passError[2].style.opacity = "0";
+                PasswordForm.style.transform = "translateY(410px) translateX(0px)";
+            } else if (code == 1) {
+                passError[0].style.opacity = "0";
+                passError[1].style.opacity = "100%";
+                passError[2].style.opacity = "0";
+                PasswordForm.style.transform = "translateY(410px) translateX(0px)";
+            } else if (code == 2) {
+                passError[0].style.opacity = "0";
                 passError[1].style.opacity = "0%";
-                passInputs[0].value = "";
-                passInputs[1].value = "";
-                codeInput.value = "";
-                keyUp2("reset");
-                clicked("resreset");
-                clicked("res2reset");
+                passError[2].style.opacity = "100";
+                PasswordForm.style.transform = "translateY(410px) translateX(0px)";
+            } else if (code == "reset") {
+                passError[0].style.opacity = "0";
+                passError[1].style.opacity = "0";
+                passError[2].style.opacity = "0";
+                PasswordForm.style.transform = "translateY(390px) translateX(0px)";
             }
+        }
 
-            // <-- Cookie Consent -->
-            let cSection = document.getElementsByClassName("cookies");
-            let cCont = cSection[0].children[0];
-            checkCookies();
+        function resendEmail() {
+            let codeInput = document.getElementById("code");
 
-            function checkCookies() {
-                if (getCookie("CookieConsent") == null) {
-                    cFunc("show");
-                } else {
-                    cFunc("hide");
-                }
-            }
+            PassError("reset");
+            codeInput.value = "";
+        }
 
-            function acceptCookies() {
+        function resetPass() {
+            let passError = document.getElementsByClassName("ErrorP");
+            let codeInput = document.getElementById("code");
+            let passInputs = document.getElementsByClassName("passwordField");
+
+            passError[0].style.opacity = "0%";
+            passError[1].style.opacity = "0%";
+            passInputs[0].value = "";
+            passInputs[1].value = "";
+            codeInput.value = "";
+            keyUp2("reset");
+            clicked("resreset");
+            clicked("res2reset");
+        }
+
+        // <-- Cookie Consent -->
+        let cSection = document.getElementsByClassName("cookies");
+        let cCont = cSection[0].children[0];
+        checkCookies();
+
+        function checkCookies() {
+            if (getCookie("CookieConsent") == null) {
+                cFunc("show");
+            } else {
                 cFunc("hide");
-                setCookie("CookieConsent", "true");
+            }
+        }
+
+        function acceptCookies() {
+            cFunc("hide");
+            setCookie("CookieConsent", "true");
+        }
+
+        function cFunc(n) {
+            if (n == "show") {
+                document.getElementsByClassName("cookies")[0].style.visibility = "visible";
+                cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
+            } else if (n == "hide") {
+                cCont.style.top = window.innerHeight + "px";
+                document.getElementsByClassName("cookies")[0].style.visibility = "hidden";
+            }
+        }
+
+        function setCookie(key, value, time = 10000 * 365 * 24 * 60 * 60) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + time);
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+
+        // <-- Get Password Strength -->            
+        function checkStrength(password) {
+            let s = 0;
+            if (password.length > 6) {
+                s++;
             }
 
-            function cFunc(n) {
-                if (n == "show") {
-                    cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
-                } else if (n == "hide") {
-                    cCont.style.top = window.innerHeight + "px";
-                }
+            if (password.length > 10) {
+                s++;
             }
 
-            function setCookie(key, value, time = 10000 * 365 * 24 * 60 * 60) {
-                var expires = new Date();
-                expires.setTime(expires.getTime() + time);
-                document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+            if (/[A-Z]/.test(password)) {
+                s++;
             }
 
-            function getCookie(key) {
-                var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-                return keyValue ? keyValue[2] : null;
+            if (/[0-9]/.test(password)) {
+                s++;
             }
 
-            // <-- Get Password Strength -->            
-            function checkStrength(password) {
-                let s = 0;
-                if (password.length > 6) {
-                    s++;
-                }
-
-                if (password.length > 10) {
-                    s++;
-                }
-
-                if (/[A-Z]/.test(password)) {
-                    s++;
-                }
-
-                if (/[0-9]/.test(password)) {
-                    s++;
-                }
-
-                if (/[^A-Za-z0-9]/.test(password)) {
-                    s++;
-                }
-
-                if (password.length == 0) {
-                    s = -1;
-                }
-
-                return s;
+            if (/[^A-Za-z0-9]/.test(password)) {
+                s++;
             }
 
-            function focused() {
-                document.querySelector("#RegForm .passStrength").style.visibility = "visible";
-                document.querySelector("#RegForm .passStrength").style.transform = "translateY(0px)";
-                document.querySelector("#RegForm .passStrength").style.opacity = "100%";
+            if (password.length == 0) {
+                s = -1;
             }
 
-            function focused2() {
-                document.querySelector("#PasswordForm .passStrength2").style.visibility = "visible";
-                document.querySelector("#PasswordForm .passStrength2").style.transform = "translateY(0px)";
-                document.querySelector("#PasswordForm .passStrength2").style.opacity = "100%";
-            }
+            return s;
+        }
 
-            function clicked(type) {
-                if (type.includes("reg")) {
-                    let pnt = document.querySelector("#RegForm .toggleSeePass");
+        function focused() {
+            document.querySelector("#RegForm .passStrength").style.visibility = "visible";
+            document.querySelector("#RegForm .passStrength").style.transform = "translateY(0px)";
+            document.querySelector("#RegForm .passStrength").style.opacity = "100%";
+        }
 
-                    if (type.includes("reset")) {
+        function focused2() {
+            document.querySelector("#PasswordForm .passStrength2").style.visibility = "visible";
+            document.querySelector("#PasswordForm .passStrength2").style.transform = "translateY(0px)";
+            document.querySelector("#PasswordForm .passStrength2").style.opacity = "100%";
+        }
+
+        function clicked(type) {
+            if (type.includes("reg")) {
+                let pnt = document.querySelector("#RegForm .toggleSeePass");
+
+                if (type.includes("reset")) {
+                    document.querySelector("#RegForm #regPassword").setAttribute("type", "password");
+                    pnt.classList.remove("active");
+                } else {
+                    if (pnt.classList.contains("active")) {
                         document.querySelector("#RegForm #regPassword").setAttribute("type", "password");
                         pnt.classList.remove("active");
                     } else {
-                        if (pnt.classList.contains("active")) {
-                            document.querySelector("#RegForm #regPassword").setAttribute("type", "password");
-                            pnt.classList.remove("active");
-                        } else {
-                            document.querySelector("#RegForm #regPassword").setAttribute("type", "text");
-                            pnt.classList.add("active");
-                        }
+                        document.querySelector("#RegForm #regPassword").setAttribute("type", "text");
+                        pnt.classList.add("active");
                     }
-                } else if (type.includes("log")) {
-                    let pnt = document.querySelector("#LoginForm .toggleSeePass2");
+                }
+            } else if (type.includes("log")) {
+                let pnt = document.querySelector("#LoginForm .toggleSeePass2");
 
-                    if (type.includes("reset")) {
+                if (type.includes("reset")) {
+                    document.querySelector("#LoginForm #loginPassword").setAttribute("type", "password");
+                    pnt.classList.remove("active");
+                } else {
+                    if (pnt.classList.contains("active")) {
                         document.querySelector("#LoginForm #loginPassword").setAttribute("type", "password");
                         pnt.classList.remove("active");
                     } else {
-                        if (pnt.classList.contains("active")) {
-                            document.querySelector("#LoginForm #loginPassword").setAttribute("type", "password");
-                            pnt.classList.remove("active");
-                        } else {
-                            document.querySelector("#LoginForm #loginPassword").setAttribute("type", "text");
-                            pnt.classList.add("active");
-                        }
+                        document.querySelector("#LoginForm #loginPassword").setAttribute("type", "text");
+                        pnt.classList.add("active");
                     }
-                } else if (type.includes("res") && !type.includes("res2")) {
-                    let pnt = document.querySelector("#PasswordForm .toggleSeePass3");
+                }
+            } else if (type.includes("res") && !type.includes("res2")) {
+                let pnt = document.querySelector("#PasswordForm .toggleSeePass3");
 
-                    if (type.includes("reset")) {
+                if (type.includes("reset")) {
+                    document.querySelector("#PasswordForm #newPassword").setAttribute("type", "password");
+                    pnt.classList.remove("active");
+                } else {
+                    if (pnt.classList.contains("active")) {
                         document.querySelector("#PasswordForm #newPassword").setAttribute("type", "password");
                         pnt.classList.remove("active");
                     } else {
-                        if (pnt.classList.contains("active")) {
-                            document.querySelector("#PasswordForm #newPassword").setAttribute("type", "password");
-                            pnt.classList.remove("active");
-                        } else {
-                            document.querySelector("#PasswordForm #newPassword").setAttribute("type", "text");
-                            pnt.classList.add("active");
-                        }
+                        document.querySelector("#PasswordForm #newPassword").setAttribute("type", "text");
+                        pnt.classList.add("active");
                     }
-                } else if (type.includes("res2")) {
-                    let pnt = document.querySelector("#PasswordForm .toggleSeePass4");
+                }
+            } else if (type.includes("res2")) {
+                let pnt = document.querySelector("#PasswordForm .toggleSeePass4");
 
-                    if (type.includes("reset")) {
+                if (type.includes("reset")) {
+                    document.querySelector("#PasswordForm #repeatNewPassword").setAttribute("type", "password");
+                    pnt.classList.remove("active");
+                } else {
+                    if (pnt.classList.contains("active")) {
                         document.querySelector("#PasswordForm #repeatNewPassword").setAttribute("type", "password");
                         pnt.classList.remove("active");
                     } else {
-                        if (pnt.classList.contains("active")) {
-                            document.querySelector("#PasswordForm #repeatNewPassword").setAttribute("type", "password");
-                            pnt.classList.remove("active");
-                        } else {
-                            document.querySelector("#PasswordForm #repeatNewPassword").setAttribute("type", "text");
-                            pnt.classList.add("active");
-                        }
+                        document.querySelector("#PasswordForm #repeatNewPassword").setAttribute("type", "text");
+                        pnt.classList.add("active");
                     }
                 }
-
             }
 
-            function keyUp(x) {
-                var password;
+        }
 
-                if (x == "reset") {
-                    password = "";
-                } else {
-                    password = x.value;
-                }
+        function keyUp(x) {
+            var password;
 
-                let strength = checkStrength(password);
-                let passwordStrengths = document.querySelectorAll("#RegForm .passStrength span");
-                if (strength > -1) {
-                    strength = Math.max(strength, 1);
-                    passwordStrengths[1].style.width = strength * 20 + "%";
-                } else {
-                    passwordStrengths[1].style.width = "0%";
-                }
-
-                if (strength == -1) {
-                    passwordStrengths[0].innerText = "Weak";
-                    passwordStrengths[1].style.color = "#111";
-                    passwordStrengths[1].style.background = "#fff";
-                } else if (strength <= 2) {
-                    passwordStrengths[0].innerText = "Weak";
-                    passwordStrengths[1].style.color = "#111";
-                    passwordStrengths[1].style.background = "#d13636";
-                } else if (strength > 2 && strength <= 4) {
-                    passwordStrengths[0].innerText = "Medium";
-                    passwordStrengths[1].style.color = "#111";
-                    passwordStrengths[1].style.background = "#e6da44";
-                } else if (strength > 4) {
-                    passwordStrengths[0].innerText = "Strong";
-                    passwordStrengths[1].style.color = "#fff";
-                    passwordStrengths[1].style.background = "#20a820";
-                }
-
-                if (x == "reset") {
-                    document.querySelector("#RegForm .passStrength").style.visibility = "hidden";
-                    document.querySelector("#RegForm .passStrength").style.transform = "translateY(-10px)";
-                    document.querySelector("#RegForm .passStrength").style.opacity = "0%";
-                }
-
-                let regPasswordd = document.querySelector("#RegForm #regPassword");
-                let form = document.querySelector("#RegForm");
-                if (checkStrength(password) <= 2) {
-                    regPasswordd.setCustomValidity("Please choose a stronger password.");
-                } else {
-                    regPasswordd.setCustomValidity("");
-                }
+            if (x == "reset") {
+                password = "";
+            } else {
+                password = x.value;
             }
 
-            function keyUp2(x) {
-                var password;
-
-                if (x == "reset") {
-                    password = "";
-                } else {
-                    password = x.value;
-                }
-
-                let strength = checkStrength(password);
-                let passwordStrengths = document.querySelectorAll("#PasswordForm .passStrength2 span");
-                if (strength > -1) {
-                    strength = Math.max(strength, 1);
-                    passwordStrengths[1].style.width = strength * 20 + "%";
-                } else {
-                    passwordStrengths[1].style.width = "0%";
-                }
-
-                if (strength == -1) {
-                    passwordStrengths[0].innerText = "Weak";
-                    passwordStrengths[1].style.color = "#111";
-                    passwordStrengths[1].style.background = "#fff";
-                } else if (strength <= 2) {
-                    passwordStrengths[0].innerText = "Weak";
-                    passwordStrengths[1].style.color = "#111";
-                    passwordStrengths[1].style.background = "#d13636";
-                } else if (strength > 2 && strength <= 4) {
-                    passwordStrengths[0].innerText = "Medium";
-                    passwordStrengths[1].style.color = "#111";
-                    passwordStrengths[1].style.background = "#e6da44";
-                } else if (strength > 4) {
-                    passwordStrengths[0].innerText = "Strong";
-                    passwordStrengths[1].style.color = "#fff";
-                    passwordStrengths[1].style.background = "#20a820";
-                }
-
-                if (x == "reset") {
-                    document.querySelector("#PasswordForm .passStrength2").style.visibility = "hidden";
-                    document.querySelector("#PasswordForm .passStrength2").style.transform = "translateY(-10px)";
-                    document.querySelector("#PasswordForm .passStrength2").style.opacity = "0%";
-                }
-
-                let regPasswordd = document.querySelector("#PasswordForm #newPassword");
-                let form = document.querySelector("#PasswordForm");
-                if (checkStrength(password) <= 2) {
-                    regPasswordd.setCustomValidity("Please choose a stronger password.");
-                } else {
-                    regPasswordd.setCustomValidity("");
-                }
-            }
-            
-            function notification(type){
-                let notif = document.getElementsByClassName("notif")[0];
-                    let textNo = notif.children[1];
-
-                if(type == "reg"){
-                    textNo.style.fontSize = "15px";
-                    textNo.textContent = "An email was sent to you.";
-                    notif.id = "show";
-                    setTimeout(function(){
-                        notif.id = "hide";
-                    }, 5000);
-                } else if(type == "resPass"){
-                    textNo.style.fontSize = "15px";
-                    textNo.textContent = "Your password has been reset.";
-                    notif.id = "show";
-                    setTimeout(function(){
-                        notif.id = "hide";
-                    }, 5000);
-                } else if(type == "res"){
-                    textNo.style.fontSize = "15px";
-                    textNo.textContent = "An email was sent to you.";
-                    notif.id = "show";
-                    setTimeout(function(){
-                        notif.id = "hide";
-                    }, 5000);
-                }
+            let strength = checkStrength(password);
+            let passwordStrengths = document.querySelectorAll("#RegForm .passStrength span");
+            if (strength > -1) {
+                strength = Math.max(strength, 1);
+                passwordStrengths[1].style.width = strength * 20 + "%";
+            } else {
+                passwordStrengths[1].style.width = "0%";
             }
 
-            function loading(con){
-                if(con == true){
-                    document.getElementsByClassName("form-overlay")[0].classList.add("ovlyact");
-                } else {
-                    document.getElementsByClassName("form-overlay")[0].classList.remove("ovlyact");
-                }
+            if (strength == -1) {
+                passwordStrengths[0].innerText = "Weak";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#fff";
+            } else if (strength <= 2) {
+                passwordStrengths[0].innerText = "Weak";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#d13636";
+            } else if (strength > 2 && strength <= 4) {
+                passwordStrengths[0].innerText = "Medium";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#e6da44";
+            } else if (strength > 4) {
+                passwordStrengths[0].innerText = "Strong";
+                passwordStrengths[1].style.color = "#fff";
+                passwordStrengths[1].style.background = "#20a820";
             }
-        </script>
-    </body>
 
-    </html>
+            if (x == "reset") {
+                document.querySelector("#RegForm .passStrength").style.visibility = "hidden";
+                document.querySelector("#RegForm .passStrength").style.transform = "translateY(-10px)";
+                document.querySelector("#RegForm .passStrength").style.opacity = "0%";
+            }
+
+            let regPasswordd = document.querySelector("#RegForm #regPassword");
+            let form = document.querySelector("#RegForm");
+            if (checkStrength(password) <= 2) {
+                regPasswordd.setCustomValidity("Please choose a stronger password.");
+            } else {
+                regPasswordd.setCustomValidity("");
+            }
+        }
+
+        function keyUp2(x) {
+            var password;
+
+            if (x == "reset") {
+                password = "";
+            } else {
+                password = x.value;
+            }
+
+            let strength = checkStrength(password);
+            let passwordStrengths = document.querySelectorAll("#PasswordForm .passStrength2 span");
+            if (strength > -1) {
+                strength = Math.max(strength, 1);
+                passwordStrengths[1].style.width = strength * 20 + "%";
+            } else {
+                passwordStrengths[1].style.width = "0%";
+            }
+
+            if (strength == -1) {
+                passwordStrengths[0].innerText = "Weak";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#fff";
+            } else if (strength <= 2) {
+                passwordStrengths[0].innerText = "Weak";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#d13636";
+            } else if (strength > 2 && strength <= 4) {
+                passwordStrengths[0].innerText = "Medium";
+                passwordStrengths[1].style.color = "#111";
+                passwordStrengths[1].style.background = "#e6da44";
+            } else if (strength > 4) {
+                passwordStrengths[0].innerText = "Strong";
+                passwordStrengths[1].style.color = "#fff";
+                passwordStrengths[1].style.background = "#20a820";
+            }
+
+            if (x == "reset") {
+                document.querySelector("#PasswordForm .passStrength2").style.visibility = "hidden";
+                document.querySelector("#PasswordForm .passStrength2").style.transform = "translateY(-10px)";
+                document.querySelector("#PasswordForm .passStrength2").style.opacity = "0%";
+            }
+
+            let regPasswordd = document.querySelector("#PasswordForm #newPassword");
+            let form = document.querySelector("#PasswordForm");
+            if (checkStrength(password) <= 2) {
+                regPasswordd.setCustomValidity("Please choose a stronger password.");
+            } else {
+                regPasswordd.setCustomValidity("");
+            }
+        }
+
+        function notification(type) {
+            let notif = document.getElementsByClassName("notif")[0];
+            let textNo = notif.children[1];
+
+            if (type == "reg") {
+                textNo.style.fontSize = "15px";
+                textNo.textContent = "An email was sent to you.";
+                notif.id = "show";
+                setTimeout(function() {
+                    notif.id = "hide";
+                }, 5000);
+            } else if (type == "resPass") {
+                textNo.style.fontSize = "15px";
+                textNo.textContent = "Your password has been reset.";
+                notif.id = "show";
+                setTimeout(function() {
+                    notif.id = "hide";
+                }, 5000);
+            } else if (type == "res") {
+                textNo.style.fontSize = "15px";
+                textNo.textContent = "An email was sent to you.";
+                notif.id = "show";
+                setTimeout(function() {
+                    notif.id = "hide";
+                }, 5000);
+            }
+        }
+
+        function loading(con) {
+            if (con == true) {
+                document.getElementsByClassName("form-overlay")[0].classList.add("ovlyact");
+            } else {
+                document.getElementsByClassName("form-overlay")[0].classList.remove("ovlyact");
+            }
+        }
+        // <-- Side Navigation -->
+
+        function Nav() {
+            if (document.getElementById("indexpage").style.transform == "") {
+                document.getElementById("Sidenav").style.transform = "translateX(0px)";
+                document.getElementById("indexpage").style.transform = "translateX(300px)";
+                document.body.style.overflowY = 'hidden';
+                document.body.style.overflowX = 'hidden';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', 'Nav()');
+                }, 150);
+            } else {
+                document.getElementById("Sidenav").style.transform = "translateX(-300px)";
+                document.getElementById("indexpage").style.transform = "";
+                document.body.style.overflowY = '';
+                document.body.style.overflowX = '';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', '');
+                }, 150);
+            }
+        }
+
+        // <-- Side Navigation Open List -->
+        function navList(object, value) {
+            var obj = object.parentElement.parentElement.children[1];
+
+            if (obj.style.marginBottom == "0px") {
+                obj.style.marginBottom = value + "px";
+                object.innerHTML = "+";
+            } else {
+                obj.style.marginBottom = "0px";
+                object.innerHTML = "-";
+            }
+        }
+
+        
+        
+        
+        
+
+    </script>
+</body>
+
+</html>

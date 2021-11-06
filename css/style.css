@@ -56,7 +56,7 @@ html {
 }
 
 body {
-    background: #160a22;
+    background: rgb(218, 218, 218);
     font-family: 'Poppins', sans-serif;
 }
 
@@ -93,51 +93,19 @@ section {
     align-items: center;
 }
 
-#fade::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to top, #160522, transparent);
-    z-index: 1000;
-}
-
-#text {
-    position: absolute;
-    color: #fff;
-    white-space: nowrap;
-    font-size: 5.5vw;
-    z-index: 9;
-    transform: translateY(-100px);
-    pointer-events: none;
-}
-
-#btn {
-    position: absolute;
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 30px;
-    border-radius: 40px;
-    background: #fff;
-    color: black;
-    font-size: 1.5em;
-    z-index: 9;
-    cursor: pointer;
-    transition: 0.15s;
-}
-
 .navbar {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
+    height: 120px;
     padding: 30px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 10000;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    background: black;
 }
 
 .navbar .logo {
@@ -155,6 +123,62 @@ section {
 }
 
 .navbar2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.navbar2 .logo {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'posterama';
+}
+
+.navbar3 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 95px;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    background: black;
+}
+
+.navbar3 .logo {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'posterama';
+}
+
+.navbar4 {
     position: absolute;
     top: 0;
     left: 0;
@@ -167,7 +191,7 @@ section {
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 
-.navbar .logo-line {
+.navbar4 .logo-noline {
     color: white;
     font-weight: 700;
     text-decoration: none;
@@ -179,79 +203,6 @@ section {
     -ms-user-select: none;
     user-select: none;
     font-family: 'posterama';
-}
-
-.navbar .logo-noline {
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    font-family: 'posterama';
-}
-
-.navbar2 .logo-noline {
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    font-family: 'posterama';
-}
-
-.navbar2 .logo-line {
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    font-family: 'posterama';
-}
-
-.navbar .logo-noline:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 4px;
-    left: 50%;
-    position: absolute;
-    background: #fff;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-}
-
-.navbar .logo-line:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 4px;
-    position: absolute;
-    background: #fff;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    left: 0;
-    width: 100%;
-}
-
-.navbar:hover .logo-noline::after {
-    width: 100%;
-    left: 0;
 }
 
 nav {
@@ -275,8 +226,14 @@ nav ul li a {
     color: white;
     font-size: 1em;
     padding: 5px 10px;
-    margin-right: 5px;
+    margin-right: 15px;
     transition: 0.25s;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 nav ul li a:hover {
@@ -286,20 +243,275 @@ nav ul li a:hover {
     padding: 5px 10px;
 }
 
+.image-section .img-cont img {
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+}
+
+.prods {
+    background: white;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: -65px;
+    transform: translateY(0px);
+    margin-bottom: 65px;
+}
+
+.prods .search-bar {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 50px;
+}
+
+.prods h1 {
+    color: black;
+}
+
+.prods form {
+    padding: 0;
+    position: relative;
+    top: 0;
+    transition: transform 0.5s;
+    text-align: center;
+}
+
+.prods .search-bar input[type=text] {
+    margin-top: 25px;
+    padding: 6px;
+    margin-right: -5px;
+    font-size: 17px;
+    max-width: 40vw;
+    min-width: 1vw;
+    width: 40vw;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+}
+
+.search-cont {
+    margin-bottom: 45px;
+}
+
+.search-cont button {
+    padding: 6px 10px;
+    margin-right: 16px;
+    background: #343434;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.search-cont button:hover {
+    background: #424242;
+}
+
+.search-cont button:focus {
+    outline: none;
+}
+
+.fa-search {
+    color: white;
+}
+
+.col-5s {
+    cursor: pointer;
+    position: relative;
+    flex-basis: 20%;
+    padding: 10px;
+    min-width: 200px;
+    min-height: 410px;
+    max-height: 410px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+    background: #f1f1f1;
+}
+
+.col-5s img {
+    width: 100%;
+}
+
+.col-5s p {
+    font-size: 14px;
+}
+
+.col-5s h4 {
+    color: black;
+}
+
+.col-5sale {
+    cursor: pointer;
+    position: relative;
+    flex-basis: 20%;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+    height: 410px;
+}
+
+.col-5sale img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.col-5sale p {
+    top: 85%;
+    left: 32%;
+    padding: 10px;
+    color: white;
+    position: absolute;
+    font-size: 15px;
+}
+
+.col-5sale .h4-holder {
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    right: -44%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 15px;
+    background: rgba(0, 0, 0, .25);
+    transition: 0.25s;
+}
+
+.col-5sale h4 {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.prodnamediv {
+    height: 75px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prodnamediv2 {
+    height: 50px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.25;
+    transition: .15s ease;
+    background-color: black;
+}
+
+.col-5sale:hover #overlay {
+    opacity: 0.55;
+}
+
+.col-5sale:hover h4 {
+    background: rgba(0, 0, 0, .65)
+}
+
+#prod-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .15s ease;
+    background-color: black;
+    transition: 0.5s;
+}
+
+.col-5s:hover #prod-overlay {
+    opacity: 0.025;
+}
+
+.col-5s:hover #prod-overlay-a {
+    opacity: 1;
+    top: 50%;
+}
+
+#prod-overlay-a {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgb(224, 34, 0);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.25);
+    transition: 0.25s;
+    opacity: 0;
+}
+
+#prod-overlay-a:hover {
+    background: rgb(185, 28, 0);
+}
+
+.row-container {
+    margin: auto;
+}
+
+.row-container .row {
+    align-items: left;
+    justify-content: left;
+}
+
 .button {
     text-decoration: none;
     height: auto;
     border-radius: 50px;
     color: white;
     font-size: 1em;
-    padding: 5px 10px;
+    padding: 5px 8px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .button:hover {
     border-radius: 50px;
     background-color: #fff;
     color: black;
-    padding: 5px 10px;
+    padding: 5px 8px;
+}
+
+#btnActive {
+    border-radius: 50px;
+    background-color: #fff;
+    color: black;
+    padding: 5px 8px;
+    cursor: default;
+    pointer-events: none; 
 }
 
 .menu-icon {
@@ -325,6 +537,8 @@ nav ul li a:hover {
     background-color: #fff;
     color: black;
     padding: 5px 10px;
+    cursor: default;
+    pointer-events: none; 
 }
 
 a {
@@ -345,8 +559,8 @@ a {
 
 .btn {
     display: inline-block;
-    background: white;
-    color: black;
+    background: black;
+    color: white;
     padding: 8px 30px;
     margin: 30px 0px;
     border-radius: 30px;
@@ -366,17 +580,34 @@ a {
     padding-right: 25px;
 }
 
+.col-4:hover #prod-overlay {
+    opacity: 0.025;
+}
+
+.col-4:hover #prod-overlay-a {
+    opacity: 1;
+    top: 50%;
+}
+
 .col-4 {
+    position: relative;
     flex-basis: 25%;
     padding: 10px;
     min-width: 200px;
     margin-bottom: 50px;
     transition: transform 0.5s;
+    cursor: pointer;
+    min-height: 410px;
+    max-height: 410px;
+    background: #f1f1f1;
 }
 
 .col-4 img {
     width: 100%;
-    cursor: pointer;
+}
+
+.col-4 h4 {
+    color: black;
 }
 
 .title {
@@ -400,30 +631,26 @@ a {
 }
 
 h4 {
-    color: white;
+    color: black;
     font-weight: normal;
-}
-
-.col-4:hover {
-    transform: translateY(-5px);
 }
 
 .col-4 p {
     font-size: 14px;
 }
 
+.ProdCatLink2 {
+    color: #8e8e8e;
+    text-decoration: underline;
+    transition: 0.15s;
+}
+
+.ProdCatLink2:hover {
+    color: black;
+}
+
 
 /*---------> categories <---------*/
-
-.categories::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to top, #160a22, transparent);
-    z-index: 1000;
-}
 
 .categories {
     margin: 70px 0;
@@ -523,7 +750,7 @@ h4 {
     padding: 16px;
     margin-top: -50px;
     margin-left: -30px;
-    color: white;
+    color: black;
     font-weight: bold;
     font-size: 20px;
     border-radius: 0 3px 3px 0;
@@ -542,6 +769,7 @@ h4 {
 
 .prev:hover,
 .next:hover {
+    color: white;
     background-color: rgba(0, 0, 0, 0.4);
     transform: scale(1.1);
 }
@@ -570,11 +798,20 @@ h4 {
     align-items: center;
 }
 
+.col-2s {
+    flex-basis: 50%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
 .col-2 h1 {
     font-size: 50px;
     line-height: 60px;
     margin: 25px 0;
-    color: white;
+    color: black;
 }
 
 .col-2 .offer-img {
@@ -651,7 +888,7 @@ small {
 
 .footer-col-2,
 .footer-col-3 {
-    flex-basis: 12%;
+    flex-basis: 15%;
     text-align: center;
 }
 
@@ -675,6 +912,15 @@ ul {
     margin: 20px 0;
 }
 
+.footerlogo {
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.footerlogo:hover {
+    transform: scale(1.05);
+}
+
 .copyright {
     text-align: center;
 }
@@ -693,88 +939,110 @@ ul {
     text-decoration: underline;
 }
 
+.linka {
+    color: #8a8a8a;
+    transition: 0.15s ease;
+}
+
+.linka:hover {
+    color: white;
+}
+
+#linka {
+    color: #8a8a8a;
+    transition: 0.15s ease;
+}
+
+#linka:hover {
+    color: white;
+}
+
+#linka2 {
+    color: #8a8a8a;
+    transition: 0.15s ease;
+}
+
+#linka2:hover {
+    color: black;
+}
+
 
 /*---------> shop <---------*/
 
 .row-2 {
-    margin: 100px auto 50px;
+    padding-top: 30px;
     margin-bottom: 30px;
+    position: relative;
 }
 
 .row-2 h2 {
+    text-align: left;
     justify-content: left;
-    margin-right: 310px;
+    align-items: left;
+    color: black;
 }
 
 .row-2 #sortingSelect {
     justify-content: right;
-    margin-left: 360px;
+    align-items: right;
 }
 
 .row-2 p {
     cursor: pointer;
 }
 
-.row-2 .search-container {
-    justify-content: center;
-    float: right;
-}
-
 .row-2 input[type=text] {
-    margin-top: 65.5px;
-    margin-left: -323px;
+    justify-content: center;
+    align-items: center;
     padding: 6px;
-    padding-right: 45px;
+    margin-right: -5px;
     font-size: 17px;
-    width: 650px;
+    width: 30vw;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid black;
+    color: black;
 }
 
-.row-2 .search-con button {
-    position: absolute;
-    margin-top: -34px;
-    margin-left: 288px;
-    float: right;
+.search-con button {
     padding: 6px 10px;
     margin-right: 16px;
     background: #343434;
     font-size: 17px;
     border: none;
     cursor: pointer;
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
-.row-2 .search-con button:hover {
+.search-con button:hover {
     background: #424242;
 }
 
-.row-2 .search-con button:focus {
+.search-con button:focus {
     outline: none;
 }
 
 select {
     background-color: transparent;
-    color: white;
-    border: 2px solid white;
+    color: black;
+    border: 2px solid black;
     padding: 5px;
-    transition: 0.25s ease;
 }
 
 select:focus {
     outline: none;
-    background-color: white;
+    background-color: transparent;
     color: black;
 }
 
 .page-btn {
-    margin: 0 auto 80px;
+    margin-bottom: 40px;
     margin-left: 700px;
 }
 
 .page-btn span {
     display: inline-block;
-    border: 1px solid white;
+    border: 1px solid black;
+    color: black;
     margin-left: 10px;
     width: 40px;
     height: 40px;
@@ -784,18 +1052,18 @@ select:focus {
 }
 
 .page-btn span:hover {
-    background: white;
-    color: black;
+    background: black;
+    color: white;
 }
 
 .page-btn a {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
 #page-btn-active {
-    background: white;
-    color: black;
+    background: black;
+    color: white;
 }
 
 #invisible {
@@ -811,7 +1079,12 @@ select:focus {
 
 .col-2 p a {
     text-decoration: none;
-    color: white;
+    color: #8e8e8e;
+    transition: 0.15s;
+}
+
+.col-2 p a:hover {
+    color: black;
 }
 
 .product {
@@ -847,9 +1120,9 @@ select:focus {
     padding-left: 10px;
     font-size: 20px;
     margin-right: 10px;
-    color: white;
+    color: black;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid black;
     margin-left: 20px;
     transform: translateY(-33px) translateX(92px);
 }
@@ -906,10 +1179,12 @@ select:focus {
     width: 100%;
     height: 75%;
     object-fit: cover;
-    opacity: 0.5;
+    opacity: 0.4;
     transform: scale(1);
     transition: 0.5s ease;
     cursor: pointer;
+    outline: 1px solid black;
+    /*box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.25);*/
 }
 
 .smol-img:hover {
@@ -920,6 +1195,7 @@ select:focus {
 #active-img {
     cursor: default;
     opacity: 1;
+    outline: 1px solid black;
 }
 
 #active-img:hover {
@@ -930,36 +1206,67 @@ select:focus {
 
 #prod-img {
     transition: 0.5s ease;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
 }
 
-.prev-prod,
-.next-prod {
-    cursor: pointer;
+.arrow-cont {
     position: absolute;
-    top: 58%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    margin-left: -530px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.prev-prod {
+    -webkit-touch-callout: none;
     -webkit-user-select: none;
-    outline: black;
-    outline-width: 1px;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 45%;
+    left: 0.6%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
     transition: 0.5s ease;
     transform: scale(1);
+    padding: 15px;
 }
 
 .next-prod {
-    right: 900px;
-    border-radius: 3px 0 0 3px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 45%;
+    left: 91%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: 0.5s ease;
+    transform: scale(1);
+    padding: 15px;
 }
 
 .prev-prod:hover,
 .next-prod:hover {
+    color: white;
     background-color: rgba(0, 0, 0, 0.4);
     transform: scale(1.1);
 }
@@ -1064,12 +1371,10 @@ select:focus {
 }
 
 .row-2- {
-    justify-content: center;
-    margin: 25px auto 35px;
-}
-
-.row-2- h2 {
-    margin-right: 725px;
+    justify-content: space-between;
+    padding-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 5px;
 }
 
 .row-2- p {
@@ -1091,15 +1396,36 @@ select:focus {
     opacity: 70%;
 }
 
+.holder {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
 
 /*---------> cart <---------*/
 
 .cart-pg {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    max-width: 1300px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border: 1px solid black;
+}
+
+.cart-pg2 {
     margin: 80px auto;
 }
 
 .cart-table {
-    width: 110%;
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -1109,14 +1435,14 @@ select:focus {
 }
 
 .cart-info small {
-    color: white;
+    color: black;
 }
 
 th {
     text-align: left;
     padding: 5px;
-    color: white;
-    border: 1px solid white;
+    color: black;
+    border: 1px solid black;
     font-weight: normal;
 }
 
@@ -1125,7 +1451,18 @@ td {
 }
 
 td a {
-    color: white;
+    color: black;
+}
+
+.loginbutton{
+    color: #348cff;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.loginbutton:hover{
+    color: #006eff;
+    text-decoration: underline;
 }
 
 td img {
@@ -1156,14 +1493,13 @@ th:last-child {
 }
 
 .total-price table {
-    border-top: 3px solid white;
+    border-top: 3px solid black;
     width: 110%;
     max-width: 420px;
-    margin-right: -97px;
 }
 
 .cart-btn {
-    background: white;
+    background: black;
     color: white;
     text-align: center;
     font-size: 15px;
@@ -1186,9 +1522,9 @@ td .inputQuan {
     width: 48px;
     height: 35px;
     font-size: 20px;
-    color: white;
+    color: black;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
 td .inputQuan::-webkit-outer-spin-button,
@@ -1213,7 +1549,7 @@ td .inputQuan[type=number] {
 }
 
 .form-container {
-    background: #160a22;
+    background: black;
     width: 300px;
     height: 400px;
     position: relative;
@@ -1237,7 +1573,7 @@ td .inputQuan[type=number] {
     display: inline-block;
 }
 
-form {
+.loginform {
     max-width: 300px;
     padding: 0 20px;
     position: absolute;
@@ -1245,7 +1581,7 @@ form {
     transition: transform 0.5s;
 }
 
-form .accountInput {
+.loginform .accountInput {
     width: 100%;
     height: 30px;
     margin: 10px 0;
@@ -1255,11 +1591,11 @@ form .accountInput {
     background-color: white;
 }
 
-form .accountInput:focus {
+.loginform .accountInput:focus {
     outline: none;
 }
 
-form .btn {
+.loginform .btn {
     width: 100%;
     border: none;
     cursor: pointer;
@@ -1268,7 +1604,7 @@ form .btn {
     background-color: white;
 }
 
-form .btn:focus {
+.loginform .btn:focus {
     outline: none;
 }
 
@@ -1290,7 +1626,7 @@ form .btn:focus {
     left: 0px;
 }
 
-form a {
+.loginform a {
     font-size: 12px;
 }
 
@@ -1521,9 +1857,9 @@ form a {
 }
 
 .cookie-btn {
-    padding: 10px;
-    margin-right: 15px;
-    margin-left: 50px;
+    padding: 0.5vw;
+    margin-right: 1vw;
+    margin-left: 1vw;
     border: 1px solid white;
     cursor: pointer;
 }
@@ -1574,15 +1910,17 @@ form a {
 
 #show {
     box-shadow: 0 0 20px 0px #160a22;
-    position: absolute;
+    position: fixed;
     background-color: white;
     color: black;
     text-align: center;
-    margin-right: 750px;
-    margin-left: 775px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     border-radius: 50px;
     vertical-align: middle;
-    top: 50px;
+    top: 10%;
+    left: 50%;
     width: 325px;
     height: 50px;
     opacity: 100%;
@@ -1590,17 +1928,20 @@ form a {
 }
 
 #hide {
-    position: absolute;
+    box-shadow: 0 0 20px 0px #160a22;
+    position: fixed;
     background-color: white;
     color: black;
     text-align: center;
-    margin-right: 750px;
-    margin-left: 775px;
     border-radius: 50px;
     vertical-align: middle;
-    top: 37px;
-    width: 325px;
+    top: 5%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     height: 50px;
+    width: 325px;
     opacity: 0%;
     transition: 0.5s ease;
 }
@@ -1635,8 +1976,8 @@ form a {
     vertical-align: top;
     padding: 10px 10px;
     border: 0px;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: rgb(218, 218, 218);
     resize: none;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
@@ -1686,6 +2027,10 @@ form a {
     font-size: 15px;
 }
 
+.addressInputs{
+    width: 40%;
+}
+
 .CheckoutForm .innput {
     transform: translateX(200px) translateY(-35px);
     width: 100%;
@@ -1693,8 +2038,8 @@ form a {
     margin: 10px 0;
     padding: 0 10px;
     border: none;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: rgb(218, 218, 218);
 }
 
 .CheckoutForm .innput:focus {
@@ -1707,7 +2052,7 @@ form a {
 
 .filters-cont {
     position: absolute;
-    border: 1px solid white;
+    border: 1px solid black;
     width: 375px;
     height: 1360px;
     margin-left: 24px;
@@ -1716,15 +2061,16 @@ form a {
 
 .filters-cont h1 {
     text-align: left;
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid black;
+    color: black;
     padding-top: 25px;
     margin-bottom: 25px;
     width: 110px;
 }
 
 .filters-cont .clearBtn {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     padding-left: 5px;
     padding-right: 5px;
     font-size: 17px;
@@ -1733,13 +2079,13 @@ form a {
 }
 
 .filters-cont .row:first-child {
-    border-top: 0px solid white;
+    border-top: 0px solid black;
     padding-bottom: 0px;
     display: flex;
 }
 
 .filters-cont .row {
-    border-top: 1px solid white;
+    border-top: 1px solid black;
     padding-bottom: 250px;
     display: block;
     overflow: hidden;
@@ -1747,8 +2093,8 @@ form a {
 }
 
 .filters-cont .row:last-child {
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     padding-bottom: 0px;
 }
 
@@ -1758,8 +2104,12 @@ form a {
     text-align: left;
     font-size: 20px;
     padding-left: 10px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
     cursor: pointer;
+}
+
+.filters-cont .row .top-row h3 {
+    color: black;
 }
 
 .filters-cont .row .top-row a {
@@ -1768,6 +2118,7 @@ form a {
     font-size: 20px;
     padding-left: 330px;
     transform: translateY(-32px);
+    color: black;
 }
 
 .filters-cont .row .bottom-row {
@@ -1792,7 +2143,7 @@ form a {
 .filters-cont .row .bottom-row .checkbox-cat .fakeCheck {
     width: 20px;
     height: 20px;
-    border: 1px solid white;
+    border: 1px solid black;
     transition: 0.15s;
 }
 
@@ -1825,10 +2176,20 @@ form a {
 
 .fakeCheck .notChecked {
     display: none;
+    color: black;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .fakeCheck .Checked {
     display: inline;
+    color: black;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .filters-cont .row .bottom-row .checkbox-cat label {
@@ -1836,6 +2197,7 @@ form a {
     margin-top: -23px;
     margin-left: 30px;
     font-size: 17px;
+    color: black;
     transition: 0.15s;
 }
 
@@ -1859,25 +2221,25 @@ form a {
 
 .btn-cont .btnrow {
     border: 1px solid rgb(255, 255, 255, .25);
-    color: rgb(255, 255, 255, .25);
+    color: rgb(78, 78, 78);
     width: 100%;
     height: 50px;
     font-size: 17px;
     font-family: "Posterama";
     cursor: pointer;
     transition: 0.25s ease;
-    background: rgb(17, 17, 17);
+    background: white;
 }
 
 .btn-cont .btnrow:hover {
     border-left: 5px solid rgb(0, 153, 255);
-    color: white;
+    color: black;
     font-size: 19px;
 }
 
 .btn-cont #btnAct {
     border-left: 5px solid rgb(0, 153, 255);
-    color: white;
+    color: black;
     font-size: 19px;
     cursor: default;
 }
@@ -1895,14 +2257,14 @@ form a {
 }
 
 .info-cont {
-    background: rgb(17, 17, 17);
+    background: rgb(255, 255, 255);
     border: 1px solid rgb(255, 255, 255, .25);
     width: 100%;
     padding-left: 50px;
 }
 
 .info-cont p {
-    color: rgb(180, 180, 180);
+    color: rgb(56, 56, 56);
     padding-top: 15px;
     font-size: 13px;
 }
@@ -1917,6 +2279,7 @@ form a {
     border-radius: 5px;
     padding-left: 10px;
     border: 1px solid rgb(255, 255, 255, .25);
+    background: rgb(218, 218, 218);
 }
 
 .info-cont .row .col-2 .inputPencil:focus {
@@ -1930,6 +2293,7 @@ form a {
     padding-left: 20px;
     margin-left: 10px;
     border-radius: 5px;
+    color: white;
     background: rgb(0, 153, 255);
     cursor: pointer;
 }
@@ -1944,6 +2308,7 @@ form a {
     border-radius: 5px;
     padding-left: 10px;
     border: 1px solid rgb(255, 255, 255, .25);
+    background: rgb(218, 218, 218);
 }
 
 .info-cont .row .col-2 .inputNoPencil:focus {
@@ -1958,6 +2323,7 @@ form a {
     cursor: pointer;
     transition: 0.25s;
     border-radius: 5px;
+    color: white;
 }
 
 .info-cont .row .col-2 .adrBtn:hover {
@@ -2082,16 +2448,16 @@ form a {
     transition: 0.25s ease;
 }
 
-.window-overlay .container-overlay{
+.window-overlay .container-overlay {
     cursor: default;
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: #202020;
+    background-color: white;
     width: 30%;
-    height: 470px;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
+    min-height: 470px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     padding-top: 25px;
     padding-left: 50px;
     padding-right: 50px;
@@ -2099,20 +2465,51 @@ form a {
     transition: 0.25s ease;
 }
 
-.container-overlay h3{
+.window-overlay2 {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    transition: 0.25s ease;
+}
+
+.window-overlay2 .container-overlay {
+    cursor: default;
+    position: relative;
+    background-color: white;
+    width: 70%;
+    min-height: 470px;
+    transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: 1px solid rgb(255, 255, 255, .25);
+    transition: 0.25s ease;
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.container-overlay h3 {
     display: inline-block;
     width: 100%;
     padding-bottom: 20px;
 }
 
-.container-overlay h3 i{
+.container-overlay h3 i {
     padding-top: 7px;
     display: inline-block;
     float: right;
     cursor: pointer;
 }
 
-.container-overlay h4{
+.container-overlay h4 {
     font-size: 15px;
     padding-bottom: 10px;
 }
@@ -2123,7 +2520,7 @@ form a {
     border-radius: 5px;
     padding-left: 10px;
     background: transparent;
-    border: 1px solid rgb(255, 255, 255, .25);
+    border: 1px solid rgb(53, 53, 53);
 }
 
 .window-input:focus {
@@ -2131,10 +2528,24 @@ form a {
     border: 1px solid rgb(57, 176, 255);
 }
 
+.adm-window-input {
+    height: 45px;
+    width: 80%;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: transparent;
+    border: 1px solid rgb(53, 53, 53);
+}
+
+.adm-window-input:focus {
+    outline: none;
+    border: 1px solid rgb(57, 176, 255);
+}
+
 .checkboxDiv {
     width: 18px;
     height: 18px;
-    border: 1px solid white;
+    border: 1px solid black;
     transition: 0.15s;
 }
 
@@ -2157,10 +2568,18 @@ form a {
 
 .checkboxDiv .notChecked {
     opacity: 0%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .checkboxDiv .Checked {
     opacity: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .window-btn {
@@ -2172,6 +2591,7 @@ form a {
     border-radius: 5px;
     padding-right: 35px;
     padding-left: 35px;
+    color: white;
 }
 
 .window-btn:hover {
@@ -2181,16 +2601,17 @@ form a {
 .window-btn:last-child {
     background: rgb(23, 161, 253);
 }
+
 .window-btn:last-child:hover {
     background: rgb(0, 132, 255);
 }
 
-.window-hidden{
+.window-hidden {
     opacity: 0%;
     visibility: hidden;
 }
 
-.window-shown{
+.window-shown {
     visibility: visible;
     opacity: 100%;
 }
@@ -2235,9 +2656,233 @@ form a {
     cursor: default;
 }
 
+.info-cont .row .col-2 .adminBtn {
+    cursor: pointer;
+    transition: 0.25s;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    background: rgb(0, 153, 255);
+    vertical-align: middle;
+    text-align: center;
+    padding-right: 35%;
+    padding-left: 35%;
+    font-size: 0.9vw;
+}
+
+.info-cont .row .col-2 .adminBtn:hover{
+    background: rgb(0, 132, 255);
+}
+
+.suboverlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 50%;
+    vertical-align: middle;
+    background: black;
+}
+/*---------> sidenav <---------*/
+
+.sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s ease;
+    text-align: left;
+    transform: translateX(-300px);
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: black;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#indexpage {
+    transition: .5s ease;
+}
+
+.sidenav .row {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+.sidenav .row .top-row {
+    width: 100%;
+    display: flex;
+    vertical-align: middle;
+}
+
+.sidenav .row .top-row a {
+    padding: 8px 8px 8px 32px;
+    padding-left: 10px;
+    text-decoration: none;
+    font-size: 30px;
+    color: black;
+    transition: 0.3s;
+    font-weight: bold;
+    flex-basis: 70%;
+    cursor: pointer;
+}
+
+.sidenav .row .top-row a:hover {
+    color: rgb(78, 78, 78);
+}
+
+.sidenav .row .bottom-row {
+    background: rgb(241, 241, 241);
+    color: black;
+    padding-bottom: 1px;
+    padding-top: 10px;
+    transition: 0.5s;
+}
+
+.sidenav .row .bottom-row a {
+    margin-left: 15px;
+    display: block;
+    margin-bottom: 10px;
+    color: grey;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.sidenav .row .top-row .opennavlist {
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.sidenav .row .top-row .opennavlist:hover {
+    color: red;
+}
+
+.sidenav .row .bottom-row a:hover {
+    color: red;
+}
+
+.subcatLinkActive {
+    color: black !important;
+    font-weight: bold;
+}
+
+.subcatLinkActive:hover{
+    color: red !important;
+    font-weight: bold;
+}
+
+/*---------> categories <---------*/
+
+.col-3cat {
+    cursor: pointer;
+    position: relative;
+    flex-basis: 33.33%;
+    width: 25vw;
+    margin-bottom: 0px;
+    transition: transform 0.5s;
+    height: 410px;
+}
+
+.col-3cat img {
+    width: 60%;
+    padding-top: 15px;
+}
+
+.col-3cat p {
+    font-size: 15px;
+    color: red;
+    margin-top: -10px;
+    font-weight: bold;
+}
+
+.col-3cat h4 {
+    padding-top: 15px;
+    font-size: 35px;
+    color: black;
+}
+
+.col-3cat .overlay {
+    transition: 0.25s;
+}
+
+.col-3cat:hover .overlay {
+    opacity: 15%;
+}
+
+.col-3cat:hover p {
+    color: rgb(199, 0, 0);
+}
+
+/*---------> verify <---------*/
+
+.toggleEyeVerify {
+    position: absolute;
+    color: black;
+    top: 67px;
+    left: 255px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.toggleEyeVerify2 {
+    position: absolute;
+    color: black;
+    top: 132px;
+    left: 255px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.toggleEyeVerify i.fa-eye-slash,
+.toggleEyeVerify2 i.fa-eye-slash {
+    display: none;
+}
+
+.toggleEyeVerify.active i.fa-eye-slash,
+.toggleEyeVerify2.active i.fa-eye-slash {
+    display: block;
+}
+
+.toggleEyeVerify.active i.fa-eye,
+.toggleEyeVerify2.active i.fa-eye {
+    display: none;
+}
+
+.toggleEyeVerify i.fa-eye,
+.toggleEyeVerify2 i.fa-eye {
+    display: block;
+}
+
 /*---------> mobile <---------*/
 
-@media only screen and (max-width: 995px) {
+/*@media only screen and (max-width: 995px) {
     nav ul {
         position: absolute;
         top: 70px;
@@ -2323,4 +2968,4 @@ form a {
         font-size: 26px;
         line-height: 32pc;
     }
-}
+}*/

@@ -11,24 +11,97 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
 
 <head>
     <meta charset="UTF-8">
-    <meta name="color-scheme" content="dark">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skate Alligent - Account</title>
-    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="icon" type="image/png" href="images/black_Icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js%27);
+fbq('init', '950881942420079');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=950881942420079&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 </head>
 
 <body>
-    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
-    <meta name="color-scheme" content="dark">
-    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
-    <div class="header">
+    <div class="font_credit" style="display: none;">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <div id="Sidenav" class="sidenav">
+        <a class="closebtn" onclick="Nav()" style="cursor: pointer;">&times;</a>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&special=Sale">EID-SALES</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Sports">SPORTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-155')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -155px;">
+                <a href="/shop.html?pg=1&category=Sports&subcat=Longboards">Longboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Skateboards">Skateboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Pennyboards">Pennyboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Fingerboards">Fingerboards</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Protection">PROTECTION</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-85')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -85px;">
+                <a href="/shop.html?pg=1&category=Protection&subcat=Helmets">Helmets</a>
+                <a href="/shop.html?pg=1&category=Protection&subcat=Protective Pads">Protective Pads</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Components">COMPONENTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-295')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -295px;">
+                <a href="/shop.html?pg=1&category=Components&subcat=Skate Decks">Skate Decks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Longboard Wheels">Longboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Skateboard Wheels">Skateboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Trucks">Trucks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Risers">Risers</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Griptape">Griptape</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Hardware">Hardware</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Bushings">Bushings</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&category=Tools">TOOLS</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/account.html">ACCOUNT</a>
+            </div>
+        </div>
+    </div>
+    <div id="indexpage">
+        <div class="header">
         <div class="container">
-            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
+            <div class="navbar2" id="headerr" style="background-color: black; position: inherit;">
                 <div class="logo-noline" id="logo">
-                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                    <i class="fas fa-bars" style="cursor: pointer; transition: 0.5s ease; transform: translateY(-2px) translateX(5px); padding: 5px; color: white;" onclick="Nav()"></i><a class="logo" href="/" style="color: white;"> Skate Alligent</a>
                 </div>
                 <nav>
                     <ul id="menuItems">
@@ -39,7 +112,33 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease">
+                        <?php                        
+                        if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
+                            $cart = $_COOKIE['cart'];
+
+                            if($cart != "" && $cart != null){
+                                echo '<div style="position: absolute; margin-top: -14px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 5px;"></div>';
+                            }
+                        } else {
+                            require('php/connection.php');
+
+                            $session = $_COOKIE['session'];
+
+                            $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+                            $query = mysqli_query($conn, $sql);
+                            $rows = mysqli_num_rows($query);
+
+                            if ($rows == 1) {
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    if($row['cart'] != ""){
+                                        echo '<div style="position: absolute; margin-top: -14px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 5px;"></div>';
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+                    </i></a>
                 <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true" style="transform: scale(0.8)"></i></a>
             </div>
         </div>
@@ -47,7 +146,7 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
 
     <div class="container" style="padding-top: 35px;">
         <div class="row">
-            <div class="col-2" style="flex-basis: 17%; margin-right: -600px; height: 1120px;">
+            <div class="col-2" style="flex-basis: 17%; margin-left: auto; margin-bottom: auto;">
                 <div class="btn-cont">
                     <div class="btnrow SETTINGS" id="btnAct" onclick="changePg('settings', this)">
                         <i class="fas fa-cogs"></i>
@@ -57,11 +156,11 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         <i class="fas fa-shopping-cart"></i>
                         <a class="accBtn">ORDERS</a>
                     </div>
-                    <div class="btnrow ADMIN" id="" onclick="changePg('admin', this)">
+                    <div class="btnrow ADMIN" id="" onclick="changePg('admin', this)" style="display: none;">
                         <i class="fas fa-user-cog"></i>
                         <a class="accBtn">ADMIN</a>
                     </div>
-                    <div class="btnrow EDITOR" id="" onclick="changePg('editor', this)">
+                    <div class="btnrow EDITOR" id="" onclick="changePg('editor', this)" style="display: none;">
                         <i class="fas fa-unlock-alt"></i>
                         <a class="accBtn">EDITOR</a>
                     </div>
@@ -70,13 +169,13 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                     </div>
                 </div>
             </div>
-            <div class="col-2 pg act" style="flex-basis: 50%;" id="settings">
+            <div class="col-2 pg act" style="flex-basis: 50%; margin-right: auto;" id="settings">
                 <div class="info-cont">
                     <h2>GENERAL SETTINGS</h2>
                     <p>Manage your account settings like username, email, password, and etc...</p>
 
                     <h2>ACCOUNT INFO</h2>
-                    <p style="font-weight: bold; color: white;">ID: <a style="font-weight: normal;">cfcd208495d565ef66e7dff9f98764da</a></p>
+                    <p style="font-weight: bold; color: black;">ID: <a style="font-weight: normal; color: rgb(56, 56, 56);">cfcd208495d565ef66e7dff9f98764da</a></p>
                     <div class="row" style="margin-top: 15px;">
                         <div class="col-2" style="margin-left: -18px;">
                             <input class="inputPencil" type="text" name="username" placeholder="USERNAME">
@@ -97,9 +196,15 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                             <i class="fas fa-pencil-alt" onclick="showWindow(3, 'show')"></i>
                         </div>
                     </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <input class="inputPencil" type="text" name="name" placeholder="NAME">
+                            <i class="fas fa-pencil-alt" onclick="showWindow(4, 'show')"></i>
+                        </div>
+                    </div>
 
                     <h2 style="margin-top: -55px;">ADDRESS</h2>
-                    <p>Manage your delivery address like Street, Country, Postal Code, and etc...</p>
+                    <p>Manage your delivery address like Street, City, State, and etc...</p>
                     <div class="row" style="margin-top: 15px;">
                         <div class="col-2" style="margin-left: -18px;">
                             <input class="inputNoPencil" type="text" name="apartment" placeholder="APARTMENT NUMBER">
@@ -120,19 +225,11 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         <div class="col-2" style="margin-left: -18px;">
                             <input class="inputNoPencil" type="text" name="region" placeholder="REGION/STATE">
                         </div>
-                        <div class="col-2" style="margin-left: -18px;">
-                            <input class="inputNoPencil" type="text" name="country" placeholder="COUNTRY">
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: -35px;">
-                        <div class="col-2" style="margin-left: -18px;">
-                            <input class="inputNoPencil" type="text" name="postal" placeholder="POSTAL CODE">
-                        </div>
                     </div>
                     <div class="row" style="margin-top: -15px;">
                         <div class="col-2" style="flex-basis: 100%; text-align: left;">
-                            <a class="adrBtn" onclick="changeAddress()">DISCARD CHANGES</a>
-                            <a class="adrBtn" onclick="changeAddressAjax()">SAVE CHANGES</a>
+                            <a class="adrBtn" style="font-size: 0.9vw;" onclick="changeAddress()">DISCARD CHANGES</a>
+                            <a class="adrBtn" style="font-size: 0.9vw;" onclick="changeAddressAjax()">SAVE CHANGES</a>
                         </div>
                     </div>
 
@@ -143,7 +240,7 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                             <p style="color: red;">If you request deletion of your account, a verification email will be sent to you with a link that deletes your account when opened.</p>
                         </div>
                         <div class="col-2" style="flex-basis: 40%; text-align: right; margin-left: -20px;">
-                            <a class="adrBtn" style="padding-left: 40px; padding-right: 40px;" onclick="deleteAccount()">REQUEST ACCOUNT DELETION</a>
+                            <a class="adrBtn" style="font-size: 0.9vw;" style="padding-left: 40px; padding-right: 40px;" onclick="deleteAccount()">REQUEST ACCOUNT DELETION</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +249,7 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                     <img src="images/loading.png" class="loading">
                 </div>
             </div>
-            <div class="col-2 pg" style="flex-basis: 50%;" id="orders">
+            <div class="col-2 pg" style="flex-basis: 50%; margin-right: auto;" id="orders">
                 <div class="info-cont">
                     <h2>ORDERS</h2>
                     <p style="margin-bottom: 25px;">View your account orders and their status. <a href="/refund-policy.html" id="link">Read our refund policy</a></p>
@@ -162,7 +259,7 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                                 <th>ID</th>
                                 <th>Date</th>
                                 <th>Products</th>
-                                <th>Price</th>
+                                <th>Total</th>
                                 <th>Status</th>
                             </tr>
 
@@ -201,8 +298,8 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                                                 $rows3 = mysqli_num_rows($query3);
                                                 if($rows3 > 0){
                                                     while($row3 = mysqli_fetch_assoc($query3)){
-                                                        if($i == count($products) - 1) $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='link'>" . $quantity[$i] . "x " . $products[$i] . "</a>";
-                                                        else $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='link'>" . $quantity[$i] . "x " . $products[$i] . "</a>, ";
+                                                        if($i == count($products) - 1) $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='linka2'>" . $quantity[$i] . "x " . $products[$i] . "</a>";
+                                                        else $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='linka2'>" . $quantity[$i] . "x " . $products[$i] . "</a>, ";
                                                     }
                                                 }
                                             }
@@ -214,7 +311,7 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                                                 $rows3 = mysqli_num_rows($query3);
                                                 if($rows3 > 0){
                                                     while($row3 = mysqli_fetch_assoc($query3)){
-                                                        $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='link'>" . $quantity[$i] . "x " . $products . "</a>";
+                                                        $prodStr .= "<a href='/product.html?id=" . $row3['ID'] . "' id='linka2'>" . $quantity[0] . "x " . $products . "</a>";
                                                     }
                                                 }
                                         }
@@ -235,24 +332,136 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                     </div>
                 </div>
             </div>
-            <div class="col-2 pg" style="flex-basis: 50%;" id="admin">
+            <div class="col-2 pg" style="flex-basis: 50%; margin-right: auto;" id="admin">
                 <div class="info-cont">
                     <h2>ADMIN</h2>
-                    <p>Manage products and other similar things.</p>
+                    <p>Manage products, sales and orders.</p>
 
-                    <h2 style="color: red;">PAGE IS UNDER CONSTRUCTION</h2>
-                    <h2 style="color: red;">CHECK AGAIN LATER.</h2>
-                    <br>
+                    <h2>Products</h2>
+                    <p>Manage products...</p>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" onclick="showWindow(5, 'show', true)">Find Product</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 31%;">View All Products</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Add Product</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 32%;">Remove Product</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Edit Product</a>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: -55px;">Sales</h2>
+                    <p>Manage sale events...</p>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Find Sale</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 31%;">View All Sales</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Add Sale</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 32%;">Remove Sale</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Edit Sale</a>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: -55px;">Orders</h2>
+                    <p>Manage orders...</p>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Find Order</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 31%;">View All Orders</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Add Order</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 32%;">Remove Order</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Edit Order</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-2 pg" style="flex-basis: 50%;" id="editor">
+            <div class="col-2 pg" style="flex-basis: 50%; margin-right: auto;" id="editor">
                 <div class="info-cont">
                     <h2>EDITOR</h2>
                     <p>Manage everything about the website.</p>
 
-                    <h2 style="color: red;">PAGE IS UNDER CONSTRUCTION</h2>
-                    <h2 style="color: red;">CHECK AGAIN LATER.</h2>
-                    <br>
+                    <h2>Accounts</h2>
+                    <p>Manage accounts...</p>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Find Account</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 31%;">View All Accounts</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Add Account</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 32%;">Remove Account</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Edit Account</a>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: -55px;">Addresses</h2>
+                    <p>Manage Addresses...</p>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Find address</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 31%;">View All Addresses</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Add address</a>
+                        </div>
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn" style="padding-left: 31%; padding-right: 32%;">Remove address</a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: -35px;">
+                        <div class="col-2" style="margin-left: -18px;">
+                            <a class="adminBtn">Edit address</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -297,7 +506,7 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
             </div>
             <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
                 <div class="checkboxDiv" id="agreement" style="display: inline-block;" onclick="checkbox(this)"><a class="notChecked">&#9632;</a></div>
-                <a style="font-size: 17px; margin-left: 10px;">I Understand that changing my email will result in change of my login credits and how my account is accessed.<</a>
+                <a style="font-size: 17px; margin-left: 10px;">I Understand that changing my email will result in change of my login credits and how my account is accessed.</a>
             </div>
             <div class="col-2" style="flex-basis: 100%; text-align: left; margin-left: -8px; margin-top: -35px;">
                 <a class="window-btn" onclick="showWindow(1, 'hide')">CANCEL</a>
@@ -367,51 +576,113 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
         </div>
     </div>
 
-    <!--- Cookie Notice --->
-    <div class="cookies">
-        <div class="container">
-            <div class="row">
-                <div class="col-2" style="text-align: right;">
-                    <p>We use cookies to enhance your experience with our website.</p>
-                    <p>By continuing to use the site, you agree to the use of cookies.</p>
+    <div class="window-overlay window-hidden">
+        <div class="container-overlay">
+            <h3><a style="border-bottom: 1px solid white;">CHANGE NAME</a><i class="fas fa-times" onclick="showWindow(4, 'hide')"></i></h3>
+            <h4 style=" padding-bottom: 20px;"><a style="font-weight: bold;">Please Note: </a><a>This name is used for confirmation of orders and delivery.</a></h4>
+            <h4><a style="font-weight: bold;">Current Name: </a><a>Name</a></h4>
+            <div class="col-2" style="margin-left: -8px;">
+                <input class="window-input" type="text" name="newFName" placeholder="First Name">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <input class="window-input" type="text" name="newLName" placeholder="Last Name">
+            </div>
+            <div class="col-2" style="margin-left: -8px; margin-top: -50px;">
+                <div class="checkboxDiv" id="agreement" style="display: inline-block;" onclick="checkbox(this)"><a class="notChecked">&#9632;</a></div>
+                <a style="font-size: 17px; margin-left: 10px;">I Understand that this name will be recorded and I'm giving Skate Alligent permission to use it.</a>
+            </div>
+            <div class="col-2" style="flex-basis: 100%; text-align: left; margin-left: -8px; margin-top: -35px;">
+                <a class="window-btn" onclick="showWindow(4, 'hide')">CANCEL</a>
+                <a class="window-btn" onclick="changeANameAjax()">CONFIRM</a>
+            </div>
+        </div>
+        <div class="form-overlay">
+            <div class="overlay-bg"></div>
+            <img src="images/loading.png" class="loading">
+        </div>
+    </div>
+    
+    <div class="adminWindow">
+        <div class="window-overlay window-shown window-overlay2" style="height: max-content; background-color: rgba(0, 0, 0, 0);">
+            <div class="suboverlay"></div>
+            <div class="container-overlay">
+                <h3><a style="border-bottom: 1px solid white;">Find Product</a><i class="fas fa-times" onclick="showWindow(5, 'hide')"></i></h3>
+                <h4 style=" padding-bottom: 20px;"><a>Find specific products by name or id.</a></h4>
+                <div class="col-2" style="margin-left: -8px; display: flex; justify-content: left;">
+                    <div style="font-weight: bold; width: 90px;">Find by ID: </div><input class="adm-window-input" type="number" name="findId" placeholder="ID" id="noArrows" style="width: 50px; padding-right: 10px;">
                 </div>
-                <div class="col-2" style="text-align: left;">
-                    <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
-                    <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
+                <div class="col-2" style="margin-left: -8px; display: flex; margin-top: -50px; justify-content: left;">
+                    <div style="font-weight: bold; width: 125px;">Find by Name: </div><input class="adm-window-input" type="text" name="findName" placeholder="Name" style="width: 200px;">
                 </div>
+                <div class="col-2" style="margin-left: -8px; display: flex; margin-top: -50px; justify-content: left;">
+                    <div style="font-weight: bold; width: 180px;">Find by Subcategory: </div><input class="adm-window-input" type="text" name="findSub" placeholder="Subcat" style="width: 200px;">
+                </div>
+                <div class="col-2" style="margin-left: -8px; display: flex; margin-top: -50px; justify-content: left;">
+                    <div style="font-weight: bold; width: 155px;">Find by Category: </div><input class="adm-window-input" type="text" name="findCat" placeholder="Category" style="width: 200px;">
+                </div>
+                <div class="col-2" style="margin-left: -8px; display: flex; margin-top: -50px; justify-content: left;">
+                    <div style="font-weight: bold; width: 125px;">Find by Brand: </div><input class="adm-window-input" type="text" name="findBrand" placeholder="Brand" style="width: 200px;">
+                </div>
+                <div class="col-2" style="margin-left: -8px; display: flex; margin-top: -50px; justify-content: left;">
+                    <div style="font-weight: bold; width: 120px;">Find by Price: </div><input class="adm-window-input" type="text" name="findPrice" placeholder="Price" style="width: 200px;">
+                </div>
+                <div class="col-2" style="flex-basis: 100%; text-align: left; margin-left: -8px; margin-top: -35px;">
+                    <a class="window-btn" onclick="showWindow(5, 'hide')">CANCEL</a>
+                    <a class="window-btn" onclick="changeANameAjax()">Search</a>
+                </div>
+            </div>
+            <div class="form-overlay">
+                <div class="overlay-bg"></div>
+                <img src="images/loading.png" class="loading">
             </div>
         </div>
     </div>
+
+    <!--- Cookie Notice --->
+        <div class="cookies" style="visibility: hidden">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2" style="text-align: right; color: white; font-size: 1vw;">
+                        <p>We use cookies to enhance your experience with our website.</p>
+                        <p>By continuing to use the site, you agree to the use of cookies.</p>
+                    </div>
+                    <div class="col-2" style="text-align: left; font-size: 1vw;">
+                        <a class="cookie-btn" id="link" onclick="acceptCookies()" style="color: white;">Accept Cookies</a>
+                        <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!--- Footer --->
     <div class="footer" id="sec4">
         <div class="container">
             <div class="row">
                 <div class="footer-col-1">
-                    <img src="images/Logo.png" style="cursor: pointer;" onclick="switchPg('/index.html')">
+                    <a href="/index.html">
+                        <img class="footerlogo" src="images/Logo.png">
+                    </a>
                 </div>
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
-                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
-                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
-                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
+                        <li><a href="/account.html" id="linka"><i class="fas fa-user"></i> My Account</a></li>
+                        <li><a href="/cart.html" id="linka"><i class="fas fa-shopping-cart"></i> Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" id="linka"><i class="fas fa-money-bill"></i> Refund Policy</a></li>
+                        <li><a href="/about.html" id="linka"><i class="fas fa-users"></i> About Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-3">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
+                        <li><a href="https://www.facebook.com/alligentskateshop" target="_blank" rel="noopener noreferrer" id="linka"><i class="fab fa-facebook"></i> Facebook</a></li>
+                            <li><a href="https://www.instagram.com/skatealligent/?hl=en" target="_blank" rel="noopener noreferrer" id="linka"><i class="fab fa-instagram"></i> Instagram</a></li>
                     </ul>
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
-            </p>
+            <p class="copyright" style="margin-bottom: 15px;">© 2021 <a class="linka" href="/index.html">Skate Alligent</a>. All rights reserved.</p>
+            <p class="copyright"><a class="linka" href="/terms-of-use.html">Terms of use </a> | <a class="linka" href="/privacy-policy.html"> Privacy Policy</a></p>
         </div>
     </div>
 
@@ -436,6 +707,8 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         echo "<a id='id'>" . $row['id'] . "</a>";
                         echo "<a id='ID'>" . md5($row['id']) . "</a>";
                         echo "<a id='username'>" . $row['username'] . "</a>";
+                        echo "<a id='Fname'>" . $row['FName'] . "</a>";
+                        echo "<a id='Lname'>" . $row['LName'] . "</a>";
                         echo "<a id='email'>" . $row['email'] . "</a>";
                         echo "<a id='password'>" . $row['password'] . "</a>";
                         echo "<a id='salt'>" . $row['salt'] . "</a>";
@@ -448,13 +721,18 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         echo "<a id='street'>" . $row2['street'] . "</a>";
                         echo "<a id='city'>" . $row2['city'] . "</a>";
                         echo "<a id='region'>" . $row2['region'] . "</a>";
-                        echo "<a id='country'>" . $row2['country'] . "</a>";
-                        echo "<a id='postal'>" . $row2['postal'] . "</a>";
                     }
                 }
             }
         }
         ?>
+    </div>
+
+     <!--- notif --->
+     <div class="notif" id="hide" style="color: #160a22; background-color: white; position: fixed; z-index: 10000;">
+        <i class="fas fa-exclamation"></i>
+        <a id="notifText" class="notifText" style="font-size: 20px;">Couldn't place order.</a>
+    </div>
     </div>
 
     <!--- JavaScript --->
@@ -463,6 +741,8 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
         let id = document.getElementById("id");
         let ID = document.getElementById("ID");
         let username = document.getElementById("username");
+        let Fname = document.getElementById("Fname");
+        let Lname = document.getElementById("Lname");
         let email = document.getElementById("email");
         let password = document.getElementById("password");
         let salt = document.getElementById("salt");
@@ -475,8 +755,6 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
         let street = document.getElementById("street");
         let city = document.getElementById("city");
         let region = document.getElementById("region");
-        let country = document.getElementById("country");
-        let postal = document.getElementById("postal");
 
         checkInfo();
 
@@ -488,7 +766,8 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
             //change name
             let nameObj = document.getElementsByName("username")[0];
             nameObj.disabled = true;
-            nameObj.placeholder = username.innerHTML;
+            if(username == null || username.innerHTML == "") nameObj.placeholder = "USERNAME";
+            else nameObj.placeholder = username.innerHTML;
 
             //change email
             let emailObj = document.getElementsByName("email")[0];
@@ -498,9 +777,10 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
             //change password
             let passObj = document.getElementsByName("password")[0];
             passObj.disabled = true;
-            var pass = "*";
+            var pass = "";
             for (i = 0; i < password.innerHTML.length - 1; i++) pass = pass + "*";
-            passObj.placeholder = pass;
+            if(pass == null || pass == "") passObj.placeholder = "CHECK YOUR EMAIL TO FINISH SETUP";
+            else passObj.placeholder = pass;
 
             //change phone number
             let numObj = document.getElementsByName("phone")[0];
@@ -526,10 +806,13 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
             let adminObj = document.getElementsByClassName("pg")[2];
             let editorObj = document.getElementsByClassName("pg")[3];
 
-            if (status.innerHTML == 1) {
+            if (status.innerHTML == 2) {
+                editor.style.display = "block";
+                admin.style.display = "block";
+            } else if (status.innerHTML == 1) {
+                admin.style.display = "block";
                 editor.remove();
                 editorObj.remove();
-                changePg('settings', document.getElementsByClassName("SETTINGS")[0]);
             } else if (status.innerHTML == 0) {
                 admin.remove();
                 adminObj.remove();
@@ -540,13 +823,24 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
 
             //change address
             changeAddress();
+
+            //change actual name
+            let AnameObj = document.getElementsByName("name")[0];4
+            AnameObj.disabled = true;
+            if(Fname.innerHTML + " " + Lname.innerHTML != " ") AnameObj.placeholder = Fname.innerHTML + " " + Lname.innerHTML;
+            let ANameWinObj = document.getElementsByClassName("window-overlay")[4].children[0].children[2].children[1];
+            ANameWinObj.innerHTML = Fname.innerHTML + " " + Lname.innerHTML;
         }
 
         // <-- Change Page -->
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const pageName = urlParams.get('pg');
-        changePg(pageName.toLowerCase(), document.getElementsByClassName(pageName.toUpperCase())[0]);
+        if(pageName != "" && pageName != null){
+            changePg(pageName.toLowerCase(), document.getElementsByClassName(pageName.toUpperCase())[0]);
+        } else {
+            changePg('settings', document.getElementsByClassName("SETTINGS")[0]);
+        }
 
         function changePg(pg, obj) {
             let btns = document.getElementsByClassName("btnrow");
@@ -560,7 +854,6 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                     pgs[i].classList.remove("act");
                 } else {
                     pgs[i].classList.add("act");
-                    col.style.height = pgs[i].offsetHeight + "px";
                     obj.id = "btnAct";
                 }
                 }
@@ -572,7 +865,6 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                     pgs[i].classList.remove("act");
                 } else {
                     pgs[i].classList.add("act");
-                    col.style.height = pgs[i].offsetHeight + "px";
                     obj.id = "btnAct";
                 }
                 }
@@ -586,16 +878,12 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
             let streetObj = document.getElementsByClassName("inputNoPencil")[2];
             let cityObj = document.getElementsByClassName("inputNoPencil")[3];
             let regionObj = document.getElementsByClassName("inputNoPencil")[4];
-            let countryObj = document.getElementsByClassName("inputNoPencil")[5];
-            let postalObj = document.getElementsByClassName("inputNoPencil")[6];
 
             apartmentObj.value = apartment.innerHTML;
             buildingObj.value = building.innerHTML;
             streetObj.value = street.innerHTML;
             cityObj.value = city.innerHTML;
             regionObj.value = region.innerHTML;
-            countryObj.value = country.innerHTML;
-            postalObj.value = postal.innerHTML;
         }
 
         function changeAddressAjax() {
@@ -605,19 +893,15 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
             let streetObj = document.getElementsByClassName("inputNoPencil")[2];
             let cityObj = document.getElementsByClassName("inputNoPencil")[3];
             let regionObj = document.getElementsByClassName("inputNoPencil")[4];
-            let countryObj = document.getElementsByClassName("inputNoPencil")[5];
-            let postalObj = document.getElementsByClassName("inputNoPencil")[6];
 
             var form_data = new FormData();
 
-            form_data.append("adId", adId.innerHTML);
+            form_data.append("adIds", adId.innerHTML);
             form_data.append("apartment", apartmentObj.value);
             form_data.append("building", buildingObj.value);
             form_data.append("street", streetObj.value);
             form_data.append("city", cityObj.value);
             form_data.append("region", regionObj.value);
-            form_data.append("country", countryObj.value);
-            form_data.append("postal", postalObj.value);
 
             //document.getElementsByClassName('logSubmit')[0].disabled = true;
 
@@ -668,11 +952,13 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         if (response == "change successful") {
                             loading(false, 1);
                             showWindow(0, 'hide')
-                            location.reload();
+                            notification("Username was changed successfully!", true, "13px");
                         } else if (response == "username already exists") {
                             loading(false, 1);
+                            notification("Username is already in use.", false);
                         } else {
                             loading(false, 1);
+                            notification("Username wasn't changed.", false);
                         }
                     }
                 }
@@ -710,12 +996,14 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
 
                         if (response == "change successful") {
                             loading(false, 2);
-                            showWindow(0, 'hide')
-                            location.reload();
+                            showWindow(1, 'hide')
+                            notification("Email was changed successfully!");
                         } else if (response == "email already exists") {
                             loading(false, 2);
+                            notification("Email is already in use.", false);
                         } else {
                             loading(false, 2);
+                            notification("Email wasn't changed.", false);
                         }
                     }
                 }
@@ -755,12 +1043,14 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
 
                         if (response == "change successful") {
                             loading(false, 3);
-                            showWindow(0, 'hide')
-                            location.reload();
+                            showWindow(2, 'hide')
+                            notification("Password was changed successfully!");
                         } else if (response == "current password is incorrect") {
                             loading(false, 3);
+                            notification("Current Password is Incorrect.", false);
                         } else {
                             loading(false, 3);
+                            notification("Password wasn't changed.", false);
                         }
                     }
                 }
@@ -798,17 +1088,60 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
 
                         if (response == "change successful") {
                             loading(false, 4);
-                            showWindow(0, 'hide')
-                            location.reload();
+                            showWindow(3, 'hide')
+                            notification("Number was changed successfully!");
                         } else if (response == "number already exists") {
                             loading(false, 4);
+                            notification("Number already in use.", false);
                         } else {
                             loading(false, 4);
+                            notification("Number wasn't changed.", false);
                         }
                     }
                 }
             } else {
                 loading(false, 4);
+            }
+        }
+
+        //change username
+        function changeANameAjax() {
+            loading(true, 5);
+            let nameObj = document.getElementsByName("newFName")[0];
+            let rNameObj = document.getElementsByName("newLName")[0];
+            let check = document.getElementsByClassName("checkboxDiv")[4].children[0];
+
+            if (check.className == "Checked") {
+
+                var form_data = new FormData();
+
+                form_data.append("newFNameId", id.innerHTML);
+                form_data.append("newFName", nameObj.value);
+                form_data.append("newLName", rNameObj.value);
+
+                var ajax_request = new XMLHttpRequest();
+
+                ajax_request.open('POST', 'php/process_data.php');
+
+                ajax_request.send(form_data);
+
+                ajax_request.onreadystatechange = function() {
+                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                        var response = ajax_request.responseText;
+
+                        if (response == "change successful") {
+                            loading(false, 5);
+                            showWindow(4, 'hide');
+                            notification("Name was changed successfully!");
+                        } else {
+                            loading(false, 5);
+                            notification("Name wasn't changed.", false);
+                        }
+                    }
+                }
+            } else {
+                loading(false, 5);
             }
         }
 
@@ -886,9 +1219,11 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
 
         function cFunc(n) {
             if (n == "show") {
+                document.getElementsByClassName("cookies")[0].style.visibility = "visible";
                 cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
             } else if (n == "hide") {
                 cCont.style.top = window.innerHeight + "px";
+                document.getElementsByClassName("cookies")[0].style.visibility = "hidden";
             }
         }
 
@@ -904,20 +1239,24 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
         }
 
         // <-- Windows -->
-        function showWindow(no, type) {
+        function showWindow(no, type, scroll = false) {
             let windows = document.getElementsByClassName("window-overlay");
             keyUp("reset");
 
             if (type == "show") {
                 windows[no].classList.remove("window-hidden");
                 windows[no].classList.add("window-shown");
-                document.body.style.overflowY = 'hidden';
-                document.body.style.overflowX = 'hidden';
+                if(!scroll){
+                    document.body.style.overflowY = 'hidden';
+                    document.body.style.overflowX = 'hidden';
+                }
             } else {
                 windows[no].classList.remove("window-shown");
                 windows[no].classList.add("window-hidden");
-                document.body.style.overflowY = '';
-                document.body.style.overflowX = '';
+                if(!scroll){
+                    document.body.style.overflowY = '';
+                    document.body.style.overflowX = '';
+                }
             }
         }
 
@@ -1023,6 +1362,70 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                 document.getElementsByClassName("form-overlay")[n].classList.remove("ovlyact");
             }
         }
+
+        
+            // <-- notif -->
+            function notification(text, status = true, size = "15px") {
+                let notif = document.getElementsByClassName("notif")[0];
+                let textNo = notif.children[1];
+
+                if (status == true) {
+                    textNo.style.fontSize = size;
+                    textNo.textContent = text;
+                    notif.id = "show";
+                    setTimeout(function() {
+                        notif.id = "hide";
+                        location.reload();
+                    }, 2500);
+                } else {
+                    textNo.style.fontSize = "18px";
+                    textNo.textContent = text;
+                    notif.id = "show";
+                    setTimeout(function() {
+                        notif.id = "hide";
+                    }, 2500);
+                }
+            }
+    // <-- Side Navigation -->
+
+        function Nav() {
+            if (document.getElementById("indexpage").style.transform == "") {
+                document.getElementById("Sidenav").style.transform = "translateX(0px)";
+                document.getElementById("indexpage").style.transform = "translateX(300px)";
+                document.body.style.overflowY = 'hidden';
+                document.body.style.overflowX = 'hidden';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', 'Nav()');
+                }, 150);
+            } else {
+                document.getElementById("Sidenav").style.transform = "translateX(-300px)";
+                document.getElementById("indexpage").style.transform = "";
+                document.body.style.overflowY = '';
+                document.body.style.overflowX = '';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', '');
+                }, 150);
+            }
+        }
+
+        // <-- Side Navigation Open List -->
+        function navList(object, value) {
+            var obj = object.parentElement.parentElement.children[1];
+
+            if (obj.style.marginBottom == "0px") {
+                obj.style.marginBottom = value + "px";
+                object.innerHTML = "+";
+            } else {
+                obj.style.marginBottom = "0px";
+                object.innerHTML = "-";
+            }
+        }
+
+        
+        
+        
+        
+
     </script>
 </body>
 

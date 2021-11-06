@@ -3,24 +3,97 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="color-scheme" content="dark">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skateboard</title>
-    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="icon" type="image/png" href="images/black_Icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js%27);
+fbq('init', '950881942420079');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=950881942420079&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 </head>
 
 <body>
-    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
-    <meta name="color-scheme" content="dark">
-    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
-    <div class="header">
+    <div class="font_credit" style="display: none;">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <div id="Sidenav" class="sidenav">
+        <a class="closebtn" onclick="Nav()" style="cursor: pointer;">&times;</a>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&special=Sale">EID-SALES</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Sports">SPORTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-155')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -155px;">
+                <a href="/shop.html?pg=1&category=Sports&subcat=Longboards">Longboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Skateboards">Skateboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Pennyboards">Pennyboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Fingerboards">Fingerboards</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Protection">PROTECTION</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-85')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -85px;">
+                <a href="/shop.html?pg=1&category=Protection&subcat=Helmets">Helmets</a>
+                <a href="/shop.html?pg=1&category=Protection&subcat=Protective Pads">Protective Pads</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Components">COMPONENTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-295')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -295px;">
+                <a href="/shop.html?pg=1&category=Components&subcat=Skate Decks">Skate Decks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Longboard Wheels">Longboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Skateboard Wheels">Skateboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Trucks">Trucks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Risers">Risers</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Griptape">Griptape</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Hardware">Hardware</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Bushings">Bushings</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&category=Tools">TOOLS</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/account.html">ACCOUNT</a>
+            </div>
+        </div>
+    </div>
+    <div id="indexpage">
+        <div class="header">
         <div class="container">
-            <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
+            <div class="navbar2" id="headerr" style="background-color: black; position: inherit;">
                 <div class="logo-noline" id="logo">
-                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                <i class="fas fa-bars" style="cursor: pointer; transition: 0.5s ease; transform: translateY(-2px) translateX(5px); padding: 5px; color: white;" onclick="Nav()"></i><a class="logo" href="/" style="color: white;"> Skate Alligent</a>
                 </div>
                 <nav>
                     <ul id="menuItems">
@@ -31,8 +104,35 @@
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
-                    style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease"></i>
+                        <?php
+                        require('php/functions.php');
+                        
+                        if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
+                            $cart = $_COOKIE['cart'];
+
+                            if($cart != "" && $cart != null){
+                                echo '<div style="position: absolute; margin-top: -18px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 4px;"></div>';
+                            }
+                        } else {
+                            require('php/connection.php');
+
+                            $session = $_COOKIE['session'];
+
+                            $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+                            $query = mysqli_query($conn, $sql);
+                            $rows = mysqli_num_rows($query);
+
+                            if ($rows == 1) {
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    if($row['cart'] != ""){
+                                        echo '<div style="position: absolute; margin-top: -18px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 4px;"></div>';
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+                    </i></a>
                 <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
                         style="transform: scale(0.8)"></i></a>
             </div>
@@ -59,6 +159,7 @@
                 echo '<div class="productName" style="display: none;">' . $row['Name'] . '</div>';
                 echo '<div class="productDesc" style="display: none;">' . $row['Description'] . '</div>';
                 echo '<div class="productCat" style="display: none;">' . $row['Category'] . '</div>';
+                echo '<div class="productSubCat" style="display: none;">' . $row['Subcategory'] . '</div>';
                 echo '<div class="productPrice" style="display: none;">' . $row['Price'] . '</div>';
                 echo '<div class="productBrand" style="display: none;">' . $row['Brand'] . '</div>';
                 echo '<div class="productSizes" style="display: none;">' . $row['Sizes'] . '</div>';
@@ -73,12 +174,16 @@
     </div>
 
     <!--- Product --->
-    <div class="small-container product">
+    <div class="small-container product" style="background: white;">
         <div class="row">
-            <div class="col-2">
-                <img id="prod-img" width="100%">
-                <a class="prev-prod" onclick="Slides(-1)">&#10094;</a>
-                <a class="next-prod" onclick="Slides(1)">&#10095;</a>
+            <div class="col-2" style="margin-top: 45px;">
+                <div class="img-conta" style="position: relative;">
+                    <img id="prod-img" width="100%">
+                    <div class="arrow-cont">
+                        <a class="prev-prod" onclick="Slides(-1)">&#10094;</a>
+                        <a class="next-prod" onclick="Slides(1)">&#10095;</a>
+                    </div>
+                </div>
 
                 <div class="small-img-row" style="justify-content: center;">
                     <div class="small-img-col" style="margin-right: 7px;">
@@ -87,12 +192,10 @@
                 </div>
             </div>
             <div class="col-2">
-                <p><a href="/shop.html?pg=1" id="link">Shop</a> / <a href="/shop.html?pg=1&category={category}" id="link" class="ProdCatLink1">Completes</a></p>
-                <h1 class="ProdName">Skateboard</h1>
-                <h4 class="ProdBrand" style="font-size: 25px; font-weight: bolder;">Santa Cruz</h4>
-                <h4 class="ProdPrice" style="font-weight:normal;"><a class="ProdPriceSaled" style="display: none;">EGP 4000 </a><a class="ProdPriceDefault">EGP 5000</a></h4>
-                <br>
-                <br>
+                <p><a href="/shop.html?pg=1">Shop</a> / <a href="/shop.html?pg=1&category=" class="ProdCatLink1">category</a> / <a href="/shop.html?pg=1&category=&subcat=" class="ProdCatLink1">Subcategory</a></p>
+                <h1 class="ProdName"></h1>
+                <h4 class="ProdBrand" style="font-size: 25px; font-weight: bolder;"></h4>
+                <h4 class="ProdPrice" style="font-weight:normal;"><a class="ProdPriceSaled" style="display: none;"></a><a class="ProdPriceDefault"></a></h4>
                 <h3>Quantity: </h3>
                 <input type="number" value="1" min="1" max="100" id="inputQuan" onfocusout="inputValueCheck()">
                 <h3 class="btn-h3" style="color: limegreen;" id="Stock">In Stock</h3> <a class="btn" id="AddCart" onclick="addToCart()">Add to Cart</a>
@@ -101,33 +204,34 @@
         <div class="row">
             <div class="col-1">
                 <h4>Description</h4>
-                <p class="ProdDesc">Lorem ipsum dolor sit amet,. Donec laoreet tincidunt sollicitudin condimentum. Proin sagittis turpis semper purus. Phasellus ut consectetur mauris nec. Donec vel ligula eu erat.<br> Sed dui lectus, varius eget. Nam sed magna urna scelerisque.
-                    Praesent eget eleifend libero tincidunt. Duis volutpat, dolor nec scelerisque. Phasellus in nisi diam nisi.<br> Donec mattis erat ac lorem. Vestibulum auctor augue ut enim. Curabitur ornare eleifend lectus, eget. Maecenas sodales,
-                    dui nec condimentum. Nam purus sapien, elementum nec.
+                <p class="ProdDesc">
                 </p>
             </div>
             <div class="col-1-">
                 <h4>Specifications</h4>
-                <p>&#8226; Category : <a class="ProdCatSpec">Completes</a></p>
-                <p>&#8226; Brand : <a class="ProdBrandSpec">Santa Cruz</a></p>
-                <p><a class="ProdSizeSpec1" style="font-weight: bolder;">&#8226; Size : </a><a class="ProdSizeSpec2">X</a></p>
-                <p><a class="ProdColorSpec1" style="font-weight: bolder;">&#8226; Color : </a><a class="ProdColorSpec2">X</a></p>
+                <p>&#8226; Subcategory : <a class="ProdSubCatSpec"></a></p>
+                <p>&#8226; Category : <a class="ProdCatSpec"></a></p>
+                <p>&#8226; Brand : <a class="ProdBrandSpec"></a></p>
+                <p><a class="ProdSizeSpec1" style="font-weight: bolder;">&#8226; Size : </a><a class="ProdSizeSpec2"></a></p>
+                <p><a class="ProdColorSpec1" style="font-weight: bolder;">&#8226; Color : </a><a class="ProdColorSpec2"></a></p>
             </div>
         </div>
     </div>
 
-    <!-- Other Products -->
-    <div class="small-container">
-        <div class="row row-2-">
-            <h2>Related Products</h2>
-            <a class="ProdCatLink2" href="/shop.html?pg=1&category={category}" id="link" style="color: white; text-decoration: underline;">View More</a>
+    <div class="small-container holder">
+        <!-- Other Products -->
+        <div class="small-container">
+            <div class="row row-2-">
+                <h2>Related Products</h2>
+                <a class="ProdCatLink2" href="/shop.html?pg=1&category=&subcat=">View More</a>
+            </div>
         </div>
-    </div>
 
-    <div class="small-container" id="sec2">
-        <div class="row">
-            <?php
+        <div class="small-container" id="sec2">
+            <div class="row">
+                <?php
             require_once('php/connection.php');
+            require_once('php/functions.php');
     
             $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
@@ -136,6 +240,7 @@
 
             $Name;
             $Category;
+            $Subcat;
             $Price;
             $Brand;
             $Sizes;
@@ -152,6 +257,7 @@
                 while ($row = mysqli_fetch_assoc($result1)) {
                     $Name = $row['Name'];
                     $Category = $row['Category'];
+                    $Subcat = $row['Subcategory'];
                     $Price = $row['Price'];
                     $Brand = $row['Brand'];
                     $Sizes = $row['Sizes'];
@@ -160,140 +266,121 @@
                     $Sale = $row['Sale'];
                 }
             }
-    
-            $sql;
 
-            if($Sale > 0){
-                $sql = "SELECT * FROM Products WHERE Sale > 0 AND Category = '" . $Category . "' AND Brand = '" . $Brand . "'";
-            } else {
-                $sql = "SELECT * FROM Products WHERE Category = '" . $Category . "' AND Brand = '" . $Brand . "'";
-            }
+            $conditions = [];
+            array_push($conditions, "WHERE Subcategory = '$Subcat'");
 
-            if($Stock > 0){
-                $sql = $sql . " AND Stock > 0";
-            } else {
-                $sql = $sql . " AND Stock = 0";
-            }
+            array_push($conditions, "WHERE Category = '$Category'");
+            array_push($conditions, "WHERE Brand = '$Brand'");
+            array_push($conditions, "WHERE Colors = '$Colors'");
+            array_push($conditions, "WHERE Sizes = '$Sizes'");
+            array_push($conditions, "WHERE Price = '$Price'");
+            array_push($conditions, "Where Price > 0");
 
-            $sizeList = str_replace(' ', ", ", $Sizes);
-
-            if(strpos($sizeList, ',') != null){
-                $list = explode(', ',$sizeList);
-
-                for ($i = 0; $i < sizeof($list); $i++) { 
-                    $sql = $sql . " OR Sizes LIKE '%" . str_replace(",", "", $list[$i]) . "%'";
-                }
-            } else {
-                $sql = $sql . " OR Sizes LIKE '%" . $sizeList . "%'";
-            }
-
-            $colorList = str_replace(' ', ", ", $Colors);
-
-            if(strpos($colorList, ',') != null){
-                $list = explode(', ',$colorList);
-
-                for ($i = 0; $i < sizeof($list); $i++) { 
-                    $sql = $sql . " OR Colors LIKE '%" . str_replace(",", "", $list[$i]) . "%'";
-                }
-            } else {
-                $sql = $sql . " OR Colors LIKE '%" . $colorList . "%'";
-            }
-
-            if($Sale > 0){
-                $sql = $sql . " ORDER BY Sale Desc, Stock Desc;";
-            } else {
-                $sql = $sql . " ORDER BY Stock Desc, Sale Desc;";
-            }
+            $numRows = 4;
+            $listOfIds = [];
             
-            $result = mysqli_query($conn, $sql);
-            $resultCheck = mysqli_num_rows($result);
+            array_push($listOfIds, $params['id']);
 
-            $iteration = 0;
-
-            if ($resultCheck > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    if ($iteration < 4 && $row['ID'] != $params['id']) {
-                            echo '<div class="col-4" style="cursor: pointer;"><a href="/product.html?id=' . $row['ID'] . '">';
-                            echo "<img src='products/" . $row['ID'] . ".png'>";
-                            
-                            if($row['Sale'] != 0){
-                                echo '<img style="position: absolute; width: 50px; margin-left: -235px; margin-top: 2px;" src="images/sale.png">';
-                            }
+            for($i = 0; $i < count($conditions); $i++){
+                $sql = "SELECT * FROM Products " . $conditions[$i] . " AND Stock > 0;";
+            
+                $result = mysqli_query($conn, $sql);
+                $resultCheck = mysqli_num_rows($result);
     
-                            echo "<h4 style='font-weight: bold;'>" . $row['Name'] . "</h4>";
-    
-                            if($row['Stock'] > 0){
-                                echo "<p style='color: limegreen;'>In Stock</p>";
-                            } else if ($row['Stock'] == 0) {
-                                echo "<p style='color: red;'>Out Of Stock</p>";
-                            }
-                            
-                            if($row['Sale'] != 0){
-                                echo "<a style='text-decoration: none; color: White;'>EGP " . intval(intval($row['Price']) - intval($row['Sale'])) . " </a> <a style='text-decoration: line-through; color: gray;'>EGP " . $row['Price'] . "</a>";
-                            } else {
-                                echo "<p style='text-decoration: none; color: White;'>EGP " . $row['Price'] . "</p>";
-                            }
-                            echo "</div>";
-    
-                        $iteration++;
+                if ($resultCheck > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($numRows > 0 && !in_array($row['ID'], $listOfIds)) {
+                                echo '<div class="col-4" style="cursor: pointer;"><a href="/product.html?id=' . $row['ID'] . '">';
+                                echo "<img src='products/" . $row['ID'] . ".png'>";
+                                
+                                if($row['Sale'] != 0){
+                                    echo '<img style="position: absolute; width: 23%; top: 0; left: 0;" src="images/sale.png">';
+                                }
+        
+                                echo "<div class='prodnamediv2'><h4 style='font-weight: bold;'>" . $row['Name'] . "</h4></div>";
+        
+                                if($row['Stock'] > 0){
+                                    echo "<p style='color: limegreen;'>In Stock</p>";
+                                } else if ($row['Stock'] == 0) {
+                                    echo "<p style='color: red;'>Out Of Stock</p>";
+                                }
+                                
+                                if ($row['Sale'] > 0) {
+                                    echo "<p style='text-decoration: none; color: black; display: inline;'>EGP " . intval(intval($row['Price']) - intval($row['Sale'])) . "</p> <p style='text-decoration: line-through; color: gray; display: inline;'>EGP " . $row['Price'] . "</p>";
+                                } else {
+                                    echo "<p style='text-decoration: none; color: black;'>EGP " . $row['Price'] . "</p>";
+                                }
+                                echo '<div id="prod-overlay"></div>';
+                                echo '<a href="/product.html?id=' . $row['ID'] . '" id="prod-overlay-a">VIEW</a>';
+                                echo "</div>";
+                                echo "</a>";
+        
+                            $numRows--;
+                            array_push($listOfIds, $row['ID']);
+                        }
                     }
+                }
+
+                if($numRows <= 0){
+                    break;
                 }
             }
             ?>
+            </div>
         </div>
     </div>
 
     <!--- Cookie Notice --->
-    <div class="cookies">
-        <div class="container">
-            <div class="row">
-                <div class="col-2" style="text-align: right;">
-                    <p>We use cookies to enhance your experience with our website.</p>
-                    <p>By continuing to use the site, you agree to the use of cookies.</p>
-                </div>
-                <div class="col-2" style="text-align: left;">
-                    <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
-                    <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
+        <div class="cookies" style="visibility: hidden">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2" style="text-align: right; color: white; font-size: 1vw;">
+                        <p>We use cookies to enhance your experience with our website.</p>
+                        <p>By continuing to use the site, you agree to the use of cookies.</p>
+                    </div>
+                    <div class="col-2" style="text-align: left; font-size: 1vw;">
+                        <a class="cookie-btn" id="link" onclick="acceptCookies()" style="color: white;">Accept Cookies</a>
+                        <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <!--- Footer --->
     <div class="footer" id="sec4">
         <div class="container">
             <div class="row">
                 <div class="footer-col-1">
-                    <img src="images/Logo.png" style="cursor: pointer;" onclick="switchPg('/index.html')">
+                    <a href="/index.html">
+                        <img class="footerlogo" src="images/Logo.png">
+                    </a>
                 </div>
                 <div class="footer-col-2">
                     <h3>Useful Links</h3>
                     <ul>
-                        <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
-                        <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
-                        <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
-                        <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
+                        <li><a href="/account.html" id="linka"><i class="fas fa-user"></i> My Account</a></li>
+                        <li><a href="/cart.html" id="linka"><i class="fas fa-shopping-cart"></i> Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" id="linka"><i class="fas fa-money-bill"></i> Refund Policy</a></li>
+                        <li><a href="/about.html" id="linka"><i class="fas fa-users"></i> About Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-col-3">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
-                        <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
+                        <li><a href="https://www.facebook.com/alligentskateshop" target="_blank" rel="noopener noreferrer" id="linka"><i class="fab fa-facebook"></i> Facebook</a></li>
+                            <li><a href="https://www.instagram.com/skatealligent/?hl=en" target="_blank" rel="noopener noreferrer" id="linka"><i class="fab fa-instagram"></i> Instagram</a></li>
                     </ul>
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
-            </p>
+            <p class="copyright" style="margin-bottom: 15px;">© 2021 <a class="linka" href="/index.html">Skate Alligent</a>. All rights reserved.</p>
+            <p class="copyright"><a class="linka" href="/terms-of-use.html">Terms of use </a> | <a class="linka" href="/privacy-policy.html"> Privacy Policy</a></p>
         </div>
     </div>
 
     <div class="php" style="display: none;">
         <?php
-        require('php/functions.php');
         
         if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
            echo "<a id='loggedin'>Not Logged In</a>";
@@ -335,6 +422,7 @@
         <i class="fas fa-exclamation"></i>
         <a id="notifText" class="notifText" style="font-size: 20px;">Product added to cart.</a>
     </div>
+    </div>
 
     <!--- JavaScript --->
     <script>
@@ -362,6 +450,7 @@
         let productName = document.getElementsByClassName("productName")[0];
         let productDesc = document.getElementsByClassName("productDesc")[0];
         let productCat = document.getElementsByClassName("productCat")[0];
+        let productSubCat = document.getElementsByClassName("productSubCat")[0];
         let productPrice = document.getElementsByClassName("productPrice")[0];
         let productBrand = document.getElementsByClassName("productBrand")[0];
         let productSizes = document.getElementsByClassName("productSizes")[0];
@@ -426,6 +515,11 @@
             elm2.setAttribute("onclick", "changeImg(3)");
         }
 
+        if(!back && !extra1 && !extra2){
+            let prodArrowCont = document.getElementsByClassName("arrow-cont")[0];
+            prodArrowCont.remove();
+        }
+
         function imageExists(image_url) {
 
             var http = new XMLHttpRequest();
@@ -438,8 +532,11 @@
         }
 
         let catLink1 = document.getElementsByClassName("ProdCatLink1")[0];
+        let catLink2 = document.getElementsByClassName("ProdCatLink1")[1];
         catLink1.innerHTML = productCat.textContent;
         catLink1.href = "/shop.html?pg=1&category=" + productCat.textContent;
+        catLink2.innerHTML = productSubCat.textContent;
+        catLink2.href = "/shop.html?pg=1&category=" + productCat.textContent + "&subcat=" + productSubCat.textContent;
         productCat.remove();
 
         let ProdName = document.getElementsByClassName("ProdName")[0];
@@ -459,6 +556,7 @@
             ProdPriceSaled.innerHTML = "EGP " + parseInt(productPrice.textContent - productSale.textContent) + " ";
 
             ProdPriceDefault.style = "text-decoration: line-through; color: grey;";
+            ProdPriceDefault.innerHTML = "EGP " + parseInt(productPrice.textContent);
         } else {
             ProdPriceDefault.innerHTML = "EGP " + productPrice.textContent;
         }
@@ -473,28 +571,32 @@
         ProdCatSpec.innerHTML = productCat.textContent;
         productCat.remove();
 
+        let ProdSubCatSpec = document.getElementsByClassName("ProdSubCatSpec")[0];
+        ProdSubCatSpec.innerHTML = productSubCat.textContent;
+        productSubCat.remove();
+
         let ProdCatLink2 = document.getElementsByClassName("ProdCatLink2")[0];
-        ProdCatLink2.href = "/shop.html?pg=1&category=" + ProdCatSpec.innerHTML;
+        ProdCatLink2.href = "/shop.html?pg=1&category=" + productCat.textContent + "&subcat=" + productSubCat.textContent;
 
         let ProdBrandSpec = document.getElementsByClassName("ProdBrandSpec")[0];
         ProdBrandSpec.innerHTML = productBrand.textContent;
         productBrand.remove();
 
-        var sizes = productSizes.textContent.split(", ");
+        var sizes = productSizes.textContent;
         productSizes.remove();
 
         let ProdSizeSpec1 = document.getElementsByClassName("ProdSizeSpec1")[0];
         let ProdSizeSpec2 = document.getElementsByClassName("ProdSizeSpec2")[0];
         ProdSizeSpec1.textContent = '\u2022' + " Size : ";
-        ProdSizeSpec2.innerHTML = sizes[0];
+        ProdSizeSpec2.innerHTML = sizes;
 
-        var colors = productColors.textContent.split(", ");
+        var colors = productColors.textContent;
         productColors.remove();
 
         let ProdColorSpec1 = document.getElementsByClassName("ProdColorSpec1")[0];
         let ProdColorSpec2 = document.getElementsByClassName("ProdColorSpec2")[0];
         ProdColorSpec1.textContent = '\u2022' + " Color : ";
-        ProdColorSpec2.innerHTML = colors[0];
+        ProdColorSpec2.innerHTML = colors;
 
         // <-- Products -->
         let img = document.getElementById("prod-img");
@@ -531,7 +633,7 @@
                         } else {
                             img.src = smolImg[0].src;
                             smolImg[0].id = "active-img";
-                            if(i > 0){
+                            if (i > 0) {
                                 smolImg[i].id = "";
                             }
                             break;
@@ -554,7 +656,7 @@
                         } else {
                             img.src = smolImg[parseInt(smolImg.length - 1)].src;
                             smolImg[parseInt(smolImg.length) - 1].id = "active-img";
-                            if(i != parseInt(smolImg.length) - 1){
+                            if (i != parseInt(smolImg.length) - 1) {
                                 smolImg[i].id = "";
                             }
                             break;
@@ -621,7 +723,9 @@
             } else {
                 text.textContent = "OUT OF STOCK";
                 text.style.color = "red";
-                cart.onclick = function() { return false};
+                cart.onclick = function() {
+                    return false
+                };
                 cart.style.transform = "translateY(-65px) translateX(145px)";
                 cart.style.cursor = "default";
                 cart.style.opacity = "70%";
@@ -676,15 +780,17 @@
 
         function cFunc(n) {
             if (n == "show") {
+                document.getElementsByClassName("cookies")[0].style.visibility = "visible";
                 cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
             } else if (n == "hide") {
                 cCont.style.top = window.innerHeight + "px";
+                document.getElementsByClassName("cookies")[0].style.visibility = "hidden";
             }
         }
 
-        function setCookie(key, value) {
+        function setCookie(key, value, time = 10000 * 365 * 24 * 60 * 60) {
             var expires = new Date();
-            expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
+            expires.setTime(expires.getTime() + time);
             document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
         }
 
@@ -722,7 +828,7 @@
                         if (response == "added to cart") {
                             notification(true);
                             loading(false);
-                        } else if("couldn't find user"){
+                        } else if ("couldn't find user") {
                             location.href = "/login.html?redirect=" + window.location.href;
                         } else {
                             notification(false);
@@ -731,29 +837,116 @@
                     }
                 }
             } else {
-                location.href = "/login.html?redirect=" + window.location.href;
+                loading(true);
+                var cartCookie = getCookie("cart");
+                var quanCookie = getCookie("quan");
+
+                if (cartCookie == null || cartCookie == "") {
+                    var newCart = productID.innerHTML;
+                    var newQuan = input.value;
+
+                    setCookie("cart", newCart, 26298 * 100 * 1000);
+                    setCookie("quan", newQuan, 26298 * 100 * 1000);
+
+                    notification(true);
+                    loading(false);
+                } else {
+                    var cartList = cartCookie.split(",");
+                    var quanList = quanCookie.split(",");
+                    if (cartList.includes(productID.innerHTML)) {
+                        quanList[cartList.indexOf(productID.innerHTML)] = parseInt(parseInt(input.value) + parseInt(quanList[cartList.indexOf(productID.innerHTML)]));
+                    } else {
+                        cartList.push(productID.innerHTML);
+                        quanList.push(input.value);
+                    }
+
+                    var newCart = cartList.toString();
+                    var newQuan = quanList.toString();
+
+                    setCookie("cart", newCart, 26298 * 100 * 1000);
+                    setCookie("quan", newQuan, 26298 * 100 * 1000);
+
+                    notification(true);
+                    loading(false);
+                }
             }
         }
 
         // <-- notif -->
-        function notification(status) {
+        function notification(type) {
             let notif = document.getElementsByClassName("notif")[0];
-            let textNo = notif.children[1];
+            let textNo = document.getElementById("notifText");
 
-            if (status == true) {
-                textNo.style.fontSize = "20px";
-                textNo.textContent = "Product added to cart.";
-                notif.id = "show";
+            if (notif.id == "show") {
+                notif.id = "hide";
                 setTimeout(function() {
-                    notif.id = "hide";
-                }, 5000);
+                    if (type == true) {
+                        textNo.style.fontSize = "20px";
+                        textNo.textContent = "Product added to cart.";
+                        notif.id = "show";
+                        setTimeout(function() {
+                            notif.id = "hide";
+                        }, 5000);
+                    } else {
+                        textNo.style.fontSize = "18px";
+                        textNo.textContent = "An unknown error occurred.";
+                        notif.id = "show";
+                        setTimeout(function() {
+                            notif.id = "hide";
+                        }, 5000);
+                    }
+                }, 500);
             } else {
-                textNo.style.fontSize = "18px";
-                textNo.textContent = "An unknown error occurred.";
-                notif.id = "show";
+                if (type == true) {
+                    textNo.style.fontSize = "20px";
+                    textNo.textContent = "Product added to cart.";
+                    notif.id = "show";
+                    setTimeout(function() {
+                        notif.id = "hide";
+                    }, 5000);
+                } else {
+                    textNo.style.fontSize = "18px";
+                        textNo.textContent = "An unknown error occurred.";
+                    notif.id = "show";
+                    setTimeout(function() {
+                        notif.id = "hide";
+                    }, 5000);
+                }
+            }
+        }
+
+        // <-- Side Navigation -->
+
+        function Nav() {
+            if (document.getElementById("indexpage").style.transform == "") {
+                document.getElementById("Sidenav").style.transform = "translateX(0px)";
+                document.getElementById("indexpage").style.transform = "translateX(300px)";
+                document.body.style.overflowY = 'hidden';
+                document.body.style.overflowX = 'hidden';
                 setTimeout(function() {
-                    notif.id = "hide";
-                }, 5000);
+                    document.getElementById("indexpage").setAttribute('onclick', 'Nav()');
+                }, 150);
+            } else {
+                document.getElementById("Sidenav").style.transform = "translateX(-300px)";
+                document.getElementById("indexpage").style.transform = "";
+                document.body.style.overflowY = '';
+                document.body.style.overflowX = '';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', '');
+                }, 150);
+            }
+        }
+
+        // <-- Side Navigation Open List -->
+        function navList(object, value) {
+            var obj = object.parentElement.parentElement.children[1];
+
+            if (obj.style.marginBottom == "0px") {
+                obj.style.marginBottom = value + "px";
+                object.innerHTML = "+";
+            } else {
+                obj.style.marginBottom = "0px";
+                object.innerHTML = "-";
             }
         }
 
@@ -765,6 +958,11 @@
                 document.getElementsByClassName("form-overlay")[n].classList.remove("ovlyact");
             }
         }
+        
+        
+        
+        
+
     </script>
 </body>
 

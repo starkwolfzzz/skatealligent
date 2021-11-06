@@ -32,7 +32,11 @@ if ($countdata == 0) {
     $result3 = mysqli_query($conn, $sql3);
 
     if ($result3) {
-        echo "Your account has been deleted";
+        $sql4 = "DELETE FROM addresses where id = '$id';";
+        $result4 = mysqli_query($conn, $sql4);
+        if($result4){
+            echo "Your account has been deleted";
+        } echo "Your account has not been deleted";
     } else {
         echo "Your account has not been deleted";
     }

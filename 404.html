@@ -3,24 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="color-scheme" content="dark">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page not found</title>
-    <link rel="icon" type="image/png" href="images/Icon.png">
+    <link rel="icon" type="image/png" href="images/black_Icon.png">
     <link rel="stylesheet" href="css/style.css">
     <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js%27);
+fbq('init', '950881942420079');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=950881942420079&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
 </head>
 
 <body style="background-color: black;">
-    <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
-    <meta name="color-scheme" content="dark">
-    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
-    <div class="header">
+    <div class="font_credit" style="display: none;">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <div id="indexpage">
+        <div class="header">
         <div class="container">
             <div class="navbar2" id="headerr">
                 <div class="logo-noline" id="logo">
-                    <a style="color: white;" class="logo" href="/">Skate Alligent</a>
+                                        <i class="fas fa-bars" style="cursor: pointer; transition: 0.5s ease; transform: translateY(-2px) translateX(5px); padding: 5px; color: white;" onclick="Nav()"></i><a class="logo" href="/" style="color: white;"> Skate Alligent</a>
                 </div>
                 <nav>
                     <ul id="menuItems">
@@ -31,8 +49,35 @@
                         <li><a href="/about.html">About</a></li>
                     </ul>
                 </nav>
-                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
-                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
+                <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease">
+                        <?php
+                        require('php/functions.php');
+                        
+                        if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
+                            $cart = $_COOKIE['cart'];
+
+                            if($cart != "" && $cart != null){
+                                echo '<div style="position: absolute; margin-top: -14px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 5px;"></div>';
+                            }
+                        } else {
+                            require('php/connection.php');
+
+                            $session = $_COOKIE['session'];
+
+                            $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+                            $query = mysqli_query($conn, $sql);
+                            $rows = mysqli_num_rows($query);
+
+                            if ($rows == 1) {
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    if($row['cart'] != ""){
+                                        echo '<div style="position: absolute; margin-top: -14px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 5px;"></div>';
+                                    }
+                                }
+                            }
+                        }
+                        ?>
+                    </i></a>
                 <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
                         style="transform: scale(0.8)"></i></a>
             </div>
@@ -44,6 +89,7 @@
                 </div>
             </section>
         </div>
+    </div>
     </div>
 
     <!--- JavaScript --->
@@ -69,6 +115,40 @@
         // <-- Switch Page -->
         function switchPg(pg) {
             location.href = pg;
+        }
+    // <-- Side Navigation -->
+
+        function Nav() {
+            if (document.getElementById("indexpage").style.transform == "") {
+                document.getElementById("Sidenav").style.transform = "translateX(0px)";
+                document.getElementById("indexpage").style.transform = "translateX(300px)";
+                document.body.style.overflowY = 'hidden';
+                document.body.style.overflowX = 'hidden';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', 'Nav()');
+                }, 150);
+            } else {
+                document.getElementById("Sidenav").style.transform = "translateX(-300px)";
+                document.getElementById("indexpage").style.transform = "";
+                document.body.style.overflowY = '';
+                document.body.style.overflowX = '';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', '');
+                }, 150);
+            }
+        }
+
+        // <-- Side Navigation Open List -->
+        function navList(object, value) {
+            var obj = object.parentElement.parentElement.children[1];
+
+            if (obj.style.marginBottom == "0px") {
+                obj.style.marginBottom = value + "px";
+                object.innerHTML = "+";
+            } else {
+                obj.style.marginBottom = "0px";
+                object.innerHTML = "-";
+            }
         }
     </script>
 </body>

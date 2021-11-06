@@ -1,210 +1,366 @@
-<?php
-require('php/functions.php');
+<!DOCTYPE html>
 
-if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
-    header("location: http://skatealligent.tk/login.html?redirect=" . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-}
-?>
+<html lang="en">
 
-    <!DOCTYPE html>
-    <html lang="en">
+<head>
+    <meta charset="UTF-8">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="color-scheme" content="dark">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Skate Alligent - Cart</title>
-        <link rel="icon" type="image/png" href="images/Icon.png">
-        <link rel="stylesheet" href="css/style.css">
-        <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
-    </head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skate Alligent - Checkout</title>
+    <link rel="icon" type="image/png" href="images/black_Icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js%27);
+fbq('init', '950881942420079');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=950881942420079&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+</head>
 
-    <body>
-        <div class="font_credit">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
-        <meta name="color-scheme" content="dark">
-        <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
-        <div class="header">
-            <div class="container">
-                <div class="navbar2" id="headerr" style="background-color: #160a22; position: inherit;">
-                    <div class="logo-noline" id="logo">
-                        <a style="color: white;" class="logo" href="/">Skate Alligent</a>
-                    </div>
-                    <nav>
-                        <ul id="menuItems">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/shop.html?pg=1">Shop</a></li>
-                            <li><a href="/account.html">Account</a></li>
-                            <li><a href="/contact.html">Contact</a></li>
-                            <li><a href="/about.html">About</a></li>
-                        </ul>
-                    </nav>
-                    <a href="/cart.html" class="button"><i class="fas fa-shopping-cart" aria-hidden="true"
-                        style="transform: scale(0.8); transition: 0.5s ease"></i></a>
-                    <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
-                        style="transform: scale(0.8)"></i></a>
-                </div>
+<body>
+    <div class="font_credit" style="display: none;">Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <div id="Sidenav" class="sidenav">
+        <a class="closebtn" onclick="Nav()" style="cursor: pointer;">&times;</a>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&special=Sale">EID-SALES</a>
             </div>
         </div>
-
-        <!--- Cart --->
-        <div class="small-container cart-pg">
-            <div class="row" id="hidden-empty" style="display: none;">
-                <a style="margin: 200px; margin-top: 120px; margin-bottom: -180px; font-weight: bolder; font-size: 30px;">YOUR CART IS EMPTY</a>
-                <a href="shop.html?pg=1" class="cart-btn" style=" margin: 200px; cursor: pointer; border: 1px solid white; background-color: white; color: black; padding: 13px; width: 15%;">Add More Items</a>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Sports">SPORTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-155')">+</a>
             </div>
-            <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
-                <div class="col-2" style="margin-bottom: -10px;">
-                    <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Shipping Method</a></h3>
-                    <i class="fas fa-truck"></i>
-                    <i class="far fa-dot-circle" style="transform: scale(0.75) translateX(3px);"></i>
-                    <a>Flat Shipping Rate - 0.00 EGP</a>
-                </div>
-                <div class="col-2" style="margin-bottom: -10px;">
-                    <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Payment Method</a></h3>
-                    <i class="far fa-money-bill-alt"></i>
-                    <i class="far fa-dot-circle" style="transform: scale(0.75) translateX(3px);"></i>
-                    <a>Cash on Delivery</a>
-                </div>
+            <div class="bottom-row" style="margin-bottom: -155px;">
+                <a href="/shop.html?pg=1&category=Sports&subcat=Longboards">Longboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Skateboards">Skateboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Pennyboards">Pennyboards</a>
+                <a href="/shop.html?pg=1&category=Sports&subcat=Fingerboards">Fingerboards</a>
             </div>
-            <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
-                <div class="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
-                    <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Shopping Cart</a></h3>
-                    <table class="cart-table">
-                        <tr>
-                            <th style="border-right: none;">Product</th>
-                            <th style="border-right: none; border-left: none;">Quantity</th>
-                            <th style="border-left: none;">Subtotal</th>
-                        </tr>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Protection">PROTECTION</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-85')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -85px;">
+                <a href="/shop.html?pg=1&category=Protection&subcat=Helmets">Helmets</a>
+                <a href="/shop.html?pg=1&category=Protection&subcat=Protective Pads">Protective Pads</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a style="display: inline-block; flex-basis: 85%;" href="/shop.html?pg=1&category=Components">COMPONENTS</a>
+                <a style="flex-basis: 15%; cursor: pointer;" class="opennavlist" onclick="navList(this, '-295')">+</a>
+            </div>
+            <div class="bottom-row" style="margin-bottom: -295px;">
+                <a href="/shop.html?pg=1&category=Components&subcat=Skate Decks">Skate Decks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Longboard Wheels">Longboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Skateboard Wheels">Skateboard Wheels</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Trucks">Trucks</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Risers">Risers</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Griptape">Griptape</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Hardware">Hardware</a>
+                <a href="/shop.html?pg=1&category=Components&subcat=Bushings">Bushings</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/shop.html?pg=1&category=Tools">TOOLS</a>
+            </div>
+        </div>
+        <div class="row" style="transition: 0.5s;">
+            <div class="top-row">
+                <a href="/account.html">ACCOUNT</a>
+            </div>
+        </div>
+    </div>
+    <div id="indexpage">
+        <div class="header">
+        <div class="container">
+            <div class="navbar2" id="headerr" style="background-color: black; position: inherit;">
+                <div class="logo-noline" id="logo">
+                                        <i class="fas fa-bars" style="cursor: pointer; transition: 0.5s ease; transform: translateY(-2px) translateX(5px); padding: 5px; color: white;" onclick="Nav()"></i><a class="logo" href="/" style="color: white;"> Skate Alligent</a>
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop.html?pg=1">Shop</a></li>
+                        <li><a href="/account.html">Account</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/about.html">About</a></li>
+                    </ul>
+                </nav>
+                <a href="/cart.html" class="button" id="btnActive"><i class="fas fa-shopping-cart" aria-hidden="true" style="transform: scale(0.8); transition: 0.5s ease"></i>
                         <?php
-                    require('php/connection.php');
-            
-                    $session = $_COOKIE['session'];
-            
-                    $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
-                    $query = mysqli_query($conn, $sql);
-                    $rows = mysqli_num_rows($query);
-    
-                    $cartList;
-                    $quanList;
-                    $id;
-            
-                    if ($rows == 1) {
-                        while ($row = mysqli_fetch_assoc($query)) {
-                            $id = $row['id'];
-                            $cartList = explode(", ", $row['cart']);
-                            $quanList = explode(", ", $row['cartCount']);
-                        }
-                    }
-    
-                    if($cartList[0] != ""){
-                        for($i = 0; $i < count($cartList); $i++){
-                            $sqli = "SELECT * FROM Products WHERE ID = '" . $cartList[$i] . "';";
-                            $queryi = mysqli_query($conn, $sqli);
-                            $rowsi = mysqli_num_rows($queryi);
-        
-                            if($rowsi > 0){
-                                while ($rowi = mysqli_fetch_assoc($queryi)){
-                                    echo '<tr class="item-cell">';
-                                    echo '<td>';
-                                    echo '<div class="cart-info">';
-                                    echo '<img src="products/' . $rowi['ID'] . '.png" style="cursor: pointer;" onclick="switchPg(' . "'/product.html?id=" . $rowi['ID'] . "'" . ')">';
-                                    echo '<div>';
-                                    echo '<a style="cursor: pointer;" href="/product.html?id=' . $rowi['ID'] . '" id="link">' . $rowi['Name'] . '</a>';
-                                    echo '<br>';
-                                    echo "<a class='prodid' style='display: none';>" . $rowi['ID'] . "</a>";
-                                    echo "<a class='productStock' style='display: none';>" . $rowi['Stock'] . "</a>";
-                                    echo '<small>EGP ' . intval($rowi['Price']) . '</small>';
-                                    echo '<br>';
-                                    echo '<small class="discount">Discount: EGP ' . intval($rowi['Sale']) . '</small>';
-                                    echo '<br>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                    echo '</td>';
-                                    echo '<td>';
-                                    echo '<input type="number" value="' . $quanList[$i] . '" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(' . $i . ')"> &nbsp;';
-                                    echo '<a class="remove-btns" id="link" onclick="removeItem(' . $i . ', ' . "'btn'" . ')">Remove</a> &nbsp;';
-                                    echo '</td>';
-                                    echo '<td>EGP ' . intval($rowi['Price'] * $quanList[$i]) . '</td>';
-                                    echo '</tr>';
+                        require('php/functions.php');
+                        
+                        if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
+                            $cart = $_COOKIE['cart'];
+
+                            if($cart != "" && $cart != null){
+                                echo '<div style="position: absolute; margin-top: -18px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 4px;"></div>';
+                            }
+                        } else {
+                            require('php/connection.php');
+
+                            $session = $_COOKIE['session'];
+
+                            $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+                            $query = mysqli_query($conn, $sql);
+                            $rows = mysqli_num_rows($query);
+
+                            if ($rows == 1) {
+                                while ($row = mysqli_fetch_assoc($query)) {
+                                    if($row['cart'] != ""){
+                                        echo '<div style="position: absolute; margin-top: -18px; margin-left: 11px; border-radius: 50px; background-color: red; padding: 4px;"></div>';
+                                    }
                                 }
                             }
                         }
-        
-                        echo "<a id='userid' style='display: none';>" . $id . "</a>";
+                        ?>
+                    </i></a>
+                <a class="menu-icon" onclick="menuToggle()"><i class="fas fa-bars" aria-hidden="true"
+                        style="transform: scale(0.8)"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--- Cart --->
+    <div class="small-container cart-pg2">
+        <div class="row" id="hidden-empty" style="display: none; background-color: white; border: 1px solid black;">
+            <a style="margin: 200px; margin-top: 120px; margin-bottom: -180px; font-weight: bolder; font-size: 30px;">YOUR CART IS EMPTY</a>
+            <a href="shop.html?pg=1" class="cart-btn" style=" margin: 200px; cursor: pointer; border: 1px solid white; background-color: black; color: white; padding: 13px; width: 15%;">Add More Items</a>
+        </div>
+        <div class="row" style="background-color: white; border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col-2" style="margin-bottom: -10px;">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid black;">Shipping Method</a></h3>
+                <i class="fas fa-truck"></i>
+                <i class="far fa-dot-circle" style="transform: scale(0.75) translateX(3px);"></i>
+                <a>Flat Shipping Rate - 50.00 EGP</a>
+            </div>
+            <div class="col-2" style="margin-bottom: -10px;">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid black;">Payment Method</a></h3>
+                <i class="far fa-money-bill-alt"></i>
+                <i class="far fa-dot-circle" style="transform: scale(0.75) translateX(3px);"></i>
+                <a>Cash on Delivery</a>
+            </div>
+        </div>
+        <div class="row" style="background-color: white; border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid black;">Shopping Cart</a></h3>
+                <table class="cart-table" style="width: 110%;">
+                    <tr>
+                        <th style="border-right: none;">Product</th>
+                        <th style="border-right: none; border-left: none;">Quantity</th>
+                        <th style="border-left: none;">Subtotal</th>
+                    </tr>
+                    <?php
+            require('php/connection.php');
+
+            $session = $_COOKIE['session'];
+
+            if(!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect"){
+
+                $cart = $_COOKIE['cart'];
+                $quan = $_COOKIE['quan'];
+    
+                $cartList;
+                $quanList;
+
+                $cartList = explode(",", $cart);
+                $quanList = explode(",", $quan);
+    
+                if ($cartList[0] != "") {
+                    for ($i = 0; $i < count($cartList); $i++) {
+                        $sqli = "SELECT * FROM Products WHERE ID = '" . $cartList[$i] . "';";
+                        $queryi = mysqli_query($conn, $sqli);
+                        $rowsi = mysqli_num_rows($queryi);
+    
+                        if ($rowsi > 0) {
+                            while ($rowi = mysqli_fetch_assoc($queryi)) {
+                                echo '<tr class="item-cell">';
+                                echo '<td>';
+                                echo '<div class="cart-info">';
+                                echo '<img src="products/' . $rowi['ID'] . '.png" style="cursor: pointer;" onclick="switchPg(' . "'/product.html?id=" . $rowi['ID'] . "'" . ')">';
+                                echo '<div>';
+                                echo '<a style="cursor: pointer;" href="/product.html?id=' . $rowi['ID'] . '" id="link">' . $rowi['Name'] . '</a>';
+                                echo '<br>';
+                                echo "<a class='prodid' style='display: none';>" . $rowi['ID'] . "</a>";
+                                echo "<a class='productStock' style='display: none';>" . $rowi['Stock'] . "</a>";
+                                echo '<small>EGP ' . intval($rowi['Price']) . '</small>';
+                                echo '<br>';
+                                echo '<small class="discount">Discount: EGP ' . intval($rowi['Sale']) . '</small>';
+                                echo '<br>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</td>';
+                                echo '<td>';
+                                echo '<input type="number" value="' . $quanList[$i] . '" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(' . $i . ')"> &nbsp;';
+                                echo '<a class="remove-btns" id="linka2" onclick="removeItem(' . $i . ', ' . "'btn'" . ')">Remove</a> &nbsp;';
+                                echo '</td>';
+                                echo '<td>EGP ' . intval($rowi['Price'] * $quanList[$i]) . '</td>';
+                                echo '</tr>';
+                            }
+                        }
                     }
-                    ?>
+                }
+            } else {            
+            $sql = "SELECT * FROM users WHERE session = '" . $session . "';";
+            $query = mysqli_query($conn, $sql);
+            $rows = mysqli_num_rows($query);
+
+            $cartList;
+            $quanList;
+            $id;
+
+            if ($rows == 1) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $id = $row['id'];
+                    $cartList = explode(", ", $row['cart']);
+                    $quanList = explode(", ", $row['cartCount']);
+                }
+            }
+
+            if ($cartList[0] != "") {
+                for ($i = 0; $i < count($cartList); $i++) {
+                    $sqli = "SELECT * FROM Products WHERE ID = '" . $cartList[$i] . "';";
+                    $queryi = mysqli_query($conn, $sqli);
+                    $rowsi = mysqli_num_rows($queryi);
+
+                    if ($rowsi > 0) {
+                        while ($rowi = mysqli_fetch_assoc($queryi)) {
+                            echo '<tr class="item-cell">';
+                            echo '<td>';
+                            echo '<div class="cart-info">';
+                            echo '<img src="products/' . $rowi['ID'] . '.png" style="cursor: pointer;" onclick="switchPg(' . "'/product.html?id=" . $rowi['ID'] . "'" . ')">';
+                            echo '<div>';
+                            echo '<a style="cursor: pointer;" href="/product.html?id=' . $rowi['ID'] . '" id="link">' . $rowi['Name'] . '</a>';
+                            echo '<br>';
+                            echo "<a class='prodid' style='display: none';>" . $rowi['ID'] . "</a>";
+                            echo "<a class='productStock' style='display: none';>" . $rowi['Stock'] . "</a>";
+                            echo '<small>EGP ' . intval($rowi['Price']) . '</small>';
+                            echo '<br>';
+                            echo '<small class="discount">Discount: EGP ' . intval($rowi['Sale']) . '</small>';
+                            echo '<br>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</td>';
+                            echo '<td>';
+                            echo '<input type="number" value="' . $quanList[$i] . '" min="1" max="100" class="inputQuan" onfocusout="inputValueCheck(' . $i . ')"> &nbsp;';
+                            echo '<a class="remove-btns" id="linka2" onclick="removeItem(' . $i . ', ' . "'btn'" . ')">Remove</a> &nbsp;';
+                            echo '</td>';
+                            echo '<td>EGP ' . intval($rowi['Price'] * $quanList[$i]) . '</td>';
+                            echo '</tr>';
+                        }
+                    }
+                }
+
+                echo "<a id='userid' style='display: none';>" . $id . "</a>";
+            }
+            }
+            ?>
+                </table>
+                <div class="total-price" style="background-color: rgb(218, 218, 218);">
+                    <table style="background-color: rgb(218, 218, 218); border-top: 0px solid black; margin-right: -97px; max-width: 320px;">
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>EGP 0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Discount</td>
+                            <td>EGP 0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping</td>
+                            <td>EGP 50</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>EGP 0.00</td>
+                        </tr>
                     </table>
-                    <div class="total-price" style="background-color: black;">
-                        <table style="background-color: black; border-top: 0px solid white;">
-                            <tr>
-                                <td>Subtotal</td>
-                                <td>EGP 0.00</td>
-                            </tr>
-                            <tr>
-                                <td>Discount</td>
-                                <td>EGP 0.00</td>
-                            </tr>
-                            <tr>
-                                <td>Shipping</td>
-                                <td>EGP 0.00</td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>EGP 0.00</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
-                <div class="col" id="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
-                    <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Delivery Address</a></h3>
-                    <form class="CheckoutForm" id="form1" onsubmit="submitForm2(); return false">
-                        <div class="addressInputs"><label for="Apartment">Apartment Number*</label><input class="innput" id="Apartment" name="Apartment" type="text" placeholder="Apartment Number" required oninvalid="this.setCustomValidity('Please enter the number of your apartment, or house')"
-                                oninput="this.setCustomValidity('')" title="number of apartment or house"></div>
-                        <div class="addressInputs" style="margin-top: -30px;"><label for="Building">Building Number*</label><input class="innput" id="Building" name="Building" type="text" placeholder="Building Number" required oninvalid="this.setCustomValidity('Please enter the number of your building')"
-                                oninput="this.setCustomValidity('')" title="Number of your building"></div>
-                        <div class="addressInputs" style="margin-top: -30px;"><label for="Street">Street*</label><input class="innput" id="Street" name="Street" type="text" placeholder="Street" required oninvalid="this.setCustomValidity('Please enter the street where you live')" oninput="this.setCustomValidity('')"
-                                title="Street where you live"></div>
-                        <div class="addressInputs" style="margin-top: -30px;"><label for="City">City*</label><input class="innput" id="City" name="City" type="text" placeholder="City" required oninvalid="this.setCustomValidity('Please enter the city of your residence')" oninput="this.setCustomValidity('')"
-                                title="City of your residence"></div>
-                        <div class="addressInputs" style="margin-top: -30px;"><label for="Region">Region/State*</label><input class="innput" id="Region" name="Region" type="text" placeholder="Region/State" required oninvalid="this.setCustomValidity('Please enter the region or state of your residence')" oninput="this.setCustomValidity('')"
-                                title="Region or state of your residence"></div>
-                        <div class="addressInputs" style="margin-top: -30px;"><label for="Country">Country*</label><input class="innput" id="Country" name="Country" type="text" placeholder="Country" required oninvalid="this.setCustomValidity('Please enter the country of your residence')" oninput="this.setCustomValidity('')"
-                                title="Country of your residence"></div>
-                        <div class="addressInputs" style="margin-top: -30px;"><label for="noArrows">Postal Code*</label><input class="innput" id="noArrows" name="Postal" type="number" placeholder="Postal Code" required oninvalid="this.setCustomValidity('Please enter a valid postal code')" oninput="this.setCustomValidity('')"
-                                title="Please enter your postal code here"></div>
-                        <div class="addressInputs" style="margin-top: -30px; margin-bottom: -40px;"><label for="noArrows2">Phone Number*</label><input class="innput" id="noArrows2" name="Phone" type="number" placeholder="01x xxxx xxxx" required oninvalid="this.setCustomValidity('Please enter a valid phone number')" oninput="this.setCustomValidity('')"
-                                title="Please enter your phone number so we can contact you" maxlength="11"></div>
-                        <input class="submit" type="submit" style="display: none;">
-                    </form>
-                </div>
-            </div>
-            <div class="row" style="background-color: rgb(40 40 40); border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
-                <div class="col" id="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
-                    <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid white;">Confirm your order</a></h3>
-                    <form class="CheckoutForm" id="form2" onsubmit="checkout(); return false">
-                        <textarea id="orderComments" placeholder="Add Comments About Your Order" title="Add any extra things you want to let us know about your order"></textarea>
-                        <div class="checkbox"><label for="checkbox1"><input type="checkbox" name="checkbox1" id="checkbox1" required oninvalid="this.setCustomValidity('Please agree to the privacy policy to proceed')" oninput="this.setCustomValidity('')" title="Checking this confirms your acceptance to our privacy policy"> I have read and agreed to the <a href="/privacy-policy.html">Privacy Policy</a>.</label></div>
-                        <div class="checkbox"><label for="checkbox2"><input type="checkbox" name="checkbox2" id="checkbox2" required oninvalid="this.setCustomValidity('Please agree to the terms of service to proceed')" oninput="this.setCustomValidity('')" title="Checking this confirms your acceptance to our terms of service"> I have read and agreed to the <a href="/terms-of-use.html">Terms of Service</a>.</label></div>
-                        <p class="carty-btn" onclick="submitForm1()"><a>Confirm Order &#8594;</a></p>
-                        <input class="submit" type="submit" style="display: none;">
-                    </form>
                 </div>
             </div>
         </div>
+        <div class="row" style="background-color: white; border: 1px solid rgb(52 52 52); padding-bottom: 0px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col-2" style="margin-bottom: -10px; flex-basis: 70%;">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid black;">Contact Information</a></h3>
+            </div>
+            <div class="col-2s" style="margin-bottom: -10px; flex-basis: 30%; text-align: right; vertical-align: top;">
+                <h3 style="margin-bottom: 25px;">
+                    <p style="font-size: 15px; font-weight: normal;">already have an account? <a class="loginbutton" href="/login.html">Log In</a></p>
+                </h3>
+            </div>
+            <div class="col" id="col" style="width: 89%; transform: translateY(10px) translateX(-50px); margin-bottom: -15px; margin-top: -15px;">
+                <form class="CheckoutForm" id="form3" onsubmit="submitForm1(); return false">
+                    <div class="addressInputs"><label for="email">Email Address*</label><input class="innput" id="email" name="email" type="email" placeholder="Email Address" required oninvalid="this.setCustomValidity('Please enter your email address')" oninput="this.setCustomValidity('')"
+                            title="Your Email Address"></div>
+                    <input class="submit" type="submit" style="display: none;">
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color: white; border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col" id="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid black;">Delivery Address</a></h3>
+                <form class="CheckoutForm" id="form1" onsubmit="submitForm2(); return false">
+                    <div class="addressInputs"><label for="FName">First Name*</label><input class="innput" id="FName" name="FName" type="text" placeholder="First Name" required oninvalid="this.setCustomValidity('Please enter your first name')" oninput="this.setCustomValidity('')"
+                            title="Your first name"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="LName">Last Name*</label><input class="innput" id="LName" name="LName" type="text" placeholder="Last Name" required oninvalid="this.setCustomValidity('Please enter your last name')" oninput="this.setCustomValidity('')"
+                            title="Your last name"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Apartment">Apartment Number*</label><input class="innput" id="Apartment" name="Apartment" type="text" placeholder="Apartment Number" required oninvalid="this.setCustomValidity('Please enter the number of your apartment, or house')"
+                            oninput="this.setCustomValidity('')" title="number of apartment or house"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Building">Building Number*</label><input class="innput" id="Building" name="Building" type="text" placeholder="Building Number" required oninvalid="this.setCustomValidity('Please enter the number of your building')" oninput="this.setCustomValidity('')"
+                            title="Number of your building"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Street">Street*</label><input class="innput" id="Street" name="Street" type="text" placeholder="Street" required oninvalid="this.setCustomValidity('Please enter the street where you live')" oninput="this.setCustomValidity('')"
+                            title="Street where you live"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="City">City*</label><input class="innput" id="City" name="City" type="text" placeholder="City" required oninvalid="this.setCustomValidity('Please enter the city of your residence')" oninput="this.setCustomValidity('')" title="City of your residence"></div>
+                    <div class="addressInputs" style="margin-top: -30px;"><label for="Region">Region/State*</label><input class="innput" id="Region" name="Region" type="text" placeholder="Region/State" required oninvalid="this.setCustomValidity('Please enter the region or state of your residence')" oninput="this.setCustomValidity('')"
+                            title="Region or state of your residence"></div>
+                    <div class="addressInputs" style="margin-top: -30px; margin-bottom: -40px;"><label for="noArrows2">Phone Number*</label><input class="innput" id="noArrows2" name="Phone" type="number" placeholder="01x xxxx xxxx" required oninvalid="this.setCustomValidity('Please enter a valid phone number')" oninput="this.setCustomValidity('')"
+                            title="Please enter your phone number so we can contact you" maxlength="11"></div>
+                    <input class="submit" type="submit" style="display: none;">
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color: white; border: 1px solid rgb(52 52 52); padding-bottom: 25px; margin-bottom: 25px; margin-right: -103px;">
+            <div class="col" id="col" style="width: 89%; transform: translateY(10px) translateX(-50px);">
+                <h3 style="margin-bottom: 25px;"><a style="border-bottom: 2px solid black;">Confirm your order</a></h3>
+                <form class="CheckoutForm" id="form2" onsubmit="checkout(); return false">
+                    <textarea id="orderComments" placeholder="Add Comments About Your Order" title="Add any extra things you want to let us know about your order"></textarea>
+                    <div class="checkbox"><label for="checkbox1"><input type="checkbox" name="checkbox1" id="checkbox1" required oninvalid="this.setCustomValidity('Please agree to the privacy policy to proceed')" oninput="this.setCustomValidity('')" title="Checking this confirms your acceptance to our privacy policy"> I have read and agreed to the <a href="/privacy-policy.html">Privacy Policy</a>.</label></div>
+                    <div class="checkbox"><label for="checkbox2"><input type="checkbox" name="checkbox2" id="checkbox2" required oninvalid="this.setCustomValidity('Please agree to the terms of service to proceed')" oninput="this.setCustomValidity('')" title="Checking this confirms your acceptance to our terms of service"> I have read and agreed to the <a href="/terms-of-use.html">Terms of Service</a>.</label></div>
+                    <p class="carty-btn" id="carty-btn" onclick="submitForm3()"><a>Confirm Order &#8594;</a></p>
+                    <input class="submit" type="submit" style="display: none;">
+                </form>
+            </div>
+        </div>
+    </div>
 
-        <!--- Cookie Notice --->
-        <div class="cookies">
+    <!--- Cookie Notice --->
+        <div class="cookies" style="visibility: hidden">
             <div class="container">
                 <div class="row">
-                    <div class="col-2" style="text-align: right;">
+                    <div class="col-2" style="text-align: right; color: white; font-size: 1vw;">
                         <p>We use cookies to enhance your experience with our website.</p>
                         <p>By continuing to use the site, you agree to the use of cookies.</p>
                     </div>
-                    <div class="col-2" style="text-align: left;">
-                        <a class="cookie-btn" id="link" onclick="acceptCookies()">Accept Cookies</a>
+                    <div class="col-2" style="text-align: left; font-size: 1vw;">
+                        <a class="cookie-btn" id="link" onclick="acceptCookies()" style="color: white;">Accept Cookies</a>
                         <a class="cookie-btn" id="link" href="/cookie-policy.html" style="color: white;">Learn More</a>
                     </div>
                 </div>
@@ -212,47 +368,53 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
         </div>
 
 
-        <!--- Footer --->
-        <div class="footer" id="sec4">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col-1">
-                        <img src="images/Logo.png" style="cursor: pointer;" onclick="switchPg('/index.html')">
-                    </div>
-                    <div class="footer-col-2">
-                        <h3>Useful Links</h3>
-                        <ul>
-                            <li><a href="/account.html" style="color: #8a8a8a;" id="link">My Account</a></li>
-                            <li><a href="/cart.html" style="color: #8a8a8a;" id="link">Shopping Cart</a></li>
-                            <li><a href="/refund-policy.html" style="color: #8a8a8a;" id="link">Refund Policy</a></li>
-                            <li><a href="/about.html" style="color: #8a8a8a;" id="link">About</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col-3">
-                        <h3>Follow Us</h3>
-                        <ul>
-                            <li><a href="" style="color: #8a8a8a;" id="link">Facebook</a></li>
-                            <li><a href="" style="color: #8a8a8a;" id="link">Instagram</a></li>
-                            <li><a href="" style="color: #8a8a8a;" id="link">Twitter</a></li>
-                            <li><a href="" style="color: #8a8a8a;" id="link">Youtube</a></li>
-                        </ul>
-                    </div>
+    <!--- Footer --->
+    <div class="footer" id="sec4">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <a href="/index.html">
+                        <img class="footerlogo" src="images/Logo.png">
+                    </a>
                 </div>
-                <hr>
-                <p class="copyright">Copyright © 2021 Skate Alligent. All rights reserved. <a class="link" href="/terms-of-use.html">Terms of use </a> | <a class="link" href="/privacy-policy.html"> Privacy Policy</a>
-                </p>
+                <div class="footer-col-2">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="/account.html" id="linka"><i class="fas fa-user"></i> My Account</a></li>
+                        <li><a href="/cart.html" id="linka"><i class="fas fa-shopping-cart"></i> Shopping Cart</a></li>
+                        <li><a href="/refund-policy.html" id="linka"><i class="fas fa-money-bill"></i> Refund Policy</a></li>
+                        <li><a href="/about.html" id="linka"><i class="fas fa-users"></i> About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://www.facebook.com/alligentskateshop" target="_blank" rel="noopener noreferrer" id="linka"><i class="fab fa-facebook"></i> Facebook</a></li>
+                            <li><a href="https://www.instagram.com/skatealligent/?hl=en" target="_blank" rel="noopener noreferrer" id="linka"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
             </div>
+            <hr>
+            <p class="copyright" style="margin-bottom: 15px;">© 2021 <a class="linka" href="/index.html">Skate Alligent</a>. All rights reserved.</p>
+            <p class="copyright"><a class="linka" href="/terms-of-use.html">Terms of use </a> | <a class="linka" href="/privacy-policy.html"> Privacy Policy</a></p>
         </div>
+    </div>
 
-        <!-- loading -->
-        <div class="form-overlay" style="position: fixed;">
-            <div class="overlay-bg"></div>
-            <img src="images/loading.png" class="loading">
-        </div>
+    <!-- loading -->
+    <div class="form-overlay" style="position: fixed;">
+        <div class="overlay-bg"></div>
+        <img src="images/loading.png" class="loading">
+    </div>
 
-        <!-- user info -->
-        <div class="php" style="display: none;">
-            <?php
+    <!-- user info -->
+    <div class="php" style="display: none;">
+        <?php        
+        if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session is incorrect") {
+           echo "<a id='loggedin'>Not Logged In</a>";
+        } else {
+            echo "<a id='loggedin'>Logged In</a>";
+        }
+        
         require('php/connection.php');
 
         $session = $_COOKIE['session'];
@@ -271,6 +433,9 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                     while ($row2 = mysqli_fetch_assoc($query2)) {
                         echo "<a id='uid'>" . $row['id'] . "</a>";
                         echo "<a id='pnumber'>" . $row['pnumber'] . "</a>";
+                        echo "<a id='fnamee'>" . $row['FName'] . "</a>";
+                        echo "<a id='lnamee'>" . $row['LName'] . "</a>";
+                        echo "<a id='uemail'>" . $row['email'] . "</a>";
                         echo "<!-- Address -->";
                         echo "<a id='adId'>" . $row2['id'] . "</a>";
                         echo "<a id='apartment'>" . $row2['apartment'] . "</a>";
@@ -278,83 +443,104 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         echo "<a id='street'>" . $row2['street'] . "</a>";
                         echo "<a id='city'>" . $row2['city'] . "</a>";
                         echo "<a id='region'>" . $row2['region'] . "</a>";
-                        echo "<a id='country'>" . $row2['country'] . "</a>";
-                        echo "<a id='postal'>" . $row2['postal'] . "</a>";
                     }
                 }
             }
         }
         ?>
-        </div>
+    </div>
 
-        <!--- notif --->
-        <div class="notif" id="hide" style="color: #160a22; background-color: white; position: fixed;">
-            <i class="fas fa-exclamation"></i>
-            <a id="notifText" class="notifText" style="font-size: 20px;">Couldn't place order.</a>
-        </div>
+    <!--- notif --->
+    <div class="notif" id="hide" style="color: #160a22; background-color: white; position: fixed;">
+        <i class="fas fa-exclamation"></i>
+        <a id="notifText" class="notifText" style="font-size: 20px;">Couldn't place order.</a>
+    </div>
+    </div>
 
-        <!--- JavaScript --->
-        <script>
-            // <-- Menu -->
-            var MenuItems = document.getElementById("menuItems");
+    <!--- JavaScript --->
+    <script>
+        // <-- Check If Logged In -->
+        var loginstatus = document.getElementById("loggedin").innerHTML;
 
-            MenuItems.style.maxHeight = "0px";
+        if (loginstatus == "Logged In") {
+            document.getElementsByClassName("cart-pg2")[0].children[3].style.display = "none";
+            document.getElementById("email").value = document.getElementById("uemail").innerHTML;
+            document.getElementById("email").disabled = true;
+        }
 
-            function menuToggle() {
-                if (MenuItems.style.maxHeight == "0px") {
-                    MenuItems.style.maxHeight = "200px";
-                } else {
-                    MenuItems.style.maxHeight = "0px";
+        // <-- Check Quantity Inputs -->
+        checkQuans();
+
+        function checkQuans() {
+            for (i = 0; i < document.getElementsByClassName("inputQuan").length; i++) {
+                if (document.getElementsByClassName("inputQuan")[i].value > 100 || document.getElementsByClassName("inputQuan")[i].value > parseInt(document.getElementsByClassName('productStock')[i].innerHTML)) {
+                    document.getElementsByClassName("inputQuan")[i].focus();
+                    document.getElementsByClassName("inputQuan")[i].blur();
+                }
+            }
+        }
+
+        // <-- Menu -->
+        var MenuItems = document.getElementById("menuItems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // <-- Products Href -->
+        function prodPg() {
+            location.href = "/product.html?id=" + "id";
+        }
+
+        // <-- Switch Page -->
+        function switchPg(pg) {
+            location.href = pg;
+        }
+
+        // <-- Input Value -->
+        function inputValueCheck(n) {
+            let input = document.getElementsByClassName("inputQuan");
+
+            if (input[n].value == 0) {
+                removeItem(n, "input");
+
+                let inputs = document.getElementsByClassName("inputQuan");
+                for (i = 0; i < inputs.length; i++) {
+                    inputs[i].setAttribute("onChange", 'inputValueCheck(' + i + ')');
                 }
             }
 
-            // <-- Products Href -->
-            function prodPg() {
-                location.href = "/product.html?id=" + "id";
+            let productStock = document.getElementsByClassName('productStock');
+            var x = parseInt(productStock[n].innerHTML);
+            if (x > 100) {
+                if (input[n].value > 100) {
+                    input[n].value = '100';
+                } else if (input[n].value < 1) {
+                    input[n].value = '1';
+                } else if (input[n].value.toString().includes(".")) {
+                    input[n].value = input[n].value.toString().substr(0, input[n].value.toString().indexOf("."))
+                }
+            } else {
+                if (input[n].value > x) {
+                    input[n].value = '' + x + '';
+                } else if (input[n].value < 1) {
+                    input[n].value = '1';
+                } else if (input[n].value.toString().includes(".")) {
+                    input[n].value = input[n].value.toString().substr(0, input[n].value.toString().indexOf("."))
+                }
             }
 
-            // <-- Switch Page -->
-            function switchPg(pg) {
-                location.href = pg;
-            }
+            let prodid = document.getElementsByClassName("prodid")[n].textContent;
+            let id = document.getElementById("userid");
+            loading(true);
 
-            // <-- Input Value -->
-            function inputValueCheck(n) {
-                let input = document.getElementsByClassName("inputQuan");
-
-                if (input[n].value == 0) {
-                    removeItem(n, "input");
-
-                    let inputs = document.getElementsByClassName("inputQuan");
-                    for (i = 0; i < inputs.length; i++) {
-                        inputs[i].setAttribute("onChange", 'inputValueCheck(' + i + ')');
-                    }
-                }
-
-                let productStock = document.getElementsByClassName('productStock');
-                var x = parseInt(productStock[n].innerHTML);
-                if (x > 100) {
-                    if (input[n].value > 100) {
-                        input[n].value = '100';
-                    } else if (input[n].value < 1) {
-                        input[n].value = '1';
-                    } else if (input[n].value.toString().includes(".")) {
-                        input[n].value = input[n].value.toString().substr(0, input[n].value.toString().indexOf("."))
-                    }
-                } else {
-                    if (input[n].value > x) {
-                        input[n].value = '' + x + '';
-                    } else if (input[n].value < 1) {
-                        input[n].value = '1';
-                    } else if (input[n].value.toString().includes(".")) {
-                        input[n].value = input[n].value.toString().substr(0, input[n].value.toString().indexOf("."))
-                    }
-                }
-
-                let prodid = document.getElementsByClassName("prodid")[n].textContent;
-                let id = document.getElementById("userid");
-                loading(true);
-
+            if (document.getElementById("loggedin").innerHTML == "Logged In") {
                 var form_data = new FormData();
 
                 form_data.append("cartQuanUId", id.innerHTML);
@@ -380,16 +566,35 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         }
                     }
                 }
+            } else {
+                var cartCookie = getCookie("cart");
+                var quanCookie = getCookie("quan");
+
+                var cartList = cartCookie.split(",");
+                var quanList = quanCookie.split(",");
+
+                quanList[cartList.indexOf(prodid)] = parseInt(input[n].value);
+
+                var newCart = cartList.toString();
+                var newQuan = quanList.toString();
+
+                setCookie("cart", newCart, 26298 * 100 * 1000);
+                setCookie("quan", newQuan, 26298 * 100 * 1000);
+
+                loading(false);
+                location.reload();
             }
+        }
 
-            // <-- Remove Item -->
-            function removeItem(n, type) {
-                let parents = document.getElementsByClassName("item-cell");
-                let prodid = document.getElementsByClassName("prodid")[n].textContent;
-                let id = document.getElementById("userid");
-                let input = document.getElementsByClassName("inputQuan")[n].value;
-                loading(true);
+        // <-- Remove Item -->
+        function removeItem(n, type) {
+            let parents = document.getElementsByClassName("item-cell");
+            let prodid = document.getElementsByClassName("prodid")[n].textContent;
+            let id = document.getElementById("userid");
+            let input = document.getElementsByClassName("inputQuan")[n].value;
+            loading(true);
 
+            if (document.getElementById("loggedin").innerHTML == "Logged In") {
                 var form_data = new FormData();
 
                 form_data.append("cartItemId", id.innerHTML);
@@ -415,247 +620,271 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                         }
                     }
                 }
-            }
+            } else {
+                var cartCookie = getCookie("cart");
+                var quanCookie = getCookie("quan");
 
-            // <-- Prices and stuff -->
-            function changePrices(n, n2) {
-                let parent = document.getElementsByClassName("item-cell");
-                var text = parent[n2].children[0].children[0].children[1].children[4].textContent;
-                var x = parseInt(parseInt(parent[n2].children[0].children[0].children[1].children[4].textContent.substring('EGP '.length, text.length)) * n);
-                if (x.toString().length <= 2) {
-                    parent[n2].children[2].textContent = "EGP " + parseInt(x) + ".00";
-                } else if (x.toString().length > 2) {
-                    parent[n2].children[2].textContent = "EGP " + parseInt(x);
-                }
-                updateTotals();
-            }
+                var cartList = cartCookie.split(",");
+                var quanList = quanCookie.split(",");
 
-            // <-- Totals -->
+                quanList.splice(cartList.indexOf(prodid), 1);
+                cartList.splice(cartList.indexOf(prodid), 1);
+
+                var newCart = cartList.toString();
+                var newQuan = quanList.toString();
+
+                setCookie("cart", newCart, 26298 * 100 * 1000);
+                setCookie("quan", newQuan, 26298 * 100 * 1000);
+
+                loading(false);
+                location.reload();
+            }
+        }
+
+        // <-- Prices and stuff -->
+        function changePrices(n, n2) {
+            let parent = document.getElementsByClassName("item-cell");
+            var text = parent[n2].children[0].children[0].children[1].children[4].textContent;
+            var x = parseInt(parseInt(parent[n2].children[0].children[0].children[1].children[4].textContent.substring('EGP '.length, text.length)) * n);
+            if (x.toString().length <= 2) {
+                parent[n2].children[2].textContent = "EGP " + parseInt(x) + ".00";
+            } else if (x.toString().length > 2) {
+                parent[n2].children[2].textContent = "EGP " + parseInt(x);
+            }
             updateTotals();
+        }
 
-            function updateTotals() {
-                let parentt = document.getElementsByClassName("total-price");
-                let Subtotall = parentt[0].children[0].children[0].children[0].children[1];
-                let discountt = parentt[0].children[0].children[0].children[1].children[1];
-                let shipping = parentt[0].children[0].children[0].children[2].children[1];
-                let Totall = parentt[0].children[0].children[0].children[3].children[1];
-                let cons = document.getElementsByClassName("item-cell");
-                var numbers = [];
-                var subtotal = 0;
-                var discounts = document.getElementsByClassName("discount");
-                var discount = 0;
+        // <-- Totals -->
+        updateTotals();
 
-                for (i = 0; i < discounts.length; i++) {
-                    var mul = cons[i].children[2].innerHTML.substr("EGP ".length) / cons[i].children[0].children[0].children[1].children[4].textContent.substr("EGP ".length);
-                    discount += parseInt(discounts[i].innerHTML.substr("Discount: EGP ".length)) * mul;
-                }
+        function updateTotals() {
+            let parentt = document.getElementsByClassName("total-price");
+            let Subtotall = parentt[0].children[0].children[0].children[0].children[1];
+            let discountt = parentt[0].children[0].children[0].children[1].children[1];
+            let shipping = parentt[0].children[0].children[0].children[2].children[1];
+            let Totall = parentt[0].children[0].children[0].children[3].children[1];
+            let cons = document.getElementsByClassName("item-cell");
+            var numbers = [];
+            var subtotal = 0;
+            var discounts = document.getElementsByClassName("discount");
+            var discount = 0;
 
-                for (i = 0; i < cons.length; i++) {
-                    numbers.push(cons[i].children[2].textContent.substr("EGP ".length));
-                }
-
-                for (i = 0; i < numbers.length; i++) {
-                    subtotal += parseInt(numbers[i]);
-                }
-
-                Subtotall.textContent = "EGP " + subtotal;
-                discountt.textContent = "EGP " + discount;
-                Totall.textContent = "EGP " + parseInt(parseInt(subtotal - discount) + parseInt(shipping.innerHTML.substr("EGP ".length)));
+            for (i = 0; i < discounts.length; i++) {
+                var mul = cons[i].children[2].innerHTML.substr("EGP ".length) / cons[i].children[0].children[0].children[1].children[4].textContent.substr("EGP ".length);
+                discount += parseInt(discounts[i].innerHTML.substr("Discount: EGP ".length)) * mul;
             }
 
-            // <-- Check If Empty -->
-            checkIfEmpty();
-
-            function checkIfEmpty() {
-                let parents = document.getElementsByClassName("item-cell");
-                if (parents.length == 0) {
-                    let row = document.getElementById("hidden-empty");
-                    row.style.display = "flex";
-                    let cont = document.getElementsByClassName("small-container");
-
-                    cont[0].children[1].remove();
-                    cont[0].children[1].remove();
-                    cont[0].children[1].remove();
-                    cont[0].children[1].remove();
-                }
+            for (i = 0; i < cons.length; i++) {
+                numbers.push(cons[i].children[2].textContent.substr("EGP ".length));
             }
 
-            // <-- Cookie Consent -->
-            let cSection = document.getElementsByClassName("cookies");
-            let cCont = cSection[0].children[0];
-            checkCookies();
-
-            function checkCookies() {
-                if (getCookie("CookieConsent") == null) {
-                    cFunc("show");
-                } else {
-                    cFunc("hide");
-                }
+            for (i = 0; i < numbers.length; i++) {
+                subtotal += parseInt(numbers[i]);
             }
 
-            function acceptCookies() {
+            Subtotall.textContent = "EGP " + subtotal;
+            discountt.textContent = "EGP " + discount;
+            Totall.textContent = "EGP " + parseInt(parseInt(subtotal - discount) + parseInt(shipping.innerHTML.substr("EGP ".length)));
+        }
+
+        // <-- Check If Empty -->
+        checkIfEmpty();
+
+        function checkIfEmpty() {
+            let parents = document.getElementsByClassName("item-cell");
+            if (parents.length == 0) {
+                let row = document.getElementById("hidden-empty");
+                row.style.display = "flex";
+                let cont = document.getElementsByClassName("small-container");
+
+                cont[0].children[1].remove();
+                cont[0].children[1].remove();
+                cont[0].children[1].remove();
+                cont[0].children[1].remove();
+                cont[0].children[1].remove();
+            }
+        }
+
+        // <-- Cookie Consent -->
+        let cSection = document.getElementsByClassName("cookies");
+        let cCont = cSection[0].children[0];
+        checkCookies();
+
+        function checkCookies() {
+            if (getCookie("CookieConsent") == null) {
+                cFunc("show");
+            } else {
                 cFunc("hide");
-                setCookie("CookieConsent", "true");
             }
+        }
 
-            function cFunc(n) {
-                if (n == "show") {
-                    cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
-                } else if (n == "hide") {
-                    cCont.style.top = window.innerHeight + "px";
-                }
+        function acceptCookies() {
+            cFunc("hide");
+            setCookie("CookieConsent", "true");
+        }
+
+        function cFunc(n) {
+            if (n == "show") {
+                document.getElementsByClassName("cookies")[0].style.visibility = "visible";
+                cCont.style.top = parseInt(parseInt(window.innerHeight) - 80) + "px";
+            } else if (n == "hide") {
+                cCont.style.top = window.innerHeight + "px";
+                document.getElementsByClassName("cookies")[0].style.visibility = "hidden";
             }
+        }
 
-            function setCookie(key, value) {
-                var expires = new Date();
-                expires.setTime(expires.getTime() + (10000 * 365 * 24 * 60 * 60));
-                document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        function setCookie(key, value, time = 10000 * 365 * 24 * 60 * 60) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + time);
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
+
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+
+        // <-- Submit Form -->
+        let form1 = document.getElementById("form1");
+        let form2 = document.getElementById("form2");
+        let btns = document.getElementsByClassName("submit")
+
+        //loading
+        function loading(con, n = 0) {
+            if (con == true) {
+                document.getElementsByClassName("form-overlay")[n].classList.add("ovlyact");
+            } else {
+                document.getElementsByClassName("form-overlay")[n].classList.remove("ovlyact");
             }
+        }
 
-            function getCookie(key) {
-                var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-                return keyValue ? keyValue[2] : null;
-            }
+        // <-- Input Values of inputs yknow -->
+        let apt = document.getElementById("Apartment");
+        let aptt = document.getElementById("apartment").innerHTML;
+        apt.value = aptt;
 
-            // <-- Submit Form -->
-            let form1 = document.getElementById("form1");
-            let form2 = document.getElementById("form2");
-            let btns = document.getElementsByClassName("submit")
+        let bld = document.getElementById("Building");
+        let bldd = document.getElementById("building").innerHTML;
+        bld.value = bldd;
 
-            //loading
-            function loading(con, n = 0) {
-                if (con == true) {
-                    document.getElementsByClassName("form-overlay")[n].classList.add("ovlyact");
-                } else {
-                    document.getElementsByClassName("form-overlay")[n].classList.remove("ovlyact");
-                }
-            }
+        let strt = document.getElementById("Street");
+        let strtt = document.getElementById("street").innerHTML;
+        strt.value = strtt;
 
-            //notif
-            function notification() {
-                let notif = document.getElementsByClassName("notif")[0];
-                let textNo = notif.children[1];
+        let cty = document.getElementById("City");
+        let ctyy = document.getElementById("city").innerHTML;
+        cty.value = ctyy;
 
-                textNo.style.fontSize = "20px";
-                textNo.textContent = "Couldn't place order.";
-                notif.id = "show";
-                setTimeout(function() {
-                    notif.id = "hide";
-                }, 5000);
-            }
+        let rgn = document.getElementById("Region");
+        let rgnn = document.getElementById("region").innerHTML;
+        rgn.value = rgnn;
 
-            // <-- Input Values of inputs yknow -->
-            let apt = document.getElementById("Apartment");
-            let aptt = document.getElementById("apartment").innerHTML;
-            apt.value = aptt;
+        let nom = document.getElementById("noArrows2");
+        let nomm = document.getElementById("pnumber").innerHTML;
+        nom.value = nomm;
 
-            let bld = document.getElementById("Building");
-            let bldd = document.getElementById("building").innerHTML;
-            bld.value = bldd;
+        let fname = document.getElementById("FName");
+        let fnamee = document.getElementById("fnamee").innerHTML;
+        fname.value = fnamee;
 
-            let strt = document.getElementById("Street");
-            let strtt = document.getElementById("street").innerHTML;
-            strt.value = strtt;
+        let lname = document.getElementById("LName");
+        let lnamee = document.getElementById("lnamee").innerHTML;
+        lname.value = lnamee;
 
-            let cty = document.getElementById("City");
-            let ctyy = document.getElementById("city").innerHTML;
-            cty.value = ctyy;
+        // <-- renew address and number -->
+        function submitForm1() {
+            btns[1].click();
+        }
 
-            let rgn = document.getElementById("Region");
-            let rgnn = document.getElementById("region").innerHTML;
-            rgn.value = rgnn;
+        function submitForm2() {
+            btns[2].click();
+        }
 
-            let ctry = document.getElementById("Country");
-            let ctryy = document.getElementById("country").innerHTML;
-            ctry.value = ctryy;
+        function checkout() {
+            apt = document.getElementById("Apartment").value;
+            aptt = document.getElementById("apartment").innerHTML;
 
-            let pst = document.getElementById("noArrows");
-            let pstt = document.getElementById("postal").innerHTML;
-            pst.value = pstt;
+            bld = document.getElementById("Building").value;
+            bldd = document.getElementById("building").innerHTML;
 
-            let nom = document.getElementById("noArrows2");
-            let nomm = document.getElementById("pnumber").innerHTML;
-            nom.value = nomm;
+            strt = document.getElementById("Street").value;
+            strtt = document.getElementById("street").innerHTML;
 
-            // <-- renew address and number -->
-            function submitForm1() {
-                apt = document.getElementById("Apartment").value;
-                aptt = document.getElementById("apartment").innerHTML;
+            cty = document.getElementById("City").value;
+            ctyy = document.getElementById("city").innerHTML;
 
-                bld = document.getElementById("Building").value;
-                bldd = document.getElementById("building").innerHTML;
+            rgn = document.getElementById("Region").value;
+            rgnn = document.getElementById("region").innerHTML;
 
-                strt = document.getElementById("Street").value;
-                strtt = document.getElementById("street").innerHTML;
+            nom = document.getElementById("noArrows2").value;
+            nomm = document.getElementById("pnumber").innerHTML;
 
-                cty = document.getElementById("City").value;
-                ctyy = document.getElementById("city").innerHTML;
+            fname = document.getElementById("FName").value;
+            fnamee = document.getElementById("fnamee").innerHTML;
 
-                rgn = document.getElementById("Region").value;
-                rgnn = document.getElementById("region").innerHTML;
+            lname = document.getElementById("LName").value;
+            lnamee = document.getElementById("lnamee").innerHTML;
 
-                ctry = document.getElementById("Country").value;
-                ctryy = document.getElementById("country").innerHTML;
+            var email = document.getElementById("email").value;
 
-                pst = document.getElementById("noArrows").value;
-                pstt = document.getElementById("postal").innerHTML;
+            var comments = document.getElementById("orderComments").value.replaceAll("'", "");
+            comments = comments.replaceAll('"', "");
 
-                nom = document.getElementById("noArrows2").value;
-                nomm = document.getElementById("pnumber").innerHTML;
+            loading(true);
 
-                if (apt != aptt || bld != bldd || strt != strtt || cty != ctyy || rgn != rgnn || ctry != ctryy || pst != pstt || nom != nomm) {
-                    loading(true);
-
-                    var form_data = new FormData();
-
-                    form_data.append("adId", adId.innerHTML);
-                    form_data.append("uid", uid.innerHTML);
-                    form_data.append("apartment", apt);
-                    form_data.append("building", bld);
-                    form_data.append("street", strt);
-                    form_data.append("city", cty);
-                    form_data.append("region", rgn);
-                    form_data.append("country", ctry);
-                    form_data.append("postal", pst);
-                    form_data.append("number", nom);
-
-                    //document.getElementsByClassName('logSubmit')[0].disabled = true;
-
-                    var ajax_request = new XMLHttpRequest();
-
-                    ajax_request.open('POST', 'php/process_data.php');
-
-                    ajax_request.send(form_data);
-
-                    ajax_request.onreadystatechange = function() {
-                        if (ajax_request.readyState == 4 && ajax_request.status == 200) {
-
-                            var response = ajax_request.responseText;
-
-                            loading(false);
-                            location.reload();
-                        }
-                    }
-                } else {
-                    btns[0].click();
-                }
-            }
-
-            function submitForm2() {
-                btns[1].click();
-            }
-
-            // <-- Checkout -->
-            function checkout() {
-                loading(true);
-
+            if (loginstatus != "Logged In") {
                 var form_data = new FormData();
 
-                form_data.append("orderUserId", uid.innerHTML);
-                form_data.append("orderShipping", 0);
-                form_data.append("orderComments", document.getElementById("orderComments").value);
+                form_data.append("setOrderEmail", email);
+                form_data.append("cart", getCookie("cart"));
+                form_data.append("quan", getCookie("quan"));
+                form_data.append("apartment", apt);
+                form_data.append("building", bld);
+                form_data.append("street", strt);
+                form_data.append("city", cty);
+                form_data.append("region", rgn);
+                form_data.append("number", nom);
+                form_data.append("FName", fname);
+                form_data.append("LName", lname);
+                form_data.append("orderShipping", 50);
+                form_data.append("orderComments", comments);
 
-                //document.getElementsByClassName('logSubmit')[0].disabled = true;
+                var ajax_request = new XMLHttpRequest();
+
+                ajax_request.open('POST', 'php/process_data.php');
+
+                ajax_request.send(form_data);
+
+                ajax_request.onreadystatechange = function() {
+                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                        var response = ajax_request.responseText;
+
+                        if (response.includes("Placed Order")) {
+                            loading(false);
+                            setCookie("cart", "", 0);
+                            setCookie("quan", "", 0);
+                            setCookie("session", response.substr(0, response.indexOf(",")), 1000 * 14 * 24 * 60 * 60);
+                            notification(true);
+                        } else {
+                            loading(false);
+                            notification(false);
+                        }
+                    }
+                }
+            } else {
+                var form_data = new FormData();
+
+                form_data.append("adId", document.getElementById("adId").innerHTML);
+                form_data.append("uid", document.getElementById("uid").innerHTML);
+                form_data.append("apartment", apt);
+                form_data.append("building", bld);
+                form_data.append("street", strt);
+                form_data.append("city", cty);
+                form_data.append("region", rgn);
+                form_data.append("number", nom);
+                form_data.append("orderShipping", 50);
+                form_data.append("orderComments", comments);
 
                 var ajax_request = new XMLHttpRequest();
 
@@ -678,30 +907,118 @@ if (!isset($_COOKIE["session"]) || checkSession($_COOKIE["session"]) == "session
                     }
                 }
             }
+        }
 
-            // <-- notif -->
-            function notification(status) {
-                let notif = document.getElementsByClassName("notif")[0];
-                let textNo = notif.children[1];
+        function submitForm3() {
+            if (loginstatus == "Logged In") {
+                btns[0].click();
+            } else {
+                loading(true);
+                var email = document.getElementById("email").value;
 
-                if (status == true) {
-                    textNo.style.fontSize = "20px";
-                    textNo.textContent = "Order has been placed.";
-                    notif.id = "show";
-                    setTimeout(function() {
-                        notif.id = "hide";
-                        location.href = "/account.html?pg=orders";
-                    }, 5000);
-                } else {
-                    textNo.style.fontSize = "18px";
-                    textNo.textContent = "Couldn't Place Order.";
-                    notif.id = "show";
-                    setTimeout(function() {
-                        notif.id = "hide";
-                    }, 5000);
+                var form_data = new FormData();
+
+                form_data.append("checkEmailExists", email);
+
+                var ajax_request = new XMLHttpRequest();
+
+                ajax_request.open('POST', 'php/process_data.php');
+
+                ajax_request.send(form_data);
+
+                ajax_request.onreadystatechange = function() {
+                    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+
+                        var response = ajax_request.responseText;
+
+                        if (response == "address is ok") {
+                            loading(false);
+                            btns[0].click();
+                        } else {
+                            document.getElementById("email").setCustomValidity('This email address is already in use.');
+                            loading(false);
+                            btns[0].click();
+                        }
+                    }
                 }
             }
-        </script>
-    </body>
+        }
 
-    </html>
+        // <-- notif -->
+        function notification(status) {
+            let notif = document.getElementsByClassName("notif")[0];
+            let btn = document.getElementById("carty-btn");
+            let textNo = notif.children[1];
+
+            btn.style.opacity = "75%";
+            btn.onclick = function() {
+                return false
+            };
+            btn.style.cursor = "default";
+
+            if (status == true) {
+                textNo.style.fontSize = "20px";
+                textNo.textContent = "Order has been placed.";
+                notif.id = "show";
+                setTimeout(function() {
+                    notif.id = "hide";
+                    location.href = "/account.html?pg=orders";
+                }, 5000);
+            } else {
+                textNo.style.fontSize = "18px";
+                textNo.textContent = "Couldn't Place Order.";
+                notif.id = "show";
+                setTimeout(function() {
+                    notif.id = "hide";
+                    btn.style.opacity = "100%";
+                    btn.style.cursor = "pointer";
+                    btn.setAttribute("onclick", "submitForm1()");
+                }, 5000);
+            }
+        }
+
+
+        // <-- Side Navigation -->
+
+        function Nav() {
+            if (document.getElementById("indexpage").style.transform == "") {
+                document.getElementById("Sidenav").style.transform = "translateX(0px)";
+                document.getElementById("indexpage").style.transform = "translateX(300px)";
+                document.body.style.overflowY = 'hidden';
+                document.body.style.overflowX = 'hidden';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', 'Nav()');
+                }, 150);
+            } else {
+                document.getElementById("Sidenav").style.transform = "translateX(-300px)";
+                document.getElementById("indexpage").style.transform = "";
+                document.body.style.overflowY = '';
+                document.body.style.overflowX = '';
+                setTimeout(function() {
+                    document.getElementById("indexpage").setAttribute('onclick', '');
+                }, 150);
+            }
+        }
+
+        // <-- Side Navigation Open List -->
+        function navList(object, value) {
+            var obj = object.parentElement.parentElement.children[1];
+
+            if (obj.style.marginBottom == "0px") {
+                obj.style.marginBottom = value + "px";
+                object.innerHTML = "+";
+            } else {
+                obj.style.marginBottom = "0px";
+                object.innerHTML = "-";
+            }
+        }
+
+        
+        
+        
+        
+
+    </script>
+</body>
+
+</html>

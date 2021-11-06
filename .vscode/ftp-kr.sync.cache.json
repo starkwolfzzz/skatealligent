@@ -2,98 +2,104 @@
   "ftp://f33-preview.awardspace.net@3879700_skate": {
     "404.html": {
       "type": "-",
-      "size": 3211,
+      "size": 7095,
       "lmtime": 0,
       "modified": true
     },
     "about.html": {
       "type": "-",
-      "size": 8881,
+      "size": 16570,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "account.html": {
       "type": "-",
-      "size": 57412,
+      "size": 72373,
       "lmtime": 0,
       "modified": true
     },
     "cart.html": {
       "type": "-",
-      "size": 18447,
+      "size": 31354,
       "lmtime": 0,
       "modified": true
     },
     "checkout.html": {
       "type": "-",
-      "size": 29430,
+      "size": 51156,
       "lmtime": 0,
       "modified": true
     },
+    "connection.php": {
+      "type": "-",
+      "size": 108,
+      "lmtime": 0,
+      "modified": false
+    },
     "contact.html": {
       "type": "-",
-      "size": 8980,
+      "size": 17642,
       "lmtime": 0,
       "modified": true
     },
     "cookie-policy.html": {
       "type": "-",
-      "size": 10442,
+      "size": 18197,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "css": {},
     "fontawesome-free-5.15.3-web": {},
     "images": {},
     "index.html": {
       "type": "-",
-      "size": 17937,
+      "size": 44779,
       "lmtime": 0,
       "modified": true
     },
     "login.html": {
       "type": "-",
-      "size": 40732,
+      "size": 46243,
       "lmtime": 0,
       "modified": true
     },
     "php": {},
     "privacy-policy.html": {
       "type": "-",
-      "size": 25902,
+      "size": 33727,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "product.html": {
       "type": "-",
-      "size": 31662,
+      "size": 42242,
       "lmtime": 0,
       "modified": true
     },
     "products": {},
     "refund-policy.html": {
       "type": "-",
-      "size": 10245,
+      "size": 17838,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     },
     "shoph.html": {
       "type": "-",
-      "size": 44859,
+      "size": 50826,
       "lmtime": 0,
       "modified": true
     },
     "shop.html": {
       "type": "-",
-      "size": 58385,
+      "size": 67832,
       "lmtime": 0,
       "modified": true
     },
     "terms-of-use.html": {
       "type": "-",
-      "size": 32294,
+      "size": 40138,
       "lmtime": 0,
-      "modified": false
+      "modified": true
     }
   },
   "$version": 1
